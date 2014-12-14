@@ -133,16 +133,51 @@ var SyncPlacesWizard = {
 		var protocol = document.getElementById("protocol").selectedItem.id;
 		document.getElementById("protocolpg").next="host";
 
+		var os = "WINNT";
+		try {
+			os = Components.classes["@mozilla.org/xre/app-info;1"].createInstance(Components.interfaces.nsIXULRuntime).OS;
+		} catch (exception) {
+			os = "Darwin";
+		}
+
 		//No host required if file://
 		if (protocol == 'file') {
 			document.getElementById("protocolpg").next="sync";
-		}
-		//Prompt for login if ftp selected
-		else if (protocol == 'ftp') {
-			document.getElementById("hostpg").next="login";
+			
+			//Correct default paths on Windows
+			if (os == "WINNT") {
+				if (document.getElementById("jsonpath").value.match(/^\//)) {
+					document.getElementById("jsonpath").value = "C:\\syncplaces.json";
+				}
+				if (document.getElementById("xbelpath").value.match(/^\//)) {
+					document.getElementById("xbelpath").value = "C:\\syncplaces.xml";
+				}
+				if (document.getElementById("passwordpath").value.match(/^\//)) {
+					document.getElementById("passwordpath").value = "C:\\passwords";
+				}
+			}
 		}
 		else {
-			document.getElementById("hostpg").next="sync";
+			//Prompt for login if ftp selected
+			if (protocol == 'ftp') {
+				document.getElementById("hostpg").next="login";
+			}
+			else {
+				document.getElementById("hostpg").next="sync";
+			}
+			
+			//Put the path back properly if not file://
+			if (os == "WINNT") {
+				if (document.getElementById("jsonpath").value.match(/^.:\\/)) {
+					document.getElementById("jsonpath").value = "/syncplaces.json";
+				}
+				if (document.getElementById("xbelpath").value.match(/^.:\\/)) {
+					document.getElementById("xbelpath").value = "/syncplaces.xml";
+				}
+				if (document.getElementById("passwordpath").value.match(/^.:\\/)) {
+					document.getElementById("passwordpath").value = "/passwords";
+				}
+			}
 		}
 	},
 

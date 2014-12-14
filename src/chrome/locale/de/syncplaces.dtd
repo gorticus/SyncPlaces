@@ -1,5 +1,5 @@
 <!ENTITY sp "Lesezeichen synchronisieren">
-<!ENTITY sp_tooltip "Lesezeichen mit einem Server synchronisieren">
+<!ENTITY sp_tooltip "Lesezeichen und Passwörter mit einem Server synchronisieren">
 <!ENTITY sp_title "SyncPlaces - Einstellungen">
 <!ENTITY sp_transfer_title "Lesezeichen werden synchronisiert">
 <!ENTITY sp_wizard_title "SyncPlaces - Einrichtungsassistent">
@@ -10,9 +10,9 @@
 <!ENTITY status "Status:">
 <!ENTITY apply_button "Übernehmen">
 <!ENTITY remote "Übertragung zu/von entferntem Server">
-<!ENTITY send_button "Lesezeichen exportieren">
-<!ENTITY send_tooltip "Lesezeichen an einen entfernten Server übertragen">
-<!ENTITY receive_button "Lesezeichen importieren">
+<!ENTITY send_button "Lesezeichen/Passwörter exportieren">
+<!ENTITY send_tooltip "Lesezeichen/Passwörter an einen entfernten Server übertragen">
+<!ENTITY receive_button "Lesezeichen/Passwörter importieren">
 <!ENTITY receive_tooltip "Nach Erstellung einer Datensicherung werden Lesezeichen/Passwörter von einem entfernten Server importieren">
 <!ENTITY local "Übertragung in/aus lokale(r) Datei">
 <!ENTITY backup_button "Datensicherung erstellen">
@@ -69,13 +69,13 @@
 <!ENTITY password_password "Passwort:">
 <!ENTITY basic "Grundeinstellung">
 <!ENTITY encrypt_json "JSON-Datei verschlüsseln">
-<!ENTITY encryptjson_tooltip "Ermöglicht das verschlüsseln der JSON-Datei mittels Passwort">
+<!ENTITY encryptjson_tooltip "Ermöglicht das Verschlüsseln der JSON-Datei mittels Passwort">
 <!ENTITY encryptpassword_tooltip "Passwort eingeben welches zur Verschlüsselung der JSON-Datei genutzt werden soll">
 <!ENTITY send_gzip_json "JSON-Datei beim Senden/Empfangen komprimieren">
 <!ENTITY gzipjson_tooltip "JSON-Datei mittels GZip komprimieren um eine schnellere Datenübertragung zu ermöglichen">
 <!ENTITY small_xbel "Exportieren/Hochladen als kompaktes XBEL-Dokument">
 <!ENTITY smallxbel_tooltip "Lesezeichen als kompaktes XBEL-Dokument hochladen/exportieren (Bestens geeignet zum Auslesen)">
-<!ENTITY send_safe "Sicheres Hochladen">
+<!ENTITY send_safe "Sicheres hochladen">
 <!ENTITY sendsafe_tooltip "Um Datenverlust entgegenzuwirken werden die Daten vor dem Hochladen zuerst heruntergeladen und zusammengeführt">
 <!ENTITY auto_sort "Lesezeichen erst sortieren, dann hochladen">
 <!ENTITY autosort_tooltip "Lesezeichen vor dem Hochladen automatisch sortieren">

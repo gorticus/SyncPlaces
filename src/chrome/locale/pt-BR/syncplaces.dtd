@@ -38,9 +38,9 @@
 <!ENTITY host "Hospedeiro (host):">
 <!ENTITY host_tooltip "Nome do Host ou endereço de IP com número de porta opcional">
 <!ENTITY path "Caminho JSON:">
-<!ENTITY path_tooltip "Caminho para o arquivo JSON no servidor. Por exemplo: /bookmarks/syncplaces.json">
+<!ENTITY path_tooltip "Caminho para o arquivo JSON no servidor. Por exemplo: /favoritos/syncplaces.json">
 <!ENTITY htmlpath "Caminho HTML:">
-<!ENTITY htmlpath_tooltip "Caminho para o arquivo HTML no servidor. Por exemplo: /bookmarks/syncplaces.html">
+<!ENTITY htmlpath_tooltip "Caminho para o arquivo HTML no servidor. Por exemplo: /favoritos/syncplaces.html">
 <!ENTITY userid "Usuário:">
 <!ENTITY userid_tooltip "Nome de usuário para a autenticação">
 <!ENTITY password "Senha:">
@@ -137,7 +137,7 @@
 <!ENTITY selectfolder_tooltip "Seleciona a pasta de favoritos para sincronizar">
 <!ENTITY selected_folder "Pasta:">
 <!ENTITY sp_folder_title "Selecionar a pasta para a sincronia">
-<!ENTITY strength "Força da encriptação AES">
+<!ENTITY strength "Força da codificação AES">
 <!ENTITY b128 "128">
 <!ENTITY b192 "192">
 <!ENTITY b256 "256">
@@ -244,6 +244,6 @@
 <!ENTITY recommended "(recomendado)">
 <!ENTITY wiz_passwords "Você também deseja sincronizar suas senhas?">
 <!ENTITY wiz_pwd_path "Digite o caminho do servidor onde suas senhas serão armazenadas">
-<!ENTITY wiz_encrypt "Você deseja encriptar os seus favoritos?">
+<!ENTITY wiz_encrypt "Você deseja codificar os seus favoritos?">
 <!ENTITY wiz_compress "Deseja comprimir os seus favoritos para acelerar a sincronização?">
 <!ENTITY wiz_encpwd "Digite uma senha para proteger seus dados">

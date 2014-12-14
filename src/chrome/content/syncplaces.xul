@@ -66,6 +66,7 @@
 		</statusbarpanel>
   </statusbar>
 
+	<!-- Firefox version -->
 	<menupopup id="bookmarksMenuPopup">
 		<menu class="menu-iconic"
 		      id="syncplaces-bmenu"
@@ -73,6 +74,10 @@
 					insertbefore="organizeBookmarksSeparator"
 					tooltiptext="&sp_tooltip;">
 		  <menupopup id="syncplaces-bmenu-menupopup">
+				<menuitem id="syncplaces-options"
+									label="&options_tab;"
+									oncommand="SyncPlaces.actionsOpen();"
+									tooltiptext="&options_tab;"/>
 				<menuitem id="syncplaces-send"
 									label="&send_button;"
 									oncommand="SyncPlaces.menuSend();"
@@ -81,14 +86,34 @@
 									label="&receive_button;"
 									oncommand="SyncPlaces.menuReceive();"
 									tooltiptext="&receive_tooltip;"/>
+		  </menupopup>
+		</menu>
+	</menupopup>
+	<!-- Seamonkey version -->
+	<menupopup id="menu_BookmarksPopup">
+		<menu class="menu-iconic"
+		      id="syncplaces-bmenu"
+					label="&sp_title;"
+					insertbefore="organizeBookmarksSeparator"
+					tooltiptext="&sp_tooltip;">
+		  <menupopup id="syncplaces-bmenu-menupopup">
 				<menuitem id="syncplaces-options"
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
+				<menuitem id="syncplaces-send"
+									label="&send_button;"
+									oncommand="SyncPlaces.menuSend();"
+									tooltiptext="&send_tooltip;"/>
+				<menuitem id="syncplaces-receive"
+									label="&receive_button;"
+									oncommand="SyncPlaces.menuReceive();"
+									tooltiptext="&receive_tooltip;"/>
 		  </menupopup>
 		</menu>
 	</menupopup>
 
+	<!-- Firefox version -->
 	<menupopup id="menu_ToolsPopup">
 		<menu class="menu-iconic"
 		      id="syncplaces-tmenu"
@@ -96,6 +121,10 @@
 					insertafter="devToolsSeparator"
 					tooltiptext="&sp_tooltip;">
 		  <menupopup id="syncplaces-tmenu-menupopup">
+				<menuitem id="syncplaces-options"
+									label="&options_tab;"
+									oncommand="SyncPlaces.actionsOpen();"
+									tooltiptext="&options_tab;"/>
 				<menuitem id="syncplaces-send"
 									label="&send_button;"
 									oncommand="SyncPlaces.menuSend();"
@@ -104,10 +133,29 @@
 									label="&receive_button;"
 									oncommand="SyncPlaces.menuReceive();"
 									tooltiptext="&receive_tooltip;"/>
+		  </menupopup>
+		</menu>
+	</menupopup>
+	<!-- Seamonkey version -->
+	<menupopup id="taskPopup">
+		<menu class="menu-iconic"
+		      id="syncplaces-tmenu"
+					label="&sp_title;"
+					insertafter="devToolsSeparator"
+					tooltiptext="&sp_tooltip;">
+		  <menupopup id="syncplaces-tmenu-menupopup">
 				<menuitem id="syncplaces-options"
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
+				<menuitem id="syncplaces-send"
+									label="&send_button;"
+									oncommand="SyncPlaces.menuSend();"
+									tooltiptext="&send_tooltip;"/>
+				<menuitem id="syncplaces-receive"
+									label="&receive_button;"
+									oncommand="SyncPlaces.menuReceive();"
+									tooltiptext="&receive_tooltip;"/>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -120,6 +168,11 @@
 						 			 tooltiptext="&sp;"
 			             oncommand="SyncPlaces.actionsOpen();">
 			<menupopup id="syncplaces-button-popup">
+				<menuitem id="syncplaces-options"
+									label="&options_tab;"
+									default="true"
+									oncommand="SyncPlaces.actionsOpen();"
+									tooltiptext="&options_tab;"/>
 				<menuitem id="syncplaces-send"
 									label="&send_button;"
 									oncommand="SyncPlaces.menuSend(); event.stopPropagation();"
