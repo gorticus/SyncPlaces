@@ -1,0 +1,249 @@
+<!ENTITY sp "同步书签/密码">
+<!ENTITY sp_tooltip "通过服务器同步书签/密码">
+<!ENTITY sp_title "SyncPlaces">
+<!ENTITY sp_transfer_title "正在同步">
+<!ENTITY sp_wizard_title "SyncPlaces 设置向导">
+<!ENTITY action_tab "操作">
+<!ENTITY server_tab "服务器">
+<!ENTITY options_tab "选项">
+<!ENTITY advanced_tab "高级">
+<!ENTITY status "状态">
+<!ENTITY apply_button "应用">
+<!ENTITY remote "远端">
+<!ENTITY send_button "发送书签/密码">
+<!ENTITY send_tooltip "发送书签/密码到服务器">
+<!ENTITY receive_button "接收书签/密码">
+<!ENTITY receive_tooltip "备份并从服务器接收书签/密码">
+<!ENTITY local "本地">
+<!ENTITY backup_button "备份">
+<!ENTITY backup_tooltip "备份到本地文件">
+<!ENTITY bookmarks "书签">
+<!ENTITY passwords "密码">
+<!ENTITY both "全部">
+<!ENTITY restore_button "恢复">
+<!ENTITY restore_tooltip "从本地文件恢复">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "导出">
+<!ENTITY export_tooltip "导出书签为本地 XBEL 文件">
+<!ENTITY import_button "导入">
+<!ENTITY not_available "选项尚不可用">
+<!ENTITY import_tooltip "从本地 XBEL 文件导入书签">
+<!ENTITY connection_tab "连接">
+<!ENTITY sync_tab "同步">
+<!ENTITY protocol "协议">
+<!ENTITY http "http">
+<!ENTITY https "https">
+<!ENTITY ftp "ftp">
+<!ENTITY file "file">
+<!ENTITY host "主机">
+<!ENTITY host_tooltip "主机名或 IP 地址（可包含端口号）">
+<!ENTITY path "JSON 文件路径">
+<!ENTITY path_tooltip "服务器上保存的 JSON 文件路径，例如 /bookmarks/syncplaces.json">
+<!ENTITY htmlpath "HTML 文件路径">
+<!ENTITY htmlpath_tooltip "服务器上保存的 HTML 文件路径，例如 /bookmarks/syncplaces.html">
+<!ENTITY userid "用户名">
+<!ENTITY userid_tooltip "用于认证的用户名">
+<!ENTITY password "密码">
+<!ENTITY password_tooltip "用于认证的密码">
+<!ENTITY run_wizard "下次启动时运行设置向导">
+<!ENTITY runwizard_tooltip "下次您启动 SyncPlaces 时运行设置向导">
+<!ENTITY last_sent "上次发送时间">
+<!ENTITY last_received "上次接收时间">
+<!ENTITY lastreceived_tooltip "上次接收更改的日期">
+<!ENTITY sync_type "同步">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "同步 JSON 文件（推荐）">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "同步 XBEL 文件">
+<!ENTITY sync_passwords "密码">
+<!ENTITY syncpasswords_tooltip "同步密码">
+<!ENTITY sync_icons "更新小图标">
+<!ENTITY syncicons_tooltip "接收/导入时更新其小图标">
+<!ENTITY send_html "发送 HTML">
+<!ENTITY sendhtml_tooltip "同时发送 HTML 文件版本号">
+<!ENTITY send_xbel "发送 XBEL">
+<!ENTITY sendxbel_tooltip "同时发送 XBEL 文件版本号">
+<!ENTITY xbelpath_tooltip "服务器上保存的 XBEL 文件路径，例如 /bookmarks/syncplaces.xml">
+<!ENTITY passwordpath "密码文件路径">
+<!ENTITY passwordpath_tooltip "服务器上保存的密码文件的路径，例如 /bookmarks/passwords">
+<!ENTITY password_password "密码">
+<!ENTITY basic "基本">
+<!ENTITY encrypt_json "加密 JSON 文件">
+<!ENTITY encryptjson_tooltip "加密 JSON 文件以保证安全">
+<!ENTITY encryptpassword_tooltip "用于实现加密的密码">
+<!ENTITY send_gzip_json "压缩 JSON 文件">
+<!ENTITY gzipjson_tooltip "压缩 JSON 文件以便加快文件传送">
+<!ENTITY small_xbel "导出/发送小体积 XBEL 文件">
+<!ENTITY smallxbel_tooltip "发送/导出小体积的 XBEL 文件（最适合用于自定义）">
+<!ENTITY send_safe "安全发送">
+<!ENTITY sendsafe_tooltip "每次发送前先接收和合并以避免数据丢失">
+<!ENTITY auto_sort "发送前先排序">
+<!ENTITY autosort_tooltip "自动整理书签顺序后再发送">
+<!ENTITY cache "仅同步有修改的书签">
+<!ENTITY cache_tooltip "如果书签未修改则不同步">
+<!ENTITY cache_pwd "仅同步有修改的密码">
+<!ENTITY cachepwd_tooltip "如果密码未修改则不同步">
+<!ENTITY merge "合并书签">
+<!ENTITY merge_tooltip "合并接收的书签而不覆盖原有书签">
+<!ENTITY merge_pwd "合并接收的密码">
+<!ENTITY mergepwd_tooltip "合并接收的密码而不覆盖原有密码">
+<!ENTITY profiles "配置">
+<!ENTITY profile "配置">
+<!ENTITY add_profile "添加">
+<!ENTITY addprofile_tooltip "添加一个新配置">
+<!ENTITY delete_profile "删除">
+<!ENTITY deleteprofile_tooltip "删除当前所选的配置">
+<!ENTITY move_up "上移">
+<!ENTITY moveup_tooltip "在配置列表中向上移动配置">
+<!ENTITY move_down "下移">
+<!ENTITY movedown_tooltip "在配置列表中向下移动配置">
+<!ENTITY export_profile "导出">
+<!ENTITY exportprofile_tooltip "导出当前所选的配置">
+<!ENTITY import_profile "导入">
+<!ENTITY importprofile_tooltip "导入一个配置">
+<!ENTITY automation "自动操作">
+<!ENTITY autosync "自动同步">
+<!ENTITY autosync_tooltip "书签发生更改时自动同步">
+<!ENTITY delay "延迟">
+<!ENTITY syncdelay_tooltip "先延迟一段时间后再开始自动同步">
+<!ENTITY auto_receive "启动时自动接收">
+<!ENTITY autoreceive_tooltip "浏览器启动时自动接收书签">
+<!ENTITY auto_receive_notify "保持对话框开启">
+<!ENTITY autoreceivenotify_tooltip "同步成功时仍保持对话框窗口打开">
+<!ENTITY auto_send "关闭时自动发送">
+<!ENTITY autosend_tooltip "浏览器关闭时自动发送书签">
+<!ENTITY auto_send_notify "保持对话框开启">
+<!ENTITY autosendnotify_tooltip "同步成功时仍保持对话框窗口打开">
+<!ENTITY auto_close "发送/接收后自动关闭对话框">
+<!ENTITY autoclose_tooltip "手动发送/接收后自动关闭对话框窗口">
+<!ENTITY auto_close_delay "秒">
+<!ENTITY autodelay_tooltip "经过多少秒后关闭对话框窗口">
+<!ENTITY regular_transfer "以固定时间间隔同步">
+<!ENTITY regulartransfer_tooltip "使用&apos;安全发送&apos;选项间隔性接收及发送数据">
+<!ENTITY transfer_interval "时间间隔">
+<!ENTITY transferinterval_tooltip "每次同步的时间间隔">
+<!ENTITY seconds "秒">
+<!ENTITY minutes "分">
+<!ENTITY hours "时">
+<!ENTITY timed_transfer "定时同步">
+<!ENTITY timedtransfer_tooltip "使用&apos;安全发送&apos;选项在特定时间接收及发送数据">
+<!ENTITY transfer_time "定时同步时间">
+<!ENTITY misc_tab "常规">
+<!ENTITY send_all "同步所有 Places 下的书签">
+<!ENTITY sendall_tooltip "同步整个 Places 树下的所有书签">
+<!ENTITY skip_name "允许接收不同名文件夹">
+<!ENTITY skipname_tooltip "所要接收的文件夹允许使用不同的名称">
+<!ENTITY selectfolder_button "选择要同步的文件夹">
+<!ENTITY selectfolder_tooltip "选择所要同步的书签文件夹">
+<!ENTITY selected_folder "文件夹：">
+<!ENTITY sp_folder_title "选择要同步的文件夹">
+<!ENTITY strength "AES 加密算法强度">
+<!ENTITY b128 "128 位">
+<!ENTITY b192 "192 位">
+<!ENTITY b256 "256 位">
+<!ENTITY show_status "在状态栏显示">
+<!ENTITY showstatus_tooltip "在状态栏显示 SyncPlaces 图标">
+<!ENTITY show_bm "在书签菜单显示">
+<!ENTITY showbm_tooltip "在书签菜单显示 SyncPlaces">
+<!ENTITY show_tools "在工具菜单显示">
+<!ENTITY showtools_tooltip "在工具菜单显示 SyncPlaces">
+<!ENTITY backupfolder_button "选择要备份到的文件夹">
+<!ENTITY backupfolder_tooltip "选择用于保存备份文件的文件夹">
+<!ENTITY merge_tab "合并">
+<!ENTITY merge_deletes "合并删除的书签">
+<!ENTITY mergedeletes_tooltip "处理删除或重命名的书签">
+<!ENTITY comparison "处理重复的文件">
+<!ENTITY compare_timestamps "使用时间戳">
+<!ENTITY timestamps_tooltip "使用时间戳来决定要保留的重复书签">
+<!ENTITY compare_local "使用本地数据">
+<!ENTITY local_tooltip "保持当前数据项并忽略接收项">
+<!ENTITY compare_remote "使用远端数据">
+<!ENTITY remote_tooltip "使用所接收的数据项并删除本地项">
+<!ENTITY merge_all "合并一切数据">
+<!ENTITY mergeall_tooltip "合并所接收到的一切数据">
+<!ENTITY include_places "包含的 Places 内容">
+<!ENTITY merge_menu "书签菜单">
+<!ENTITY mergemenu_tooltip "合并时包含书签菜单下的书签">
+<!ENTITY merge_toolbar "书签工具栏">
+<!ENTITY mergetoolbar_tooltip "合并时包含书签工具栏中的书签">
+<!ENTITY merge_unsorted "未排序书签">
+<!ENTITY mergeunsorted_tooltip "合并时包含未排序书签">
+<!ENTITY include_types "包含的书签类型">
+<!ENTITY merge_bookmarks "书签">
+<!ENTITY mergebookmarks_tooltip "合并时包含新的书签">
+<!ENTITY merge_seperators "分隔符">
+<!ENTITY mergesep_tooltip "合并时包含新的书签分隔符">
+<!ENTITY merge_queries "搜索/查询书签">
+<!ENTITY mergequeries_tooltip "合并时包含新的用于搜索/查询的书签">
+<!ENTITY merge_livemarks "实时书签">
+<!ENTITY mergelivemarks_tooltip "合并时包含新的实时书签">
+<!ENTITY workarounds_tab "疑难解决">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "在下面添加您的自定义标签">
+<!ENTITY encryption_tab "加密">
+<!ENTITY encryption "加密算法">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "注意：仅在您遇到问题时才可使用这些选项">
+<!ENTITY transfer_technique "传送">
+<!ENTITY receive_mechanism "接收方式">
+<!ENTITY normal_receive "正常">
+<!ENTITY normal_receive_tooltip "以正常方式接收">
+<!ENTITY old_receive "原有">
+<!ENTITY old_receive_tooltip "以原有方式接收">
+<!ENTITY old_receive_conversion "修复代理">
+<!ENTITY receive_conversion_tooltip "以修复某些代理服务器的方式接收">
+<!ENTITY send_mechanism "发送方式">
+<!ENTITY normal_send "正常">
+<!ENTITY normal_send_tooltip "以正常方式发送">
+<!ENTITY old_send "原有">
+<!ENTITY old_send_tooltip "以原有方式发送">
+<!ENTITY old_send_conversion "修复代理">
+<!ENTITY send_conversion_tooltip "以修复某些代理服务器的方式发送">
+<!ENTITY skip_auth "跳过认证">
+<!ENTITY skipauth_tooltip "详细说明参见文档">
+<!ENTITY debug "打开调试功能">
+<!ENTITY startup "启动">
+<!ENTITY normal "正常">
+<!ENTITY normal_tooltip "检测正常方式的启动">
+<!ENTITY crude "兼容方式">
+<!ENTITY crude_tooltip "检测兼容方式的启动">
+<!ENTITY shutdown "关闭">
+<!ENTITY shutdownnormal_tooltip "正常关闭">
+<!ENTITY shutdowncrude_tooltip "以兼容方式关闭">
+<!ENTITY sp_passwords_title "选择密码">
+<!ENTITY pw_details "密码详情">
+<!ENTITY pw_which_password "选择您想要保存的密码">
+<!ENTITY pw_hostname "主机">
+<!ENTITY pw_formSubmitURL "表单 URL">
+<!ENTITY pw_httpRealm "HTTP 区域">
+<!ENTITY pw_usernameField "用户名域">
+<!ENTITY pw_passwordField "密码域">
+<!ENTITY pw_username "用户名">
+<!ENTITY pw_oldPassword "已存在的密码">
+<!ENTITY pw_newPassword "新密码">
+<!ENTITY pw_old "保留已存在的密码">
+<!ENTITY pw_new "保留新密码">
+<!ENTITY dialog_title "提示">
+<!ENTITY more_info "更多信息">
+<!ENTITY wiz_reset_title "恢复默认">
+<!ENTITY wiz_reset "您想要恢复所有设置为默认状态吗？这么做将删除您当前的所有设置。">
+<!ENTITY wiz_yes "是">
+<!ENTITY wiz_no "否">
+<!ENTITY wiz_protocol "您想要使用何种类型的服务器？">
+<!ENTITY wiz_host "输入您的服务器名或 IP 地址，例如 www.yourname.com 或 172.16.0.1。您也可以选择添加端口号（例如 www.yourname.co.uk:8080）。">
+<!ENTITY web_server "网页服务器">
+<!ENTITY ssl_server "网页服务器 (SSL)">
+<!ENTITY ftp_server "FTP 服务器">
+<!ENTITY file_server "文件服务器">
+<!ENTITY wiz_path_title "服务器路径">
+<!ENTITY wiz_path "输入您的书签所保存的服务器路径">
+<!ENTITY bm_path "路径">
+<!ENTITY wiz_login "如果有的话，输入您的 FTP 登录详细信息">
+<!ENTITY wiz_sync "选择您书签的保存格式">
+<!ENTITY recommended "（推荐）">
+<!ENTITY wiz_passwords "您想要同步您的密码吗？">
+<!ENTITY wiz_pwd_path "输入您的密码所保存的服务器路径">
+<!ENTITY wiz_encrypt "您想要加密您的书签吗？">
+<!ENTITY wiz_compress "您想要压缩您的书签以便更快地同步吗？">
+<!ENTITY wiz_encpwd "输入一个密码用于保护您的数据">

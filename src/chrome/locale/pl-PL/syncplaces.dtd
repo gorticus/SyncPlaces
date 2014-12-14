@@ -1,0 +1,249 @@
+<!ENTITY sp "Synchronizuj zakładki">
+<!ENTITY sp_tooltip "Synchronizuje zakładki z serwerem">
+<!ENTITY sp_title "Synchronizacja biblioteki zakładek">
+<!ENTITY sp_transfer_title "Synchronizacja zakładek">
+<!ENTITY sp_wizard_title "Kreator ustawień SyncPlaces">
+<!ENTITY action_tab "Synchronizacja">
+<!ENTITY server_tab "Serwer">
+<!ENTITY options_tab "Opcje">
+<!ENTITY advanced_tab "Zaawansowane">
+<!ENTITY status "Status:">
+<!ENTITY apply_button "Zastosuj">
+<!ENTITY remote "Zdalne">
+<!ENTITY send_button "Wyślij zakładki">
+<!ENTITY send_tooltip "Wysyła zakładki na serwer">
+<!ENTITY receive_button "Odbierz zakładki">
+<!ENTITY receive_tooltip "Pobiera kopię zamiast odbierać zakładki z serwera">
+<!ENTITY local "Lokalne">
+<!ENTITY backup_button "Kopia zapasowa">
+<!ENTITY backup_tooltip "Tworzy kopię lokalną pliku JSON">
+<!ENTITY bookmarks "Zakładki">
+<!ENTITY passwords "Hasła">
+<!ENTITY both "Oba">
+<!ENTITY restore_button "Odtwórz">
+<!ENTITY restore_tooltip "Odtwarza zakładki z kopi lokalnej pliku JSON">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "Eksportuj">
+<!ENTITY export_tooltip "Eksportuje do lokalnego pliku XBEL">
+<!ENTITY import_button "Importuj">
+<!ENTITY not_available "Opcja jest jeszcze niedostępna">
+<!ENTITY import_tooltip "Importuje zakładki z lokalnego pliku XBEL">
+<!ENTITY connection_tab "Połączenie">
+<!ENTITY sync_tab "Synchronizacja">
+<!ENTITY protocol "Protokół:">
+<!ENTITY http "http">
+<!ENTITY https "https">
+<!ENTITY ftp "ftp">
+<!ENTITY file "plik">
+<!ENTITY host "Serwer:">
+<!ENTITY host_tooltip "Nazwa serwera lub adres IP i opcjonalnie numer portu">
+<!ENTITY path "Ścieżka do pliku JSON:">
+<!ENTITY path_tooltip "Ścieżka do pliku JSON na serwerze np.:/bookmarks/syncplaces.json">
+<!ENTITY htmlpath "Ścieżka do pliku HTML:">
+<!ENTITY htmlpath_tooltip "Ścieżka do pliku HTML na serwerze np.:/bookmarks/syncplaces.html">
+<!ENTITY userid "Użytkownik:">
+<!ENTITY userid_tooltip "Nazwa użytkownika używana do autoryzacji">
+<!ENTITY password "Hasło:">
+<!ENTITY password_tooltip "Hasło używane do autoryzacji">
+<!ENTITY run_wizard "Uruchom kreator następnym razem">
+<!ENTITY runwizard_tooltip "Uruchamia kreator ustawień podczas następnego uruchomienia SyncPlaces">
+<!ENTITY last_sent "Ostatnio wysłano:">
+<!ENTITY last_received "Ostatnio odebrano:">
+<!ENTITY lastreceived_tooltip "Data odebrania ostatnich zmian">
+<!ENTITY sync_type "Synchronizuj:">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "Synchronizuje na plik JSON (zalecane)">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "Synchronizuje na plik XBEL">
+<!ENTITY sync_passwords "Hasła">
+<!ENTITY syncpasswords_tooltip "Synchronizuj hasła">
+<!ENTITY sync_icons "Uaktualnij favikony">
+<!ENTITY syncicons_tooltip "Uaktualnia favikony podczas odbierania/importowania">
+<!ENTITY send_html "Wysyłaj jako HTML">
+<!ENTITY sendhtml_tooltip "Wysyła w postaci HTML">
+<!ENTITY send_xbel "Wyślij XBEL">
+<!ENTITY sendxbel_tooltip "Wysyła wersje XBEL">
+<!ENTITY xbelpath_tooltip "Ścieżka dostępu do pliku XBEL na serwerze np.:/bookmarks/syncplaces.xml">
+<!ENTITY passwordpath "Ścieżka do pliku haseł:">
+<!ENTITY passwordpath_tooltip "Ścieżka do pliku haseł na serwerze np. /bookmarks/passwords">
+<!ENTITY password_password "Hasło:">
+<!ENTITY basic "Podstawowe">
+<!ENTITY encrypt_json "Szyfruj JSON">
+<!ENTITY encryptjson_tooltip "W celu zwiększenia bezpieczeństwa szyfruje plik JSON">
+<!ENTITY encryptpassword_tooltip "Hasło używane do szyfrowania">
+<!ENTITY send_gzip_json "Wyślij/Odbierz skompresowany JSON">
+<!ENTITY gzipjson_tooltip "Kompresuje plik JSON dla szybszych transferów">
+<!ENTITY small_xbel "Eksportuj/Wyślij mały XBEL">
+<!ENTITY smallxbel_tooltip "Eksportuje/Wysyła mały plik XBEL">
+<!ENTITY send_safe "Wysyłaj bezpiecznie">
+<!ENTITY sendsafe_tooltip "Aby zabezpieczyć przed utratą, odbiera i dołącza przed każdym wysłaniem">
+<!ENTITY auto_sort "Sortuj przed wysłaniem">
+<!ENTITY autosort_tooltip "Automatycznie sortuje zakładki przed ich wysłaniem">
+<!ENTITY cache "Wysyłaj/odbieraj tylko jeśli zakładki zostały zmienione">
+<!ENTITY cache_tooltip "Nie wysyła/odbiera jeśli zakładki nie zostały zmienione">
+<!ENTITY cache_pwd "Synchronizuj hasła tylko, gdy zostały zmienione">
+<!ENTITY cachepwd_tooltip "Nie synchronizuje haseł jeśli nie zostały zmienione">
+<!ENTITY merge "Dołączaj odebrane zakładki">
+<!ENTITY merge_tooltip "Dołącza odebrane zakładki zamiast nadpisywać">
+<!ENTITY merge_pwd "Dołączaj odebrane hasła">
+<!ENTITY mergepwd_tooltip "Dołącza odebrane hasła zamiast nadpisywać">
+<!ENTITY profiles "Profile">
+<!ENTITY profile "Profil">
+<!ENTITY add_profile "Dodaj">
+<!ENTITY addprofile_tooltip "Dodaj nowy profil">
+<!ENTITY delete_profile "Usuń">
+<!ENTITY deleteprofile_tooltip "Usuwa wybrany profil">
+<!ENTITY move_up "W górę">
+<!ENTITY moveup_tooltip "Przesuwa profil w górę listy">
+<!ENTITY move_down "W dół">
+<!ENTITY movedown_tooltip "Przesuwa profil w dół listy">
+<!ENTITY export_profile "Eksportuj">
+<!ENTITY exportprofile_tooltip "Eksportuje wybrany profil">
+<!ENTITY import_profile "Importuj">
+<!ENTITY importprofile_tooltip "Importuje profil">
+<!ENTITY automation "Automatyzacja">
+<!ENTITY autosync "Synchronizuj automatycznie">
+<!ENTITY autosync_tooltip "Po zmianie zakładek wykonuje automatyczną synchronizację">
+<!ENTITY delay "Opóźnij">
+<!ENTITY syncdelay_tooltip "Czas zwłoki przed automatyczną synchronizacją">
+<!ENTITY auto_receive "Odbieraj podczas uruchamiania">
+<!ENTITY autoreceive_tooltip "Odbiera zakładki automatycznie, gdy jest uruchamiana przeglądarka">
+<!ENTITY auto_receive_notify "Pozostawiaj okno dialogowe otwarte">
+<!ENTITY autoreceivenotify_tooltip "Okno dialogowe pozostaje otwarte po zakończeniu operacji">
+<!ENTITY auto_send "Wysyłaj podczas zamykania">
+<!ENTITY autosend_tooltip "Zakładki będą automatycznie wysyłane, gdy jest zamykana przeglądarka">
+<!ENTITY auto_send_notify "Pozostawiaj okno dialogowe otwarte">
+<!ENTITY autosendnotify_tooltip "Okno dialogowe pozostaje otwarte po zakończeniu operacji">
+<!ENTITY auto_close "Zamykaj automatycznie po zakończeniu odbierania/wysyłania">
+<!ENTITY autoclose_tooltip "Zamyka automatycznie okno dialogowe po ręcznym odebraniu/wysłaniu">
+<!ENTITY auto_close_delay "s">
+<!ENTITY autodelay_tooltip "Czas przez jaki pozostaje otwarte">
+<!ENTITY regular_transfer "Synchronizuj automatycznie w regularnych odstępach czasowych">
+<!ENTITY regulartransfer_tooltip "Zamiast używania opcji „Wysyłaj bezpiecznie”, wykonuje synchronizację w regularnych odstępach czasowych">
+<!ENTITY transfer_interval "Odstęp czasowy">
+<!ENTITY transferinterval_tooltip "Czas pomiędzy kolejnymi synchronizacjami">
+<!ENTITY seconds "s">
+<!ENTITY minutes "min">
+<!ENTITY hours "godz.">
+<!ENTITY timed_transfer "Synchronizuj o ustalonym czasie">
+<!ENTITY timedtransfer_tooltip "W ustalonym czasie wykonuje odbiór i wysyłanie używając opcji&quot;Wyślij bezpiecznie&quot;">
+<!ENTITY transfer_time "Czas synchronizacji">
+<!ENTITY misc_tab "Ogólne">
+<!ENTITY send_all "Synchronizuj wszystkie miejsca/zakładki">
+<!ENTITY sendall_tooltip "Synchronizuje wszystkie miejsca/zakładki">
+<!ENTITY skip_name "Zezwalaj na różne nazwy podczas odbierania">
+<!ENTITY skipname_tooltip "Folder odbiorczy może mieć różne nazwy">
+<!ENTITY selectfolder_button "Wybierz folder">
+<!ENTITY selectfolder_tooltip "Wybierz folder zakładek do synchronizacji">
+<!ENTITY selected_folder "Folder:">
+<!ENTITY sp_folder_title "Wybierz folder">
+<!ENTITY strength "Siła szyfrowania AES">
+<!ENTITY b128 "128">
+<!ENTITY b192 "192">
+<!ENTITY b256 "256">
+<!ENTITY show_status "Wyświetlaj ikonę rozszerzenia na pasku stanu">
+<!ENTITY showstatus_tooltip "Wyświetla ikonę rozszerzenia na pasku stanu">
+<!ENTITY show_bm "Menu Zakładki">
+<!ENTITY showbm_tooltip "Wyświetlaj opcje w menu Zakładki">
+<!ENTITY show_tools "Menu Narzędzia">
+<!ENTITY showtools_tooltip "Wyświetlaj opcje w menu Narzędzia">
+<!ENTITY backupfolder_button "Folder kopii zapasowych">
+<!ENTITY backupfolder_tooltip "Wybierz folder używany do przetrzymywania kopii zapasowych">
+<!ENTITY merge_tab "Dołączenie">
+<!ENTITY merge_deletes "Dołączaj usunięte">
+<!ENTITY mergedeletes_tooltip "Działa w obrębie zakładek usuniętych lub o zmienionej nazwie">
+<!ENTITY comparison "Postępowanie z duplikatami">
+<!ENTITY compare_timestamps "Używaj znaczników czasu">
+<!ENTITY timestamps_tooltip "Używaj znaczników czasu, aby decydować, które duplikaty przetrzymywać">
+<!ENTITY compare_local "Używaj lokalnych">
+<!ENTITY local_tooltip "Utrzymuje aktywny element, a ignoruje odebrany">
+<!ENTITY compare_remote "Używaj zdalnych">
+<!ENTITY remote_tooltip "Używa odebrany element, a usuwa lokalny">
+<!ENTITY merge_all "Łącz wszystko">
+<!ENTITY mergeall_tooltip "Łączy wszystko co zostało odebrane">
+<!ENTITY include_places "Miejsca do dołączenia">
+<!ENTITY merge_menu "Menu Zakładki">
+<!ENTITY mergemenu_tooltip "Podczas łączenia dołącza elementy menu Zakładki">
+<!ENTITY merge_toolbar "Pasek narzędzi">
+<!ENTITY mergetoolbar_tooltip "Podczas łączenia dołącza elementy paska narzędzi">
+<!ENTITY merge_unsorted "Nieprzypisane">
+<!ENTITY mergeunsorted_tooltip "Podczas łączenia dołącza elementy nieprzypisane">
+<!ENTITY include_types "Typy do dołączania">
+<!ENTITY merge_bookmarks "Zakładki">
+<!ENTITY mergebookmarks_tooltip "Podczas łączenia dołącza nowe zakładki">
+<!ENTITY merge_seperators "Separatory">
+<!ENTITY mergesep_tooltip "Podczas łączenia dołącza nowe separatory">
+<!ENTITY merge_queries "Wyszukiwania/Zapytania">
+<!ENTITY mergequeries_tooltip "Podczas łączenia dołącza nowe wyszukiwania/zapytania">
+<!ENTITY merge_livemarks "Dynamiczne zakładki">
+<!ENTITY mergelivemarks_tooltip "Podczas łączenia dołącza nowe dynamiczne zakładki">
+<!ENTITY workarounds_tab "Obejścia">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "Poniżej dodaj własne style etykiet:">
+<!ENTITY encryption_tab "Szyfrowanie">
+<!ENTITY encryption "Algorytm szyfrowania">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "Uwaga: Używaj tych opcji tylko wtedy, gdy występują problemy">
+<!ENTITY transfer_technique "Transfer">
+<!ENTITY receive_mechanism "Odbieranie">
+<!ENTITY normal_receive "Normalny">
+<!ENTITY normal_receive_tooltip "Normalny sposób odbioru">
+<!ENTITY old_receive "Stary">
+<!ENTITY old_receive_tooltip "Stary sposób odbioru">
+<!ENTITY old_receive_conversion "Napraw proxy">
+<!ENTITY receive_conversion_tooltip "Naprawia niektóre serwery proxy">
+<!ENTITY send_mechanism "Wysyłanie">
+<!ENTITY normal_send "Normalny">
+<!ENTITY normal_send_tooltip "Normalny sposób wysyłania">
+<!ENTITY old_send "Stary">
+<!ENTITY old_send_tooltip "Stary sposób wysyłania">
+<!ENTITY old_send_conversion "Napraw proxy">
+<!ENTITY send_conversion_tooltip "Naprawia niektóre serwery proxy">
+<!ENTITY skip_auth "Pomiń autoryzację">
+<!ENTITY skipauth_tooltip "Poznaj szczegóły w dokumentacji">
+<!ENTITY debug "Włącz debugowanie">
+<!ENTITY startup "Uruchamianie">
+<!ENTITY normal "Normalne">
+<!ENTITY normal_tooltip "Normalne wykrywanie uruchomienia">
+<!ENTITY crude "Kompatybilne">
+<!ENTITY crude_tooltip "Kompatybilne wykrywanie uruchomienia">
+<!ENTITY shutdown "Zamykanie">
+<!ENTITY shutdownnormal_tooltip "Zamykanie normalne">
+<!ENTITY shutdowncrude_tooltip "Zamykanie kompatybilne">
+<!ENTITY sp_passwords_title "Wybierz hasło">
+<!ENTITY pw_details "Szczegóły hasła">
+<!ENTITY pw_which_password "Wybierz hasło, które chcesz zachować">
+<!ENTITY pw_hostname "Serwer">
+<!ENTITY pw_formSubmitURL "Formularz URL">
+<!ENTITY pw_httpRealm "Domena">
+<!ENTITY pw_usernameField "Pole nazwy użytkownika">
+<!ENTITY pw_passwordField "Pole hasła">
+<!ENTITY pw_username "Nazwa użytkownika">
+<!ENTITY pw_oldPassword "Obecne hasło">
+<!ENTITY pw_newPassword "Nowe hasło">
+<!ENTITY pw_old "Zachowaj obecne">
+<!ENTITY pw_new "Zachowaj nowe">
+<!ENTITY dialog_title "Ostrzeżenie">
+<!ENTITY more_info "Więcej informacji">
+<!ENTITY wiz_reset_title "Przywróć domyślne">
+<!ENTITY wiz_reset "Czy chcesz przywrócić wszystkie domyślne ustawienia? Wszystkie dotychczasowe ustawienia zostaną usunięte.">
+<!ENTITY wiz_yes "Tak">
+<!ENTITY wiz_no "Nie">
+<!ENTITY wiz_protocol "Jaki typ serwera chcesz użyć?">
+<!ENTITY wiz_host "Wprowadź nazwę swojego serwera lub jego adres IP np. www.twoja_nazwa.com lub 172.16.0.1. Możesz opcjonalnie dodać numer portu np. www.twoja_nazwa.pl:8080">
+<!ENTITY web_server "Serwer HTTP">
+<!ENTITY ssl_server "Serwer HTTP (SSL)">
+<!ENTITY ftp_server "Serwer FTP">
+<!ENTITY file_server "Plik serwera">
+<!ENTITY wiz_path_title "Ścieżka na serwerze">
+<!ENTITY wiz_path "Podaj ścieżkę, gdzie będą przechowywane zakładki">
+<!ENTITY bm_path "Ścieżka">
+<!ENTITY wiz_login "Podaj swój login FTP">
+<!ENTITY wiz_sync "Wybierz format przechowywania zakładek">
+<!ENTITY recommended "(polecany)">
+<!ENTITY wiz_passwords "Czy chcesz także synchronizować swoje hasła?">
+<!ENTITY wiz_pwd_path "Podaj ścieżkę, gdzie będą przechowywane hasła">
+<!ENTITY wiz_encrypt "Czy chcesz szyfrować swoje zakładki?">
+<!ENTITY wiz_compress "Czy chcesz skompresować swoje zakładki, by wykonać szybciej synchronizację?">
+<!ENTITY wiz_encpwd "Wprowadź hasło, by chronić swoje dane">

@@ -1,0 +1,249 @@
+<!ENTITY sp "Synchronise Bookmarks/Passwords">
+<!ENTITY sp_tooltip "Synchronise Bookmarks/Passwords with Server">
+<!ENTITY sp_title "SyncPlaces">
+<!ENTITY sp_transfer_title "Synchronising">
+<!ENTITY sp_wizard_title "SyncPlaces Setup Wizard">
+<!ENTITY action_tab "Actions">
+<!ENTITY server_tab "Server">
+<!ENTITY options_tab "Options">
+<!ENTITY advanced_tab "Advanced">
+<!ENTITY status "Status">
+<!ENTITY apply_button "Apply">
+<!ENTITY remote "Remote">
+<!ENTITY send_button "Send Bookmarks/Passwords">
+<!ENTITY send_tooltip "Send bookmarks/passwords to Server">
+<!ENTITY receive_button "Receive Bookmarks/Passwords">
+<!ENTITY receive_tooltip "Take backup then receive bookmarks/passwords from Server">
+<!ENTITY local "Local">
+<!ENTITY backup_button "Backup">
+<!ENTITY backup_tooltip "Backup to local file">
+<!ENTITY bookmarks "Bookmarks">
+<!ENTITY passwords "Passwords">
+<!ENTITY both "Both">
+<!ENTITY restore_button "Restore">
+<!ENTITY restore_tooltip "Restore from local file">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "Export">
+<!ENTITY export_tooltip "Export bookmarks to local XBEL file">
+<!ENTITY import_button "Import">
+<!ENTITY not_available "Option not yet available">
+<!ENTITY import_tooltip "Import bookmarks from local XBEL file">
+<!ENTITY connection_tab "Connection">
+<!ENTITY sync_tab "Synchronisation">
+<!ENTITY protocol "Protocol">
+<!ENTITY http "http">
+<!ENTITY https "https">
+<!ENTITY ftp "ftp">
+<!ENTITY file "file">
+<!ENTITY host "Host">
+<!ENTITY host_tooltip "Hostname or IP address with optional port number">
+<!ENTITY path "JSON Path">
+<!ENTITY path_tooltip "Path to JSON file on server e.g. /bookmarks/syncplaces.json">
+<!ENTITY htmlpath "HTML Path">
+<!ENTITY htmlpath_tooltip "Path to HTML file on server e.g. /bookmarks/syncplaces.html">
+<!ENTITY userid "User">
+<!ENTITY userid_tooltip "User name for authentication">
+<!ENTITY password "Password">
+<!ENTITY password_tooltip "Password for authentication">
+<!ENTITY run_wizard "Run Wizard next time">
+<!ENTITY runwizard_tooltip "Run the setup Wizard next time you start SyncPlaces">
+<!ENTITY last_sent "Last sent">
+<!ENTITY last_received "Last received">
+<!ENTITY lastreceived_tooltip "Last date changes were received">
+<!ENTITY sync_type "Synchronise">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "Synchronise on JSON file (recommended)">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "Synchronise on XBEL file">
+<!ENTITY sync_passwords "Passwords">
+<!ENTITY syncpasswords_tooltip "Synchronise passwords">
+<!ENTITY sync_icons "Update favicons">
+<!ENTITY syncicons_tooltip "Update favicons when receiving/importing">
+<!ENTITY send_html "Send HTML">
+<!ENTITY sendhtml_tooltip "Send HTML version as well">
+<!ENTITY send_xbel "Send XBEL">
+<!ENTITY sendxbel_tooltip "Send XBEL version as well">
+<!ENTITY xbelpath_tooltip "Path to XBEL file on server e.g. /bookmarks/syncplaces.xml">
+<!ENTITY passwordpath "Passwords Path">
+<!ENTITY passwordpath_tooltip "Path to Passwords file on server e.g. /bookmarks/passwords">
+<!ENTITY password_password "Password">
+<!ENTITY basic "Basic">
+<!ENTITY encrypt_json "Encrypt JSON">
+<!ENTITY encryptjson_tooltip "Encrypts JSON file for security">
+<!ENTITY encryptpassword_tooltip "Password used for encryption">
+<!ENTITY send_gzip_json "Compress JSON">
+<!ENTITY gzipjson_tooltip "GZips JSON file for faster transfers">
+<!ENTITY small_xbel "Export/Send small XBEL">
+<!ENTITY smallxbel_tooltip "Sends/Exports small XBEL file (best for styling)">
+<!ENTITY send_safe "Send safely">
+<!ENTITY sendsafe_tooltip "Receive and merge before every send to safeguard against loss">
+<!ENTITY auto_sort "Sort before Send">
+<!ENTITY autosort_tooltip "Automatically sort bookmarks before sending them">
+<!ENTITY cache "Only synchronise bookmarks if they have changed">
+<!ENTITY cache_tooltip "Do not synchronise bookmarks if they have not changed">
+<!ENTITY cache_pwd "Only synchronise passwords if they have changed">
+<!ENTITY cachepwd_tooltip "Do not synchronise passwords if they have not changed">
+<!ENTITY merge "Merge bookmarks">
+<!ENTITY merge_tooltip "Instead of overwriting, merge the bookmarks received">
+<!ENTITY merge_pwd "Merge passwords received">
+<!ENTITY mergepwd_tooltip "Instead of overwriting, merge the passwords received">
+<!ENTITY profiles "Profiles">
+<!ENTITY profile "Profile">
+<!ENTITY add_profile "Add">
+<!ENTITY addprofile_tooltip "Add a new profile">
+<!ENTITY delete_profile "Delete">
+<!ENTITY deleteprofile_tooltip "Delete the current selected profile">
+<!ENTITY move_up "Move up">
+<!ENTITY moveup_tooltip "Move profile up the list">
+<!ENTITY move_down "Move down">
+<!ENTITY movedown_tooltip "Move profile down the list">
+<!ENTITY export_profile "Export">
+<!ENTITY exportprofile_tooltip "Export the current selected profile">
+<!ENTITY import_profile "Import">
+<!ENTITY importprofile_tooltip "Import a profile">
+<!ENTITY automation "Automation">
+<!ENTITY autosync "Sync automatically">
+<!ENTITY autosync_tooltip "Automatically synchronise when bookmarks change">
+<!ENTITY delay "Delay">
+<!ENTITY syncdelay_tooltip "Delay before automatically synchronising">
+<!ENTITY auto_receive "Receive on startup">
+<!ENTITY autoreceive_tooltip "Automatically receive bookmarks when browser starts">
+<!ENTITY auto_receive_notify "Leave dialog open">
+<!ENTITY autoreceivenotify_tooltip "Dialog remains open when succeeds">
+<!ENTITY auto_send "Send on shutdown">
+<!ENTITY autosend_tooltip "Automatically send bookmarks when browser closed">
+<!ENTITY auto_send_notify "Leave dialog open">
+<!ENTITY autosendnotify_tooltip "Dialog remains open when succeeds">
+<!ENTITY auto_close "Automatically close after send/receive">
+<!ENTITY autoclose_tooltip "Automatically close the dialog after manual send/receive">
+<!ENTITY auto_close_delay "seconds">
+<!ENTITY autodelay_tooltip "How long in seconds to remain open before closing">
+<!ENTITY regular_transfer "Synchronise at regular intervals">
+<!ENTITY regulartransfer_tooltip "Regularly performs a receive then a send using the &apos;Send Safely&apos; option">
+<!ENTITY transfer_interval "Interval">
+<!ENTITY transferinterval_tooltip "Time between each synchronisation">
+<!ENTITY seconds "seconds">
+<!ENTITY minutes "minutes">
+<!ENTITY hours "hours">
+<!ENTITY timed_transfer "Synchronise at a set time">
+<!ENTITY timedtransfer_tooltip "At the set time performs a receive then a send using the &apos;Send Safely&apos; option">
+<!ENTITY transfer_time "Synchronise time">
+<!ENTITY misc_tab "General">
+<!ENTITY send_all "Synchronise all Places/Bookmarks">
+<!ENTITY sendall_tooltip "Synchronise the whole of the Places/Bookmarks tree">
+<!ENTITY skip_name "Allow different name when receive">
+<!ENTITY skipname_tooltip "The receiving folder may have a different name">
+<!ENTITY selectfolder_button "Select folder to synchronise">
+<!ENTITY selectfolder_tooltip "Select the bookmark folder to synchronise">
+<!ENTITY selected_folder "Folder">
+<!ENTITY sp_folder_title "Select the folder to synchronise">
+<!ENTITY strength "AES encryption strength">
+<!ENTITY b128 "128">
+<!ENTITY b192 "192">
+<!ENTITY b256 "256">
+<!ENTITY show_status "Status bar icon">
+<!ENTITY showstatus_tooltip "Show SyncPlaces on status bar">
+<!ENTITY show_bm "Bookmarks menu">
+<!ENTITY showbm_tooltip "Show SyncPlaces on Bookmarks menu">
+<!ENTITY show_tools "Tools menu">
+<!ENTITY showtools_tooltip "Show SyncPlaces on Tools menu">
+<!ENTITY backupfolder_button "Select folder to backup to">
+<!ENTITY backupfolder_tooltip "Select the folder used to hold backups">
+<!ENTITY merge_tab "Merging">
+<!ENTITY merge_deletes "Merge deletes">
+<!ENTITY mergedeletes_tooltip "Deal with bookmarks that have been deleted or renamed">
+<!ENTITY comparison "Dealing with duplicates">
+<!ENTITY compare_timestamps "Use timestamps">
+<!ENTITY timestamps_tooltip "Use timestamps to decide which duplicate to keep">
+<!ENTITY compare_local "Use local">
+<!ENTITY local_tooltip "Keep the current item and ignore the one received">
+<!ENTITY compare_remote "Use remote">
+<!ENTITY remote_tooltip "Use the item received and delete the local one">
+<!ENTITY merge_all "Merge everything">
+<!ENTITY mergeall_tooltip "Merge everything that is received">
+<!ENTITY include_places "Places to include">
+<!ENTITY merge_menu "Bookmarks Menu">
+<!ENTITY mergemenu_tooltip "Include bookmarks menu items when merging">
+<!ENTITY merge_toolbar "Toolbar">
+<!ENTITY mergetoolbar_tooltip "Include toolbar items when merging">
+<!ENTITY merge_unsorted "Unsorted">
+<!ENTITY mergeunsorted_tooltip "Include unsorted items when merging">
+<!ENTITY include_types "Types to include">
+<!ENTITY merge_bookmarks "Bookmarks">
+<!ENTITY mergebookmarks_tooltip "Include new bookmarks when merging">
+<!ENTITY merge_seperators "Separators">
+<!ENTITY mergesep_tooltip "Include new seperators when merging">
+<!ENTITY merge_queries "Searches/Queries">
+<!ENTITY mergequeries_tooltip "Include new searches/queries when merging">
+<!ENTITY merge_livemarks "Livemarks">
+<!ENTITY mergelivemarks_tooltip "Include new live marks when merging">
+<!ENTITY workarounds_tab "Workarounds">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "Add your own styling tags below">
+<!ENTITY encryption_tab "Encryption">
+<!ENTITY encryption "Encryption algorithm">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "NOTE: Only use these options if you are having problems">
+<!ENTITY transfer_technique "Transfer">
+<!ENTITY receive_mechanism "Receiving">
+<!ENTITY normal_receive "Normal">
+<!ENTITY normal_receive_tooltip "Normal way of receiving">
+<!ENTITY old_receive "Old">
+<!ENTITY old_receive_tooltip "Old way of receiving">
+<!ENTITY old_receive_conversion "Proxy fix">
+<!ENTITY receive_conversion_tooltip "Fix for some proxy servers">
+<!ENTITY send_mechanism "Sending">
+<!ENTITY normal_send "Normal">
+<!ENTITY normal_send_tooltip "Normal way of sending">
+<!ENTITY old_send "Old">
+<!ENTITY old_send_tooltip "Old way of sending">
+<!ENTITY old_send_conversion "Proxy fix">
+<!ENTITY send_conversion_tooltip "Fix for some proxy servers">
+<!ENTITY skip_auth "Skip authentication">
+<!ENTITY skipauth_tooltip "See documentation for details">
+<!ENTITY debug "Turn on debugging">
+<!ENTITY startup "Startup">
+<!ENTITY normal "Normal">
+<!ENTITY normal_tooltip "Normal startup detection">
+<!ENTITY crude "Compatible">
+<!ENTITY crude_tooltip "Compatible startup detection">
+<!ENTITY shutdown "Shutdown">
+<!ENTITY shutdownnormal_tooltip "Normal shutdown">
+<!ENTITY shutdowncrude_tooltip "Compatible shutdown">
+<!ENTITY sp_passwords_title "Select password">
+<!ENTITY pw_details "Password details">
+<!ENTITY pw_which_password "Select which password you wish to keep">
+<!ENTITY pw_hostname "Host">
+<!ENTITY pw_formSubmitURL "Form URL">
+<!ENTITY pw_httpRealm "Realm">
+<!ENTITY pw_usernameField "User name field">
+<!ENTITY pw_passwordField "Password field">
+<!ENTITY pw_username "User name">
+<!ENTITY pw_oldPassword "Existing password">
+<!ENTITY pw_newPassword "New password">
+<!ENTITY pw_old "Keep Existing">
+<!ENTITY pw_new "Keep New">
+<!ENTITY dialog_title "Alert">
+<!ENTITY more_info "More Information">
+<!ENTITY wiz_reset_title "Reset to defaults">
+<!ENTITY wiz_reset "Do you wish to reset everything to defaults? Doing so will delete all your existing settings.">
+<!ENTITY wiz_yes "Yes">
+<!ENTITY wiz_no "No">
+<!ENTITY wiz_protocol "What type of server are you going to use?">
+<!ENTITY wiz_host "Enter the name of your server or its IP address. e.g. www.yourname.com or 172.16.0.1. You can optionally add a port number as well (e.g. www.yourname.co.uk:8080)">
+<!ENTITY web_server "Web server">
+<!ENTITY ssl_server "Web server (SSL)">
+<!ENTITY ftp_server "FTP server">
+<!ENTITY file_server "File server">
+<!ENTITY wiz_path_title "Path on server">
+<!ENTITY wiz_path "Enter the path where your bookmarks will be stored">
+<!ENTITY bm_path "Path">
+<!ENTITY wiz_login "Enter your FTP login details, if any">
+<!ENTITY wiz_sync "Choose the format to store your bookmarks with">
+<!ENTITY recommended "(recommended)">
+<!ENTITY wiz_passwords "Do you also wish to synchronise your Passwords?">
+<!ENTITY wiz_pwd_path "Enter the server path where your Passwords will be stored">
+<!ENTITY wiz_encrypt "Do you wish to encrypt your bookmarks?">
+<!ENTITY wiz_compress "Do you wish to compress your bookmarks for faster synchronisation?">
+<!ENTITY wiz_encpwd "Enter a password to protect your data">

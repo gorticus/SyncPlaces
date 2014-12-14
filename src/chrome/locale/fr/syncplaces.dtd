@@ -1,0 +1,249 @@
+<!ENTITY sp "Synchroniser les marque-pages">
+<!ENTITY sp_tooltip "Synchroniser les marque-pages/mots de passe avec un serveur">
+<!ENTITY sp_title "SyncPlaces">
+<!ENTITY sp_transfer_title "Synchroniser les marque-pages/mots de passe">
+<!ENTITY sp_wizard_title "Assistant de configuration de SyncPlaces">
+<!ENTITY action_tab "Actions">
+<!ENTITY server_tab "Serveur">
+<!ENTITY options_tab "Options">
+<!ENTITY advanced_tab "Avancé">
+<!ENTITY status "Statut :">
+<!ENTITY apply_button "Appliquer">
+<!ENTITY remote "Distant">
+<!ENTITY send_button "Envoyer les marque-pages/mots de passe">
+<!ENTITY send_tooltip "Envoyer les marque-pages/mots de passe au serveur">
+<!ENTITY receive_button "Récupérer les marques-pages/mots de passe">
+<!ENTITY receive_tooltip "Restaurer les marque-pages/mots de passe depuis le serveur">
+<!ENTITY local "Local">
+<!ENTITY backup_button "Sauvegarder">
+<!ENTITY backup_tooltip "Sauvegarder vers un fichier local">
+<!ENTITY bookmarks "Marque-pages">
+<!ENTITY passwords "Mots de passe">
+<!ENTITY both "Les deux">
+<!ENTITY restore_button "Restaurer">
+<!ENTITY restore_tooltip "Restaurer d'une sauvegarde locale">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "Exporter">
+<!ENTITY export_tooltip "Exporter vers un fichier XBEL local">
+<!ENTITY import_button "Importer">
+<!ENTITY not_available "Option non disponible pour le moment">
+<!ENTITY import_tooltip "Importer les marque-pages à partir d'un fichier XBEL local">
+<!ENTITY connection_tab "Connexion">
+<!ENTITY sync_tab "Synchronisation">
+<!ENTITY protocol "Protocole :">
+<!ENTITY http "http">
+<!ENTITY https "https">
+<!ENTITY ftp "ftp">
+<!ENTITY file "fichier">
+<!ENTITY host "Hôte :">
+<!ENTITY host_tooltip "Nom d'hôte ou adresse IP avec un éventuel numéro de port">
+<!ENTITY path "Chemin JSON :">
+<!ENTITY path_tooltip "Chemin du fichier JSON sur le serveur. Par ex. : /marquepages/syncplaces.json">
+<!ENTITY htmlpath "Chemin HTML :">
+<!ENTITY htmlpath_tooltip "Chemin du fichier HTML sur le serveur. Par ex : /marquepages/syncplaces.html">
+<!ENTITY userid "Utilisateur :">
+<!ENTITY userid_tooltip "Nom d'utilisateur pour l'identification">
+<!ENTITY password "Mot de passe :">
+<!ENTITY password_tooltip "Mot de passe pour l'identification">
+<!ENTITY run_wizard "Lancer l'assistant au prochain démarrage">
+<!ENTITY runwizard_tooltip "Lancera l'assistant de configuration au prochain démarrage de SyncPlaces">
+<!ENTITY last_sent "Dernier envoi :">
+<!ENTITY last_received "Dernière réception :">
+<!ENTITY lastreceived_tooltip "Date à laquelle les dernières modifications ont été reçues">
+<!ENTITY sync_type "Synchroniser :">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "Synchroniser avec un fichier JSON (recommandé)">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "Synchroniser avec un fichier XBEL">
+<!ENTITY sync_passwords "Mots de passe">
+<!ENTITY syncpasswords_tooltip "Synchroniser les mots de passe">
+<!ENTITY sync_icons "Mettre les favicônes à jour">
+<!ENTITY syncicons_tooltip "Mettre les favicônes à jour lors de l'import">
+<!ENTITY send_html "Envoyer la version HTML">
+<!ENTITY sendhtml_tooltip "Également envoyer une version au format HTML">
+<!ENTITY send_xbel "Envoyer XBEL">
+<!ENTITY sendxbel_tooltip "Également envoyer une version au format XBEL">
+<!ENTITY xbelpath_tooltip "Chemin du fichier XBEL sur le serveur. Par ex. : /marquepages/syncplaces.xml">
+<!ENTITY passwordpath "Chemin des mots de passe :">
+<!ENTITY passwordpath_tooltip "Chemin vers les mots de passe sur le serveur. Par ex. : /marquepages/motsdepasse">
+<!ENTITY password_password "Mot de passe :">
+<!ENTITY basic "Basique">
+<!ENTITY encrypt_json "Chiffrer le JSON">
+<!ENTITY encryptjson_tooltip "Chiffre le fichier JSON pour sécuriser">
+<!ENTITY encryptpassword_tooltip "Mot de passe utilisé pour le chiffrement">
+<!ENTITY send_gzip_json "Envoyer / recevoir un JSON compressé">
+<!ENTITY gzipjson_tooltip "Compresser le fichier JSON au format GZip pour des transferts plus rapides">
+<!ENTITY small_xbel "Exporter / envoyer un petit XBEL">
+<!ENTITY smallxbel_tooltip "Envoie / exporte un petit fichier XBEL (idéal pour la mise en forme)">
+<!ENTITY send_safe "Envoyer en toute sécurité">
+<!ENTITY sendsafe_tooltip "Recevoir et fusionner avant tout envoi afin de se protéger contre la perte">
+<!ENTITY auto_sort "Trier avant d'envoyer">
+<!ENTITY autosort_tooltip "Trier les marque-pages automatiquement avant de les envoyer">
+<!ENTITY cache "Ne synchroniser les marque-pages que s'ils ont changé">
+<!ENTITY cache_tooltip "Ne pas synchroniser les marque-pages tant qu'ils n'ont pas changé">
+<!ENTITY cache_pwd "Ne synchroniser les mots de passe que s'ils ont changé">
+<!ENTITY cachepwd_tooltip "Ne pas synchroniser les mots de passe tant qu'ils n'ont pas changé">
+<!ENTITY merge "Fusionner les marque-pages reçus">
+<!ENTITY merge_tooltip "Fusionner les marque-pages reçus au lieu de remplacer ceux existants">
+<!ENTITY merge_pwd "Fusionner les mots de passe reçus">
+<!ENTITY mergepwd_tooltip "Fusionner les mots de passe reçus au lieu de remplacer ceux existants">
+<!ENTITY profiles "Profiles">
+<!ENTITY profile "Profil">
+<!ENTITY add_profile "Ajouter">
+<!ENTITY addprofile_tooltip "Ajouter un nouveau profil">
+<!ENTITY delete_profile "Supprimer">
+<!ENTITY deleteprofile_tooltip "Supprimer le profil actuel sélectionné">
+<!ENTITY move_up "Déplacer vers le haut">
+<!ENTITY moveup_tooltip "Déplacer le profil vers le haut">
+<!ENTITY move_down "Déplacer vers le bas">
+<!ENTITY movedown_tooltip "Déplacer le profil vers le bas">
+<!ENTITY export_profile "Exporter">
+<!ENTITY exportprofile_tooltip "Exporter le profil actuel sélectionné">
+<!ENTITY import_profile "Importer">
+<!ENTITY importprofile_tooltip "Importer un profil">
+<!ENTITY automation "Automatisation">
+<!ENTITY autosync "Synchroniser automatiquement">
+<!ENTITY autosync_tooltip "Synchroniser automatiquement lorsque les marque-pages changent">
+<!ENTITY delay "Délai">
+<!ENTITY syncdelay_tooltip "Délai avant la synchronisation automatique">
+<!ENTITY auto_receive "Télécharger au démarrage">
+<!ENTITY autoreceive_tooltip "Télécharger automatiquement les marque-pages au démarrage de Firefox">
+<!ENTITY auto_receive_notify "Laisser la boîte de dialogue ouverte">
+<!ENTITY autoreceivenotify_tooltip "La boîte de dialogue reste ouverte après que les opérations se sont terminées avec succès">
+<!ENTITY auto_send "Envoyer en quittant">
+<!ENTITY autosend_tooltip "Envoyer automatiquement les marque-pages lors de la fermeture de Firefox">
+<!ENTITY auto_send_notify "Laisser la boîte de dialogue ouverte">
+<!ENTITY autosendnotify_tooltip "La boîte de dialogue reste ouverte">
+<!ENTITY auto_close "Fermer automatiquement après l'envoi/la réception">
+<!ENTITY autoclose_tooltip "Fermer automatiquement la boîte de dialogue après l'envoi/la réception">
+<!ENTITY auto_close_delay "secondes">
+<!ENTITY autodelay_tooltip "Combien de temps laisser ouvert avant la fermeture">
+<!ENTITY regular_transfer "Synchroniser automatiquement à des intervalles réguliers">
+<!ENTITY regulartransfer_tooltip "Effectue régulièrement une réception suivie d'un envoi avec l'option &quot;envoi en toute sécurité&quot;">
+<!ENTITY transfer_interval "Intervalle">
+<!ENTITY transferinterval_tooltip "Délai entre deux synchronisations">
+<!ENTITY seconds "secondes">
+<!ENTITY minutes "minutes">
+<!ENTITY hours "heures">
+<!ENTITY timed_transfer "Synchroniser à une heure fixe">
+<!ENTITY timedtransfer_tooltip "Lors d'une réception à heure fixe, envoyez en utilisant l'option &quot;Envoi sécurisé&quot;">
+<!ENTITY transfer_time "Synchroniser le temps">
+<!ENTITY misc_tab "Général">
+<!ENTITY send_all "Synchroniser tous les marque-pages">
+<!ENTITY sendall_tooltip "Synchroniser l'ensemble de l'arborescence des marque-pages">
+<!ENTITY skip_name "Autoriser un nom différent pour la réception">
+<!ENTITY skipname_tooltip "Le dossier de réception peut avoir un nom différent de la racine du marque-page">
+<!ENTITY selectfolder_button "Sélectionnez le dossier à synchroniser">
+<!ENTITY selectfolder_tooltip "Sélectionnez le dossier des marque-pages à synchroniser">
+<!ENTITY selected_folder "Dossier :">
+<!ENTITY sp_folder_title "Sélectionnez le dossier à synchroniser">
+<!ENTITY strength "Bits pour le chiffrement">
+<!ENTITY b128 "128">
+<!ENTITY b192 "192">
+<!ENTITY b256 "256">
+<!ENTITY show_status "Afficher l'icône dans la barre d'état">
+<!ENTITY showstatus_tooltip "Afficher l'icône dans la barre d'état">
+<!ENTITY show_bm "Menu Marque-pages">
+<!ENTITY showbm_tooltip "Afficher SyncPlaces dans le menu Marque-pages">
+<!ENTITY show_tools "Menu Outils">
+<!ENTITY showtools_tooltip "Afficher SyncPlaces dans le menu Outils">
+<!ENTITY backupfolder_button "Sélectionnez le dossier de sauvegarde">
+<!ENTITY backupfolder_tooltip "Sélectionnez le dossier utilisé pour stocker les sauvegardes">
+<!ENTITY merge_tab "Fusion">
+<!ENTITY merge_deletes "Fusionner les marque-pages supprimés">
+<!ENTITY mergedeletes_tooltip "Gestion des marque-pages qui ont été supprimés ou renommés">
+<!ENTITY comparison "Gestion des doublons">
+<!ENTITY compare_timestamps "Utiliser l&apos;horodatage">
+<!ENTITY timestamps_tooltip "Utiliser l&apos;horodatage pour décider quel doublon conserver">
+<!ENTITY compare_local "Utiliser la version locale">
+<!ENTITY local_tooltip "Garder l&apos;élément local et ignorer celui reçu">
+<!ENTITY compare_remote "Utiliser la version distante">
+<!ENTITY remote_tooltip "Utiliser l&apos;élément reçu et supprimer le local">
+<!ENTITY merge_all "Tout fusionner">
+<!ENTITY mergeall_tooltip "Fusionner toutes les données reçues">
+<!ENTITY include_places "Emplacements à inclure">
+<!ENTITY merge_menu "Menu des marque-pages">
+<!ENTITY mergemenu_tooltip "Inclure les éléments du menu des marque-pages lors de la fusion">
+<!ENTITY merge_toolbar "Barre personnelle">
+<!ENTITY mergetoolbar_tooltip "Inclure les éléments de la barre personnelle lors de la fusion">
+<!ENTITY merge_unsorted "Non classés">
+<!ENTITY mergeunsorted_tooltip "Inclure les éléments non classés lors de la fusion">
+<!ENTITY include_types "Types à inclure">
+<!ENTITY merge_bookmarks "Marque-pages">
+<!ENTITY mergebookmarks_tooltip "Inclure les nouveaux marque-pages lors de la fusion">
+<!ENTITY merge_seperators "Séparateurs">
+<!ENTITY mergesep_tooltip "Inclure les nouveaux séparateurs lors de la fusion">
+<!ENTITY merge_queries "Recherches / requêtes">
+<!ENTITY mergequeries_tooltip "Inclure de nouvelles recherches / requêtes lors de la fusion">
+<!ENTITY merge_livemarks "Marque-pages dynamiques">
+<!ENTITY mergelivemarks_tooltip "Inclure les nouveaux marque-pages dynamiques lors de la fusion">
+<!ENTITY workarounds_tab "Solutions de contournement">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "Ajoutez vos propres balises de style ci-dessous :">
+<!ENTITY encryption_tab "Chiffrement">
+<!ENTITY encryption "Algorithme de chiffrement">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "Remarque : n&apos;utilisez ces options qu&apos;en cas de problème">
+<!ENTITY transfer_technique "Transfert">
+<!ENTITY receive_mechanism "Réception">
+<!ENTITY normal_receive "Normale">
+<!ENTITY normal_receive_tooltip "Méthode normale de réception">
+<!ENTITY old_receive "Ancienne">
+<!ENTITY old_receive_tooltip "Ancienne méthode de réception">
+<!ENTITY old_receive_conversion "Correction du proxy">
+<!ENTITY receive_conversion_tooltip "Correction pour certains serveurs proxy">
+<!ENTITY send_mechanism "Envoi">
+<!ENTITY normal_send "Normale">
+<!ENTITY normal_send_tooltip "Méthode normale d&apos;envoi">
+<!ENTITY old_send "Ancienne">
+<!ENTITY old_send_tooltip "Ancienne méthode d&apos;envoi">
+<!ENTITY old_send_conversion "Correction du proxy">
+<!ENTITY send_conversion_tooltip "Corriger pour certains serveurs proxy">
+<!ENTITY skip_auth "Sauter l'authentification">
+<!ENTITY skipauth_tooltip "Consultez la documentation pour plus d'informations">
+<!ENTITY debug "Activer le débogage">
+<!ENTITY startup "Lancement">
+<!ENTITY normal "Normal">
+<!ENTITY normal_tooltip "Méthode normale de détection de lancement">
+<!ENTITY crude "Compatible">
+<!ENTITY crude_tooltip "Méthode compatible de détection du lancement">
+<!ENTITY shutdown "Fermeture">
+<!ENTITY shutdownnormal_tooltip "Méthode normale de fermeture">
+<!ENTITY shutdowncrude_tooltip "Méthode compatible de fermeture">
+<!ENTITY sp_passwords_title "Sélectionnez le mot de passe">
+<!ENTITY pw_details "Détails des mots de passe">
+<!ENTITY pw_which_password "Sélectionnez le mot de passe que vous souhaitez conserver">
+<!ENTITY pw_hostname "Hôte">
+<!ENTITY pw_formSubmitURL "URL du formulaire">
+<!ENTITY pw_httpRealm "Realm">
+<!ENTITY pw_usernameField "Champ nom d'utilisateur">
+<!ENTITY pw_passwordField "Champ mot de passe">
+<!ENTITY pw_username "Nom d'utilisateur">
+<!ENTITY pw_oldPassword "Mot de passe actuel">
+<!ENTITY pw_newPassword "Nouveau mot de passe">
+<!ENTITY pw_old "Conserver le mot de passe actuel">
+<!ENTITY pw_new "Conserver le nouveau mot de passe">
+<!ENTITY dialog_title "Alerte">
+<!ENTITY more_info "Plus d'information">
+<!ENTITY wiz_reset_title "Revenir aux paramètres par défaut">
+<!ENTITY wiz_reset "Souhaitez-vous vraiment revenir aux choix par défait ? Ceci effacera tous vos réglages actuels.">
+<!ENTITY wiz_yes "Oui">
+<!ENTITY wiz_no "Non">
+<!ENTITY wiz_protocol "Quel type de serveur allez-vous utiliser ?">
+<!ENTITY wiz_host "Saisissez le nom de votre serveur ou son adresse IP. Par exemple www.votrenom.com ou 172.16.0.1. Vous pouvez également ajouter un numéro de port (par exemple www.votrenom.fr:8080).">
+<!ENTITY web_server "Serveur Web">
+<!ENTITY ssl_server "Serveur Web (SSL)">
+<!ENTITY ftp_server "Serveur FTP">
+<!ENTITY file_server "Serveur de fichiers">
+<!ENTITY wiz_path_title "Emplacement sur le serveur">
+<!ENTITY wiz_path "Saisissez lemplacement où stocker vos marque-pages">
+<!ENTITY bm_path "Emplacement">
+<!ENTITY wiz_login "Saisissez vos éventuels détails de connexion FTP">
+<!ENTITY wiz_sync "Choisissez le format dans lequel enregistrer vos marque-pages">
+<!ENTITY recommended "(recommandé)">
+<!ENTITY wiz_passwords "Souhaitez-vous également synchroniser vos mots de passe ?">
+<!ENTITY wiz_pwd_path "Saisissez lemplacement où stocker vos mots de passe">
+<!ENTITY wiz_encrypt "Souhaitez-vous chiffrer vos maque-pages ?">
+<!ENTITY wiz_compress "Souhaitez-vous compresser vos marque-pages pour une synchronisation plus rapide ?">
+<!ENTITY wiz_encpwd "Entrez un mot de passe pour protéger vos données">

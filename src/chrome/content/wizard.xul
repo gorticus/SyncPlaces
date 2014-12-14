@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialog SYSTEM "chrome://syncplaces/locale/syncplaces.dtd">
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is the SyncPlaces extension.
+   -
+   - The Initial Developer of the Original Code is Andy Halford.
+   - Portions created by the Initial Developer are Copyright (C) 2009-2010
+   - the Initial Developer. All Rights Reserved.
+   -
+   - Contributor(s):
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+
+<wizard id="syncplacesWizard"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="&sp_wizard_title;"
+        onwizardfinish="SyncPlacesWizard.onWizardFinish();"
+        windowtype="syncPlacesType">
+
+	<script type="application/x-javascript" src="chrome://syncplaces/content/wizard.js" />
+	<script type="application/x-javascript" src="chrome://syncplaces/content/options.js" />
+  <script type="application/x-javascript" src="chrome://syncplaces/content/syncplaces.js" />
+  <script type="application/x-javascript" src="chrome://syncplaces/content/networking.js" />
+  <script type="application/x-javascript" src="chrome://syncplaces/content/io.js" />
+
+	<wizardpage id="resetpg" pageid="reset" next="protocol"
+			onpageshow="SyncPlacesWizard.canAdvance(true);"
+			onpageadvanced='SyncPlacesWizard.checkReset();'
+			label="&wiz_reset_title;">
+		<vbox align="center">
+			<description>
+				&wiz_reset;
+			</description>
+			<separator class="thin"/>
+			<radiogroup id="reset" orient="horizontal">
+				<radio id="reset_yes" label="&wiz_yes;" />
+				<radio id="reset_no" label="&wiz_no;" selected="true" />
+			</radiogroup>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="protocolpg" pageid="protocol" next="host"
+			onpageshow="SyncPlacesWizard.canAdvance();"
+			onpageadvanced='SyncPlacesWizard.checkProtocol();'
+			label="&connection_tab;">
+		<vbox align="center">
+			<description>
+				&wiz_protocol;
+			</description>
+			<separator class="thin"/>
+			<radiogroup id="protocol" orient="vertical">
+				<radio id="http" label="&web_server;" />
+				<radio id="https" label="&ssl_server;" />
+				<radio id="ftp" label="&ftp_server;" />
+				<radio id="file" label="&file_server;" />
+			</radiogroup>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="hostpg" pageid="host" next="sync"
+			onpageshow="SyncPlacesWizard.checkHost();"
+			label="&connection_tab;">
+		<vbox align="center">
+			<description>
+				&wiz_host;
+			</description>
+			<separator class="thin"/>
+			<hbox align="center">
+				<label control="host" value="&host;"/>
+				<textbox id="host" tooltiptext="&host_tooltip;" onkeyup="SyncPlacesWizard.checkHost();" />
+			</hbox>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="loginpg" pageid="login" next="sync" label="&connection_tab;">
+		<vbox align="center">
+			<description>
+				&wiz_login;
+			</description>
+			<separator class="thin"/>
+			<grid>
+				<columns>
+					<column />
+					<column flex="1"/>
+				</columns>
+				<rows>
+					<row align="center">
+						<label control="userid" value="&userid;" />
+						<textbox id="userid" tooltiptext="&userid_tooltip;" />
+					</row>
+					<row align="center">
+						<label control="password" value="&password;" />
+						<textbox id="password" type="password" tooltiptext="&password_tooltip;" />
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="syncpg" pageid="sync" next="path"
+			onpageshow="SyncPlacesWizard.canAdvance();"
+			onpageadvanced='SyncPlacesWizard.checkSync();'
+			label="&sync_tab;">
+		<vbox align="center">
+			<description>
+				&wiz_sync;
+			</description>
+			<separator class="thin"/>
+			<radiogroup id="sync_type" orient="vertical">
+				<hbox align="center">
+					<radio id="sync_json" label="&sync_json;" tooltiptext="&syncjson_tooltip;"/>
+					<label value="&recommended;"/>
+				</hbox>
+				<radio id="sync_xbel" label="&sync_xbel;" tooltiptext="&syncxbel_tooltip;" />
+			</radiogroup>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="pathpg" pageid="path" next="passwords"
+			onpageshow="SyncPlacesWizard.checkPathValue();"
+			onpageadvanced='return SyncPlacesWizard.checkPath();'
+			label="&wiz_path_title;">
+		<vbox align="center">
+			<description>
+				&wiz_path;
+			</description>
+			<separator class="thin"/>
+			<hbox align="center">
+				<label id="path_label" control="path" value="&bm_path;"/>
+				<textbox id="jsonpath" tooltiptext="&path_tooltip;" value="/syncplaces.json" onkeyup="SyncPlacesWizard.checkPathValue();" size="40" />
+				<textbox id="xbelpath" tooltiptext="&xbelpath_tooltip;" value="/syncplaces.xml" onkeyup="SyncPlacesWizard.checkPathValue();" size="40" />
+			</hbox>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="encryptpg" pageid="encrypt" next="passwords"
+			onpageshow="SyncPlacesWizard.canAdvance();"
+			onpageadvanced='SyncPlacesWizard.checkEncrypt();'
+			label="&options_tab;">
+		<vbox align="center">
+			<description>
+				&wiz_encrypt;
+			</description>
+			<separator class="thin"/>
+			<radiogroup id="encrypt_json" orient="horizontal">
+				<radio id="enc_yes" label="&wiz_yes;" />
+				<radio id="enc_no" label="&wiz_no;" />
+			</radiogroup>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="compresspg" pageid="compress" next="passwords"
+			onpageshow="SyncPlacesWizard.canAdvance();"
+			label="&options_tab;">
+		<vbox align="center">
+			<description>
+				&wiz_compress;
+			</description>
+			<separator class="thin"/>
+			<radiogroup id="gzip" orient="horizontal">
+				<radio id="gzip_yes" label="&wiz_yes;" />
+				<radio id="gzip_no" label="&wiz_no;" />
+			</radiogroup>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="passwordspg" pageid="passwords" next="encpwd"
+			onpageshow="SyncPlacesWizard.canAdvance();"
+			onpageadvanced='SyncPlacesWizard.checkPasswords();'
+			label="&sync_passwords;">
+		<vbox align="center">
+			<description>
+				&wiz_passwords;
+			</description>
+			<separator class="thin"/>
+			<radiogroup id="sync_passwords" orient="horizontal">
+				<radio id="pwd_yes" label="&wiz_yes;" />
+				<radio id="pwd_no" label="&wiz_no;" />
+			</radiogroup>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="passwordpg" pageid="password" next="encpwd"
+			onpageshow="SyncPlacesWizard.checkPwdValue();"
+			onpageadvanced='return SyncPlacesWizard.checkPassword();'
+			label="&sync_passwords;">
+		<vbox align="center">
+			<description>
+				&wiz_pwd_path;
+			</description>
+			<separator class="thin"/>
+			<hbox align="center">
+				<label id="passwordpath_label" control="passwordpath" value="&passwordpath;"/>
+				<textbox id="passwordpath" tooltiptext="&passwordpath_tooltip;" value="/passwords" onkeyup="SyncPlacesWizard.checkPwdValue();" size="40" />
+			</hbox>
+		</vbox>
+  </wizardpage>
+
+	<wizardpage id="encpwdpg" pageid="encpwd"
+			onpageshow="SyncPlacesWizard.checkEncPwd();"
+			onpageadvanced='SyncPlacesWizard.checkEncPwd();'
+			label="&encryption_tab;">
+		<vbox align="center">
+			<description>
+				&wiz_encpwd;
+			</description>
+			<separator class="thin"/>
+			<hbox align="center">
+				<label control="password_password" value="&password_password;"/>
+				<textbox id="password_password" type="password" tooltiptext="&encryptpassword_tooltip;" onkeyup="SyncPlacesWizard.checkEncPwd();" size="20" />
+			</hbox>
+		</vbox>
+  </wizardpage>
+
+</wizard>
