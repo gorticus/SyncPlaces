@@ -141,8 +141,6 @@
 <!ENTITY b128 "128 Bit">
 <!ENTITY b192 "192 Bit">
 <!ENTITY b256 "256 Bit">
-<!ENTITY show_status "Symbol in der Statusleiste anzeigen">
-<!ENTITY showstatus_tooltip "Zeigt ein Symbol in der Statuszeile">
 <!ENTITY show_bm "Lesezeichen-Menü">
 <!ENTITY showbm_tooltip "SyncPlaces-Einstellungen im Lesezeichen-Menü anzeigen">
 <!ENTITY show_tools "Menü &quot;Extras&quot;">

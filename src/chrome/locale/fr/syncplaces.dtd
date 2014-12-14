@@ -141,8 +141,6 @@
 <!ENTITY b128 "128">
 <!ENTITY b192 "192">
 <!ENTITY b256 "256">
-<!ENTITY show_status "Afficher l'icône dans la barre d'état">
-<!ENTITY showstatus_tooltip "Afficher l'icône dans la barre d'état">
 <!ENTITY show_bm "Menu Marque-pages">
 <!ENTITY showbm_tooltip "Afficher SyncPlaces dans le menu Marque-pages">
 <!ENTITY show_tools "Menu Outils">

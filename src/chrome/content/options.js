@@ -46,7 +46,7 @@ var SyncPlacesOptions = {
 	encryptUser: 'syncplaces-encryption',
 	passwordUser: 'syncplaces-password',
 	prefsFile: 'syncplaces_prefs.json',
-	version: "4.2.0",
+	version: "4.3.0",
 
 	onActionLoad: function() {
 		this.lastTransferTimes(true);
@@ -464,13 +464,12 @@ var SyncPlacesOptions = {
 
 			//Turn things on/off as appropriate
 			try {
-				var statusbaritem = document.getElementById("statusbaricon").checked;
-				currentWindow.document.getElementById("syncplaces-status").hidden = !statusbaritem;
-		  } catch (exception) {}
-
-			try {
 				var bmMenu = document.getElementById("bookmarks_menu").checked;
 				currentWindow.document.getElementById("syncplaces-bmenu").hidden = !bmMenu;
+		  } catch (exception) {}
+			try {
+				var bmMenu = document.getElementById("bookmarks_menu").checked;
+				currentWindow.document.getElementById("syncplaces-amenu").hidden = !bmMenu;
 		  } catch (exception) {}
 
 			try {

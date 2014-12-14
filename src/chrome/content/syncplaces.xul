@@ -56,22 +56,34 @@
   <script type="application/x-javascript" src="chrome://syncplaces/content/encrypt.js" />
   <script type="application/x-javascript" src="chrome://syncplaces/content/passwords.js" />
 
-	<!-- This is optional via options -->
-  <statusbar id="status-bar">
-		<statusbarpanel id="syncplaces-status" label="&sp;"
-										insertafter="livemark-button"
-										context="syncplaces-status-popup"
-									  onclick="SyncPlaces.handleEvent(event);">
-			<image tooltip="sp-tooltip" />
-		</statusbarpanel>
-  </statusbar>
-
 	<!-- Firefox version -->
 	<menupopup id="bookmarksMenuPopup">
 		<menu class="menu-iconic"
 		      id="syncplaces-bmenu"
 					label="&sp_title;"
 					insertbefore="organizeBookmarksSeparator"
+					tooltiptext="&sp_tooltip;">
+		  <menupopup id="syncplaces-bmenu-menupopup">
+				<menuitem id="syncplaces-options"
+									label="&options_tab;"
+									oncommand="SyncPlaces.actionsOpen();"
+									tooltiptext="&options_tab;"/>
+				<menuitem id="syncplaces-send"
+									label="&send_button;"
+									oncommand="SyncPlaces.menuSend();"
+									tooltiptext="&send_tooltip;"/>
+				<menuitem id="syncplaces-receive"
+									label="&receive_button;"
+									oncommand="SyncPlaces.menuReceive();"
+									tooltiptext="&receive_tooltip;"/>
+		  </menupopup>
+		</menu>
+	</menupopup>
+	<menupopup id="appmenu_bookmarksPopup">
+		<menu class="menu-iconic"
+		      id="syncplaces-amenu"
+					label="&sp_title;"
+					insertafter="appmenu_showAllBookmarks"
 					tooltiptext="&sp_tooltip;">
 		  <menupopup id="syncplaces-bmenu-menupopup">
 				<menuitem id="syncplaces-options"
@@ -171,7 +183,7 @@
 				<menuitem id="syncplaces-options"
 									label="&options_tab;"
 									default="true"
-									oncommand="SyncPlaces.actionsOpen();"
+									oncommand="SyncPlaces.actionsOpen(); event.stopPropagation();"
 									tooltiptext="&options_tab;"/>
 				<menuitem id="syncplaces-send"
 									label="&send_button;"
@@ -184,24 +196,4 @@
 			</menupopup>
 		</toolbarbutton>
 	</toolbarpalette>
-
-	<popupset id="syncplaces-popupset">
-		<tooltip id="sp-tooltip">
-		 <label value="&sp;" />
-		</tooltip>
-		<menupopup id="syncplaces-status-popup">
-			<menuitem id="syncplaces-status-send"
-								label="&send_button;"
-								oncommand="SyncPlaces.menuSend();"
-								tooltiptext="&send_tooltip;"/>
-			<menuitem id="syncplaces-status-receive"
-								label="&receive_button;"
-								oncommand="SyncPlaces.menuReceive();"
-								tooltiptext="&receive_tooltip;"/>
-		</menupopup>
-	</popupset>
-
-	<window id="main-window">
-		<popupset id="syncplaces-popupset"/>
-	</window>
 </overlay>

@@ -33,24 +33,29 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
-/*toolbar buttons*/
+/*toolbar 32px*/
 #syncplaces-button {
-  list-style-image: url("chrome://syncplaces/skin/icon32.png");
+	list-style-image: url("chrome://syncplaces/skin/icons.png");
+  -moz-image-region: rect(0px, 32px, 32px, 0px);
 }
 
 toolbar[iconsize="small"] #syncplaces-button {
-  list-style-image: url("chrome://syncplaces/skin/icon16.png");
+  list-style-image: url("chrome://syncplaces/skin/icons.png");
+  -moz-image-region: rect(16px, 110px, 32px, 94px);
 }
 
 /*icon 16px*/
-#syncplaces-status,	/*statusbar icon*/
-#syncplaces-bmenu,	/*tools menu*/
-#syncplaces-tmenu 	/*bookmarks menu*/{
-  list-style-image: url("chrome://syncplaces/skin/icon16.png");
+#syncplaces-amenu,	/*app menu*/
+#syncplaces-bmenu,	/*bookmarks menu*/
+#syncplaces-tmenu 	/*tools menu*/{
+  list-style-image: url("chrome://syncplaces/skin/icons.png");
+  -moz-image-region: rect(16px, 110px, 32px, 94px);
 }
 
+/* icon 32px */
 .syncplacesHeader {
-	list-style-image: url("chrome://syncplaces/skin/icon32.png");
+	list-style-image: url("chrome://syncplaces/skin/icons.png");
+  -moz-image-region: rect(0px, 32px, 32px, 0px);
   margin-bottom: 3px;
 }
 

@@ -141,8 +141,6 @@
 <!ENTITY b128 "128">
 <!ENTITY b192 "192">
 <!ENTITY b256 "256">
-<!ENTITY show_status "Wyświetlaj ikonę rozszerzenia na pasku stanu">
-<!ENTITY showstatus_tooltip "Wyświetla ikonę rozszerzenia na pasku stanu">
 <!ENTITY show_bm "Menu Zakładki">
 <!ENTITY showbm_tooltip "Wyświetlaj opcje w menu Zakładki">
 <!ENTITY show_tools "Menu Narzędzia">

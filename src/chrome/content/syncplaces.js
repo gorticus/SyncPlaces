@@ -701,13 +701,43 @@ var SyncPlaces = {
 		//Normal loading
 		else {
 
-			//Show/hide the status bar icon
-			var statusBar = document.getElementById("syncplaces-status");
-			if (statusBar) statusBar.hidden = !prefs.getBoolPref("statusbaricon");
+			//Add to add-on bar (or nav bar for older browsers) with first install
+			var firstrun = prefs.getBoolPref('firstrun');
+			if (firstrun) {
+				prefs.setBoolPref('firstrun', false);
+				var myId = "syncplaces-button";
+				var bar = document.getElementById("addon-bar");
+				if (bar) {
+					if (!document.getElementById(myId)) {
+						bar.insertItem(myId);
+						bar.collapsed = false;	//Show the addon bar if it is hidden
+					}
+				}
+
+				//Use nav-bar instead for older browsers
+				else {
+					var bar = document.getElementById("nav-bar");
+					var curSet = bar.currentSet.split(",");
+
+					if (curSet.indexOf(myId) == -1) {
+						var pos = curSet.indexOf("search-container") + 1 || curSet.length;
+						var set = curSet.slice(0, pos).concat(myId).concat(curSet.slice(pos));
+
+						bar.setAttribute("currentset", set.join(","));
+						bar.currentSet = set.join(",");
+						document.persist(bar.id, "currentset");
+						try {
+							BrowserToolboxCustomizeDone(true);
+						} catch (e) {}
+					}
+				}
+			}
 
 			//Bookmarks menu
 			var bmMenu = document.getElementById("syncplaces-bmenu");
 			if (bmMenu) bmMenu.hidden = !prefs.getBoolPref("bookmarks_menu");
+			var apMenu = document.getElementById("syncplaces-amenu");
+			if (apMenu) apMenu.hidden = !prefs.getBoolPref("bookmarks_menu");
 
 			//Tools menu
 			var toolsMenu = document.getElementById("syncplaces-tmenu");

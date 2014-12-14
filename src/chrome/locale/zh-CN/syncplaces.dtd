@@ -141,8 +141,6 @@
 <!ENTITY b128 "128 位">
 <!ENTITY b192 "192 位">
 <!ENTITY b256 "256 位">
-<!ENTITY show_status "在状态栏显示">
-<!ENTITY showstatus_tooltip "在状态栏显示 SyncPlaces 图标">
 <!ENTITY show_bm "在书签菜单显示">
 <!ENTITY showbm_tooltip "在书签菜单显示 SyncPlaces">
 <!ENTITY show_tools "在工具菜单显示">

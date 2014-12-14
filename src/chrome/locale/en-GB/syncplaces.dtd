@@ -141,8 +141,6 @@
 <!ENTITY b128 "128">
 <!ENTITY b192 "192">
 <!ENTITY b256 "256">
-<!ENTITY show_status "Status bar icon">
-<!ENTITY showstatus_tooltip "Show SyncPlaces on status bar">
 <!ENTITY show_bm "Bookmarks menu">
 <!ENTITY showbm_tooltip "Show SyncPlaces on Bookmarks menu">
 <!ENTITY show_tools "Tools menu">
