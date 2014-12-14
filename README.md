@@ -31,31 +31,36 @@ I _will not_:
 
 # xpi file info
 
-The `.xpi` prior to `v5.2.0` were obtained from the `belnet.be` Mozilla
+The `.xpi` prior to `v5.1.0B` were obtained from the `belnet.be` Mozilla
 mirror, as suggested by [DL](http://goo.gl/utAO3P), before it's layout
 was reworked and the plugins deleted due to resync.  As of 2014/10/31,
 `ftp://ftp.belnet.be/mirror/ftp.mozilla.org/` no longer mirrors Mozilla.
 
-`v5.2.0`, which can be obtained from [DL's](http://goo.gl/utAO3P) site,
-is not included here, since it differs significantly from `v5.1.0 on
-which the current updates are based.
+`v5.1.0{B,C}` were obtained from [DL's site](http://goo.gl/utAO3P); see
+the [change log](http://daniel-lange.com/software/syncplaces_changelog).
+
+`v5.2.0`, which can be obtained from DL's site
+[syncplaces520.xpi](http://daniel-lange.com/software/syncplaces520.xpi),
+is not included here.
 
 ## SHA1 sums
 
 ```shell
-7310659ca91e231678206d22eda3ffff26d2316f  syncplaces-3.6.1-fx.xpi
-d5e0ec181172eaa4fbaf8814ee618f69bd629df9  syncplaces-4.0.3-fx.xpi
-94aed67dffb9c139ffe9659baff1060a85f9793f  syncplaces-4.0.5-fx.xpi
-b4a161e53d90e4115ac74f2b26e70336be4e159e  syncplaces-4.0.7-fx.xpi
-a9c328d08b35537ea82fe7e087a711d1f179ba8b  syncplaces-4.0.8-fx.xpi
-aff70eda27188ea11caa91df4a22442cec228299  syncplaces-4.1.0-fx.xpi
-b8a77793235d7a776cff3a3eb0280cf42260aff4  syncplaces-4.1.1-fx.xpi
-c7bbc528f80ba9ab33f2f66206c9742f27db5676  syncplaces-4.1.2-fx.xpi
-d492826bcfa405ea68ee3a624c5e180a6f758481  syncplaces-4.2.0-sm+fx.xpi
-dfbbab5791dc0f6a0ad58f866fecf4c9457dd34e  syncplaces-4.3.0-sm+fx.xpi
-2c6ffe3c5547bda2ef6f2491d2b31635ac8eed23  syncplaces-5.0.0-sm+fx.xpi
-6b0919c19ec29d9e8508fab6c89250388a1275f1  syncplaces-5.0.1-sm+fx.xpi
-bfd9d5603b5740cf3c7777037ebcf21d100da4a8  syncplaces-5.1.0-sm+fx.xpi
+7310659ca91e231678206d22eda3ffff26d2316f  xpi/syncplaces-3.6.1-fx.xpi
+d5e0ec181172eaa4fbaf8814ee618f69bd629df9  xpi/syncplaces-4.0.3-fx.xpi
+94aed67dffb9c139ffe9659baff1060a85f9793f  xpi/syncplaces-4.0.5-fx.xpi
+b4a161e53d90e4115ac74f2b26e70336be4e159e  xpi/syncplaces-4.0.7-fx.xpi
+a9c328d08b35537ea82fe7e087a711d1f179ba8b  xpi/syncplaces-4.0.8-fx.xpi
+aff70eda27188ea11caa91df4a22442cec228299  xpi/syncplaces-4.1.0-fx.xpi
+b8a77793235d7a776cff3a3eb0280cf42260aff4  xpi/syncplaces-4.1.1-fx.xpi
+c7bbc528f80ba9ab33f2f66206c9742f27db5676  xpi/syncplaces-4.1.2-fx.xpi
+d492826bcfa405ea68ee3a624c5e180a6f758481  xpi/syncplaces-4.2.0-sm+fx.xpi
+dfbbab5791dc0f6a0ad58f866fecf4c9457dd34e  xpi/syncplaces-4.3.0-sm+fx.xpi
+2c6ffe3c5547bda2ef6f2491d2b31635ac8eed23  xpi/syncplaces-5.0.0-sm+fx.xpi
+6b0919c19ec29d9e8508fab6c89250388a1275f1  xpi/syncplaces-5.0.1-sm+fx.xpi
+bfd9d5603b5740cf3c7777037ebcf21d100da4a8  xpi/syncplaces-5.1.0-sm+fx.xpi
+d8e77c670f66fe18d09d6fc4fdae2684610b8d84  xpi/syncplaces-5.1.0B-sm+fx.xpi
+46c7567a5a77e045dd110f94d582245b7fd71c69  xpi/syncplaces-5.1.0C-sm+fx.xpi
 ```
 
 # License
