@@ -229,14 +229,14 @@ var SyncPlacesBookmarks = {
 
 		} catch(exception) {
 			SyncPlacesOptions.alert2(null, 'missing_subfolder', null, timeout,
-				"http://www.andyhalford.com/syncplaces/options.html#general");
+				"http://www.andyhalford.com/syncplaces/options.html");
 			return false;
 		}
 
 		//Type check
 		if (type != PlacesUtils.bookmarks.TYPE_FOLDER) {
 			SyncPlacesOptions.alert2(null, 'wrong_type_subfolder', null, timeout,
-				"http://www.andyhalford.com/syncplaces/options.html#general");
+				"http://www.andyhalford.com/syncplaces/options.html");
 			return false;
 		}
 		return true;
@@ -409,7 +409,7 @@ var SyncPlacesBookmarks = {
 			//Update the existing if older first
 			if (existingDate < lastModified) {
 				//Set the description, date and index to be the remote's
-				this.setDescription(node.annos, existingID, node, lastModified);
+				this.setDescription(existingID, node, lastModified);
 				try {
 					PlacesUtils.bookmarks.setItemIndex(existingID, index);
 				} catch(e) {
@@ -419,7 +419,7 @@ var SyncPlacesBookmarks = {
 			//If same age then use the remote's index and description
 			//cos lastModified doesn't get updated
 			else if (existingDate == lastModified) {
-				this.setDescription(node.annos, existingID, node, lastModified);
+				this.setDescription(existingID, node, lastModified);
  				if (index != PlacesUtils.bookmarks.getItemIndex(existingID)) {
 					try {
 						PlacesUtils.bookmarks.setItemIndex(existingID, index);
@@ -430,14 +430,14 @@ var SyncPlacesBookmarks = {
 			}
 		}
 		else if (mergeComparison == "remote") {
-			this.setDescription(node.annos, existingID, node, lastModified);
+			this.setDescription(existingID, node, lastModified);
 		}
 	},
 
-	setDescription: function(annos, existingID, node, lastModified) {
+	setDescription: function(existingID, node, lastModified) {
 		var description = "";
-		if (annos) {
-			annos.forEach(function(anno) {
+		if (node.annos) {
+			node.annos.forEach(function(anno) {
 				if (anno.name == SyncPlacesBookmarks.SP_DESCRIPTION_ANNO) {
 					description = anno.value;
 				}
@@ -906,9 +906,16 @@ var SyncPlacesBookmarks = {
 				//Read in the icon cache
 				var filePath = SyncPlacesIO.getDefaultFolder();
 				filePath.append(this.faviconsFile);
+				var jstr = SyncPlacesIO.readFile(filePath);
 				if (filePath.exists()) {
-					var JSON = this.Cc["@mozilla.org/dom/json;1"].createInstance(this.Ci.nsIJSON);
-					var favicons = JSON.decode(SyncPlacesIO.readFile(filePath));
+					var favicons;
+					try {
+						favicons = JSON.parse(jstr);
+					} catch (exception) {
+						//Old FF
+						var nativeJSON = this.Cc["@mozilla.org/dom/json;1"].createInstance(this.Ci.nsIJSON);
+						favicons = nativeJSON.decode(jstr);
+					}
 
 					//Now restore any missing ones
 					PlacesUtils.bookmarks.runInBatchMode(batch, null);

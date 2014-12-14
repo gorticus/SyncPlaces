@@ -46,7 +46,7 @@ var SyncPlacesOptions = {
 	encryptUser: 'syncplaces-encryption',
 	passwordUser: 'syncplaces-password',
 	prefsFile: 'syncplaces_prefs.json',
-	version: "4.3.0",
+	version: "5.0.0",
 
 	onActionLoad: function() {
 		this.lastTransferTimes(true);
@@ -74,12 +74,8 @@ var SyncPlacesOptions = {
 		this.toggleRegularTransfer(true);
 		this.toggleTimedTransfer(true);
 		this.toggleAutoSync(true);
-		this.toggleSendSafe(true);
-		this.toggleCache(true);
-		this.toggleCachePwd(true);
-		this.toggleMergePwd(true);
+		this.toggleAutoClose(true);
 		this.togglePasswords(false);
-		this.toggleMergeOptions(true, false);
 		this.checkValues();
 		this.checkSortPlaces(true);
 
@@ -109,6 +105,14 @@ var SyncPlacesOptions = {
 			thisBrowser = mainWindow.getBrowser();
 		}
 
+		//Display the how to use help page if haven't done so before
+		var firstrun = this.prefs.getBoolPref('firstuse');
+		if (firstrun && thisBrowser) {
+			var tab = thisBrowser.addTab("http://www.andyhalford.com/syncplaces/use.html");
+			thisBrowser.selectedTab = tab;
+			this.prefs.setBoolPref('firstuse', false);
+		}
+
 		//If first time (no host set and not 'file' protocol) then launch setup wizard
 		//Also if user sets the option to re-run the wizard
 		var host = this.getComplex('host');
@@ -120,18 +124,10 @@ var SyncPlacesOptions = {
 			ww.openWindow(null, "chrome://syncplaces/content/wizard.xul",
 															"setup", "chrome,modal,centerscreen", null);
 			this.prefs.setBoolPref('run_wizard', false);
-
-			//if not cancelled then show the first time use page
-			if (((host && SyncPlacesOptions.trim(host).length > 0) ||
-					 this.prefs.getCharPref('protocol') == 'file') && thisBrowser)
-			{
-				var tab = thisBrowser.addTab("http://www.andyhalford.com/syncplaces/use.html");
-				thisBrowser.selectedTab = tab;
-			}
 			return;
 		}
-
-		//If upgrading then launch migration page
+		
+		//If upgrading then migrate settings
 		var version = this.prefs.getCharPref("version");
 		if (version != this.version) {
 			//Migrate passwords if pre 4.0
@@ -151,8 +147,6 @@ var SyncPlacesOptions = {
 			hash = SyncPlacesIO.contentsAndDelete("syncplaces_remote_pwd_hash.sha1");
 			if (hash) this.prefs.setCharPref("receivePwdHash", hash);
 
-			var tab = thisBrowser.addTab("http://www.andyhalford.com/syncplaces/migration.html");
-			thisBrowser.selectedTab = tab;
 			this.prefs.setCharPref("version", this.version);
 		}
 	},
@@ -224,7 +218,9 @@ var SyncPlacesOptions = {
 					}
 
 					//Some things are strictly ASCII strings
-					else if (prefList[i] == "transfer_time" || prefList[i] == "transfer_interval" || prefList[i] == "delay") {
+					else if (prefList[i] == "transfer_time" || prefList[i] == "transfer_interval" || 
+									 prefList[i] == "delay" || prefList[i] == "timeoutDelay") 
+					{
 						item.value = this.prefs.getCharPref(prefList[i]);
 					}
 
@@ -352,7 +348,9 @@ var SyncPlacesOptions = {
 					}
 
 					//Some things are strictly ASCII strings
-					else if (prefList[i] == "transfer_time" || prefList[i] == "transfer_interval" || prefList[i] == "delay") {
+					else if (prefList[i] == "transfer_time" || prefList[i] == "transfer_interval" || 
+									 prefList[i] == "delay" || prefList[i] == "timeoutDelay") 
+					{
 						this.prefs.setCharPref(prefList[i], item.value);
 					}
 
@@ -506,7 +504,7 @@ var SyncPlacesOptions = {
 				os = "Darwin";
 			}
 
-			var link = "http://www.andyhalford.com/syncplaces/server.html#paths";
+			var link = "http://www.andyhalford.com/syncplaces/sync.html";
 			if (document.getElementById("protocol").selectedItem.id == 'file') {
 				if (value.match(/^\\\\/)) {
 					if (displayAlert) {
@@ -721,8 +719,6 @@ var SyncPlacesOptions = {
 	toggleRegularTransfer: function(startup) {
 		var regularTransfer = document.getElementById("regular_transfer").checked;
 		if (regularTransfer) {
-			document.getElementById("send_safe").checked = true;
-			this.toggleSendSafe(startup);
 
 			//When first choose it tick the other two - but they are optional thereafter
 			//Also popup message to reboot Firefox
@@ -732,7 +728,7 @@ var SyncPlacesOptions = {
 				this.toggleSendNotify();
 				this.toggleReceiveNotify();
 				this.alert2(null, 'restart_firefox', null, false,
-						"http://www.andyhalford.com/syncplaces/options.html#automation");
+						"http://www.andyhalford.com/syncplaces/automation.html");
 			}
 		}
 		document.getElementById("transfer_interval").disabled = !regularTransfer;
@@ -743,53 +739,14 @@ var SyncPlacesOptions = {
 	toggleTimedTransfer: function(startup) {
 		var timedTransfer = document.getElementById("timed_transfer").checked;
 		if (timedTransfer) {
-			document.getElementById("send_safe").checked = true;
-			this.toggleSendSafe(startup);
 
 			//Popup message to reboot Firefox when first choose it
 			if (!this.prefs.getBoolPref("timed_transfer")) {
 				this.alert2(null, 'restart_firefox', null, false,
-						"http://www.andyhalford.com/syncplaces/options.html#automation");
+						"http://www.andyhalford.com/syncplaces/automation.html");
 			}
 		}
 		document.getElementById("transfer_time").disabled = !timedTransfer;
-	},
-
-	toggleSendSafe: function(startup) {
-		if (document.getElementById("send_safe").checked) {
-			document.getElementById("cache").checked = true;
-			document.getElementById("merge").checked = true;
-			this.toggleMergeOptions(true, false);
-			document.getElementById("cache_pwd").checked = true;
-			document.getElementById("merge_pwd").checked = true;
-		}
-		else {
-			this.disableSendSafeAndTransfer(startup);
-		}
-	},
-
-	toggleCache: function(startup) {
-		if (!document.getElementById("cache").checked &&
-				document.getElementById("send_safe").checked)
-		{
-			this.disableSendSafeAndTransfer(startup);
-		}
-	},
-
-	toggleCachePwd: function(startup) {
-		if (!document.getElementById("cache_pwd").checked &&
-				document.getElementById("send_safe").checked)
-		{
-			this.disableSendSafeAndTransfer(startup);
-		}
-	},
-
-	toggleMergePwd: function(startup) {
-		if (!document.getElementById("merge_pwd").checked &&
-				document.getElementById("send_safe").checked)
-		{
-			this.disableSendSafeAndTransfer(startup);
-		}
 	},
 
 	toggleEncryptPassword: function(check_stuff) {
@@ -809,8 +766,6 @@ var SyncPlacesOptions = {
 		var syncPasswords = document.getElementById("sync_passwords").checked;
 		document.getElementById("passwordpath").disabled = !syncPasswords;
 		document.getElementById("passwordpath_label").disabled = !syncPasswords;
-		document.getElementById("cache_pwd").disabled = !syncPasswords;
-		document.getElementById("merge_pwd").disabled = !syncPasswords;
 		if (check_password && syncPasswords) this.checkPPassword();
 	},
 
@@ -818,58 +773,6 @@ var SyncPlacesOptions = {
 		var tea = document.getElementById("encryption").selectedItem.id == 'TEA';
 		document.getElementById("bits").disabled = tea;
 		document.getElementById("bits_label").disabled = tea;
-	},
-
-	toggleMergeOptions: function(startup, merge2) {
-		if (merge2)
-			document.getElementById("merge").checked = document.getElementById("merge2").checked;
-		else
-			document.getElementById("merge2").checked = document.getElementById("merge").checked;
-
-		var merge = document.getElementById("merge").checked;
-		document.getElementById("merge_deletes").disabled = !merge;
-		document.getElementById("comparison").disabled = !merge;
-		document.getElementById("merge_all").disabled = !merge;
-		var doAll = document.getElementById("merge_all").checked || !merge;
-		document.getElementById("merge_menu").disabled = doAll;
-		document.getElementById("merge_unsorted").disabled = doAll;
-		document.getElementById("merge_toolbar").disabled = doAll;
-		document.getElementById("include_types").disabled = doAll;
-		document.getElementById("merge_bookmarks").disabled = doAll;
-		document.getElementById("merge_seperators").disabled = doAll;
-		document.getElementById("merge_queries").disabled = doAll;
-		document.getElementById("merge_livemarks").disabled = doAll;
-
-		if (!startup && !merge && document.getElementById("send_safe").checked) {
-			this.disableSendSafeAndTransfer(startup);
-		}
-	},
-
-	disableSendSafeAndTransfer: function(startup) {
-		document.getElementById("send_safe").checked = false;
-		var link = "http://www.andyhalford.com/syncplaces/options.html#automation";
-
-		if (document.getElementById("regular_transfer").checked) {
-			document.getElementById("regular_transfer").checked = false;
-			this.toggleRegularTransfer(startup);
-			if (!startup) this.alert2(null, 'regular_disabled', null, true, link);
-		}
-
-		if (document.getElementById("timed_transfer").checked) {
-			document.getElementById("timed_transfer").checked = false;
-			this.toggleTimedTransfer(startup);
-			if (!startup) this.alert2(null, 'timed_disabled', null, true, link);
-		}
-
-		if (document.getElementById("autosync").checked) {
-			document.getElementById("autosync").checked = false;
-			this.toggleAutoSync(startup);
-			if (!startup) this.alert2(null, 'autosync_disabled', null, true, link);
-		}
-
-		if (!startup)
-			this.alert2(null, 'send_safe_disabled', null, true,
-						"http://www.andyhalford.com/syncplaces/options.html#basic");
 	},
 
 	toggleProtocol: function() {
@@ -916,10 +819,14 @@ var SyncPlacesOptions = {
 		document.getElementById("delay").disabled = !autosync;
 		document.getElementById("delay_label").disabled = !autosync;
 		document.getElementById("delay_label2").disabled = !autosync;
-		if (autosync) {
-			document.getElementById("send_safe").checked = true;
-			this.toggleSendSafe(startup);
-		}
+	},
+
+	//Toggle auto close preference
+	toggleAutoClose: function(startup) {
+		var autoclose = document.getElementById("timeout").checked;
+		document.getElementById("timeoutDelay").disabled = !autoclose;
+		document.getElementById("ac_delay_label").disabled = !autoclose;
+		document.getElementById("ac_delay_label2").disabled = !autoclose;
 	},
 
 	//Select folder for backup/restore
@@ -999,7 +906,6 @@ var SyncPlacesOptions = {
 			this.invalidateSyncSettings();
 		}
 	},
-
 
 	invalidateSyncSettings: function() {
 		this.prefs.setCharPref("sendHash", "");
@@ -1147,15 +1053,21 @@ var SyncPlacesOptions = {
 	//Read in a profile file and apply it
 	readProfile: function(profileFile, importing) {
 		var jstr = SyncPlacesIO.readFile(profileFile);
-		var JSON = this.Cc["@mozilla.org/dom/json;1"].createInstance(this.Ci.nsIJSON);
-		var preferences = JSON.decode(jstr);
+		var preferences;
+		try {
+			preferences = JSON.parse(jstr);
+		} catch (exception) {
+			//Old FF
+			var nativeJSON = this.Cc["@mozilla.org/dom/json;1"].createInstance(this.Ci.nsIJSON);
+			preferences = nativeJSON.decode(jstr);
+		}
 
 		if (importing) {
 			//Check there's a profile name in the import
 			var name = preferences.current_profile_name.value;
 			if (!name) {
 				this.alert2(null, 'missing_name', null, true,
-						"http://www.andyhalford.com/syncplaces/options.html#profiles");
+						"http://www.andyhalford.com/syncplaces/advanced.html#profiles");
 				return;
 			}
 
@@ -1319,7 +1231,7 @@ var SyncPlacesOptions = {
 		var menuItems = menuList.firstChild.childNodes;
 		if (menuItems.length == 1) {
 			this.alert2(null, 'cant_delete_last_one', null, true,
-						"http://www.andyhalford.com/syncplaces/options.html#profiles");
+						"http://www.andyhalford.com/syncplaces/advanced.html#profiles");
 			return;
 		}
 		var currentIndex = menuList.selectedIndex;
@@ -1406,7 +1318,7 @@ var SyncPlacesOptions = {
 		//Must enter something
 		if (!newName) {
 			this.alert2(null, 'missing_name', null, true,
-						"http://www.andyhalford.com/syncplaces/options.html#profiles");
+						"http://www.andyhalford.com/syncplaces/advanced.html#profiles");
 		}
 		//Check for duplicates
 		else {
@@ -1414,7 +1326,7 @@ var SyncPlacesOptions = {
 			for (var i=0; i<menuItems.length; i++) {
 				if (newName == menuItems[i].label) {
 					this.alert2(null, 'duplicate_name', null, true,
-						"http://www.andyhalford.com/syncplaces/options.html#profiles");
+						"http://www.andyhalford.com/syncplaces/advanced.html#profiles");
 					newName = null;
 					break;
 				}

@@ -12,6 +12,10 @@
 <!ENTITY remote "Übertragung zu/von entferntem Server">
 <!ENTITY send_button "Lesezeichen/Passwörter exportieren">
 <!ENTITY send_tooltip "Lesezeichen/Passwörter an einen entfernten Server übertragen">
+<!ENTITY if_changes "Nach Änderungen">
+<!ENTITY if_changes_tooltip "Senden nach allen lokalen Änderungen">
+<!ENTITY immediately "Sofort">
+<!ENTITY immediately_tooltip "Sofort alle Lesezeichen und Passwörter senden">
 <!ENTITY receive_button "Lesezeichen/Passwörter importieren">
 <!ENTITY receive_tooltip "Nach Erstellung einer Datensicherung werden Lesezeichen/Passwörter von einem entfernten Server importieren">
 <!ENTITY local "Übertragung in/aus lokale(r) Datei">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Importieren">
 <!ENTITY not_available "Noch nicht verfügbare Einstellung">
 <!ENTITY import_tooltip "Lesezeichen aus einem lokal verfügbaren XBEL-Dokument importieren">
+<!ENTITY import_merge_tooltip "Mit vorhandenen Lesezeichen zusammenführen">
+<!ENTITY import_overwrite_tooltip "Vorhandene Lesezeichen überschreiben">
 <!ENTITY connection_tab "Verbindungen">
 <!ENTITY sync_tab "Synchronisation">
 <!ENTITY protocol "Protokoll:">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Synchronisiert in ein XBEL-Dokument">
 <!ENTITY sync_passwords "Passwörter">
 <!ENTITY syncpasswords_tooltip "Synchronisiert Passwörter">
-<!ENTITY sync_icons "Identitätssymbole (Favicons) aktualisieren">
-<!ENTITY syncicons_tooltip "Identitätssymbole (Favicons) werden beim Empfangen/Importieren aktualisiert">
 <!ENTITY send_html "HTML senden">
 <!ENTITY sendhtml_tooltip "Lesezeichen als HTML-Datei exportieren">
 <!ENTITY send_xbel "XBEL senden">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Passwort-Pfad">
 <!ENTITY passwordpath_tooltip "Pfad zur Passwörter-Datei auf dem Server angeben. Beispiel: /lesezeichen/passwoerter">
 <!ENTITY password_password "Passwort:">
-<!ENTITY basic "Grundeinstellung">
 <!ENTITY encrypt_json "JSON-Datei verschlüsseln">
 <!ENTITY encryptjson_tooltip "Ermöglicht das Verschlüsseln der JSON-Datei mittels Passwort">
 <!ENTITY encryptpassword_tooltip "Passwort eingeben welches zur Verschlüsselung der JSON-Datei genutzt werden soll">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "JSON-Datei mittels GZip komprimieren um eine schnellere Datenübertragung zu ermöglichen">
 <!ENTITY small_xbel "Exportieren/Hochladen als kompaktes XBEL-Dokument">
 <!ENTITY smallxbel_tooltip "Lesezeichen als kompaktes XBEL-Dokument hochladen/exportieren (Bestens geeignet zum Auslesen)">
-<!ENTITY send_safe "Sicheres hochladen">
-<!ENTITY sendsafe_tooltip "Um Datenverlust entgegenzuwirken werden die Daten vor dem Hochladen zuerst heruntergeladen und zusammengeführt">
 <!ENTITY auto_sort "Lesezeichen erst sortieren, dann hochladen">
 <!ENTITY autosort_tooltip "Lesezeichen vor dem Hochladen automatisch sortieren">
-<!ENTITY cache "Lesezeichen nur nach Änderungen hochladen/herunterladen">
-<!ENTITY cache_tooltip "Lesezeichen nur nach Änderungen hoch- oder herunterladen">
-<!ENTITY cache_pwd "Passwörter nur nach Änderungen synchronisieren">
-<!ENTITY cachepwd_tooltip "Passwörter werden nicht synchronisiert sollten sie sich nicht geändert haben">
-<!ENTITY merge "Lesezeichen zusammenführen, statt zu überschreiben">
-<!ENTITY merge_tooltip "Heruntergeladene Lesezeichen zusammenführen, statt sie zu überschreiben">
-<!ENTITY merge_pwd "Empfange Passwörter zusammenführen">
-<!ENTITY mergepwd_tooltip "Passwörter zusammenführen, anstatt sie zu überschreiben">
+<!ENTITY merge "Zusammenführen">
+<!ENTITY receive_merge_tooltip "Alle Änderungen mit denen vom Server zusammenführen">
+<!ENTITY overwrite "Überschreiben">
+<!ENTITY receive_overwrite_tooltip "Lesezeichen und Passwörter mit denen vom Server überschreiben">
 <!ENTITY profiles "Profile">
 <!ENTITY profile "Profil">
 <!ENTITY add_profile "Hinzufügen">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "Dialogfenster geöffnet lassen nach erfolgreichem Import">
 <!ENTITY auto_send "Export beim Beenden">
 <!ENTITY autosend_tooltip "Lesezeichen werden automatisch beim Beenden des Browsers auf den Server übertragen">
-<!ENTITY auto_send_notify "Dialogfenster geöffnet lassen">
-<!ENTITY autosendnotify_tooltip "Dialogfenster geöffnet lassen nach erfolgreichem Export">
 <!ENTITY auto_close "Dialogfenster automatisch nach Im- oder Export schließen">
 <!ENTITY autoclose_tooltip "Dialogfenster automatisch nach manuellem Im- oder Export schließen">
 <!ENTITY auto_close_delay "Sekunden">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "Synchronisation zum festgelegten Zeitpunkt">
 <!ENTITY timedtransfer_tooltip "Zum festgelegten Zeitpunkt werden Daten empfangen und anschließend mittels der Option &quot;Sicheres Hochladen&quot; versandt">
 <!ENTITY transfer_time "Uhrzeit">
-<!ENTITY misc_tab "Allgemein">
 <!ENTITY send_all "Alle Lesezeichen synchronisieren">
 <!ENTITY sendall_tooltip "Synchronisiert den gesamten Lesezeichen-Baum">
 <!ENTITY skip_name "Unterschiedliche Namen beim Herunterladen erlauben">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "SyncPlaces-Einstellungen im Menü &quot;Extras&quot; anzeigen">
 <!ENTITY backupfolder_button "Ordner für die Datensicherung auswählen">
 <!ENTITY backupfolder_tooltip "Einen Ordner auswählen der für die Datensicherungen genutzt werden soll">
-<!ENTITY merge_tab "Zusammenführung">
-<!ENTITY merge_deletes "Fehlende zusammenführen">
-<!ENTITY mergedeletes_tooltip "Vorgehensweise bei gelöschten oder umbenannten Lesezeichen">
-<!ENTITY comparison "Vorgehensweise bei Duplikaten">
-<!ENTITY compare_timestamps "Zeitstempel nutzen">
-<!ENTITY timestamps_tooltip "Zeitstempel nutzen um entscheiden zu können welches der Duplikate behalten werden soll">
-<!ENTITY compare_local "Lokale Datei nutzen">
-<!ENTITY local_tooltip "Die aktuell genutzte Datei behalten und die zu importierende ignorieren">
-<!ENTITY compare_remote "Entfernte Datei nutzen">
-<!ENTITY remote_tooltip "Die entfernte Datei nutzen und die lokale Datei löschen">
-<!ENTITY merge_all "Alles zusammenführen">
-<!ENTITY mergeall_tooltip "Beim Import alles zusammenführen">
-<!ENTITY include_places "Bibliothek einschließen">
-<!ENTITY merge_menu "Lesezeichen-Menü">
-<!ENTITY mergemenu_tooltip "Lesezeichen-Menü beim Zusammenführen einschließen">
-<!ENTITY merge_toolbar "Lesezeichen-Symbolleiste">
-<!ENTITY mergetoolbar_tooltip "Lesezeichen-Symbolleiste beim Zusammenführen einschließen">
-<!ENTITY merge_unsorted "Unsortierte Lesezeichen">
-<!ENTITY mergeunsorted_tooltip "Unsortierte Lesezeichen beim Zusammenführen einschließen">
-<!ENTITY include_types "Teile einschließen">
-<!ENTITY merge_bookmarks "Lesezeichen">
-<!ENTITY mergebookmarks_tooltip "Neue Lesezeichen beim Zusammenführen einschließen">
-<!ENTITY merge_seperators "Trennlinien">
-<!ENTITY mergesep_tooltip "Neue Trennlinien beim Zusammenführen einschließen">
-<!ENTITY merge_queries "Suchanfragen">
-<!ENTITY mergequeries_tooltip "Neue Suchanfragen beim Zusammenführen einschließen">
-<!ENTITY merge_livemarks "Dynamische Lesezeichen">
-<!ENTITY mergelivemarks_tooltip "Neue Dynamische Lesezeichen beim Zusammenführen einschließen">
 <!ENTITY workarounds_tab "Problemlösungen">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Eigene Stil-Vorgaben hier einfügen">

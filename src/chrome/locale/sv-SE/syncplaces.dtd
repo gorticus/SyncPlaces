@@ -12,6 +12,10 @@
 <!ENTITY remote "Fjärr">
 <!ENTITY send_button "Skicka bokmärken/lösenord">
 <!ENTITY send_tooltip "Skicka bokmärken/lösenord till servern">
+<!ENTITY if_changes "If changes">
+<!ENTITY if_changes_tooltip "Send if any local changes">
+<!ENTITY immediately "Immediately">
+<!ENTITY immediately_tooltip "Immediately send all bookmarks/passwords">
 <!ENTITY receive_button "Hämta bokmärken/lösenord">
 <!ENTITY receive_tooltip "Gör en säkerhetskopia och hämta sedan bokmärken/lösenord från servern">
 <!ENTITY local "Lokal">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Importera">
 <!ENTITY not_available "Alternativet är ännu inte tillgängligt">
 <!ENTITY import_tooltip "Importera bokmärken från lokal XBEL-fil">
+<!ENTITY import_merge_tooltip "Merge with existing bookmarks">
+<!ENTITY import_overwrite_tooltip "Overwrite existing bookmarks">
 <!ENTITY connection_tab "Anslutning">
 <!ENTITY sync_tab "Synkronisering">
 <!ENTITY protocol "Protokoll">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Synkronisera med XBEL-fil">
 <!ENTITY sync_passwords "Lösenord">
 <!ENTITY syncpasswords_tooltip "Synkronisera lösenord">
-<!ENTITY sync_icons "Uppdatera sajtikoner">
-<!ENTITY syncicons_tooltip "Uppdatera sajtikoner vid hämtning/import">
 <!ENTITY send_html "Skicka HTML">
 <!ENTITY sendhtml_tooltip "Skicka även en HTML-version">
 <!ENTITY send_xbel "Skicka XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Lösenordssökväg">
 <!ENTITY passwordpath_tooltip "Sökväg till lösenordsfilen på servern, t.ex. /bokmärken/lösenord">
 <!ENTITY password_password "Lösenord">
-<!ENTITY basic "Grundläggande">
 <!ENTITY encrypt_json "Kryptera JSON">
 <!ENTITY encryptjson_tooltip "Krypterar JSON-filen för ökad säkerhet">
 <!ENTITY encryptpassword_tooltip "Lösenord som används för kryptering">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "GZip-komprimerar JSON-filen för snabbare överföring">
 <!ENTITY small_xbel "Exportera/Skicka liten XBEL">
 <!ENTITY smallxbel_tooltip "Exporterar/Skickar en liten XBEL-fil (bäst vid stilformatering)">
-<!ENTITY send_safe "Skicka säkert">
-<!ENTITY sendsafe_tooltip "Hämta och slå samman före varje sändning som en skyddsåtgärd mot dataförluster">
 <!ENTITY auto_sort "Sortera innan sändning">
 <!ENTITY autosort_tooltip "Sorterar bokmärken automatiskt innan de skickas">
-<!ENTITY cache "Synkronisera bokmärken endast om de har ändrats">
-<!ENTITY cache_tooltip "Synkronisera inte bokmärken om de inte har ändrats">
-<!ENTITY cache_pwd "Synkronisera lösenord endast om de har ändrats">
-<!ENTITY cachepwd_tooltip "Synkronisera inte lösenord om de inte har ändrats">
 <!ENTITY merge "Slå samman bokmärken">
-<!ENTITY merge_tooltip "Istället för att ersätta befintliga objekt, slå samman mottagna bokmärken med de du har">
-<!ENTITY merge_pwd "Slå samman mottagna lösenord">
-<!ENTITY mergepwd_tooltip "Istället för att ersätta befintliga objekt, slå samman mottagna lösenord med de du har">
+<!ENTITY receive_merge_tooltip "Merge any changes on the Server">
+<!ENTITY overwrite "Overwrite">
+<!ENTITY receive_overwrite_tooltip "Overwrite bookmarks/passwords with those on Server">
 <!ENTITY profiles "Profiler">
 <!ENTITY profile "Profil">
 <!ENTITY add_profile "Lägg till">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "Dialogen lämnas öppen när operationen lyckas">
 <!ENTITY auto_send "Skicka vid avstängning">
 <!ENTITY autosend_tooltip "Skicka automatiskt bokmärken när webbläsaren stängs av">
-<!ENTITY auto_send_notify "Lämna dialogen öppen">
-<!ENTITY autosendnotify_tooltip "Dialogen lämnas öppen när operationen lyckas">
 <!ENTITY auto_close "Stäng automatiskt efter sändning/hämtning">
 <!ENTITY autoclose_tooltip "Stäng dialogen automatiskt efter manuell sändning/hämtning">
 <!ENTITY auto_close_delay "sekunder">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "Synkronisera vid en angiven tidpunkt">
 <!ENTITY timedtransfer_tooltip "På det angivna klockslaget utförs först en hämtning och sedan en sändning m.h.a. alternativet &quot;Skicka säkert&quot;">
 <!ENTITY transfer_time "Synkroniseringstid">
-<!ENTITY misc_tab "Allmänt">
 <!ENTITY send_all "Synkronisera alla platser/bokmärken">
 <!ENTITY sendall_tooltip "Synkronisera hela platser/bokmärken-trädet">
 <!ENTITY skip_name "Tillåt annat namn vid hämtning">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "Visa SyncPlaces i Verktyg-menyn">
 <!ENTITY backupfolder_button "Välj mapp att säkerhetskopiera till">
 <!ENTITY backupfolder_tooltip "Välj mappen som skall innehålla dina säkerhetskopior">
-<!ENTITY merge_tab "Sammanslagning">
-<!ENTITY merge_deletes "Slå samman borttagningar">
-<!ENTITY mergedeletes_tooltip "Hantera bokmärken som har tagits bort eller har ändrat namn">
-<!ENTITY comparison "Hantera dubbletter">
-<!ENTITY compare_timestamps "Använd tidsstämplar">
-<!ENTITY timestamps_tooltip "Använd tidsstämplar för att avgöra vilken dubblett som skall behållas">
-<!ENTITY compare_local "Använd lokalt objekt">
-<!ENTITY local_tooltip "Behåll det befintliga objektet och ignorera det mottagna objektet">
-<!ENTITY compare_remote "Använd fjärrobjekt">
-<!ENTITY remote_tooltip "Använd det mottagna objektet och ta bort det lokala objektet">
-<!ENTITY merge_all "Slå samman allt">
-<!ENTITY mergeall_tooltip "Slå samman allt som har tagits emot med lokala objekt">
-<!ENTITY include_places "Platser att inkludera">
-<!ENTITY merge_menu "Bokmärken-menyn">
-<!ENTITY mergemenu_tooltip "Inkludera Bokmärken-menyobjekt vid sammanslagning">
-<!ENTITY merge_toolbar "Verktygsfält">
-<!ENTITY mergetoolbar_tooltip "Inkludera verktygsfältsobjekt vid sammanslagning">
-<!ENTITY merge_unsorted "Osorterat">
-<!ENTITY mergeunsorted_tooltip "Inkludera osorterade objekt vid sammanslagning">
-<!ENTITY include_types "Typer att inkludera">
-<!ENTITY merge_bookmarks "Bokmärken">
-<!ENTITY mergebookmarks_tooltip "Inkludera nya bokmärken vid sammanslagning">
-<!ENTITY merge_seperators "Avgränsare">
-<!ENTITY mergesep_tooltip "Inkludera nya avgränsare vid sammanslagning">
-<!ENTITY merge_queries "Sökningar/Frågor">
-<!ENTITY mergequeries_tooltip "Inkludera nya sökningar/frågor vid sammanslagning">
-<!ENTITY merge_livemarks "Smarta bokmärken">
-<!ENTITY mergelivemarks_tooltip "Inkludera nya smarta bokmärken vid sammanslagning">
 <!ENTITY workarounds_tab "Lösningar">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Lägg till dina egna formateringstaggar nedan">

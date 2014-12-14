@@ -134,6 +134,11 @@ var SyncPlacesListener = {
 
   sync: function() {
 		this.prefs.setBoolPref("startManualSend", true);
+		this.prefs.setBoolPref("send_safe", true);
+		this.prefs.setBoolPref("cache", true);
+		this.prefs.setBoolPref("cache_pwd", true);
+		this.prefs.setBoolPref("merge", true);
+		this.prefs.setBoolPref("merge_pwd", true);
 		SyncPlacesNetworking.onTransferLoad();
 	},
 

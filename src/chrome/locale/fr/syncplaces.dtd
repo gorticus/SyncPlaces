@@ -12,6 +12,10 @@
 <!ENTITY remote "Distant">
 <!ENTITY send_button "Envoyer les marque-pages/mots de passe">
 <!ENTITY send_tooltip "Envoyer les marque-pages/mots de passe au serveur">
+<!ENTITY if_changes "If changes">
+<!ENTITY if_changes_tooltip "Send if any local changes">
+<!ENTITY immediately "Immediately">
+<!ENTITY immediately_tooltip "Immediately send all bookmarks/passwords">
 <!ENTITY receive_button "Récupérer les marques-pages/mots de passe">
 <!ENTITY receive_tooltip "Restaurer les marque-pages/mots de passe depuis le serveur">
 <!ENTITY local "Local">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Importer">
 <!ENTITY not_available "Option non disponible pour le moment">
 <!ENTITY import_tooltip "Importer les marque-pages à partir d'un fichier XBEL local">
+<!ENTITY import_merge_tooltip "Merge with existing bookmarks">
+<!ENTITY import_overwrite_tooltip "Overwrite existing bookmarks">
 <!ENTITY connection_tab "Connexion">
 <!ENTITY sync_tab "Synchronisation">
 <!ENTITY protocol "Protocole :">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Synchroniser avec un fichier XBEL">
 <!ENTITY sync_passwords "Mots de passe">
 <!ENTITY syncpasswords_tooltip "Synchroniser les mots de passe">
-<!ENTITY sync_icons "Mettre les favicônes à jour">
-<!ENTITY syncicons_tooltip "Mettre les favicônes à jour lors de l'import">
 <!ENTITY send_html "Envoyer la version HTML">
 <!ENTITY sendhtml_tooltip "Également envoyer une version au format HTML">
 <!ENTITY send_xbel "Envoyer XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Chemin des mots de passe :">
 <!ENTITY passwordpath_tooltip "Chemin vers les mots de passe sur le serveur. Par ex. : /marquepages/motsdepasse">
 <!ENTITY password_password "Mot de passe :">
-<!ENTITY basic "Basique">
 <!ENTITY encrypt_json "Chiffrer le JSON">
 <!ENTITY encryptjson_tooltip "Chiffre le fichier JSON pour sécuriser">
 <!ENTITY encryptpassword_tooltip "Mot de passe utilisé pour le chiffrement">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "Compresser le fichier JSON au format GZip pour des transferts plus rapides">
 <!ENTITY small_xbel "Exporter / envoyer un petit XBEL">
 <!ENTITY smallxbel_tooltip "Envoie / exporte un petit fichier XBEL (idéal pour la mise en forme)">
-<!ENTITY send_safe "Envoyer en toute sécurité">
-<!ENTITY sendsafe_tooltip "Recevoir et fusionner avant tout envoi afin de se protéger contre la perte">
 <!ENTITY auto_sort "Trier avant d'envoyer">
 <!ENTITY autosort_tooltip "Trier les marque-pages automatiquement avant de les envoyer">
-<!ENTITY cache "Ne synchroniser les marque-pages que s'ils ont changé">
-<!ENTITY cache_tooltip "Ne pas synchroniser les marque-pages tant qu'ils n'ont pas changé">
-<!ENTITY cache_pwd "Ne synchroniser les mots de passe que s'ils ont changé">
-<!ENTITY cachepwd_tooltip "Ne pas synchroniser les mots de passe tant qu'ils n'ont pas changé">
 <!ENTITY merge "Fusionner les marque-pages reçus">
-<!ENTITY merge_tooltip "Fusionner les marque-pages reçus au lieu de remplacer ceux existants">
-<!ENTITY merge_pwd "Fusionner les mots de passe reçus">
-<!ENTITY mergepwd_tooltip "Fusionner les mots de passe reçus au lieu de remplacer ceux existants">
+<!ENTITY receive_merge_tooltip "Merge any changes on the Server">
+<!ENTITY overwrite "Overwrite">
+<!ENTITY receive_overwrite_tooltip "Overwrite bookmarks/passwords with those on Server">
 <!ENTITY profiles "Profiles">
 <!ENTITY profile "Profil">
 <!ENTITY add_profile "Ajouter">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "La boîte de dialogue reste ouverte après que les opérations se sont terminées avec succès">
 <!ENTITY auto_send "Envoyer en quittant">
 <!ENTITY autosend_tooltip "Envoyer automatiquement les marque-pages lors de la fermeture de Firefox">
-<!ENTITY auto_send_notify "Laisser la boîte de dialogue ouverte">
-<!ENTITY autosendnotify_tooltip "La boîte de dialogue reste ouverte">
 <!ENTITY auto_close "Fermer automatiquement après l'envoi/la réception">
 <!ENTITY autoclose_tooltip "Fermer automatiquement la boîte de dialogue après l'envoi/la réception">
 <!ENTITY auto_close_delay "secondes">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "Synchroniser à une heure fixe">
 <!ENTITY timedtransfer_tooltip "Lors d'une réception à heure fixe, envoyez en utilisant l'option &quot;Envoi sécurisé&quot;">
 <!ENTITY transfer_time "Synchroniser le temps">
-<!ENTITY misc_tab "Général">
 <!ENTITY send_all "Synchroniser tous les marque-pages">
 <!ENTITY sendall_tooltip "Synchroniser l'ensemble de l'arborescence des marque-pages">
 <!ENTITY skip_name "Autoriser un nom différent pour la réception">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "Afficher SyncPlaces dans le menu Outils">
 <!ENTITY backupfolder_button "Sélectionnez le dossier de sauvegarde">
 <!ENTITY backupfolder_tooltip "Sélectionnez le dossier utilisé pour stocker les sauvegardes">
-<!ENTITY merge_tab "Fusion">
-<!ENTITY merge_deletes "Fusionner les marque-pages supprimés">
-<!ENTITY mergedeletes_tooltip "Gestion des marque-pages qui ont été supprimés ou renommés">
-<!ENTITY comparison "Gestion des doublons">
-<!ENTITY compare_timestamps "Utiliser l&apos;horodatage">
-<!ENTITY timestamps_tooltip "Utiliser l&apos;horodatage pour décider quel doublon conserver">
-<!ENTITY compare_local "Utiliser la version locale">
-<!ENTITY local_tooltip "Garder l&apos;élément local et ignorer celui reçu">
-<!ENTITY compare_remote "Utiliser la version distante">
-<!ENTITY remote_tooltip "Utiliser l&apos;élément reçu et supprimer le local">
-<!ENTITY merge_all "Tout fusionner">
-<!ENTITY mergeall_tooltip "Fusionner toutes les données reçues">
-<!ENTITY include_places "Emplacements à inclure">
-<!ENTITY merge_menu "Menu des marque-pages">
-<!ENTITY mergemenu_tooltip "Inclure les éléments du menu des marque-pages lors de la fusion">
-<!ENTITY merge_toolbar "Barre personnelle">
-<!ENTITY mergetoolbar_tooltip "Inclure les éléments de la barre personnelle lors de la fusion">
-<!ENTITY merge_unsorted "Non classés">
-<!ENTITY mergeunsorted_tooltip "Inclure les éléments non classés lors de la fusion">
-<!ENTITY include_types "Types à inclure">
-<!ENTITY merge_bookmarks "Marque-pages">
-<!ENTITY mergebookmarks_tooltip "Inclure les nouveaux marque-pages lors de la fusion">
-<!ENTITY merge_seperators "Séparateurs">
-<!ENTITY mergesep_tooltip "Inclure les nouveaux séparateurs lors de la fusion">
-<!ENTITY merge_queries "Recherches / requêtes">
-<!ENTITY mergequeries_tooltip "Inclure de nouvelles recherches / requêtes lors de la fusion">
-<!ENTITY merge_livemarks "Marque-pages dynamiques">
-<!ENTITY mergelivemarks_tooltip "Inclure les nouveaux marque-pages dynamiques lors de la fusion">
 <!ENTITY workarounds_tab "Solutions de contournement">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Ajoutez vos propres balises de style ci-dessous :">

@@ -12,6 +12,10 @@
 <!ENTITY remote "Op afstand">
 <!ENTITY send_button "Stuur Bladwijzers/Wachtwoorden">
 <!ENTITY send_tooltip "Stuur Bladwijzers/Wachtwoorden naar de Server">
+<!ENTITY if_changes "Bij veranderingen">
+<!ENTITY if_changes_tooltip "Versturen bij enige lokale verandering">
+<!ENTITY immediately "Onmiddellijk">
+<!ENTITY immediately_tooltip "Zend onmiddellijk alle">
 <!ENTITY receive_button "Haal Bladwijzers/Wachtwoorden">
 <!ENTITY receive_tooltip "Neem back-up en haal Bladwijzers/Wachtwoorden van de Server">
 <!ENTITY local "Lokaal">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Importeren">
 <!ENTITY not_available "Optie nog niet beschikbaar">
 <!ENTITY import_tooltip "Importeer bladwijzers van lokaal XBEL bestand">
+<!ENTITY import_merge_tooltip "Samenvoegen met bestaande bladwijzers">
+<!ENTITY import_overwrite_tooltip "Bestaande bladwijzers overschrijven">
 <!ENTITY connection_tab "Verbinding">
 <!ENTITY sync_tab "Synchronisatie">
 <!ENTITY protocol "Protocol">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Synchroniseer naar een XBEL bestand">
 <!ENTITY sync_passwords "Wachtwoorden">
 <!ENTITY syncpasswords_tooltip "Synchroniseer wachtwoorden">
-<!ENTITY sync_icons "Actualiseer favicons">
-<!ENTITY syncicons_tooltip "Actualiseer favicons tijdens ontvangen/importeren">
 <!ENTITY send_html "Verstuur HTML">
 <!ENTITY sendhtml_tooltip "Verstuur ook een HTML versie">
 <!ENTITY send_xbel "Verstuur XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Wachtwoordpad:">
 <!ENTITY passwordpath_tooltip "Pad naar wachtwoordbestand op de server b.v. /bladwijzers/wachtwoorden">
 <!ENTITY password_password "Wachtwoord:">
-<!ENTITY basic "Basic">
 <!ENTITY encrypt_json "Versleutel JSON">
 <!ENTITY encryptjson_tooltip "Versleutel JSON bestand voor de veiligheid">
 <!ENTITY encryptpassword_tooltip "Wachtwoord gebruikt voor versleutelen wachtwoorden">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "GZips JSON bestand voor sneller transport">
 <!ENTITY small_xbel "Exporteer/Verstuur kleiner XBEL">
 <!ENTITY smallxbel_tooltip "Verstuurt/Exporteert klein XBEL bestand (optimaal voor styling)">
-<!ENTITY send_safe "Verstuur veilig">
-<!ENTITY sendsafe_tooltip "Ontvang en mix als verliesbeveiliging vóór het versturen">
 <!ENTITY auto_sort "Sorteer vóór het versturen">
 <!ENTITY autosort_tooltip "Sorteer automatisch de bladwijzers vóór ze te versturen">
-<!ENTITY cache "Synchroniseer bladwijzers alleen als er wijzigingen zijn">
-<!ENTITY cache_tooltip "Synchroniseer bladwijzers niet als ze niet veranderd zijn">
-<!ENTITY cache_pwd "Synchroniseer wachtwoorden alleen als er wijzigingen zijn">
-<!ENTITY cachepwd_tooltip "Synchroniseer wachtwoorden niet als ze niet veranderd zijn">
 <!ENTITY merge "Voeg bladwijzers tussen">
-<!ENTITY merge_tooltip "Voeg ontvangen bladwijzers er tussen i.p.v. te overschrijven">
-<!ENTITY merge_pwd "Voeg ontvangen wachtwoorden tussen bestaande">
-<!ENTITY mergepwd_tooltip "Voeg ontvangen wachtwoorden er tussen i.p.v. te overschrijven">
+<!ENTITY receive_merge_tooltip "Veranderingen op server invoegen">
+<!ENTITY overwrite "Overschrijven">
+<!ENTITY receive_overwrite_tooltip "Overschrijf bladwijzers/wachtwoorden met die van de Server">
 <!ENTITY profiles "Profielen">
 <!ENTITY profile "Profiel">
 <!ENTITY add_profile "Voeg toe">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "Het dialoogpaneel blijft na gereed zijn open staan">
 <!ENTITY auto_send "Verstuur bij afsluiten">
 <!ENTITY autosend_tooltip "Verstuur bladwijzers automatisch als browser wordt gesloten">
-<!ENTITY auto_send_notify "Laat het dialoogpaneel open staan">
-<!ENTITY autosendnotify_tooltip "Het dialoogpaneel blijft na gereed zijn open staan">
 <!ENTITY auto_close "Automatisch sluiten na versturen/ontvangen">
 <!ENTITY autoclose_tooltip "Sluit de dialoog automatisch na handmatig versturen/ontvangen">
 <!ENTITY auto_close_delay "seconden">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "Synchroniseer op een ingestelde tijd">
 <!ENTITY timedtransfer_tooltip "Haalt op de ingestelde tijd eerst op en verstuurt daarna bij gebruik van de optie &quot;Veilig versturen&quot;">
 <!ENTITY transfer_time "Synchronisatietijd">
-<!ENTITY misc_tab "Algemeen">
 <!ENTITY send_all "Synchroniseer alle Plaatsen/Bladwijzers">
 <!ENTITY sendall_tooltip "Synchroniseert het geheel van de Plaatsen-/Bladwijzersboom">
 <!ENTITY skip_name "Sta bij het ophalen verschillende namen toe">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "Toon opties op gereedschapmenu">
 <!ENTITY backupfolder_button "Selecteer back-up map">
 <!ENTITY backupfolder_tooltip "Selecteer de map waar de back-ups moeten komen">
-<!ENTITY merge_tab "Samenvoegen">
-<!ENTITY merge_deletes "Verwerk verwijderde">
-<!ENTITY mergedeletes_tooltip "Behandel bladwijzers die zijn verwijderd of omgenoemd">
-<!ENTITY comparison "Behandelen van duplicaten">
-<!ENTITY compare_timestamps "Gebruik tijdstempels">
-<!ENTITY timestamps_tooltip "Gebruik tijdstempels om te beslissen welke duplicaat te behouden">
-<!ENTITY compare_local "Gebruik lokaal">
-<!ENTITY local_tooltip "Behoud de huidige en vergeet de opgehaalde">
-<!ENTITY compare_remote "Gebruik opgehaalde">
-<!ENTITY remote_tooltip "Gebruik de opgehaalde en vergeet de locale">
-<!ENTITY merge_all "Voeg alles in">
-<!ENTITY mergeall_tooltip "Voeg alles in dat werd opgehaald">
-<!ENTITY include_places "Plaatsen om in te voegen">
-<!ENTITY merge_menu "Bladwijzermenu">
-<!ENTITY mergemenu_tooltip "Neem bladwijzermenu op bij samenvoegen">
-<!ENTITY merge_toolbar "Gereedschapbalk">
-<!ENTITY mergetoolbar_tooltip "Neem gereedschapitems mee bij samenvoegen">
-<!ENTITY merge_unsorted "Ongesorteerd">
-<!ENTITY mergeunsorted_tooltip "Neem ongesorteerde items mee bij het samenvoegen">
-<!ENTITY include_types "Mee te nemen typen">
-<!ENTITY merge_bookmarks "Bladwijzers">
-<!ENTITY mergebookmarks_tooltip "Neem nieuwe bladwijzers mee bij het samenvoegen">
-<!ENTITY merge_seperators "Scheidingstekens">
-<!ENTITY mergesep_tooltip "Neem nieuwe scheidingstekens mee bij het samenvoegen">
-<!ENTITY merge_queries "Zoekopdrachten/Vragen">
-<!ENTITY mergequeries_tooltip "Neem nieuwe zoekopdrachten/vragen mee bij het samenvoegen">
-<!ENTITY merge_livemarks "Livemarks">
-<!ENTITY mergelivemarks_tooltip "Neem nieuwe livemarks mee bij het samenvoegen">
 <!ENTITY workarounds_tab "Workarounds">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Voeg hieronder uw eigen style tags toe">

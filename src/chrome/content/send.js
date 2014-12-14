@@ -37,13 +37,28 @@ var SyncPlacesSend = {
 	jsonSendFile: "syncplaces_send.json",
 	htmlSendFile: "syncplaces_send.html",
 	xbelSendFile: "syncplaces_send.xml",
-	tmpBookmarks: null,
-	tmpPasswords: null,
+	bmsHash: null,
+	pwdHash: null,
 	Cc: Components.classes,
 	Ci: Components.interfaces,
 
+	//Do sync from actions.xul
+	manualSync: function() {
+		SyncPlacesOptions.prefs.setBoolPref("send_safe", true);
+		SyncPlacesOptions.prefs.setBoolPref("cache", true);
+		SyncPlacesOptions.prefs.setBoolPref("cache_pwd", true);
+		SyncPlacesOptions.prefs.setBoolPref("merge", true);
+		SyncPlacesOptions.prefs.setBoolPref("merge_pwd", true);
+		SyncPlacesOptions.prefs.setBoolPref("startManualSend", true);
+		window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank', 'chrome,resizable,modal,centerscreen', null);
+		SyncPlacesOptions.lastTransferTimes();
+	},
+
 	//Launch the transfer dialog to send to server
-	manualSend: function() {
+	manualSend: function(changes) {
+		SyncPlacesOptions.prefs.setBoolPref("send_safe", false);
+		SyncPlacesOptions.prefs.setBoolPref("cache", changes);
+		SyncPlacesOptions.prefs.setBoolPref("cache_pwd", changes);
 		SyncPlacesOptions.prefs.setBoolPref("startManualSend", true);
 		window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank', 'chrome,resizable,modal,centerscreen', null);
 		SyncPlacesOptions.lastTransferTimes();
@@ -53,12 +68,12 @@ var SyncPlacesSend = {
 	send: function(startupShutdown, checkSendSafe) {
 		//If sending safely then do a receive first
 		if (checkSendSafe && SyncPlacesOptions.prefs.getBoolPref("send_safe")) {
-			//Display warning if last_sent is blank (ie no backup to compare when merging)
+			//Check to see if last_send is blank - if so then warning
 			if (SyncPlacesOptions.prefs.getCharPref("lastSend") != 0 ||
-					SyncPlacesOptions.alert2(null, 'last_send', null, false,
-						"http://www.andyhalford.com/syncplaces/use.html#merging_tip", true))
+					SyncPlacesOptions.alert2(null, 'first_time', null, false,
+						"http://www.andyhalford.com/syncplaces/use.html#tips", true))
 			{
-				SyncPlacesReceive.receive(startupShutdown, checkSendSafe);
+			SyncPlacesReceive.receive(startupShutdown, checkSendSafe);
 			}
 			else {
 				SyncPlacesNetworking.closeSPDialog();
@@ -91,17 +106,14 @@ var SyncPlacesSend = {
 			return;
 		}
 
-		//Compare with cached version
+		//Compare checksums to see if changes
+		this.pwdHash = SyncPlaces.computeHash(passwords);
 		if (SyncPlacesOptions.prefs.getBoolPref("cache_pwd")) {
-			//If hash not changed then send the bookmarks
+			//If hash not changed then just send the bookmarks
 			var sendHash = SyncPlacesOptions.prefs.getCharPref("sendPwdHash");
-			if (SyncPlaces.computeHash(passwords) == sendHash) {
+			if (this.pwdHash == sendHash) {
 				this.sendSyncFile();
 				return;
-			}
-			//Save for caching later on
-			else {
-				this.tmpPasswords = passwords;
 			}
 		}
 
@@ -119,10 +131,8 @@ var SyncPlacesSend = {
 
 		//Save the hashes for next time
 		try {
-			var hash = SyncPlaces.computeHash(SyncPlacesSend.tmpPasswords);
-			SyncPlacesSend.tmpPasswords = null;
-			SyncPlacesOptions.prefs.setCharPref("sendPwdHash", hash);
-			SyncPlacesOptions.prefs.setCharPref("receivePwdHash", hash);
+			SyncPlacesOptions.prefs.setCharPref("sendPwdHash", SyncPlacesSend.pwdHash);
+			SyncPlacesOptions.prefs.setCharPref("receivePwdHash", SyncPlacesSend.pwdHash);
 
 		} catch (exception) {
 			SyncPlacesOptions.alert2(exception, 'cant_save_cache', null, false);
@@ -130,12 +140,8 @@ var SyncPlacesSend = {
 		}
 
 		//Only send hash to server if required to prevent comms issues
-		if (SyncPlacesOptions.prefs.getBoolPref("cache_pwd"))
-			SyncPlacesSend.sendPwdHash(false, startupShutdown, false);
-
-		//Send JSON or XBEL format file
-		else
-			SyncPlacesSend.sendSyncFile();
+		//Updated to always send SHA-1 (see 5.0.0 notes)
+		SyncPlacesSend.sendPwdHash(false, startupShutdown, false);
 	},
 
 	/*
@@ -181,8 +187,10 @@ var SyncPlacesSend = {
 			//if okay this will go on to receive bookmarks as well
 			if (SyncPlacesOptions.prefs.getBoolPref("cache"))
 				SyncPlacesReceive.receiveHash(startupShutdown, sendSafe);
-			else
+			else {
+				SyncPlacesReceive.bmsHash = null;
 				SyncPlacesReceive.receiveSyncFile(startupShutdown, sendSafe, false);
+			}
 		}
 
 		//Send JSON or XBEL format file
@@ -210,18 +218,15 @@ var SyncPlacesSend = {
 		}
 
 		//Compare with cached version
+		this.bmsHash = SyncPlaces.computeHash(bookmarks);
 		if (SyncPlacesOptions.prefs.getBoolPref("cache")) {
 			var sendHash = SyncPlacesOptions.prefs.getCharPref("sendHash");
-			if (SyncPlaces.computeHash(bookmarks) == sendHash) {
+			if (this.bmsHash == sendHash) {
 				SyncPlaces.timedStatus('nothing_to_do', false, false);
 				//Save the timestamp for merge processing (no this is wrong)
 //				SyncPlacesOptions.prefs.setCharPref("lastSend", new Date().getTime() * 1000);
 				SyncPlacesNetworking.closeSPDialog();
 				return;
-			}
-			//Save for caching later on
-			else {
-				this.tmpBookmarks = bookmarks;
 			}
 		}
 
@@ -286,10 +291,8 @@ var SyncPlacesSend = {
 
 		//Save the hashes for next time
 		try {
-			var hash = SyncPlaces.computeHash(SyncPlacesSend.tmpBookmarks);
-			SyncPlacesSend.tmpBookmarks = null;
-			SyncPlacesOptions.prefs.setCharPref("sendHash", hash);
-			SyncPlacesOptions.prefs.setCharPref("receiveHash", hash);
+			SyncPlacesOptions.prefs.setCharPref("sendHash", SyncPlacesSend.bmsHash);
+			SyncPlacesOptions.prefs.setCharPref("receiveHash", SyncPlacesSend.bmsHash);
 
 		} catch (exception) {
 			SyncPlacesOptions.alert2(exception, 'cant_save_cache', null, false);
@@ -297,23 +300,8 @@ var SyncPlacesSend = {
 		}
 
 		//Only send hash to server if required to prevent comms issues
-		if (SyncPlacesOptions.prefs.getBoolPref("cache"))
-			SyncPlacesSend.sendHash(false, startupShutdown, false);
-		else {
-			//If sending html as well then send it now
-			//This will check for and send XBEL if required
-			if (SyncPlacesOptions.prefs.getBoolPref("sendhtml")) {
-				SyncPlacesSend.sendHTML(startupShutdown);
-				return;
-			}
-			//Else if sending XBEL then send it now
-			else if (SyncPlacesOptions.prefs.getBoolPref("sendxbel") && SyncPlacesOptions.prefs.getCharPref("sync_type") == 'sync_json') {
-				SyncPlacesSend.sendXBEL(startupShutdown);
-				return;
-			}
-
-			SyncPlacesNetworking.closeSPDialog();
-		}
+		//Updated to always send SHA-1 (see 5.0.0 notes)
+		SyncPlacesSend.sendHash(false, startupShutdown, false);
 	},
 
 	successfulSend: function(errorData, channel, startupShutdown, type) {

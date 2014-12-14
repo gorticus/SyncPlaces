@@ -183,8 +183,14 @@ var SyncPlacesPasswords = {
 		//Process all the passwords received
 		var loginManager = this.Cc["@mozilla.org/login-manager;1"]
 													 .getService(this.Ci.nsILoginManager);
-		var JSON = this.Cc["@mozilla.org/dom/json;1"].createInstance(this.Ci.nsIJSON);
-		var nodes = JSON.decode(passwords);
+		var nodes;
+		try {
+			nodes = JSON.parse(passwords);
+		} catch (exception) {
+			//Old FF
+			var nativeJSON = this.Cc["@mozilla.org/dom/json;1"].createInstance(this.Ci.nsIJSON);
+			nodes = nativeJSON.decode(passwords);
+		}
 
 		//Anything restored?
 		if (!nodes) return;
@@ -333,7 +339,9 @@ var SyncPlacesPasswords = {
 
 	//Show or hide the passwords in case someone is peeking
 	togglePasswords: function() {
-		var stringsBundle = document.getElementById("string-bundle");
+		var bundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
+										.getService(Components.interfaces.nsIStringBundleService)
+										.createBundle("chrome://syncplaces/locale/syncplaces.properties");
 		if (document.getElementById('oldPassword').value == this.asterisks) {
 			document.getElementById('passwordField').value = this.passwordField;
 			document.getElementById('oldPassword').value = this.oldPassword;

@@ -86,8 +86,13 @@ spObserver.prototype = {
 			if (prefs.getBoolPref("auto_receive") &&
 					prefs.getCharPref("autostart_detection") != "autostart_crude")
 			{
-				prefs.setBoolPref("startAutoReceive", true);
+				prefs.setBoolPref("startAutoSend", true);
 				prefs.setBoolPref("autoStarted", true);
+				prefs.setBoolPref("send_safe", true);
+				prefs.setBoolPref("cache", true);
+				prefs.setBoolPref("cache_pwd", true);
+				prefs.setBoolPref("merge", true);
+				prefs.setBoolPref("merge_pwd", true);
 				this.sync();
 			}
 		}
@@ -117,6 +122,11 @@ spObserver.prototype = {
 							subject.data = true;
 
 				prefs.setBoolPref("startAutoSend", true);
+				prefs.setBoolPref("send_safe", true);
+				prefs.setBoolPref("cache", true);
+				prefs.setBoolPref("cache_pwd", true);
+				prefs.setBoolPref("merge", true);
+				prefs.setBoolPref("merge_pwd", true);
 				this.sync();
 			}
 		}

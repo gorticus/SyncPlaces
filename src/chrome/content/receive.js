@@ -36,11 +36,18 @@
 var SyncPlacesReceive = {
 	jsonReceivedFile: "syncplaces_received.json",
 	xbelReceivedFile: "syncplaces_received.xml",
+	bmsHash: null,
+	pwdHash: null,
 	Cc: Components.classes,
 	Ci: Components.interfaces,
 
 	//Launch the transfer dialog to receive from server
-	manualReceive: function() {
+	manualReceive: function(merge) {
+		SyncPlacesOptions.prefs.setBoolPref("send_safe", false);
+		SyncPlacesOptions.prefs.setBoolPref("cache", merge);
+		SyncPlacesOptions.prefs.setBoolPref("cache_pwd", merge);
+		SyncPlacesOptions.prefs.setBoolPref("merge", merge);
+		SyncPlacesOptions.prefs.setBoolPref("merge_pwd", merge);
 		SyncPlacesOptions.prefs.setBoolPref("startManualReceive", true);
 		window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank',
 											'chrome,resizable,modal,centerscreen', null);
@@ -56,15 +63,19 @@ var SyncPlacesReceive = {
 		if (SyncPlacesOptions.prefs.getBoolPref("sync_passwords")) {
 			if (SyncPlacesOptions.prefs.getBoolPref("cache_pwd"))
 				this.receivePwdHash(startupShutdown, sendSafe);
-			else
+			else {
+				this.pwdHash = null;
 				this.receivePasswords(startupShutdown, sendSafe, false);
+			}
 		}
 		//Receive hash before bookmarks
 		//if okay this will go on to receive bookmarks as well
 		else if (SyncPlacesOptions.prefs.getBoolPref("cache"))
 			this.receiveHash(startupShutdown, sendSafe);
-		else
+		else {
+			this.bmsHash = null;
 			this.receiveSyncFile(startupShutdown, sendSafe, false);
+			}
 	},
 
 	//Receive the password hash
@@ -102,6 +113,7 @@ var SyncPlacesReceive = {
 		if (resCode == 404 || !data || SyncPlacesOptions.trim(data) == "") {
 			//If no hash then get Passwords anyway
 			//but tell it to send the hash after it's done
+			SyncPlacesReceive.pwdHash = null;
 			SyncPlacesReceive.receivePasswords(startupShutdown, sendSafe, true);
 			return;
 		}
@@ -115,11 +127,14 @@ var SyncPlacesReceive = {
 			//if okay this will go on to receive bookmarks as well
 			if (SyncPlacesOptions.prefs.getBoolPref("cache"))
 				SyncPlacesReceive.receiveHash(startupShutdown, sendSafe);
-			else
+			else {
+				SyncPlacesReceive.bmsHash = null;
 				SyncPlacesReceive.receiveSyncFile(startupShutdown, sendSafe, false);
+			}
 		}
 		//Receive the passwords
 		else {
+			SyncPlacesReceive.pwdHash = data;	//Store for later comparison
 			SyncPlacesReceive.receivePasswords(startupShutdown, sendSafe, false);
 		}
 	},
@@ -176,8 +191,10 @@ var SyncPlacesReceive = {
 				//if okay this will go on to receive bookmarks as well
 				if (SyncPlacesOptions.prefs.getBoolPref("cache"))
 					SyncPlacesReceive.receiveHash(startupShutdown, sendSafe);
-				else
+				else {
+					SyncPlacesReceive.bmsHash = null;
 					SyncPlacesReceive.receiveSyncFile(startupShutdown, sendSafe, false);
+				}
 			}
 			//Normal receive with no data
 			else {
@@ -198,6 +215,14 @@ var SyncPlacesReceive = {
 	retrievePasswords: function(passwords, startupShutdown, sendSafe, doHash) {
 		SyncPlaces.timedStatus('updating_passwords', false, false);
 
+		//Check they have been received correctly
+		var hash = SyncPlaces.computeHash(passwords);
+		if (this.pwdHash && this.pwdHash != hash) {
+			SyncPlacesOptions.alert2(null, 'invalid_passwords', null, false,
+									"http://www.andyhalford.com/syncplaces/support.html#receiving");
+			return;
+		}
+		
 		//If can't process passwords, then stop here
 		if (SyncPlacesPasswords.processPasswords(passwords)) {
 			//Hash and cache
@@ -206,7 +231,6 @@ var SyncPlacesReceive = {
 			//(see done.txt for bookmarks use of hash)
 			try {
 				//Save, so don't receive unnecc. next time
-				var hash = SyncPlaces.computeHash(passwords);
 				SyncPlacesOptions.prefs.setCharPref("receivePwdHash", hash);
 
 				//If no hash received then send it (and nothing else)
@@ -224,8 +248,10 @@ var SyncPlacesReceive = {
 			//if okay this will go on to receive bookmarks as well
 			if (SyncPlacesOptions.prefs.getBoolPref("cache"))
 				this.receiveHash(startupShutdown, sendSafe);
-			else
+			else {
+				this.bmsHash = null;
 				this.receiveSyncFile(startupShutdown, sendSafe, false);
+			}
 		}
 	},
 
@@ -264,6 +290,7 @@ var SyncPlacesReceive = {
 		if (resCode == 404 || !data || SyncPlacesOptions.trim(data) == "") {
 			//If no hash then get SyncFile anyway,
 			//but tell it to send the hash after it's done
+			SyncPlacesReceive.bmsHash = null;
 			SyncPlacesReceive.receiveSyncFile(startupShutdown, sendSafe, true);
 			return;
 		}
@@ -272,7 +299,7 @@ var SyncPlacesReceive = {
 		var receivedHash = SyncPlacesOptions.prefs.getCharPref("receiveHash");
 
 		//Up to date
-		if (SyncPlacesOptions.trim(data) != "" && data == receivedHash) {
+		if (data == receivedHash) {
 			//Save the timestamp for merge processing - no, just record physical receives
 //			SyncPlacesOptions.prefs.setCharPref("lastReceived", new Date().getTime() * 1000);
 
@@ -287,6 +314,7 @@ var SyncPlacesReceive = {
 		}
 		//Receive the bookmarks
 		else {
+			SyncPlacesReceive.bmsHash = data;	//Store for later comparison
 			SyncPlacesReceive.receiveSyncFile(startupShutdown, sendSafe, false);
 		}
 	},
@@ -328,7 +356,7 @@ var SyncPlacesReceive = {
 							break;
 						default:
 							errorMessage = 'no_file_found';
-							SyncPlacesOptions.alert2(null, errorMessage, resCode, null, false,
+							SyncPlacesOptions.alert2(null, errorMessage, resCode, false,
 									"http://www.andyhalford.com/syncplaces/support.html#receiving");
 							break;
 					}
@@ -341,7 +369,7 @@ var SyncPlacesReceive = {
 				}
 
 			} catch(e) {
-				SyncPlacesOptions.alert2(null, 'error_receiving', e, false);
+				SyncPlacesOptions.alert2(e, 'error_receiving', null, false);
 				resCode = 0;
 			}
 		}
@@ -451,6 +479,14 @@ var SyncPlacesReceive = {
 			xbelFilePath.append(this.xbelReceivedFile);
 		}
 
+		//Check they have been received correctly
+		var hash = SyncPlaces.computeHash(data);
+		if (this.bmsHash && this.bmsHash != hash) {
+			SyncPlacesOptions.alert2(null, 'invalid_bookmarks', null, false,
+									"http://www.andyhalford.com/syncplaces/support.html#receiving");
+			return;
+		}
+		
 		//Restore the bookmarks
 		if (SyncPlaces.restoreBookmarks((json ? this.jsonReceivedFile :
 																						SyncPlaces.xbelJsonFile),
@@ -459,12 +495,12 @@ var SyncPlacesReceive = {
 			SyncPlaces.timedStatus('received_bookmarks', false, false);
 
 			//Sort after receive
-//			if (SyncPlacesOptions.prefs.getBoolPref("auto_sort")) {
-//				try {
-//					SortPlacesSort.sortBookmarks(false);
-//				} catch(e) {
-//				}
-//			}
+			if (SyncPlacesOptions.prefs.getBoolPref("auto_sort")) {
+				try {
+					SortPlacesSort.sortBookmarks(false);
+				} catch(e) {
+				}
+			}
 
 			//If successful receive then save the timestamp for merge processing
 			SyncPlacesOptions.prefs.setCharPref("lastReceived", new Date().getTime() * 1000);
@@ -474,7 +510,6 @@ var SyncPlacesReceive = {
 			//Note cache what's received and not what's merged (see done.txt)
 			try {
 				//Save, so don't receive unnecc. next time
-				var hash = SyncPlaces.computeHash(data);
 				SyncPlacesOptions.prefs.setCharPref("receiveHash", hash);
 
 				//If no hash received then send it (and nothing else)

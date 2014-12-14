@@ -12,8 +12,12 @@
 <!ENTITY remote "Remoto">
 <!ENTITY send_button "Enviar Favoritos/Senhas">
 <!ENTITY send_tooltip "Enviar Favoritos/Senhas para o servidor">
+<!ENTITY if_changes "Se houver alterações">
+<!ENTITY if_changes_tooltip "Enviar se houver alterações locais">
+<!ENTITY immediately "Imediatamente">
+<!ENTITY immediately_tooltip "Envia imediatamente todas as senhas/favoritos">
 <!ENTITY receive_button "Receber Favoritos/Senhas">
-<!ENTITY receive_tooltip "Faz cópia de segurança e depois recebe Favoritos/Senhas do servidor">
+<!ENTITY receive_tooltip "Executa uma cópia de segurança e depois recebe Favoritos/Senhas do servidor">
 <!ENTITY local "Local">
 <!ENTITY backup_button "Cópia de Segurança">
 <!ENTITY backup_tooltip "Cópia de Segurança em arquivo local">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Importar">
 <!ENTITY not_available "Opção não disponível ainda">
 <!ENTITY import_tooltip "Importar favoritos a partir de um arquivo local XBEL">
+<!ENTITY import_merge_tooltip "Combina com os favoritos existentes">
+<!ENTITY import_overwrite_tooltip "Substituir os favoritos existentes">
 <!ENTITY connection_tab "Conexão">
 <!ENTITY sync_tab "Sincronização">
 <!ENTITY protocol "Protocolo">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Sincroniza em arquivo XBEL">
 <!ENTITY sync_passwords "Senhas">
 <!ENTITY syncpasswords_tooltip "Sincroniza senhas">
-<!ENTITY sync_icons "Atualizar os Ícones de Favoritos">
-<!ENTITY syncicons_tooltip "Atualiza os Ícones de Favoritos quando recebendo ou importando">
 <!ENTITY send_html "Enviar HTML">
 <!ENTITY sendhtml_tooltip "Enviar também versão HTML">
 <!ENTITY send_xbel "Enviar XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Caminho para as senhas:">
 <!ENTITY passwordpath_tooltip "Caminho para arquivos de senhas no servidor. Por exemplo: /bookmarks/senhas">
 <!ENTITY password_password "Senha:">
-<!ENTITY basic "Básico">
 <!ENTITY encrypt_json "Encriptar JSON">
 <!ENTITY encryptjson_tooltip "Encripta o arquivo JSON por segurança">
 <!ENTITY encryptpassword_tooltip "Chave usada para encriptar senhas">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "Comprime os arquivos JSON para transferência mais rápida">
 <!ENTITY small_xbel "Exporta/Envia arquivo XBEL pequeno">
 <!ENTITY smallxbel_tooltip "Envia/Exporta pequenos arquivos XBEL (melhor)">
-<!ENTITY send_safe "Enviar de modo seguro">
-<!ENTITY sendsafe_tooltip "Recebe e combina antes de cada envio para prevenir perdas">
 <!ENTITY auto_sort "Organizar antes de enviar">
 <!ENTITY autosort_tooltip "Organiza automaticamente os favoritos antes de enviá-los">
-<!ENTITY cache "Apenas sincronizar os favoritos se eles foram alterados">
-<!ENTITY cache_tooltip "Não sincroniza favoritos que não tenham sofrido mudanças">
-<!ENTITY cache_pwd "Apenas sincronizar senhas se elas foram alteradas">
-<!ENTITY cachepwd_tooltip "Não sincroniza senhas que não tenham sofrido mudanças">
 <!ENTITY merge "Combinar favoritos">
-<!ENTITY merge_tooltip "Em vez de substituir, mescla os favoritos recebidos">
-<!ENTITY merge_pwd "Combinar as senhas recebidas">
-<!ENTITY mergepwd_tooltip "Em vez de substituir, mescla as senhas recebidas">
+<!ENTITY receive_merge_tooltip "Combina quaisquer alterações no Servidor">
+<!ENTITY overwrite "Sobrescrever">
+<!ENTITY receive_overwrite_tooltip "Substitui as senhas/favoritos preferindo as constantes do Servidor">
 <!ENTITY profiles "Perfis">
 <!ENTITY profile "Perfil">
 <!ENTITY add_profile "Acrescentar">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "A Caixa de Diálogo permanece aberta depois de aparecer">
 <!ENTITY auto_send "Enviar ao sair">
 <!ENTITY autosend_tooltip "Envia automaticamente os favoritos quanto o navegador é fechado">
-<!ENTITY auto_send_notify "Manter a caixa de diálogo aberta">
-<!ENTITY autosendnotify_tooltip "A Caixa de Diálogo permanece aberta depois de aparecer">
 <!ENTITY auto_close "Fechar automaticamente depois de enviar/receber">
 <!ENTITY autoclose_tooltip "Fecha automaticamente a caixa de diálogo depois de enviar/receber manualmente">
 <!ENTITY auto_close_delay "segundos">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "Sincronizar em hora pré-definida (Transferência agendada)">
 <!ENTITY timedtransfer_tooltip "Na hora definida realiza um recebimento e depois um envio, usando a opção &quot;Enviar de modo seguro&quot;">
 <!ENTITY transfer_time "Momento da sincronização">
-<!ENTITY misc_tab "Geral">
 <!ENTITY send_all "Sincronizar todos os locais/favoritos">
 <!ENTITY sendall_tooltip "Sincroniza toda a árvore de locais/favoritos">
 <!ENTITY skip_name "Permite nomes diferentes ao receber">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "Mostra as opções no Menu Ferramentas">
 <!ENTITY backupfolder_button "Selecionar pasta para guardar cópia de segurança">
 <!ENTITY backupfolder_tooltip "Seleciona a pasta usada para guardar cópias de segurança">
-<!ENTITY merge_tab "Combinando">
-<!ENTITY merge_deletes "Gerencia entradas apagadas">
-<!ENTITY mergedeletes_tooltip "Lida com favoritos que foram excluídos ou renomeados">
-<!ENTITY comparison "Gerenciar entradas duplicadas">
-<!ENTITY compare_timestamps "Usar marcações de tempo">
-<!ENTITY timestamps_tooltip "Exibe marcações de tempo para auxiliar na escolha entre entradas duplicadas">
-<!ENTITY compare_local "Usar a informação local">
-<!ENTITY local_tooltip "Mantém a entrada atual e ignora a nova entrada recebida">
-<!ENTITY compare_remote "Usar a informação remota">
-<!ENTITY remote_tooltip "Dá preferência para a entrada recebida de fora e ignora a entrada local">
-<!ENTITY merge_all "Combinar tudo">
-<!ENTITY mergeall_tooltip "Mescla tudo que é recebido">
-<!ENTITY include_places "Lugares a incluir">
-<!ENTITY merge_menu "Menu Favoritos">
-<!ENTITY mergemenu_tooltip "Inclui os itens do menu Favoritos ao mesclar">
-<!ENTITY merge_toolbar "Barra de Ferramentas">
-<!ENTITY mergetoolbar_tooltip "Inclui os itens da Barra de Ferramentas ao mesclar">
-<!ENTITY merge_unsorted "Sem ordem">
-<!ENTITY mergeunsorted_tooltip "Inclui na mesclagem os itens não ordenados">
-<!ENTITY include_types "Tipos a incluir">
-<!ENTITY merge_bookmarks "Favoritos">
-<!ENTITY mergebookmarks_tooltip "Inclui novos itens de favoritos ao mesclar">
-<!ENTITY merge_seperators "Separadores">
-<!ENTITY mergesep_tooltip "Inclui novos separadores ao mesclar">
-<!ENTITY merge_queries "Pesquisas/Consultas">
-<!ENTITY mergequeries_tooltip "Incluir novas pesquisas / consultas ao mesclar">
-<!ENTITY merge_livemarks "Livemarks">
-<!ENTITY mergelivemarks_tooltip "Inclui novos Livemarks ao mesclar">
 <!ENTITY workarounds_tab "Soluções alternativas">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Adicione suas próprias etiquetas de estilo a seguir:">

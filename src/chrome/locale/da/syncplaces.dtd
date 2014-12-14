@@ -12,6 +12,10 @@
 <!ENTITY remote "Fjern">
 <!ENTITY send_button "Send bogmærker/adgangskoder">
 <!ENTITY send_tooltip "Send bogmærker/adgangskoder til server">
+<!ENTITY if_changes "Hvis ændret">
+<!ENTITY if_changes_tooltip "Send ved lokale ændringer">
+<!ENTITY immediately "Straks">
+<!ENTITY immediately_tooltip "Send straks alle bogmærker/adgangskoder">
 <!ENTITY receive_button "Hent bogmærker/adgangskoder">
 <!ENTITY receive_tooltip "Opret sikkerhedskopi og hent bogmærker/adgangskoder fra server">
 <!ENTITY local "Lokal">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Importer">
 <!ENTITY not_available "Indstilling endnu ikke tilgængelig">
 <!ENTITY import_tooltip "Importer bogmærker fra lokal XBEL fil">
+<!ENTITY import_merge_tooltip "Flet med eksisterende bogmærker">
+<!ENTITY import_overwrite_tooltip "Overskriv eksisterende bogmærker">
 <!ENTITY connection_tab "Forbindelse">
 <!ENTITY sync_tab "Synkronisering">
 <!ENTITY protocol "Protokol">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Synkroniser med XBEL fil">
 <!ENTITY sync_passwords "Adgangskoder">
 <!ENTITY syncpasswords_tooltip "Synkroniser adgangskoder">
-<!ENTITY sync_icons "Opdater favikoner">
-<!ENTITY syncicons_tooltip "Opdater favikoner når der modtages/importeres">
 <!ENTITY send_html "Send HTML">
 <!ENTITY sendhtml_tooltip "Send også HTML version">
 <!ENTITY send_xbel "Send XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Adgangskodesti">
 <!ENTITY passwordpath_tooltip "Sti til Adgangskodefil på server f.eks. /bookmarks/passwords">
 <!ENTITY password_password "Adgangskode">
-<!ENTITY basic "Basal">
 <!ENTITY encrypt_json "Krypter JSON">
 <!ENTITY encryptjson_tooltip "Krypter JSON fil af sikkerhedshensyn">
 <!ENTITY encryptpassword_tooltip "Adgangskode anvendt til kryptering">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "GZip'er JSON fil for hurtigere overførsel">
 <!ENTITY small_xbel "Eksporter/Send lille XBEL">
 <!ENTITY smallxbel_tooltip "Sender/Eksportere lille XBEL fil (for optimal design)">
-<!ENTITY send_safe "Send sikkert">
-<!ENTITY sendsafe_tooltip "Hent og flet før enhver afsendelse for at sikre mod tab">
 <!ENTITY auto_sort "Sorter før afsendelse">
 <!ENTITY autosort_tooltip "Sorter automatisk bogmærker før afsendelse">
-<!ENTITY cache "Synkroniser kun bogmærker hvis de er ændret">
-<!ENTITY cache_tooltip "Synkroniser ikke bogmærker hvis de ikke er ændret">
-<!ENTITY cache_pwd "Synkroniser kun adgangskoder hvis de er ændret">
-<!ENTITY cachepwd_tooltip "Synkroniser ikke adgangskoder hvis de ikke er ændret">
 <!ENTITY merge "Flet bogmærker">
-<!ENTITY merge_tooltip "Flet hentede bogmærker, i stedet for at overskrive">
-<!ENTITY merge_pwd "Flet hentede adgangskoder">
-<!ENTITY mergepwd_tooltip "Flet hentede adgangskoder, i stedet for at overskrive">
+<!ENTITY receive_merge_tooltip "Flet alle ændringer på serveren">
+<!ENTITY overwrite "Overskriv">
+<!ENTITY receive_overwrite_tooltip "Owerskriv bogmærker/adgangskoder med dem på serveren">
 <!ENTITY profiles "Profiler">
 <!ENTITY profile "Profil">
 <!ENTITY add_profile "Tilføj">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "Vindue forbliver åben ved success">
 <!ENTITY auto_send "Send ved nedlukning">
 <!ENTITY autosend_tooltip "Send automatisk bogmærker når browseren lukkes">
-<!ENTITY auto_send_notify "Efterlad vindue åben">
-<!ENTITY autosendnotify_tooltip "Vindue forbliver åben ved success">
 <!ENTITY auto_close "Luk automatisk efter send/hent">
 <!ENTITY autoclose_tooltip "Luk automatisk vindue efter manuel send/hent">
 <!ENTITY auto_close_delay "sekunder">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "Synkroniser på et indstillet tidspunkt">
 <!ENTITY timedtransfer_tooltip "Udfør på det indstillede tidspunkt en hent og så en send ved at benytte 'Send sikkert' indstilling">
 <!ENTITY transfer_time "Synkroniseringstid">
-<!ENTITY misc_tab "Generelt">
 <!ENTITY send_all "Synkroniser alle steder/bogmærker">
 <!ENTITY sendall_tooltip "Synkroniser hele træet af steder/bogmærke">
 <!ENTITY skip_name "Tillad andet navn når rekursiv">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "Vis SyncPlaces på værktøjsmenu">
 <!ENTITY backupfolder_button "Vælg mappe for sikkerhedskopi">
 <!ENTITY backupfolder_tooltip "Vælg den mappe der anvendes til opbevaring af sikkerhedskopier">
-<!ENTITY merge_tab "Fletning">
-<!ENTITY merge_deletes "Flet slettede">
-<!ENTITY mergedeletes_tooltip "Behandel bogmærker der er blevet slettet eller omdøbt">
-<!ENTITY comparison "Behandling af kopier">
-<!ENTITY compare_timestamps "Benyt tidsmærkning">
-<!ENTITY timestamps_tooltip "Benyt tidsmærkning til at afgøre hvilken kopi der skal beholdes">
-<!ENTITY compare_local "Benyt lokale">
-<!ENTITY local_tooltip "Behold de nuværende punkter og ignorer de hentede">
-<!ENTITY compare_remote "Benyt ekstern">
-<!ENTITY remote_tooltip "Benyt de hentede poster og slet de lokale">
-<!ENTITY merge_all "Flet alt">
-<!ENTITY mergeall_tooltip "Flet alt det der blev hentet">
-<!ENTITY include_places "Steder der medtages">
-<!ENTITY merge_menu "Bogmærkemenu">
-<!ENTITY mergemenu_tooltip "Medtag poster fra bogmærkemenu ved fletning">
-<!ENTITY merge_toolbar "Værktøjslinie">
-<!ENTITY mergetoolbar_tooltip "Medtag poster fra værktøjslinie ved fletning">
-<!ENTITY merge_unsorted "Usorterede">
-<!ENTITY mergeunsorted_tooltip "Medtag usorterede poster ved fletning">
-<!ENTITY include_types "Typer der medtages">
-<!ENTITY merge_bookmarks "Bogmærker">
-<!ENTITY mergebookmarks_tooltip "Medtag nye bogmærker ved fletning">
-<!ENTITY merge_seperators "Separatorer">
-<!ENTITY mergesep_tooltip "Medtag nye separatorer ved fletning">
-<!ENTITY merge_queries "Søgninger/Forespørgsler">
-<!ENTITY mergequeries_tooltip "Medtag nye søgninger/forespørgsler ved fletning">
-<!ENTITY merge_livemarks "Live-mærker">
-<!ENTITY mergelivemarks_tooltip "Medtag nye live-mærker ved fletning">
 <!ENTITY workarounds_tab "Nødløsninger">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Tilføj din egen designetikette nedenfor">
@@ -206,7 +172,7 @@
 <!ENTITY normal_tooltip "Normal opstartsgenkendelse">
 <!ENTITY crude "Kompatibel">
 <!ENTITY crude_tooltip "Kompatible opstartsgenkendelse">
-<!ENTITY shutdown "Luk ned">
+<!ENTITY shutdown "Nedlukning">
 <!ENTITY shutdownnormal_tooltip "Normal nedlukning">
 <!ENTITY shutdowncrude_tooltip "Kompatibel nedlukning">
 <!ENTITY sp_passwords_title "Vælg adgangskode">

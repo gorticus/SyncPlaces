@@ -10,8 +10,12 @@
 <!ENTITY status "Status:">
 <!ENTITY apply_button "Zastosuj">
 <!ENTITY remote "Zdalne">
-<!ENTITY send_button "Wyślij zakładki">
-<!ENTITY send_tooltip "Wysyła zakładki na serwer">
+<!ENTITY send_button "Wyślij">
+<!ENTITY send_tooltip "Wysyła zakładki/hasła na serwer">
+<!ENTITY if_changes "Jeśli dokonano zmian">
+<!ENTITY if_changes_tooltip "Wyślij, jeśli dokonano zmian lokalnie">
+<!ENTITY immediately "Natychmiast">
+<!ENTITY immediately_tooltip "Natychmiast wysyła wszystkie zakładki/hasła">
 <!ENTITY receive_button "Odbierz zakładki">
 <!ENTITY receive_tooltip "Pobiera kopię zamiast odbierać zakładki z serwera">
 <!ENTITY local "Lokalne">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Importuj">
 <!ENTITY not_available "Opcja jest jeszcze niedostępna">
 <!ENTITY import_tooltip "Importuje zakładki z lokalnego pliku XBEL">
+<!ENTITY import_merge_tooltip "Połącz z istniejącymi zakładkami">
+<!ENTITY import_overwrite_tooltip "Zastąp istniejące zakładki">
 <!ENTITY connection_tab "Połączenie">
 <!ENTITY sync_tab "Synchronizacja">
 <!ENTITY protocol "Protokół:">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Synchronizuje na plik XBEL">
 <!ENTITY sync_passwords "Hasła">
 <!ENTITY syncpasswords_tooltip "Synchronizuj hasła">
-<!ENTITY sync_icons "Uaktualnij favikony">
-<!ENTITY syncicons_tooltip "Uaktualnia favikony podczas odbierania/importowania">
 <!ENTITY send_html "Wysyłaj jako HTML">
 <!ENTITY sendhtml_tooltip "Wysyła w postaci HTML">
 <!ENTITY send_xbel "Wyślij XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Ścieżka do pliku haseł:">
 <!ENTITY passwordpath_tooltip "Ścieżka do pliku haseł na serwerze np. /bookmarks/passwords">
 <!ENTITY password_password "Hasło:">
-<!ENTITY basic "Podstawowe">
 <!ENTITY encrypt_json "Szyfruj JSON">
 <!ENTITY encryptjson_tooltip "W celu zwiększenia bezpieczeństwa szyfruje plik JSON">
 <!ENTITY encryptpassword_tooltip "Hasło używane do szyfrowania">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "Kompresuje plik JSON dla szybszych transferów">
 <!ENTITY small_xbel "Eksportuj/Wyślij mały XBEL">
 <!ENTITY smallxbel_tooltip "Eksportuje/Wysyła mały plik XBEL">
-<!ENTITY send_safe "Wysyłaj bezpiecznie">
-<!ENTITY sendsafe_tooltip "Aby zabezpieczyć przed utratą, odbiera i dołącza przed każdym wysłaniem">
 <!ENTITY auto_sort "Sortuj przed wysłaniem">
 <!ENTITY autosort_tooltip "Automatycznie sortuje zakładki przed ich wysłaniem">
-<!ENTITY cache "Wysyłaj/odbieraj tylko jeśli zakładki zostały zmienione">
-<!ENTITY cache_tooltip "Nie wysyła/odbiera jeśli zakładki nie zostały zmienione">
-<!ENTITY cache_pwd "Synchronizuj hasła tylko, gdy zostały zmienione">
-<!ENTITY cachepwd_tooltip "Nie synchronizuje haseł jeśli nie zostały zmienione">
 <!ENTITY merge "Dołączaj odebrane zakładki">
-<!ENTITY merge_tooltip "Dołącza odebrane zakładki zamiast nadpisywać">
-<!ENTITY merge_pwd "Dołączaj odebrane hasła">
-<!ENTITY mergepwd_tooltip "Dołącza odebrane hasła zamiast nadpisywać">
+<!ENTITY receive_merge_tooltip "Dołącza zmiany dokonane na serwerze">
+<!ENTITY overwrite "Zastąp">
+<!ENTITY receive_overwrite_tooltip "Zastępuje zakładki/hasła elementami z serwera">
 <!ENTITY profiles "Profile">
 <!ENTITY profile "Profil">
 <!ENTITY add_profile "Dodaj">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "Okno dialogowe pozostaje otwarte po zakończeniu operacji">
 <!ENTITY auto_send "Wysyłaj podczas zamykania">
 <!ENTITY autosend_tooltip "Zakładki będą automatycznie wysyłane, gdy jest zamykana przeglądarka">
-<!ENTITY auto_send_notify "Pozostawiaj okno dialogowe otwarte">
-<!ENTITY autosendnotify_tooltip "Okno dialogowe pozostaje otwarte po zakończeniu operacji">
 <!ENTITY auto_close "Zamykaj automatycznie po zakończeniu odbierania/wysyłania">
 <!ENTITY autoclose_tooltip "Zamyka automatycznie okno dialogowe po ręcznym odebraniu/wysłaniu">
 <!ENTITY auto_close_delay "s">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "Synchronizuj o ustalonym czasie">
 <!ENTITY timedtransfer_tooltip "W ustalonym czasie wykonuje odbiór i wysyłanie używając opcji&quot;Wyślij bezpiecznie&quot;">
 <!ENTITY transfer_time "Czas synchronizacji">
-<!ENTITY misc_tab "Ogólne">
 <!ENTITY send_all "Synchronizuj wszystkie miejsca/zakładki">
 <!ENTITY sendall_tooltip "Synchronizuje wszystkie miejsca/zakładki">
 <!ENTITY skip_name "Zezwalaj na różne nazwy podczas odbierania">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "Wyświetlaj opcje w menu Narzędzia">
 <!ENTITY backupfolder_button "Folder kopii zapasowych">
 <!ENTITY backupfolder_tooltip "Wybierz folder używany do przetrzymywania kopii zapasowych">
-<!ENTITY merge_tab "Dołączenie">
-<!ENTITY merge_deletes "Dołączaj usunięte">
-<!ENTITY mergedeletes_tooltip "Działa w obrębie zakładek usuniętych lub o zmienionej nazwie">
-<!ENTITY comparison "Postępowanie z duplikatami">
-<!ENTITY compare_timestamps "Używaj znaczników czasu">
-<!ENTITY timestamps_tooltip "Używaj znaczników czasu, aby decydować, które duplikaty przetrzymywać">
-<!ENTITY compare_local "Używaj lokalnych">
-<!ENTITY local_tooltip "Utrzymuje aktywny element, a ignoruje odebrany">
-<!ENTITY compare_remote "Używaj zdalnych">
-<!ENTITY remote_tooltip "Używa odebrany element, a usuwa lokalny">
-<!ENTITY merge_all "Łącz wszystko">
-<!ENTITY mergeall_tooltip "Łączy wszystko co zostało odebrane">
-<!ENTITY include_places "Miejsca do dołączenia">
-<!ENTITY merge_menu "Menu Zakładki">
-<!ENTITY mergemenu_tooltip "Podczas łączenia dołącza elementy menu Zakładki">
-<!ENTITY merge_toolbar "Pasek narzędzi">
-<!ENTITY mergetoolbar_tooltip "Podczas łączenia dołącza elementy paska narzędzi">
-<!ENTITY merge_unsorted "Nieprzypisane">
-<!ENTITY mergeunsorted_tooltip "Podczas łączenia dołącza elementy nieprzypisane">
-<!ENTITY include_types "Typy do dołączania">
-<!ENTITY merge_bookmarks "Zakładki">
-<!ENTITY mergebookmarks_tooltip "Podczas łączenia dołącza nowe zakładki">
-<!ENTITY merge_seperators "Separatory">
-<!ENTITY mergesep_tooltip "Podczas łączenia dołącza nowe separatory">
-<!ENTITY merge_queries "Wyszukiwania/Zapytania">
-<!ENTITY mergequeries_tooltip "Podczas łączenia dołącza nowe wyszukiwania/zapytania">
-<!ENTITY merge_livemarks "Dynamiczne zakładki">
-<!ENTITY mergelivemarks_tooltip "Podczas łączenia dołącza nowe dynamiczne zakładki">
 <!ENTITY workarounds_tab "Obejścia">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Poniżej dodaj własne style etykiet:">
@@ -229,7 +195,7 @@
 <!ENTITY wiz_yes "Tak">
 <!ENTITY wiz_no "Nie">
 <!ENTITY wiz_protocol "Jaki typ serwera chcesz użyć?">
-<!ENTITY wiz_host "Wprowadź nazwę swojego serwera lub jego adres IP np. www.twoja_nazwa.com lub 172.16.0.1. Możesz opcjonalnie dodać numer portu np. www.twoja_nazwa.pl:8080">
+<!ENTITY wiz_host "Wprowadź nazwę swojego serwera lub jego adres IP, np. www.twoja_nazwa.com lub 172.16.0.1. Możesz opcjonalnie dodać numer portu, np. www.twoja_nazwa.pl:8080">
 <!ENTITY web_server "Serwer HTTP">
 <!ENTITY ssl_server "Serwer HTTP (SSL)">
 <!ENTITY ftp_server "Serwer FTP">

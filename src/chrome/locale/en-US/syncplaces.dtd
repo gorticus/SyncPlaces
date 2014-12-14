@@ -10,9 +10,13 @@
 <!ENTITY status "Status">
 <!ENTITY apply_button "Apply">
 <!ENTITY remote "Remote">
-<!ENTITY send_button "Send Bookmarks/Passwords">
+<!ENTITY send_button "Send">
 <!ENTITY send_tooltip "Send bookmarks/passwords to Server">
-<!ENTITY receive_button "Receive Bookmarks/Passwords">
+<!ENTITY if_changes "If changes">
+<!ENTITY if_changes_tooltip "Send if any local changes">
+<!ENTITY immediately "Immediately">
+<!ENTITY immediately_tooltip "Immediately send all bookmarks/passwords">
+<!ENTITY receive_button "Receive">
 <!ENTITY receive_tooltip "Take backup then receive bookmarks/passwords from Server">
 <!ENTITY local "Local">
 <!ENTITY backup_button "Backup">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Import">
 <!ENTITY not_available "Option not yet available">
 <!ENTITY import_tooltip "Import bookmarks from local XBEL file">
+<!ENTITY import_merge_tooltip "Merge with existing bookmarks">
+<!ENTITY import_overwrite_tooltip "Overwrite existing bookmarks">
 <!ENTITY connection_tab "Connection">
 <!ENTITY sync_tab "Synchronization">
 <!ENTITY protocol "Protocol">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Synchronize on XBEL file">
 <!ENTITY sync_passwords "Passwords">
 <!ENTITY syncpasswords_tooltip "Synchronize passwords">
-<!ENTITY sync_icons "Update favicons">
-<!ENTITY syncicons_tooltip "Update favicons when receiving/importing">
 <!ENTITY send_html "Send HTML">
 <!ENTITY sendhtml_tooltip "Send HTML version as well">
 <!ENTITY send_xbel "Send XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Passwords Path">
 <!ENTITY passwordpath_tooltip "Path to Passwords file on server e.g. /bookmarks/passwords">
 <!ENTITY password_password "Password">
-<!ENTITY basic "Basic">
 <!ENTITY encrypt_json "Encrypt JSON">
 <!ENTITY encryptjson_tooltip "Encrypts JSON file for security">
 <!ENTITY encryptpassword_tooltip "Password used for encryption">
@@ -75,24 +78,18 @@
 <!ENTITY gzipjson_tooltip "GZips JSON file for faster transfers">
 <!ENTITY small_xbel "Export/Send small XBEL">
 <!ENTITY smallxbel_tooltip "Sends/Exports small XBEL file (best for styling)">
-<!ENTITY send_safe "Send safely">
-<!ENTITY sendsafe_tooltip "Receive and merge before every send to safeguard against loss">
-<!ENTITY auto_sort "Sort before Send">
-<!ENTITY autosort_tooltip "Automatically sort bookmarks before sending them">
-<!ENTITY cache "Only synchronize bookmarks if they have changed">
-<!ENTITY cache_tooltip "Do not synchronize bookmarks if they have not changed">
-<!ENTITY cache_pwd "Only synchronize passwords if they have changed">
-<!ENTITY cachepwd_tooltip "Do not synchronize passwords if they have not changed">
-<!ENTITY merge "Merge bookmarks">
-<!ENTITY merge_tooltip "Instead of overwriting, merge the bookmarks received">
-<!ENTITY merge_pwd "Merge passwords received">
-<!ENTITY mergepwd_tooltip "Instead of overwriting, merge the passwords received">
+<!ENTITY auto_sort "Automatically Sort">
+<!ENTITY autosort_tooltip "Automatically sort bookmarks after synchronizing">
+<!ENTITY merge "Merge">
+<!ENTITY receive_merge_tooltip "Merge any changes on the Server">
+<!ENTITY overwrite "Overwrite">
+<!ENTITY receive_overwrite_tooltip "Overwrite bookmarks/passwords with those on Server">
 <!ENTITY profiles "Profiles">
 <!ENTITY profile "Profile">
 <!ENTITY add_profile "Add">
 <!ENTITY addprofile_tooltip "Add a new profile">
 <!ENTITY delete_profile "Delete">
-<!ENTITY deleteprofile_tooltip "Delete the current selected profile">
+<!ENTITY deleteprofile_tooltip "Delete the currently selected profile">
 <!ENTITY move_up "Move up">
 <!ENTITY moveup_tooltip "Move profile up the list">
 <!ENTITY move_down "Move down">
@@ -106,29 +103,26 @@
 <!ENTITY autosync_tooltip "Automatically synchronize when bookmarks change">
 <!ENTITY delay "Delay">
 <!ENTITY syncdelay_tooltip "Delay before automatically synchronizing">
-<!ENTITY auto_receive "Receive on startup">
-<!ENTITY autoreceive_tooltip "Automatically receive bookmarks when browser starts">
+<!ENTITY auto_receive "Sync on startup">
+<!ENTITY autoreceive_tooltip "Automatically synchronize when browser starts">
 <!ENTITY auto_receive_notify "Leave dialog open">
 <!ENTITY autoreceivenotify_tooltip "Dialog remains open when succeeds">
-<!ENTITY auto_send "Send on shutdown">
-<!ENTITY autosend_tooltip "Automatically send bookmarks when browser closed">
-<!ENTITY auto_send_notify "Leave dialog open">
-<!ENTITY autosendnotify_tooltip "Dialog remains open when succeeds">
-<!ENTITY auto_close "Automatically close after send/receive">
-<!ENTITY autoclose_tooltip "Automatically close the dialog after manual send/receive">
+<!ENTITY auto_send "Sync on shutdown">
+<!ENTITY autosend_tooltip "Automatically synchronize when browser closed">
+<!ENTITY auto_close "Automatically close error dialogs">
+<!ENTITY autoclose_tooltip "Automatically close error dialogs after an error occurs">
 <!ENTITY auto_close_delay "seconds">
-<!ENTITY autodelay_tooltip "How long in seconds to remain open before closing">
+<!ENTITY autodelay_tooltip "How long in seconds to remain open">
 <!ENTITY regular_transfer "Synchronise at regular intervals">
-<!ENTITY regulartransfer_tooltip "Regularly performs a receive then a send using the &apos;Send Safely&apos; option">
+<!ENTITY regulartransfer_tooltip "Regularly performs a synchronization">
 <!ENTITY transfer_interval "Interval">
 <!ENTITY transferinterval_tooltip "Time between each synchronization">
 <!ENTITY seconds "seconds">
 <!ENTITY minutes "minutes">
 <!ENTITY hours "hours">
 <!ENTITY timed_transfer "Synchronize at a set time">
-<!ENTITY timedtransfer_tooltip "At the set time performs a receive then a send using the &apos;Send Safely&apos; option">
+<!ENTITY timedtransfer_tooltip "At the set time performs a synchronization">
 <!ENTITY transfer_time "Synchronize time">
-<!ENTITY misc_tab "General">
 <!ENTITY send_all "Synchronize all Places/Bookmarks">
 <!ENTITY sendall_tooltip "Synchronize the whole of the Places/Bookmarks tree">
 <!ENTITY skip_name "Allow different name when receive">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "Show SyncPlaces on Tools menu">
 <!ENTITY backupfolder_button "Select folder to backup to">
 <!ENTITY backupfolder_tooltip "Select the folder used to hold backups">
-<!ENTITY merge_tab "Merging">
-<!ENTITY merge_deletes "Merge deletes">
-<!ENTITY mergedeletes_tooltip "Deal with bookmarks that have been deleted or renamed">
-<!ENTITY comparison "Dealing with duplicates">
-<!ENTITY compare_timestamps "Use timestamps">
-<!ENTITY timestamps_tooltip "Use timestamps to decide which duplicate to keep">
-<!ENTITY compare_local "Use local">
-<!ENTITY local_tooltip "Keep the current item and ignore the one received">
-<!ENTITY compare_remote "Use remote">
-<!ENTITY remote_tooltip "Use the item received and delete the local one">
-<!ENTITY merge_all "Merge everything">
-<!ENTITY mergeall_tooltip "Merge everything that is received">
-<!ENTITY include_places "Places to include ">
-<!ENTITY merge_menu "Bookmarks Menu">
-<!ENTITY mergemenu_tooltip "Include bookmarks menu items when merging">
-<!ENTITY merge_toolbar "Toolbar">
-<!ENTITY mergetoolbar_tooltip "Include toolbar items when merging">
-<!ENTITY merge_unsorted "Unsorted">
-<!ENTITY mergeunsorted_tooltip "Include unsorted items when merging">
-<!ENTITY include_types "Types to include">
-<!ENTITY merge_bookmarks "Bookmarks">
-<!ENTITY mergebookmarks_tooltip "Include new bookmarks when merging">
-<!ENTITY merge_seperators "Separators">
-<!ENTITY mergesep_tooltip "Include new seperators when merging">
-<!ENTITY merge_queries "Searches/Queries">
-<!ENTITY mergequeries_tooltip "Include new searches/queries when merging">
-<!ENTITY merge_livemarks "Livemarks">
-<!ENTITY mergelivemarks_tooltip "Include new live marks when merging">
 <!ENTITY workarounds_tab "Workarounds">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Add your own styling tags below">

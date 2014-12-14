@@ -12,6 +12,10 @@
 <!ENTITY remote "远端">
 <!ENTITY send_button "发送书签/密码">
 <!ENTITY send_tooltip "发送书签/密码到服务器">
+<!ENTITY if_changes "如果发生修改">
+<!ENTITY if_changes_tooltip "本地数据发生改变时发送">
+<!ENTITY immediately "立即">
+<!ENTITY immediately_tooltip "立即发送所有书签/密码">
 <!ENTITY receive_button "接收书签/密码">
 <!ENTITY receive_tooltip "备份并从服务器接收书签/密码">
 <!ENTITY local "本地">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "导入">
 <!ENTITY not_available "选项尚不可用">
 <!ENTITY import_tooltip "从本地 XBEL 文件导入书签">
+<!ENTITY import_merge_tooltip "合并现有的书签">
+<!ENTITY import_overwrite_tooltip "覆盖掉现有的书签">
 <!ENTITY connection_tab "连接">
 <!ENTITY sync_tab "同步">
 <!ENTITY protocol "协议">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "同步 XBEL 文件">
 <!ENTITY sync_passwords "密码">
 <!ENTITY syncpasswords_tooltip "同步密码">
-<!ENTITY sync_icons "更新小图标">
-<!ENTITY syncicons_tooltip "接收/导入时更新其小图标">
 <!ENTITY send_html "发送 HTML">
 <!ENTITY sendhtml_tooltip "同时发送 HTML 文件版本号">
 <!ENTITY send_xbel "发送 XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "密码文件路径">
 <!ENTITY passwordpath_tooltip "服务器上保存的密码文件的路径，例如 /bookmarks/passwords">
 <!ENTITY password_password "密码">
-<!ENTITY basic "基本">
 <!ENTITY encrypt_json "加密 JSON 文件">
 <!ENTITY encryptjson_tooltip "加密 JSON 文件以保证安全">
 <!ENTITY encryptpassword_tooltip "用于实现加密的密码">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "压缩 JSON 文件以便加快文件传送">
 <!ENTITY small_xbel "导出/发送小体积 XBEL 文件">
 <!ENTITY smallxbel_tooltip "发送/导出小体积的 XBEL 文件（最适合用于自定义）">
-<!ENTITY send_safe "安全发送">
-<!ENTITY sendsafe_tooltip "每次发送前先接收和合并以避免数据丢失">
 <!ENTITY auto_sort "发送前先排序">
 <!ENTITY autosort_tooltip "自动整理书签顺序后再发送">
-<!ENTITY cache "仅同步有修改的书签">
-<!ENTITY cache_tooltip "如果书签未修改则不同步">
-<!ENTITY cache_pwd "仅同步有修改的密码">
-<!ENTITY cachepwd_tooltip "如果密码未修改则不同步">
 <!ENTITY merge "合并书签">
-<!ENTITY merge_tooltip "合并接收的书签而不覆盖原有书签">
-<!ENTITY merge_pwd "合并接收的密码">
-<!ENTITY mergepwd_tooltip "合并接收的密码而不覆盖原有密码">
+<!ENTITY receive_merge_tooltip "合并所有服务器发生修改的数据">
+<!ENTITY overwrite "覆盖">
+<!ENTITY receive_overwrite_tooltip "用服务器数据覆盖本地的书签/密码">
 <!ENTITY profiles "配置">
 <!ENTITY profile "配置">
 <!ENTITY add_profile "添加">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "同步成功时仍保持对话框窗口打开">
 <!ENTITY auto_send "关闭时自动发送">
 <!ENTITY autosend_tooltip "浏览器关闭时自动发送书签">
-<!ENTITY auto_send_notify "保持对话框开启">
-<!ENTITY autosendnotify_tooltip "同步成功时仍保持对话框窗口打开">
 <!ENTITY auto_close "发送/接收后自动关闭对话框">
 <!ENTITY autoclose_tooltip "手动发送/接收后自动关闭对话框窗口">
 <!ENTITY auto_close_delay "秒">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "定时同步">
 <!ENTITY timedtransfer_tooltip "使用&apos;安全发送&apos;选项在特定时间接收及发送数据">
 <!ENTITY transfer_time "定时同步时间">
-<!ENTITY misc_tab "常规">
 <!ENTITY send_all "同步所有 Places 下的书签">
 <!ENTITY sendall_tooltip "同步整个 Places 树下的所有书签">
 <!ENTITY skip_name "允许接收不同名文件夹">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "在工具菜单显示 SyncPlaces">
 <!ENTITY backupfolder_button "选择要备份到的文件夹">
 <!ENTITY backupfolder_tooltip "选择用于保存备份文件的文件夹">
-<!ENTITY merge_tab "合并">
-<!ENTITY merge_deletes "合并删除的书签">
-<!ENTITY mergedeletes_tooltip "处理删除或重命名的书签">
-<!ENTITY comparison "处理重复的文件">
-<!ENTITY compare_timestamps "使用时间戳">
-<!ENTITY timestamps_tooltip "使用时间戳来决定要保留的重复书签">
-<!ENTITY compare_local "使用本地数据">
-<!ENTITY local_tooltip "保持当前数据项并忽略接收项">
-<!ENTITY compare_remote "使用远端数据">
-<!ENTITY remote_tooltip "使用所接收的数据项并删除本地项">
-<!ENTITY merge_all "合并一切数据">
-<!ENTITY mergeall_tooltip "合并所接收到的一切数据">
-<!ENTITY include_places "包含的 Places 内容">
-<!ENTITY merge_menu "书签菜单">
-<!ENTITY mergemenu_tooltip "合并时包含书签菜单下的书签">
-<!ENTITY merge_toolbar "书签工具栏">
-<!ENTITY mergetoolbar_tooltip "合并时包含书签工具栏中的书签">
-<!ENTITY merge_unsorted "未排序书签">
-<!ENTITY mergeunsorted_tooltip "合并时包含未排序书签">
-<!ENTITY include_types "包含的书签类型">
-<!ENTITY merge_bookmarks "书签">
-<!ENTITY mergebookmarks_tooltip "合并时包含新的书签">
-<!ENTITY merge_seperators "分隔符">
-<!ENTITY mergesep_tooltip "合并时包含新的书签分隔符">
-<!ENTITY merge_queries "搜索/查询书签">
-<!ENTITY mergequeries_tooltip "合并时包含新的用于搜索/查询的书签">
-<!ENTITY merge_livemarks "实时书签">
-<!ENTITY mergelivemarks_tooltip "合并时包含新的实时书签">
 <!ENTITY workarounds_tab "疑难解决">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "在下面添加您的自定义标签">
