@@ -12,7 +12,7 @@
                    em:maxVersion="3.6.*" />
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="syncplaces@andyhalford.com"
-                   em:version="4.0.3"
+                   em:version="4.0.5"
                    em:type="2"
                    em:iconURL="chrome://syncplaces/skin/icon32.gif"
                    em:optionsURL="chrome://syncplaces/content/options.xul"
