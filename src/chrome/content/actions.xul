@@ -40,7 +40,7 @@
 
 <dialog id="syncplacesOptions"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&sp_title; 4.1.1"
+        title="&sp_title; 4.1.2"
         buttons="accept,cancel"
         buttonlabelaccept="&options_tab;"
         onload="SyncPlacesOptions.onActionLoad();"
