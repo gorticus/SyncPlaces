@@ -12,7 +12,7 @@
                    em:maxVersion="3.6.*" />
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="syncplaces@andyhalford.com"
-                   em:version="4.0.5"
+                   em:version="4.0.7"
                    em:type="2"
                    em:iconURL="chrome://syncplaces/skin/icon32.gif"
                    em:optionsURL="chrome://syncplaces/content/options.xul"
@@ -28,7 +28,7 @@
     <em:translator>Team erweiterungen.de (de-DE)</em:translator>
     <em:translator>Wawuschel (de-DE)</em:translator>
     <em:translator>Proyecto Nave (es-ES)</em:translator>
-    <em:translator>Ed Manheim (nl-NL)</em:translator>
+    <em:translator>Ed Manheim (nl)</em:translator>
     <em:translator>Edgard Dias Magalhaes (pt-BR)</em:translator>
     <em:translator>Christiansen (da-DK)</em:translator>
     <em:targetApplication RDF:resource="rdf:#$2Lqmu1"/>
