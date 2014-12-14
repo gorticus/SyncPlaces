@@ -18,7 +18,7 @@
    - The Original Code is the SyncPlaces extension.
    -
    - The Initial Developer of the Original Code is Andy Halford.
-   - Portions created by the Initial Developer are Copyright (C) 2008-2011
+   - Portions created by the Initial Developer are Copyright (C) 2008-2012
    - the Initial Developer. All Rights Reserved.
    -
    - Contributor(s):
@@ -64,14 +64,42 @@
 					insertbefore="organizeBookmarksSeparator"
 					tooltiptext="&sp_tooltip;">
 		  <menupopup id="syncplaces-bmenu-menupopup">
-				<menuitem id="syncplaces-options"
+				<menuitem id="syncplaces-boptions"
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-sync"
-									label="&sp;"
-									oncommand="SyncPlaces.menuSync();"
+				<menuitem id="syncplaces-bsync"
+									label="&sync_type;"
+									oncommand="SyncPlacesSend.menuSync();"
 									tooltiptext="&sp_tooltip;"/>
+				<menu id="syncplaces-bsendmenu"
+							label="&send_button;"
+							tooltiptext="&send_tooltip;">
+					<menupopup id="syncplaces-bsendmenu-menupopup">
+						<menuitem id="syncplaces-bifmenu"
+											label="&if_changes;"
+											oncommand="SyncPlacesSend.menuSend(true);"
+											tooltiptext="&if_changes_tooltip;"/>
+						<menuitem id="syncplaces-bimmenu"
+											label="&immediately;"
+											oncommand="SyncPlacesSend.menuSend(false);"
+											tooltiptext="&immediately_tooltip;"/>
+					</menupopup>
+				</menu>
+				<menu id="syncplaces-breceivemenu"
+							label="&receive_button;"
+							tooltiptext="&receive_tooltip;">
+					<menupopup id="syncplaces-breceivemenu-menupopup">
+						<menuitem id="syncplaces-bmemenu"
+											label="&merge;"
+											oncommand="SyncPlacesReceive.menuReceive(true);"
+											tooltiptext="&receive_merge_tooltip;"/>
+						<menuitem id="syncplaces-bovmenu"
+											label="&overwrite;"
+											oncommand="SyncPlacesReceive.menuReceive(false);"
+											tooltiptext="&receive_overwrite_tooltip;"/>
+					</menupopup>
+				</menu>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -81,15 +109,43 @@
 					label="&sp_title;"
 					insertafter="appmenu_showAllBookmarks"
 					tooltiptext="&sp_tooltip;">
-		  <menupopup id="syncplaces-bmenu-menupopup">
+		  <menupopup id="syncplaces-amenu-menupopup">
 				<menuitem id="syncplaces-options"
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-sync"
-									label="&sp;"
-									oncommand="SyncPlaces.menuSync();"
+				<menuitem id="syncplaces-async"
+									label="&sync_type;"
+									oncommand="SyncPlacesSend.menuSync();"
 									tooltiptext="&sp_tooltip;"/>
+				<menu id="syncplaces-asendmenu"
+							label="&send_button;"
+							tooltiptext="&send_tooltip;">
+					<menupopup id="syncplaces-asendmenu-menupopup">
+						<menuitem id="syncplaces-aifmenu"
+											label="&if_changes;"
+											oncommand="SyncPlacesSend.menuSend(true);"
+											tooltiptext="&if_changes_tooltip;"/>
+						<menuitem id="syncplaces-aimmenu"
+											label="&immediately;"
+											oncommand="SyncPlacesSend.menuSend(false);"
+											tooltiptext="&immediately_tooltip;"/>
+					</menupopup>
+				</menu>
+				<menu id="syncplaces-areceivemenu"
+							label="&receive_button;"
+							tooltiptext="&receive_tooltip;">
+					<menupopup id="syncplaces-areceivemenu-menupopup">
+						<menuitem id="syncplaces-amemenu"
+											label="&merge;"
+											oncommand="SyncPlacesReceive.menuReceive(true);"
+											tooltiptext="&receive_merge_tooltip;"/>
+						<menuitem id="syncplaces-aovmenu"
+											label="&overwrite;"
+											oncommand="SyncPlacesReceive.menuReceive(false);"
+											tooltiptext="&receive_overwrite_tooltip;"/>
+					</menupopup>
+				</menu>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -101,14 +157,42 @@
 					insertbefore="organizeBookmarksSeparator"
 					tooltiptext="&sp_tooltip;">
 		  <menupopup id="syncplaces-bmenu-menupopup">
-				<menuitem id="syncplaces-options"
+				<menuitem id="syncplaces-boptions"
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-sync"
-									label="&sp;"
-									oncommand="SyncPlaces.menuSync();"
+				<menuitem id="syncplaces-bsync"
+									label="&sync_type;"
+									oncommand="SyncPlacesSend.menuSync();"
 									tooltiptext="&sp_tooltip;"/>
+				<menu id="syncplaces-bsendmenu"
+							label="&send_button;"
+							tooltiptext="&send_tooltip;">
+					<menupopup id="syncplaces-bsendmenu-menupopup">
+						<menuitem id="syncplaces-bifmenu"
+											label="&if_changes;"
+											oncommand="SyncPlacesSend.menuSend(true);"
+											tooltiptext="&if_changes_tooltip;"/>
+						<menuitem id="syncplaces-bimmenu"
+											label="&immediately;"
+											oncommand="SyncPlacesSend.menuSend(false);"
+											tooltiptext="&immediately_tooltip;"/>
+					</menupopup>
+				</menu>
+				<menu id="syncplaces-breceivemenu"
+							label="&receive_button;"
+							tooltiptext="&receive_tooltip;">
+					<menupopup id="syncplaces-breceivemenu-menupopup">
+						<menuitem id="syncplaces-bmemenu"
+											label="&merge;"
+											oncommand="SyncPlacesReceive.menuReceive(true);"
+											tooltiptext="&receive_merge_tooltip;"/>
+						<menuitem id="syncplaces-bovmenu"
+											label="&overwrite;"
+											oncommand="SyncPlacesReceive.menuReceive(false);"
+											tooltiptext="&receive_overwrite_tooltip;"/>
+					</menupopup>
+				</menu>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -121,14 +205,42 @@
 					insertafter="devToolsSeparator"
 					tooltiptext="&sp_tooltip;">
 		  <menupopup id="syncplaces-tmenu-menupopup">
-				<menuitem id="syncplaces-options"
+				<menuitem id="syncplaces-toptions"
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-sync"
-									label="&sp;"
-									oncommand="SyncPlaces.menuSync();"
+				<menuitem id="syncplaces-tsync"
+									label="&sync_type;"
+									oncommand="SyncPlacesSend.menuSync();"
 									tooltiptext="&sp_tooltip;"/>
+				<menu id="syncplaces-tsendmenu"
+							label="&send_button;"
+							tooltiptext="&send_tooltip;">
+					<menupopup id="syncplaces-tsendmenu-menupopup">
+						<menuitem id="syncplaces-tifmenu"
+											label="&if_changes;"
+											oncommand="SyncPlacesSend.menuSend(true);"
+											tooltiptext="&if_changes_tooltip;"/>
+						<menuitem id="syncplaces-timmenu"
+											label="&immediately;"
+											oncommand="SyncPlacesSend.menuSend(false);"
+											tooltiptext="&immediately_tooltip;"/>
+					</menupopup>
+				</menu>
+				<menu id="syncplaces-treceivemenu"
+							label="&receive_button;"
+							tooltiptext="&receive_tooltip;">
+					<menupopup id="syncplaces-treceivemenu-menupopup">
+						<menuitem id="syncplaces-tmemenu"
+											label="&merge;"
+											oncommand="SyncPlacesReceive.menuReceive(true);"
+											tooltiptext="&receive_merge_tooltip;"/>
+						<menuitem id="syncplaces-tovmenu"
+											label="&overwrite;"
+											oncommand="SyncPlacesReceive.menuReceive(false);"
+											tooltiptext="&receive_overwrite_tooltip;"/>
+					</menupopup>
+				</menu>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -140,14 +252,42 @@
 					insertafter="devToolsSeparator"
 					tooltiptext="&sp_tooltip;">
 		  <menupopup id="syncplaces-tmenu-menupopup">
-				<menuitem id="syncplaces-options"
+				<menuitem id="syncplaces-toptions"
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-sync"
-									label="&sp;"
-									oncommand="SyncPlaces.menuSync();"
+				<menuitem id="syncplaces-tsync"
+									label="&sync_type;"
+									oncommand="SyncPlacesSend.menuSync();"
 									tooltiptext="&sp_tooltip;"/>
+				<menu id="syncplaces-tsendmenu"
+							label="&send_button;"
+							tooltiptext="&send_tooltip;">
+					<menupopup id="syncplaces-tsendmenu-menupopup">
+						<menuitem id="syncplaces-tifmenu"
+											label="&if_changes;"
+											oncommand="SyncPlacesSend.menuSend(true);"
+											tooltiptext="&if_changes_tooltip;"/>
+						<menuitem id="syncplaces-timmenu"
+											label="&immediately;"
+											oncommand="SyncPlacesSend.menuSend(false);"
+											tooltiptext="&immediately_tooltip;"/>
+					</menupopup>
+				</menu>
+				<menu id="syncplaces-treceivemenu"
+							label="&receive_button;"
+							tooltiptext="&receive_tooltip;">
+					<menupopup id="syncplaces-treceivemenu-menupopup">
+						<menuitem id="syncplaces-tmemenu"
+											label="&merge;"
+											oncommand="SyncPlacesReceive.menuReceive(true);"
+											tooltiptext="&receive_merge_tooltip;"/>
+						<menuitem id="syncplaces-tovmenu"
+											label="&overwrite;"
+											oncommand="SyncPlacesReceive.menuReceive(false);"
+											tooltiptext="&receive_overwrite_tooltip;"/>
+					</menupopup>
+				</menu>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -166,9 +306,37 @@
 									oncommand="SyncPlaces.actionsOpen(); event.stopPropagation();"
 									tooltiptext="&options_tab;"/>
 				<menuitem id="syncplaces-sync"
-									label="&sp;"
-									oncommand="SyncPlaces.menuSync(); event.stopPropagation();"
+									label="&sync_type;"
+									oncommand="SyncPlacesSend.menuSync(); event.stopPropagation();"
 									tooltiptext="&sp_tooltip;"/>
+				<menu id="syncplaces-sendmenu"
+							label="&send_button;"
+							tooltiptext="&send_tooltip;">
+					<menupopup id="syncplaces-sendmenu-menupopup">
+						<menuitem id="syncplaces-ifmenu"
+											label="&if_changes;"
+											oncommand="SyncPlacesSend.menuSend(true); event.stopPropagation();"
+											tooltiptext="&if_changes_tooltip;"/>
+						<menuitem id="syncplaces-immenu"
+											label="&immediately;"
+											oncommand="SyncPlacesSend.menuSend(false); event.stopPropagation();"
+											tooltiptext="&immediately_tooltip;"/>
+					</menupopup>
+				</menu>
+				<menu id="syncplaces-receivemenu"
+							label="&receive_button;"
+							tooltiptext="&receive_tooltip;">
+					<menupopup id="syncplaces-receivemenu-menupopup">
+						<menuitem id="syncplaces-memenu"
+											label="&merge;"
+											oncommand="SyncPlacesReceive.menuReceive(true); event.stopPropagation();"
+											tooltiptext="&receive_merge_tooltip;"/>
+						<menuitem id="syncplaces-ovmenu"
+											label="&overwrite;"
+											oncommand="SyncPlacesReceive.menuReceive(false); event.stopPropagation();"
+											tooltiptext="&receive_overwrite_tooltip;"/>
+					</menupopup>
+				</menu>
 			</menupopup>
 		</toolbarbutton>
 	</toolbarpalette>

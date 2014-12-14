@@ -19,7 +19,7 @@
    - The Original Code is the SyncPlaces extension.
    -
    - The Initial Developer of the Original Code is Andy Halford.
-   - Portions created by the Initial Developer are Copyright (C) 2008-2011
+   - Portions created by the Initial Developer are Copyright (C) 2008-2012
    - the Initial Developer. All Rights Reserved.
    -
    - Contributor(s):
@@ -40,7 +40,7 @@
 
 <dialog id="syncplacesOptions"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&sp_title; 5.0.1"
+        title="&sp_title; 5.1.0"
         buttons="accept,cancel"
         buttonlabelaccept="&options_tab;"
         onload="SyncPlacesOptions.onActionLoad();"
@@ -80,14 +80,14 @@
 		<hbox>
 			<button id="send" type="menu" label="&send_button;" flex="1" tooltiptext="&send_tooltip;">
 				<menupopup>
-					<menuitem label="&if_changes;" value="bookmarks" tooltiptext="&if_changes_tooltip;" oncommand="SyncPlacesSend.manualSend(true);"/>
-					<menuitem label="&immediately;" value="passwords" tooltiptext="&immediately_tooltip;" oncommand="SyncPlacesSend.manualSend(false);"/>
+					<menuitem label="&if_changes;" tooltiptext="&if_changes_tooltip;" oncommand="SyncPlacesSend.manualSend(true);"/>
+					<menuitem label="&immediately;" tooltiptext="&immediately_tooltip;" oncommand="SyncPlacesSend.manualSend(false);"/>
 				</menupopup>
 			</button>
 			<button id="receive" type="menu" label="&receive_button;" flex="1" tooltiptext="&receive_tooltip;">
 				<menupopup>
-					<menuitem label="&merge;" value="bookmarks" tooltiptext="&receive_merge_tooltip;" oncommand="SyncPlacesReceive.manualReceive(true);"/>
-					<menuitem label="&overwrite;" value="passwords" tooltiptext="&receive_overwrite_tooltip;" oncommand="SyncPlacesReceive.manualReceive(false);"/>
+					<menuitem label="&merge;" tooltiptext="&receive_merge_tooltip;" oncommand="SyncPlacesReceive.manualReceive(true);"/>
+					<menuitem label="&overwrite;" tooltiptext="&receive_overwrite_tooltip;" oncommand="SyncPlacesReceive.manualReceive(false);"/>
 				</menupopup>
 			</button>
 		</hbox>
@@ -114,16 +114,16 @@
 		<hbox>
 			<button id="backup" type="menu" label="&backup_button;" flex="1" tooltiptext="&backup_tooltip;">
 				<menupopup>
-					<menuitem label="&bookmarks;" value="bookmarks" oncommand="SyncPlaces.saveBookmarks(true, SyncPlaces.JSON, false, null);"/>
-					<menuitem label="&passwords;" value="passwords" oncommand="SyncPlacesPasswords.savePasswords();"/>
-					<menuitem label="&both;" value="both" oncommand="SyncPlacesOptions.backupAll();"/>
+					<menuitem label="&bookmarks;" oncommand="SyncPlaces.saveBookmarks(true, SyncPlaces.JSON, false, null);"/>
+					<menuitem label="&passwords;" oncommand="SyncPlacesPasswords.savePasswords();"/>
+					<menuitem label="&both;" oncommand="SyncPlacesOptions.backupAll();"/>
 				</menupopup>
 			</button>
 			<button id="restore" type="menu" label="&restore_button;" flex="1" tooltiptext="&restore_tooltip;">
 				<menupopup>
-					<menuitem label="&bookmarks;" value="bookmarks" oncommand="SyncPlaces.restoreBookmarks(null, null, true, false);"/>
-					<menuitem label="&passwords;" value="passwords" oncommand="SyncPlacesPasswords.restorePasswords();"/>
-					<menuitem label="&both;" value="both" oncommand="SyncPlacesOptions.restoreAll();"/>
+					<menuitem label="&bookmarks;" oncommand="SyncPlaces.restoreBookmarks(null, null, true, false);"/>
+					<menuitem label="&passwords;" oncommand="SyncPlacesPasswords.restorePasswords();"/>
+					<menuitem label="&both;" oncommand="SyncPlacesOptions.restoreAll();"/>
 				</menupopup>
 			</button>
 		</hbox>
@@ -134,8 +134,8 @@
 			<button id="exportXbel" label="&export_button;" oncommand="SyncPlaces.exportBookmarks();" tooltiptext="&export_tooltip;" flex="1" />
 			<button id="importXbel" type="menu" label="&import_button;" tooltiptext="&import_tooltip;" flex="1">
 				<menupopup>
-					<menuitem label="&merge;" value="bookmarks" tooltiptext="&import_merge_tooltip;" oncommand="SyncPlaces.importBookmarks(true);" />
-					<menuitem label="&overwrite;" value="passwords" tooltiptext="&import_overwrite_tooltip;" oncommand="SyncPlaces.importBookmarks(false);"/>
+					<menuitem label="&merge;" tooltiptext="&import_merge_tooltip;" oncommand="SyncPlaces.importBookmarks(true);" />
+					<menuitem label="&overwrite;" tooltiptext="&import_overwrite_tooltip;" oncommand="SyncPlaces.importBookmarks(false);"/>
 				</menupopup>
 			</button>
 		</hbox>

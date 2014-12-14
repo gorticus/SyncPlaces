@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -52,6 +52,7 @@ SyncPlacesEncryptThread.prototype = {
     } catch(exception) {
 			SyncPlacesNetworking.running = false;
       Components.utils.reportError(exception);
+			SyncPlacesIO.log(exception);
     }
   },
 
@@ -113,6 +114,7 @@ SyncPlacesDecryptThread.prototype = {
     } catch(exception) {
 			SyncPlacesNetworking.running = false;
       Components.utils.reportError(exception);
+			SyncPlacesIO.log(exception);
     }
   },
 

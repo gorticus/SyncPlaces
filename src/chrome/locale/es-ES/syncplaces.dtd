@@ -12,10 +12,10 @@
 <!ENTITY remote "Remoto">
 <!ENTITY send_button "Enviar marcadores/contraseñas">
 <!ENTITY send_tooltip "Enviar los marcadores y contraseñas al servidor">
-<!ENTITY if_changes "If changes">
-<!ENTITY if_changes_tooltip "Send if any local changes">
-<!ENTITY immediately "Immediately">
-<!ENTITY immediately_tooltip "Immediately send all bookmarks/passwords">
+<!ENTITY if_changes "si cambia">
+<!ENTITY if_changes_tooltip "Enviar si hay cambios">
+<!ENTITY immediately "Inmediatamente">
+<!ENTITY immediately_tooltip "Enviar inmediatamente todas las contraseñas y marcadores">
 <!ENTITY receive_button "Recibir marcadores/contraseñas">
 <!ENTITY receive_tooltip "Hace una copia de seguridad y recibe los marcadores y contraseñas del servidor">
 <!ENTITY local "Local">
@@ -32,8 +32,8 @@
 <!ENTITY import_button "Importar">
 <!ENTITY not_available "Opción no disponible">
 <!ENTITY import_tooltip "Importar los marcadores de un archivo local XBEL">
-<!ENTITY import_merge_tooltip "Merge with existing bookmarks">
-<!ENTITY import_overwrite_tooltip "Overwrite existing bookmarks">
+<!ENTITY import_merge_tooltip "Mezclar con los marcadores existentes">
+<!ENTITY import_overwrite_tooltip "Sobreescribir los marcadores existentes">
 <!ENTITY connection_tab "Conexión">
 <!ENTITY sync_tab "Sincronización">
 <!ENTITY protocol "Protocolo:">
@@ -81,9 +81,9 @@
 <!ENTITY auto_sort "Ordenar antes de enviar">
 <!ENTITY autosort_tooltip "Ordenar automáticamente cuando cambien los marcadores antes de enviarlos">
 <!ENTITY merge "Mezclar marcadores">
-<!ENTITY receive_merge_tooltip "Merge any changes on the Server">
-<!ENTITY overwrite "Overwrite">
-<!ENTITY receive_overwrite_tooltip "Overwrite bookmarks/passwords with those on Server">
+<!ENTITY receive_merge_tooltip "Mezclar todos los cambios en el servidor">
+<!ENTITY overwrite "Sobreescribir">
+<!ENTITY receive_overwrite_tooltip "Sobreescribir los marcadores/contraseñas con los que hay en el servidor">
 <!ENTITY profiles "Perfiles">
 <!ENTITY profile "Perfil">
 <!ENTITY add_profile "Añadir">

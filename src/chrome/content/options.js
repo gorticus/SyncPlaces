@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -46,7 +46,7 @@ var SyncPlacesOptions = {
 	encryptUser: 'syncplaces-encryption',
 	passwordUser: 'syncplaces-password',
 	prefsFile: 'syncplaces_prefs.json',
-	version: "5.0.1",
+	version: "5.1.0",
 
 	onActionLoad: function() {
 		this.lastTransferTimes(true);
@@ -621,7 +621,7 @@ var SyncPlacesOptions = {
 		}
 	},
 
-	//Log message to console
+	//Log message to console (not used anymore)
 	message: function(message) {
 	  var consoleService = this.Cc["@mozilla.org/consoleservice;1"]
                              .getService(this.Ci.nsIConsoleService);
@@ -635,6 +635,7 @@ var SyncPlacesOptions = {
 		//If there's an exception log it and display it
 		if (exception) {
 			Components.utils.reportError(exception);
+			SyncPlacesIO.log(exception);
 			if (key) SyncPlaces.timedStatus(key, timeout, true);
 		}
 

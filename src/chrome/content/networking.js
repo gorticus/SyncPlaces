@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -46,6 +46,12 @@ var SyncPlacesNetworking = {
 		transferThread.prototype = {
 			run: function() {
 				try {
+					//Create the log
+					SyncPlacesIO.createLog();
+					var bundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
+													 .getService(Components.interfaces.nsIStringBundleService)
+													 .createBundle("chrome://syncplaces/locale/syncplaces.properties");
+
 					//Parameter passing from spObserver doesn't seem to work
 					//so use a preference instead
 					SyncPlacesOptions.shutdown = false;
@@ -61,31 +67,42 @@ var SyncPlacesNetworking = {
 					if (autoSend) {
 						SyncPlacesOptions.shutdown = true;
 						SyncPlacesOptions.prefs.setBoolPref("startAutoSend", false);
+						SyncPlacesIO.log(bundle.GetStringFromName('sync_on_shutdown'));
 						SyncPlacesSend.send(true, true);
 					}
 					else if (autoReceive) {
 						//If 'send safe' on startup then do a send immediately afterwards
 						if (SyncPlacesOptions.prefs.getBoolPref("send_safe")) {
 							SyncPlacesOptions.prefs.setBoolPref("startAutoSend", false);
+							SyncPlacesIO.log(bundle.GetStringFromName('sync_on_startup'));
 							SyncPlacesSend.send(true, true);
 						}
 						else {
 							SyncPlacesOptions.prefs.setBoolPref("startAutoReceive", false);
+							SyncPlacesIO.log(bundle.GetStringFromName('receive_on_Startup'));
 							SyncPlacesReceive.receive(true, false);
 						}
 					}
 
 					else if (manualSend) {
 						SyncPlacesOptions.prefs.setBoolPref("startManualSend", false);
+						if (!SyncPlacesOptions.prefs.getBoolPref("send_safe")) {
+							SyncPlacesIO.log(bundle.GetStringFromName(SyncPlacesOptions.prefs.getBoolPref("cache") ? 'send_if_changes' : 'send_immediately'));
+						}
+						else {
+							SyncPlacesIO.log(bundle.GetStringFromName('synchronise'));
+						}
 						SyncPlacesSend.send(false, true);
 					}
 					else if (manualReceive) {
 						SyncPlacesOptions.prefs.setBoolPref("startManualReceive", false);
+						SyncPlacesIO.log(bundle.GetStringFromName(SyncPlacesOptions.prefs.getBoolPref("merge") ? 'receive_and_merge': 'receive_and_overwrite'));
 						SyncPlacesReceive.receive(false, false);
 					}
 				} catch(exception) {
 					SyncPlacesNetworking.running = false;
 					Components.utils.reportError(exception);
+					SyncPlacesIO.log(exception);
 				}
 			},
 
@@ -215,9 +232,9 @@ var SyncPlacesComms = {
 
 		//Connection details
 		var uri = SyncPlacesIO.makeURI(uriString + (this.sp_compress ? ".gz" : ""));
-if (this.sp_debug) SyncPlacesOptions.message("Normal URI: " + uri.spec);
+if (this.sp_debug) SyncPlacesIO.log("Normal URI: " + uri.spec);
 		var furi = SyncPlacesIO.makeURI(fulluri + (this.sp_compress ? ".gz" : ""));
-if (this.sp_debug) SyncPlacesOptions.message("Full URI: " + furi.spec);
+if (this.sp_debug) SyncPlacesIO.log("Full URI: " + furi.spec);
 
 		//If skipping authentication altogether force inline use
 		//file and ftp schemes don't require authentication so move on
@@ -246,6 +263,11 @@ if (this.sp_debug) SyncPlacesOptions.message("Full URI: " + furi.spec);
 	transmit: function(uri) {
 		var ioService = this.Cc["@mozilla.org/network/io-service;1"]
 												.getService(this.Ci.nsIIOService);
+		try {
+			var bundle = this.Cc["@mozilla.org/intl/stringbundle;1"]
+											 .getService(this.Ci.nsIStringBundleService)
+											 .createBundle("chrome://syncplaces/locale/syncplaces.properties");
+		} catch(e) {}
 		this.sp_uri = uri;
 
 		if (this.sp_send)
@@ -267,17 +289,10 @@ if (this.sp_debug) SyncPlacesOptions.message("Full URI: " + furi.spec);
 			//If compressing then write out as .gz file
 			//and read it back in as a stream
 			if (this.sp_compress) {
-if (this.sp_debug) SyncPlacesOptions.message("Using compression");
+if (this.sp_debug) SyncPlacesIO.log("Using compression");
 				this.convertGzip(stream, true);
 				stream = this.getGzipFile();
 			}
-
-			//Transfer text
-			try {
-				var bundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
-												.getService(Components.interfaces.nsIStringBundleService)
-												.createBundle("chrome://syncplaces/locale/syncplaces.properties");
-			} catch(e) {}
 
 			//Set the content type appropriately
 			var contentType = "";
@@ -285,31 +300,46 @@ if (this.sp_debug) SyncPlacesOptions.message("Using compression");
 				case SyncPlaces.JSON:
 					contentType = this.sp_compress ? "application/x-gzip" :
 															 			 			 "application/json; charset='UTF-8'";
-					if (bundle) this.sp_status = bundle.GetStringFromName('sending_bookmarks');
+					if (bundle) {
+						this.sp_status = bundle.GetStringFromName('sending_bookmarks');
+						SyncPlacesIO.log(this.sp_status);
+					}
 				break;
 
 				case SyncPlaces.HASH:
 				case SyncPlaces.PWD_HASH:
 					contentType = "text/plain; charset='UTF-8'";
-					if (bundle) this.sp_status = bundle.GetStringFromName('sending_hash');
+					if (bundle) {
+						this.sp_status = bundle.GetStringFromName('sending_hash');
+						SyncPlacesIO.log(this.sp_status);
+					}
 				break;
 
 				case SyncPlaces.HTML:
 					contentType = "text/html; charset='UTF-8'";
-					if (bundle) this.sp_status = bundle.GetStringFromName('sending_html');
+					if (bundle) {
+						this.sp_status = bundle.GetStringFromName('sending_html');
+						SyncPlacesIO.log(this.sp_status);
+					}
 				break;
 
 				case SyncPlaces.XBEL:
 					contentType = "text/xml; charset='UTF-8'";
-					if (bundle) this.sp_status = bundle.GetStringFromName('sending_xbel');
+					if (bundle) {
+						this.sp_status = bundle.GetStringFromName('sending_xbel');
+						SyncPlacesIO.log(this.sp_status);
+					}
 				break;
 
 				case SyncPlaces.PWD:
 					contentType = "text/xml; charset='UTF-8'";
-					if (bundle) this.sp_status = bundle.GetStringFromName('sending_passwords');
+					if (bundle) {
+						this.sp_status = bundle.GetStringFromName('sending_passwords');
+						SyncPlacesIO.log(this.sp_status);
+					}
 				break;
 			}
-if (this.sp_debug) SyncPlacesOptions.message("Sending type: " + this.sp_type);
+if (this.sp_debug) SyncPlacesIO.log("Sending type: " + this.sp_type);
 
 			//Get an upload channel to send through
 			this.sp_channel.setUploadStream(stream, contentType, -1);
@@ -318,7 +348,7 @@ if (this.sp_debug) SyncPlacesOptions.message("Sending type: " + this.sp_type);
 			//(normally used with ftp)
 			var technique = SyncPlacesOptions.prefs.getCharPref("send_mechanism");
 			if (technique == 'old_send') {
-if (this.sp_debug) SyncPlacesOptions.message("Using 'old_send'");
+if (this.sp_debug) SyncPlacesIO.log("Using 'old_send'");
 				this.sp_streamLoader = this.Cc["@mozilla.org/network/stream-loader;1"]
       														 .createInstance(this.Ci.nsIStreamLoader);
       	this.sp_streamLoader.init(this);
@@ -328,7 +358,7 @@ if (this.sp_debug) SyncPlacesOptions.message("Using 'old_send'");
 				//Old conversion system? - required for FTP with ISA server
 				//or else browser hangs
 				if (technique == 'old_send_conversion')
-if (this.sp_debug) SyncPlacesOptions.message("Using 'old_send_conversion'");
+if (this.sp_debug) SyncPlacesIO.log("Using 'old_send_conversion'");
 					this.sp_normal_conversion = false;
 
 				//NB See MDC: This will do a 'PUT' by default with http
@@ -340,41 +370,47 @@ if (this.sp_debug) SyncPlacesOptions.message("Using 'old_send_conversion'");
 		else {
 			//Transfer text
 			try {
-				var bundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
-												.getService(Components.interfaces.nsIStringBundleService)
-												.createBundle("chrome://syncplaces/locale/syncplaces.properties");
 				switch(this.sp_type) {
 					case SyncPlaces.JSON:
 						this.sp_status = bundle.GetStringFromName('receiving_bookmarks');
+						SyncPlacesIO.log(this.sp_status);
 					break;
 
 					case SyncPlaces.HASH:
-					case SyncPlaces.PWD_HASH:
 						this.sp_status = bundle.GetStringFromName('receiving_hash');
+						SyncPlacesIO.log(this.sp_status);
+					break;
+
+					case SyncPlaces.PWD_HASH:
+						this.sp_status = bundle.GetStringFromName('receiving_pwd_hash');
+						SyncPlacesIO.log(this.sp_status);
 					break;
 
 					case SyncPlaces.HTML:
 						this.sp_status = bundle.GetStringFromName('receiving_html');
+						SyncPlacesIO.log(this.sp_status);
 					break;
 
 					case SyncPlaces.XBEL:
 						this.sp_status = bundle.GetStringFromName('receiving_xbel');
+						SyncPlacesIO.log(this.sp_status);
 					break;
 
 					case SyncPlaces.PWD:
 						this.sp_status = bundle.GetStringFromName('receiving_passwords');
+						SyncPlacesIO.log(this.sp_status);
 					break;
 				}
 			} catch(e) {}
-if (this.sp_debug) SyncPlacesOptions.message("Receiving type: " + this.sp_type);
+if (this.sp_debug) SyncPlacesIO.log("Receiving type: " + this.sp_type);
 
 			//Option to try the old style approach when receiving ftp
 			//doesn't always attempt to connect for me though!
 			var technique = SyncPlacesOptions.prefs.getCharPref("receive_mechanism");
 			if (technique == 'old_receive') {
-if (this.sp_debug) SyncPlacesOptions.message("Using 'old_receive'");
+if (this.sp_debug) SyncPlacesIO.log("Using 'old_receive'");
 				if (this.sp_compress) {
-if (this.sp_debug) SyncPlacesOptions.message("Using compression");
+if (this.sp_debug) SyncPlacesIO.log("Using compression");
 					this.sp_old_gzip = true;
 				}
       	this.sp_streamLoader = this.Cc["@mozilla.org/network/stream-loader;1"]
@@ -388,7 +424,7 @@ if (this.sp_debug) SyncPlacesOptions.message("Using compression");
 				//Old conversion system?
 				//required for FTP with ISA server or else browser hangs
 				if (technique == 'old_receive_conversion') {
-if (this.sp_debug) SyncPlacesOptions.message("Using 'old_receive_conversion'");
+if (this.sp_debug) SyncPlacesIO.log("Using 'old_receive_conversion'");
 					this.sp_normal_conversion = false;
 				}
 
@@ -398,7 +434,7 @@ if (this.sp_debug) SyncPlacesOptions.message("Using 'old_receive_conversion'");
 
 				//Receiving a gzip file
 				if (this.sp_compress) {
-if (this.sp_debug) SyncPlacesOptions.message("Using compression");
+if (this.sp_debug) SyncPlacesIO.log("Using compression");
 					var converterService = this.Cc["@mozilla.org/streamConverters;1"]
 																		 .getService(this.Ci
 																		 							 .nsIStreamConverterService);
@@ -734,12 +770,12 @@ var SyncPlacesAuthListener = {
 													 		 .QueryInterface(this.Ci.nsIHttpChannel);
 		this.sp_channel.notificationCallbacks = this;
 
-if (this.sp_debug) SyncPlacesOptions.message("Challenge: " + this.sp_challenge);
+if (this.sp_debug) SyncPlacesIO.log("Challenge: " + this.sp_challenge);
 
 		//Add authentication info
 		//Prompt for proxy authentication dealt with in getInterface()
 		if (this.sp_challenge && !this.sp_isProxy) {
-if (this.sp_debug) SyncPlacesOptions.message("Adding authorisation");
+if (this.sp_debug) SyncPlacesIO.log("Adding authorisation");
 			var authenticator = this.Cc["@mozilla.org/network/http-authenticator;1?scheme="
 																	+ this.sp_authType]
 															.getService(this.Ci.nsIHttpAuthenticator);
@@ -755,7 +791,7 @@ if (this.sp_debug) SyncPlacesOptions.message("Adding authorisation");
 				for (var i = 0; i < logins.length; i++) {
 					this.sp_userid = logins[i].username;
 					this.sp_password = logins[i].password;
-if (this.sp_debug) SyncPlacesOptions.message("Found login: " + logins[i].username + ":" + logins[i].password + ":" + logins[i].httpRealm);
+if (this.sp_debug) SyncPlacesIO.log("Found login: " + logins[i].username + ":" + logins[i].password + ":" + logins[i].httpRealm);
 				}
 			} catch (exception) {
 //Components.utils.reportError(e);
@@ -789,25 +825,25 @@ if (this.sp_debug) SyncPlacesOptions.message("Found login: " + logins[i].usernam
 	onStopRequest: function(aRequest, aContext, aStatusCode) {
 	  var challenges = [];
 	  this.sp_isProxy = false;
-if (this.sp_debug) SyncPlacesOptions.message("Status code: " + aStatusCode.toString(16));
+if (this.sp_debug) SyncPlacesIO.log("Status code: " + aStatusCode.toString(16));
 
 		try {
 			var http = aRequest.QueryInterface(this.Ci.nsIHttpChannel);
-if (this.sp_debug) SyncPlacesOptions.message("HTTP Code: " + http.responseStatus);
+if (this.sp_debug) SyncPlacesIO.log("HTTP Code: " + http.responseStatus);
 			if (this.sp_proxyCount == 0 && http.responseStatus == 407) {
 				this.sp_isProxy = true;
 				challenges = http.getResponseHeader("Proxy-Authenticate").split("\n");
 				this.sp_proxyCount++;
-if (this.sp_debug) SyncPlacesOptions.message("Proxy count: " + this.sp_proxyCount);
+if (this.sp_debug) SyncPlacesIO.log("Proxy count: " + this.sp_proxyCount);
 			}
 			else if (this.sp_httpCount == 0 && http.responseStatus == 401) {
 				challenges = http.getResponseHeader("WWW-Authenticate").split("\n");
 				this.sp_httpCount++;
-if (this.sp_debug) SyncPlacesOptions.message("HTTP Count: " + this.sp_httpCount);
+if (this.sp_debug) SyncPlacesIO.log("HTTP Count: " + this.sp_httpCount);
 			}
 			//Failed after multiple tries or bad status
 			else if (http.responseStatus > 299 && http.responseStatus != 404) {
-if (this.sp_debug) SyncPlacesOptions.message("Using inlined method");
+if (this.sp_debug) SyncPlacesIO.log("Using inlined method");
 				//It's possible that furi was populated with the wrong user/pass
 				//in SyncPlaces.getURI (from the wrong realm), so recalc it here
 				this.sp_callback.transmit(SyncPlacesIO.makeURI(
@@ -844,13 +880,13 @@ if (this.sp_debug) SyncPlacesOptions.message("Using inlined method");
 							}
 					}
 				}
-if (this.sp_debug) SyncPlacesOptions.message("Realm: " + this.sp_realm);
-if (this.sp_debug) SyncPlacesOptions.message("Auth type: " + this.sp_authType);
+if (this.sp_debug) SyncPlacesIO.log("Realm: " + this.sp_realm);
+if (this.sp_debug) SyncPlacesIO.log("Auth type: " + this.sp_authType);
 				this.transmit();
 				return;
 			}
 
-if (this.sp_debug) SyncPlacesOptions.message("Summary: " + http.responseStatus + ":" +  http.requestSucceeded + ":" + this.sp_challenge + ":" + this.sp_httpCount + ":" + this.sp_proxyCount);
+if (this.sp_debug) SyncPlacesIO.log("Summary: " + http.responseStatus + ":" +  http.requestSucceeded + ":" + this.sp_challenge + ":" + this.sp_httpCount + ":" + this.sp_proxyCount);
 
 			//If it worked and this was a result of my adding a response
 			//store this in the auth cache system for subsequent requests
@@ -866,7 +902,7 @@ if (this.sp_debug) SyncPlacesOptions.message("Summary: " + http.responseStatus +
 																			this.sp_authType, this.sp_realm, this.sp_uri.path, "",
 																			this.sp_userid, this.sp_password);
 
-if (this.sp_debug) SyncPlacesOptions.message("Auth cached");
+if (this.sp_debug) SyncPlacesIO.log("Auth cached");
 
 				} catch(e) {
 //Components.utils.reportError(e);

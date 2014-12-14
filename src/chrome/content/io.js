@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -36,6 +36,7 @@
 var SyncPlacesIO = {
 	Cc: Components.classes,
 	Ci: Components.interfaces,
+	log: null,
 
 	//Create URI from a string spec
 	makeURI: function(uriString) {
@@ -137,7 +138,7 @@ var SyncPlacesIO = {
 		return this.saveFilePath(filePath, data, true);
 	},
 
-	saveFilePath: function(filePath, data, unique) {
+	saveFilePath: function(filePath, data, unique, append) {
 		//Create the output file
 		if (unique) {
 			filePath.createUnique(this.Ci.nsILocalFile.NORMAL_FILE_TYPE, 0600);
@@ -150,9 +151,13 @@ var SyncPlacesIO = {
 		var fos = this.Cc["@mozilla.org/network/file-output-stream;1"]
 									.createInstance(this.Ci.nsIFileOutputStream);
 		//0x02 = open for writing, 0x08 = create if doesn't exist
+		//0x10 = append
 		//0x20 = overwrite if does exist
 		//0666 = rw-rw-rw-
-		fos.init(filePath, 0x02 | 0x08 | 0x20, 0666, 0);
+		if (append)
+			fos.init(filePath, 0x02 | 0x08 | 0x10, 0666, 0);
+		else
+			fos.init(filePath, 0x02 | 0x08 | 0x20, 0666, 0);
 
 		//In UTF-8
 		var os = this.Cc["@mozilla.org/intl/converter-output-stream;1"]
@@ -217,5 +222,40 @@ var SyncPlacesIO = {
 		} catch(e) {
 		}
 		return false;
+	},
+
+	//Create a log for the current transaction
+	createLog: function() {
+		this.logFilePath = SyncPlacesIO.getDefaultFolder();
+		this.logFilePath.append("logs");
+		var nextLogNo = SyncPlacesOptions.prefs.getIntPref('next_log_no');
+
+		//Delete any existing log with the same log number
+/*		var files = this.logFilePath.directoryEntries;
+		while(files.hasMoreElements()) {
+			var entry = files.getNext();
+			entry.QueryInterface(this.Ci.nsIFile);
+			if (entry.leafName.indexOf("." + nextLogNo + ".log") != -1) {
+				try {
+					entry.remove(false);
+				} catch(e) {
+				}
+				break;
+			}
+		} */
+
+		//Now set the log for subsequent access and save the current timestamp to ensure old one overwritten
+		this.logFilePath.append("log" + "." + nextLogNo + ".txt");
+		this.saveFilePath(this.logFilePath, new Date().toLocaleString() + "\n");
+
+		//Increment/Rollover and Save the next log number
+		if (++nextLogNo > SyncPlacesOptions.prefs.getCharPref('max_log_no')) nextLogNo = 0;
+		SyncPlacesOptions.prefs.setIntPref('next_log_no', nextLogNo);
+	},
+
+	//Append to the current log
+	log: function(data) {
+		if (!this.logFilePath) this.createLog();
+		this.saveFilePath(this.logFilePath, new Date().toLocaleString() + " " + data + "\n", false, true);
 	}
 }

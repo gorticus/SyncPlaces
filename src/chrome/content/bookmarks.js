@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -49,6 +49,11 @@ var SyncPlacesBookmarks = {
 	oneDay: 24*60*60,
 	Cc: Components.classes,
 	Ci: Components.interfaces,
+	QUERY: "query",
+	FOLDER: "folder",
+	SEPARATOR: "separator",
+	BOOKMARK: "bookmark",
+	LIVEMARK: "livemark",
 
 	//Save bookmarks in JSON format in UTF-8 format
 	backupJSON: function(backupFilePath, checkSubFolder, timeout) {
@@ -242,40 +247,7 @@ var SyncPlacesBookmarks = {
 		return true;
 	},
 
-	//Is there an item in the same folder with the same GUID?
-	existingGuid: function(container, guid, type) {
-		var options = PlacesUtils.history.getNewQueryOptions();
-		var query = PlacesUtils.history.getNewQuery();
-		query.setFolders([container], 1);
-		var result = PlacesUtils.history.executeQuery(query, options).root;
-		result.containerOpen = true;
-		//Check all the kids for matches
-		for (var i = 0; i < result.childCount; i++) {
-			var child = result.getChild(i);
-			var existingID = child.itemId;
-
-			if ((type == "sep" && PlacesUtils.nodeIsSeparator(child)) ||
-					(type == "query" && PlacesUtils.nodeIsQuery(child)) )
-			{
-				if (guid == PlacesUtils.bookmarks.getItemGUID(existingID)) {
-					result.containerOpen = false;
-					return existingID;
-				}
-			}
-		}
-		result.containerOpen = false;
-
-		//If here then the guid exists, but the item must be in a different folder
-		//ie it's been moved - so delete it now from existing position so can
-		//be readded to new folder without a guid conflict
-		var id = PlacesUtils.bookmarks.getItemIdForGUID(guid);
-		PlacesUtils.bookmarks.removeItem(id);
-
-		//Still return null, so that item gets added to new folder
-		return null;
-	},
-
-	//Is there a seperator that would be next to this one if we were to add it
+	//Is there a separator that would be next to this one if we were to add it
 	//If so then dont add it
 	existingSeparator: function(container, index, node, mergeDeletes,
 															lastSend, receivedIds, useTimestamps,
@@ -337,7 +309,7 @@ var SyncPlacesBookmarks = {
 
 	//Match folders on parent and title
 	//(if more then one matching then match on index)
-	existingFolder: function(container, node, index, mergeComparison) {
+	existingFolder: function(container, node, index, mergeComparison, debug) {
 		//Look for folder(s) with the same parent and the same title
 		var options = PlacesUtils.history.getNewQueryOptions();
 		options.excludeItems = true;		//folders only
@@ -360,7 +332,7 @@ var SyncPlacesBookmarks = {
 				//If more than one folder with the same title, then compare indexes
 				if (count > 1) {
 					result.containerOpen = false;
-					return this.matchOnIndex(container, node, index, mergeComparison);
+					return this.matchOnIndex(container, node, index, mergeComparison, debug);
 				}
 				existingID = folderID;
 			}
@@ -369,13 +341,13 @@ var SyncPlacesBookmarks = {
 
 		//Update the description if already exists & change the index if necc.
 		if (existingID != -1) {
-			this.duplicateFolder(node, existingID, mergeComparison, index);
+			this.duplicateFolder(node, existingID, mergeComparison, index, debug);
 		}
 
 		return existingID;
 	},
 
-	matchOnIndex: function(container, node, index, mergeComparison) {
+	matchOnIndex: function(container, node, index, mergeComparison, debug) {
 		//Look at the place you're thinking of adding it
 		var existingID = -1;
 		try {
@@ -391,14 +363,14 @@ var SyncPlacesBookmarks = {
 				!PlacesUtils.livemarks.isLivemark(existingID))
 		{
 			//Use the appropriate description and index
-			this.duplicateFolder(node, existingID, mergeComparison, index);
+			this.duplicateFolder(node, existingID, mergeComparison, index, debug);
 			return existingID;
 		}
 		return -1;
 	},
 
 	//When the received folder already exists ...
-	duplicateFolder: function(node, existingID, mergeComparison, index) {
+	duplicateFolder: function(node, existingID, mergeComparison, index, debug) {
 		var lastModified = node.lastModified;
 		if (!lastModified) lastModified = node.dateAdded;
 
@@ -413,7 +385,7 @@ var SyncPlacesBookmarks = {
 				try {
 					PlacesUtils.bookmarks.setItemIndex(existingID, index);
 				} catch(e) {
-					SyncPlacesOptions.message("WARNING A: Failed to set index for " + existingID + " to " + index);
+					if (debug) SyncPlacesIO.log("WARNING A: Failed to set index for " + existingID + " to " + index);
 				}
 			}
 			//If same age then use the remote's index and description
@@ -424,7 +396,7 @@ var SyncPlacesBookmarks = {
 					try {
 						PlacesUtils.bookmarks.setItemIndex(existingID, index);
 					} catch(e) {
-						SyncPlacesOptions.message("WARNING B: Failed to set index for " + existingID + " to " + index);
+						if (debug) SyncPlacesIO.log("WARNING B: Failed to set index for " + existingID + " to " + index);
 					}
 				}
 			}
@@ -504,8 +476,8 @@ var SyncPlacesBookmarks = {
 		}
 	},
 
-	//When the received item already exists ...
-	dealWithDuplicates: function(existingID, mergeComparison, lastModified, index, query) {
+	//When the received item already exists, delete it and return true
+	dealWithDuplicates: function(existingID, mergeComparison, lastModified, index, query, debug) {
 		if (mergeComparison == "timestamps") {
 			var existingDate = PlacesUtils.bookmarks.getItemLastModified(existingID);
 			if (!existingDate) existingDate = PlacesUtils.bookmarks.getItemDateAdded(existingID);
@@ -530,7 +502,7 @@ var SyncPlacesBookmarks = {
 					try {
 						PlacesUtils.bookmarks.setItemIndex(existingID, index);
 					} catch(e) {
-						SyncPlacesOptions.message("WARNING C: Failed to set index for " + existingID + " to " + index);
+						if (debug) SyncPlacesIO.log("WARNING C: Failed to set index for " + existingID + " to " + index);
 					}
 				}
 				return false;
@@ -554,6 +526,26 @@ var SyncPlacesBookmarks = {
 		return lastModifiedTime < lastSend;
 	},
 
+	//Update the stats object with add
+	addStats: function(stats, type, title, parent, index) {
+		var addedItem = {};
+		addedItem.type = type;
+		if (title) addedItem.title = title;
+		addedItem.parent = parent;
+		addedItem.index = index;
+		stats.addedItems.push(addedItem);
+	},
+
+	//Update the stats object with update
+	updStats: function(stats, type, title, parent, index) {
+		var updatedItem = {};
+		updatedItem.type = type;
+		if (title) updatedItem.title = title;
+		updatedItem.parent = parent;
+		updatedItem.index = index;
+		stats.updatedItems.push(updatedItem);
+	},
+
 	//Recurse down the bookmarks tree
 	//Delete anything not received (ie not in receivedIds)
 	//that is older than the last send
@@ -562,23 +554,31 @@ var SyncPlacesBookmarks = {
 															 mergeBookmarks, mergeToolbar, mergeSeperators,
 															 mergeQueries, mergeLivemarks, mergeUnsorted, debug, stats)
 	{
-		function removeOldItem(child, doIt, title) {
+		//Update the stats object with delete
+		function deleteStats(stats, type, title, parent, usedTimestamps) {
+			var deletedItem = {};
+			deletedItem.type = type;
+			deletedItem.title = title;
+			deletedItem.parent = parent;
+			deletedItem.timestamps = usedTimestamps;
+			stats.deletedItems.push(deletedItem);
+		}
+
+		function removeOldItem(child, doIt, title, type) {
 			if (doIt && receivedIds.indexOf(child.itemId) == -1) {
 				if (useTimestamps) {
 					var lastModifiedTime = child.lastModified;
 					if (!lastModifiedTime) lastModifiedTime = child.dateAdded;
 					if (lastModifiedTime < lastSend) {
 						itemsToDelete.push(child.itemId);
-						if (debug) SyncPlacesOptions.message("Deleted place " + child.title + " from " + title + " using timetamps");
-						stats.deletes++;
+						deleteStats(stats, type, child.title, title, true);
 					}
 				}
 				else {
 					//If its in the list then delete it because it has been deleted remotely
 					if (matchingIds.indexOf(child.itemId) != -1) {
 						itemsToDelete.push(child.itemId);
-						if (debug) SyncPlacesOptions.message("Deleted place " + child.title + " from " + title);
-						stats.deletes++;
+						deleteStats(stats, type, child.title, title, false);
 					}
 				}
 			}
@@ -601,15 +601,13 @@ var SyncPlacesBookmarks = {
 						//Dont delete if hasn't got a timestamp
 					if (lastModifiedTime != 0 && lastModifiedTime < lastSend) {
 						itemsToDelete.push(child.itemId);
-						if (debug) SyncPlacesOptions.message("Deleted query " + child.title + " from " + title + " using timetamps");
-						stats.deletes++;
+						deleteStats(stats, SyncPlacesBookmarks.QUERY, child.title, title, true);
 					}
 				}
 				else {
 					if (matchingIds.indexOf(child.itemId) != -1) {
 						itemsToDelete.push(child.itemId);
-						if (debug) SyncPlacesOptions.message("Deleted query " + child.title + " from " + title);
-						stats.deletes++;
+						deleteStats(stats, SyncPlacesBookmarks.QUERY, child.title, title, false);
 					}
 				}
 			}
@@ -653,13 +651,13 @@ var SyncPlacesBookmarks = {
 			}
 
 			if (PlacesUtils.nodeIsSeparator(child))
-				removeOldItem(child, mergeSeperators, container.title);
+				removeOldItem(child, mergeSeperators, container.title, SyncPlacesBookmarks.SEPARATOR);
 			else if (PlacesUtils.nodeIsQuery(child))
 				removeOldQuery(child, mergeQueries, container.title);
 			else if (PlacesUtils.nodeIsLivemarkContainer(child))
-				removeOldItem(child, mergeLivemarks, container.title);
+				removeOldItem(child, mergeLivemarks, container.title, SyncPlacesBookmarks.LIVEMARK);
 			else if (PlacesUtils.nodeIsBookmark(child))
-				removeOldItem(child, mergeBookmarks, container.title);
+				removeOldItem(child, mergeBookmarks, container.title, SyncPlacesBookmarks.BOOKMARK);
 
 			else if (PlacesUtils.nodeIsFolder(child)) {
 				//Don't delete the 'special' top level folders, just their kids
@@ -674,16 +672,14 @@ var SyncPlacesBookmarks = {
 							if (!lastModifiedTime) lastModifiedTime = child.dateAdded;
 							if (lastModifiedTime < lastSend) {
 								foldersToDelete.push(child.itemId);
-								if (debug) SyncPlacesOptions.message("Deleted folder+contents " + child.title + " from " + container.title + " using timetamps");
-								stats.folderDeletes++;
+								deleteStats(stats, SyncPlacesBookmarks.FOLDER, child.title, container.title, true);
 							}
 						}
 						else {
 							//If its in the list then delete it because it has been deleted remotely
 							if (matchingIds.indexOf(child.itemId) != -1) {
 								foldersToDelete.push(child.itemId);
-								if (debug) SyncPlacesOptions.message("Deleted folder+contents " + child.title + " from " + container.title);
-								stats.folderDeletes++;
+								deleteStats(stats, SyncPlacesBookmarks.FOLDER, child.title, container.title, false);
 							}
 						}
 						//Continue around the loop - ie dont recurse it if not received
@@ -808,6 +804,7 @@ var SyncPlacesBookmarks = {
 
 		} catch (e) {
 			Components.utils.reportError(e);
+			SyncPlacesIO.log(exception);
 		}
 	},
 
@@ -924,6 +921,7 @@ var SyncPlacesBookmarks = {
 
 		} catch (e) {
 			Components.utils.reportError(e);
+			SyncPlacesIO.log(exception);
 		}
 	}
 };

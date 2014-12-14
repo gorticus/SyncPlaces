@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2009-2011
+ * Portions created by the Initial Developer are Copyright (C) 2009-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -143,7 +143,7 @@ var SyncPlacesWizard = {
 		//No host required if file://
 		if (protocol == 'file') {
 			document.getElementById("protocolpg").next="sync";
-			
+
 			//Correct default paths on Windows
 			if (os == "WINNT") {
 				if (document.getElementById("jsonpath").value.match(/^\//)) {
@@ -165,7 +165,7 @@ var SyncPlacesWizard = {
 			else {
 				document.getElementById("hostpg").next="sync";
 			}
-			
+
 			//Put the path back properly if not file://
 			if (os == "WINNT") {
 				if (document.getElementById("jsonpath").value.match(/^.:\\/)) {

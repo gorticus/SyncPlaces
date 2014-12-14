@@ -82,3 +82,5 @@ pref("extensions.syncplaces.timeout", false);
 pref("extensions.syncplaces.timeoutDelay", "3");
 pref("extensions.syncplaces.firstrun", true);
 pref("extensions.syncplaces.firstuse", true);
+pref("extensions.syncplaces.max_log_no", "99");
+pref("extensions.syncplaces.next_log_no", 0);
