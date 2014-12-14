@@ -109,7 +109,7 @@ var SyncPlacesPasswords = {
 			//Convert to JSON string
 			nodes.children = children;
 			nodes.disabledhosts = disabledHosts;
-			passwords = PlacesUtils.toJSONString(nodes);
+			passwords = JSON.stringify(nodes);
 
 //TODO save the file for debugging
 //SyncPlacesIO.saveFile("passwords.json", passwords);
