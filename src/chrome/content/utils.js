@@ -473,6 +473,7 @@ var SyncPlacesUtils = {
 					}, this);
 
 					if (feedURI) {
+					
 						if (merge) {
 							var existingID = SyncPlacesBookmarks.existingLivemark(container, node.title, feedURI);
 							//If exists then deal with duplicates
@@ -507,6 +508,7 @@ var SyncPlacesUtils = {
 						}
 						id = PlacesUtils.livemarks.createLivemarkFolderOnly(container, node.title, siteURI, feedURI, index);
 						receivedIds.push(id);
+						
 					}
 				}
 

@@ -223,6 +223,7 @@ var SyncPlaces = {
 				this.timedStatus('bookmarks_saved', true, false);
 
 			} catch (exception) {
+SyncPlacesIO.log("ERROR SyncPlacesXBELOut: "+ exception);
 				SyncPlacesOptions.alert2(exception, 'cant_save_bookmarks', null, true);
 			}
 		}
@@ -252,13 +253,19 @@ var SyncPlaces = {
 
 			switch(type) {
 				case this.JSON:
+SyncPlacesIO.log("case this.JSON");
 					if (!SyncPlacesBookmarks.backupJSON(backupFilePath, checkSubFolder, showAlert)) {
+SyncPlacesIO.log("failed to write");
 						this.timedStatus('cant_save_bookmarks', showAlert, true);
 						if (showAlert) window.setCursor("auto");
 						return null;
 					}
 					//Save favicons (ignore failures) whenever take a full backup (manual or before receive)
-					if (!checkSubFolder) SyncPlacesBookmarks.saveFavicons();
+					if (!checkSubFolder) {
+SyncPlacesIO.log("saving favicons");
+						SyncPlacesBookmarks.saveFavicons();
+SyncPlacesIO.log("saved favicons");
+					}
 					break;
 				case this.HTML:
 					var ioService = this.Cc["@mozilla.org/browser/places/import-export-service;1"].getService(this.Ci.nsIPlacesImportExportService);
@@ -269,15 +276,18 @@ var SyncPlaces = {
 					break;
 			}
 		} catch (exception) {
+SyncPlacesIO.log("ERROR saveBookmarks: "+ exception+', '+exception.message);
 			SyncPlacesOptions.alert2(exception, 'cant_save_bookmarks', null, showAlert);
 			if (showAlert) window.setCursor("auto");
 			return null;
 		}
+SyncPlacesIO.log("showAlert="+showAlert);
 
 		if (showAlert) {
 			this.timedStatus('bookmarks_saved', showAlert, false);
 			window.setCursor("auto");
 		}
+SyncPlacesIO.log("returning backupFilePath="+backupFilePath);
 		return backupFilePath;
 	},
 
@@ -316,7 +326,7 @@ var SyncPlaces = {
 							SyncPlacesMerge.compare(addsDels);
 						} catch(e) {
 							if (SyncPlacesOptions.prefs.getBoolPref("debug")) {
-								SyncPlacesIO.log(exception);
+								SyncPlacesIO.log("ERROR 10: "+ exception);
 								Components.utils.reportError(e);
 							}
 						}
@@ -547,7 +557,7 @@ var SyncPlaces = {
 		}
 
 		//Log the message
-		if (msg) SyncPlacesIO.log(msg);
+		if (msg) SyncPlacesIO.log("ERROR 11: "+ msg);
 
 		//If no status then must be windowless
 		if (!status) {
