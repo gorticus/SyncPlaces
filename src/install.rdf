@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:extension:file:syncplaces.jar"
+                   em:package="content/"
+                   em:skin="skin/">
+    <em:locale>locale/en-GB/</em:locale>
+    <em:locale>locale/en-US/</em:locale>
+    <em:locale>locale/fr-FR/</em:locale>
+    <em:locale>locale/pl-PL/</em:locale>
+    <em:locale>locale/ru-RU/</em:locale>
+    <em:locale>locale/de-DE/</em:locale>
+    <em:locale>locale/es-ES/</em:locale>
+    <em:locale>locale/nl-NL/</em:locale>
+  </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$2Lqmu1"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:minVersion="3.0"
+                   em:maxVersion="3.6a1pre" />
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="syncplaces@andyhalford.com"
+                   em:version="3.6.1"
+                   em:type="2"
+                   em:iconURL="chrome://syncplaces/skin/icon32.gif"
+                   em:optionsURL="chrome://syncplaces/content/options.xul"
+                   em:name="SyncPlaces"
+                   em:creator="Andy Halford"
+                   em:contributor="Chris Veness"
+                   em:homepageURL="http://www.andyhalford.com/syncplaces/index.html">
+    <em:translator>Christophe Ribot (fr-FR)</em:translator>
+    <em:translator>Delphine (fr-FR)</em:translator>
+    <em:translator>nico@nc (fr-FR)</em:translator>
+    <em:translator>Leszek (teo) Życzkowski (pl-PL)</em:translator>
+    <em:translator>PiVV (ru-RU)</em:translator>
+    <em:translator>Team erweiterungen.de (de-DE)</em:translator>
+    <em:translator>Wawuschel (de-DE)</em:translator>
+    <em:translator>Proyecto Nave (es-ES)</em:translator>
+    <em:translator>Ed Manheim (nl-NL)</em:translator>
+    <em:targetApplication RDF:resource="rdf:#$2Lqmu1"/>
+  </RDF:Description>
+</RDF:RDF>
