@@ -901,7 +901,7 @@ var SyncPlacesUtils = {
 
     function writeScalarNode(aStream, aNode, aPrevWritten) {
       // serialize to json
-      var jstr = PlacesUtils.toJSONString(aNode);
+      var jstr = JSON.stringify(aNode);
 
 			// AndyH fix to prevent trailing comma
 			if (aPrevWritten) jstr = "," + jstr;
@@ -922,7 +922,7 @@ var SyncPlacesUtils = {
       var properties = [];
       for (let [name, value] in Iterator(aNode)) {
         if (name == "annos")
-          value = PlacesUtils.toJSONString(value);
+          value = JSON.stringify(value);
         else if (typeof value == "string")
           value = "\"" + value.replace(escJSONStringRegExp, '\\$1') + "\"";
         properties.push("\"" + name.replace(escJSONStringRegExp, '\\$1') + "\":" + value);

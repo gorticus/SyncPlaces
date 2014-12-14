@@ -1025,7 +1025,7 @@ var SyncPlacesOptions = {
 			preferences.passwords.passwordUser = this.getPassword(this.passwordUser, true);
 		}
 
-		return PlacesUtils.toJSONString(preferences);
+		return JSON.stringify(preferences);
 	},
 
 	//Import all the SyncPlaces prefs
