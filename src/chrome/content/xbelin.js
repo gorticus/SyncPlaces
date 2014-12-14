@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2010
+ * Portions created by the Initial Developer are Copyright (C) 2008-2011
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -217,6 +217,7 @@ function SyncPlacesXBELIn(filePath, timeout) {
 									var tagArray = tags.split(",");
 									for (var j = 0; j < tagArray.length; j++) {
 										var anno = {};
+
 										anno.name = SyncPlacesBookmarks.SP_TAG + j;
 										anno.flags = 0;
 										anno.expires = Ci.nsIAnnotationService.EXPIRE_SESSION;	//Going to get rid asap

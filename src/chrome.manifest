@@ -1,5 +1,9 @@
 content  syncplaces  chrome/content/
-skin     syncplaces  classic/1.0  chrome/skin/
+skin     syncplaces     classic/1.0  chrome/skin/common/
+skin     syncplaces-os  classic/1.0  chrome/skin/others/
+skin     syncplaces-os  classic/1.0  chrome/skin/mac3/	os=Darwin appversion<4.0b1
+skin     syncplaces-os  classic/1.0  chrome/skin/mac/		os=Darwin appversion>=4.0b1
+skin     syncplaces-os  classic/1.0  chrome/skin/win/  	os=WINNT  appversion>=4.0b1 
 overlay  chrome://browser/content/browser.xul  chrome://syncplaces/content/syncplaces.xul
 style    chrome://global/content/customizeToolbar.xul  chrome://syncplaces/skin/syncplaces.css
 component {2fe1793a-7519-11dd-b203-f06a56d89593} components/spObserver.js

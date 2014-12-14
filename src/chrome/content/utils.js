@@ -347,7 +347,11 @@ var SyncPlacesUtils = {
 						PlacesUtils.bookmarks.removeItem(id);
 					}, this);
 					foldersToDelete.forEach(function(id) {
-						PlacesUtils.bookmarks.removeFolder(id);
+						try {
+							PlacesUtils.bookmarks.removeFolder(id);	//Obsolete in FF4.0
+						} catch(e) {
+							PlacesUtils.bookmarks.removeItem(id);	//TODO - very inefficient way of doing this
+						}
 					}, this);
 				}
 			}

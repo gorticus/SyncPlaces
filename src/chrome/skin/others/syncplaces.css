@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2010
+ * Portions created by the Initial Developer are Copyright (C) 2008-2011
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -35,22 +35,22 @@
 
 /*toolbar buttons*/
 #syncplaces-button {
-  list-style-image: url("chrome://syncplaces/skin/icon24.gif");
+  list-style-image: url("chrome://syncplaces/skin/icon24.png");
 }
 
 toolbar[iconsize="small"] #syncplaces-button {
-  list-style-image: url("chrome://syncplaces/skin/icon16.gif");
+  list-style-image: url("chrome://syncplaces/skin/icon16.png");
 }
 
 /*icon 16px*/
 #syncplaces-status,	/*statusbar icon*/
 #syncplaces-bmenu,	/*tools menu*/
 #syncplaces-tmenu 	/*bookmarks menu*/{
-  list-style-image: url("chrome://syncplaces/skin/icon16.gif");
+  list-style-image: url("chrome://syncplaces/skin/icon16.png");
 }
 
 .syncplacesHeader {
-	list-style-image: url("chrome://syncplaces/skin/icon32.gif");
+	list-style-image: url("chrome://syncplaces/skin/icon32.png");
   margin-bottom: 3px;
 }
 
