@@ -802,7 +802,7 @@ var SyncPlacesBookmarks = {
 			getFavicons(result.root, favicons.iconData);
 
 			//Save the results
-			SyncPlacesIO.saveFile(this.faviconsFile, PlacesUtils.toJSONString(favicons));
+			SyncPlacesIO.saveFile(this.faviconsFile, JSON.stringify(favicons));
 
 		} catch (e) {
 			Components.utils.reportError(e);

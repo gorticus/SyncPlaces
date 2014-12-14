@@ -558,7 +558,7 @@ function SyncPlacesXBELIn(filePath, timeout) {
 	}
 
 	//Write out the json file so can import it properly
-	var jstr = PlacesUtils.toJSONString(nodes);
+	var jstr = JSON.stringify(nodes);
 	SyncPlacesIO.saveFile(SyncPlaces.xbelJsonFile, jstr);
 	return true;
 }
