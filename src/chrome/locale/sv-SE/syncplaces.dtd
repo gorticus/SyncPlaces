@@ -1,0 +1,249 @@
+<!ENTITY sp "Synkronisera bokmärken/lösenord">
+<!ENTITY sp_tooltip "Synkronisera bokmärken/lösenord med servern">
+<!ENTITY sp_title "SyncPlaces">
+<!ENTITY sp_transfer_title "Synkronisering">
+<!ENTITY sp_wizard_title "Installationsguiden för SyncPlaces">
+<!ENTITY action_tab "Åtgärder">
+<!ENTITY server_tab "Server">
+<!ENTITY options_tab "Inställningar">
+<!ENTITY advanced_tab "Avancerat">
+<!ENTITY status "Status">
+<!ENTITY apply_button "Verkställ">
+<!ENTITY remote "Fjärr">
+<!ENTITY send_button "Skicka bokmärken/lösenord">
+<!ENTITY send_tooltip "Skicka bokmärken/lösenord till servern">
+<!ENTITY receive_button "Hämta bokmärken/lösenord">
+<!ENTITY receive_tooltip "Gör en säkerhetskopia och hämta sedan bokmärken/lösenord från servern">
+<!ENTITY local "Lokal">
+<!ENTITY backup_button "Säkerhetskopiera">
+<!ENTITY backup_tooltip "Säkerhetskopiera till en lokal fil">
+<!ENTITY bookmarks "Bokmärken">
+<!ENTITY passwords "Lösenord">
+<!ENTITY both "Båda">
+<!ENTITY restore_button "Återställ">
+<!ENTITY restore_tooltip "Återställ från en lokal fil">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "Exportera">
+<!ENTITY export_tooltip "Exportera bokmärken till lokal XBEL-fil">
+<!ENTITY import_button "Importera">
+<!ENTITY not_available "Alternativet är ännu inte tillgängligt">
+<!ENTITY import_tooltip "Importera bokmärken från lokal XBEL-fil">
+<!ENTITY connection_tab "Anslutning">
+<!ENTITY sync_tab "Synkronisering">
+<!ENTITY protocol "Protokoll">
+<!ENTITY http "HTTP">
+<!ENTITY https "HTTPS">
+<!ENTITY ftp "FTP">
+<!ENTITY file "FILE">
+<!ENTITY host "Värd">
+<!ENTITY host_tooltip "Värdnamn eller IP-adress med valfritt portnummer">
+<!ENTITY path "JSON-sökväg">
+<!ENTITY path_tooltip "Sökväg till JSON-fil på servern, t.ex. /bokmärken/syncplaces.json">
+<!ENTITY htmlpath "HTML-sökväg">
+<!ENTITY htmlpath_tooltip "Sökväg till HTML-fil på servern, t.ex. /bokmärken/syncplaces.html">
+<!ENTITY userid "Användare">
+<!ENTITY userid_tooltip "Användarnamn för autentisering">
+<!ENTITY password "Lösenord">
+<!ENTITY password_tooltip "Lösenord för autentisering">
+<!ENTITY run_wizard "Kör guiden nästa gång">
+<!ENTITY runwizard_tooltip "Kör installationsguiden nästa gång du startar SyncPlaces">
+<!ENTITY last_sent "Senaste sändning">
+<!ENTITY last_received "Senaste hämtning">
+<!ENTITY lastreceived_tooltip "Senaste datum ändringar togs emot">
+<!ENTITY sync_type "Synkronisera">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "Synkronisera med JSON-fil (rekommenderas)">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "Synkronisera med XBEL-fil">
+<!ENTITY sync_passwords "Lösenord">
+<!ENTITY syncpasswords_tooltip "Synkronisera lösenord">
+<!ENTITY sync_icons "Uppdatera sajtikoner">
+<!ENTITY syncicons_tooltip "Uppdatera sajtikoner vid hämtning/import">
+<!ENTITY send_html "Skicka HTML">
+<!ENTITY sendhtml_tooltip "Skicka även en HTML-version">
+<!ENTITY send_xbel "Skicka XBEL">
+<!ENTITY sendxbel_tooltip "Skicka även en XBEL-version">
+<!ENTITY xbelpath_tooltip "Sökväg till XBEL-fil på servern, t.ex. /bokmärken/syncplaces.xml">
+<!ENTITY passwordpath "Lösenordssökväg">
+<!ENTITY passwordpath_tooltip "Sökväg till lösenordsfilen på servern, t.ex. /bokmärken/lösenord">
+<!ENTITY password_password "Lösenord">
+<!ENTITY basic "Grundläggande">
+<!ENTITY encrypt_json "Kryptera JSON">
+<!ENTITY encryptjson_tooltip "Krypterar JSON-filen för ökad säkerhet">
+<!ENTITY encryptpassword_tooltip "Lösenord som används för kryptering">
+<!ENTITY send_gzip_json "Komprimera JSON">
+<!ENTITY gzipjson_tooltip "GZip-komprimerar JSON-filen för snabbare överföring">
+<!ENTITY small_xbel "Exportera/Skicka liten XBEL">
+<!ENTITY smallxbel_tooltip "Exporterar/Skickar en liten XBEL-fil (bäst vid stilformatering)">
+<!ENTITY send_safe "Skicka säkert">
+<!ENTITY sendsafe_tooltip "Hämta och slå samman före varje sändning som en skyddsåtgärd mot dataförluster">
+<!ENTITY auto_sort "Sortera innan sändning">
+<!ENTITY autosort_tooltip "Sorterar bokmärken automatiskt innan de skickas">
+<!ENTITY cache "Synkronisera bokmärken endast om de har ändrats">
+<!ENTITY cache_tooltip "Synkronisera inte bokmärken om de inte har ändrats">
+<!ENTITY cache_pwd "Synkronisera lösenord endast om de har ändrats">
+<!ENTITY cachepwd_tooltip "Synkronisera inte lösenord om de inte har ändrats">
+<!ENTITY merge "Slå samman bokmärken">
+<!ENTITY merge_tooltip "Istället för att ersätta befintliga objekt, slå samman mottagna bokmärken med de du har">
+<!ENTITY merge_pwd "Slå samman mottagna lösenord">
+<!ENTITY mergepwd_tooltip "Istället för att ersätta befintliga objekt, slå samman mottagna lösenord med de du har">
+<!ENTITY profiles "Profiler">
+<!ENTITY profile "Profil">
+<!ENTITY add_profile "Lägg till">
+<!ENTITY addprofile_tooltip "Lägg till en ny profil">
+<!ENTITY delete_profile "Ta bort">
+<!ENTITY deleteprofile_tooltip "Ta bort den för närvarande markerade profilen">
+<!ENTITY move_up "Flytta uppåt">
+<!ENTITY moveup_tooltip "Flytta profilen uppåt i listan">
+<!ENTITY move_down "Flytta nedåt">
+<!ENTITY movedown_tooltip "Flytta profilen nedåt i listan">
+<!ENTITY export_profile "Exportera">
+<!ENTITY exportprofile_tooltip "Exportera den för närvarande markerade profilen">
+<!ENTITY import_profile "Importera">
+<!ENTITY importprofile_tooltip "Importera en profil">
+<!ENTITY automation "Automatisering">
+<!ENTITY autosync "Synka automatiskt">
+<!ENTITY autosync_tooltip "Synkronisera automatiskt när bokmärken ändras">
+<!ENTITY delay "Fördröjning">
+<!ENTITY syncdelay_tooltip "Fördröjning innan automatisk synkronisering utförs">
+<!ENTITY auto_receive "Hämta vid programstart">
+<!ENTITY autoreceive_tooltip "Hämta bokmärken automatiskt när webbläsaren startas">
+<!ENTITY auto_receive_notify "Lämna dialogen öppen">
+<!ENTITY autoreceivenotify_tooltip "Dialogen lämnas öppen när operationen lyckas">
+<!ENTITY auto_send "Skicka vid avstängning">
+<!ENTITY autosend_tooltip "Skicka automatiskt bokmärken när webbläsaren stängs av">
+<!ENTITY auto_send_notify "Lämna dialogen öppen">
+<!ENTITY autosendnotify_tooltip "Dialogen lämnas öppen när operationen lyckas">
+<!ENTITY auto_close "Stäng automatiskt efter sändning/hämtning">
+<!ENTITY autoclose_tooltip "Stäng dialogen automatiskt efter manuell sändning/hämtning">
+<!ENTITY auto_close_delay "sekunder">
+<!ENTITY autodelay_tooltip "Hur länge, i sekunder, dialogen förblir öppen innan den stängs">
+<!ENTITY regular_transfer "Synkronisera med jämna mellanrum">
+<!ENTITY regulartransfer_tooltip "Utför regelbundet först en hämtning och sedan en sändning m.h.a. alternativet &quot;Skicka säkert&quot;">
+<!ENTITY transfer_interval "Intervall">
+<!ENTITY transferinterval_tooltip "Tidsperioden mellan varje synkronisering">
+<!ENTITY seconds "sekunder">
+<!ENTITY minutes "minuter">
+<!ENTITY hours "timmar">
+<!ENTITY timed_transfer "Synkronisera vid en angiven tidpunkt">
+<!ENTITY timedtransfer_tooltip "På det angivna klockslaget utförs först en hämtning och sedan en sändning m.h.a. alternativet &quot;Skicka säkert&quot;">
+<!ENTITY transfer_time "Synkroniseringstid">
+<!ENTITY misc_tab "Allmänt">
+<!ENTITY send_all "Synkronisera alla platser/bokmärken">
+<!ENTITY sendall_tooltip "Synkronisera hela platser/bokmärken-trädet">
+<!ENTITY skip_name "Tillåt annat namn vid hämtning">
+<!ENTITY skipname_tooltip "Målmappen får ha ett annat namn">
+<!ENTITY selectfolder_button "Välj mapp att synkronisera">
+<!ENTITY selectfolder_tooltip "Välj bokmärkesmappen som skall synkroniseras">
+<!ENTITY selected_folder "Mapp:">
+<!ENTITY sp_folder_title "Välj mappen som skall synkroniseras">
+<!ENTITY strength "Krypteringsstyrka för AES">
+<!ENTITY b128 "128">
+<!ENTITY b192 "192">
+<!ENTITY b256 "256">
+<!ENTITY show_status "Statusfältikon">
+<!ENTITY showstatus_tooltip "Visa SyncPlaces i statusfältet">
+<!ENTITY show_bm "Bokmärken-menyn">
+<!ENTITY showbm_tooltip "Visa SyncPlaces i Bokmärken-menyn">
+<!ENTITY show_tools "Verktyg-menyn">
+<!ENTITY showtools_tooltip "Visa SyncPlaces i Verktyg-menyn">
+<!ENTITY backupfolder_button "Välj mapp att säkerhetskopiera till">
+<!ENTITY backupfolder_tooltip "Välj mappen som skall innehålla dina säkerhetskopior">
+<!ENTITY merge_tab "Sammanslagning">
+<!ENTITY merge_deletes "Slå samman borttagningar">
+<!ENTITY mergedeletes_tooltip "Hantera bokmärken som har tagits bort eller har ändrat namn">
+<!ENTITY comparison "Hantera dubbletter">
+<!ENTITY compare_timestamps "Använd tidsstämplar">
+<!ENTITY timestamps_tooltip "Använd tidsstämplar för att avgöra vilken dubblett som skall behållas">
+<!ENTITY compare_local "Använd lokalt objekt">
+<!ENTITY local_tooltip "Behåll det befintliga objektet och ignorera det mottagna objektet">
+<!ENTITY compare_remote "Använd fjärrobjekt">
+<!ENTITY remote_tooltip "Använd det mottagna objektet och ta bort det lokala objektet">
+<!ENTITY merge_all "Slå samman allt">
+<!ENTITY mergeall_tooltip "Slå samman allt som har tagits emot med lokala objekt">
+<!ENTITY include_places "Platser att inkludera">
+<!ENTITY merge_menu "Bokmärken-menyn">
+<!ENTITY mergemenu_tooltip "Inkludera Bokmärken-menyobjekt vid sammanslagning">
+<!ENTITY merge_toolbar "Verktygsfält">
+<!ENTITY mergetoolbar_tooltip "Inkludera verktygsfältsobjekt vid sammanslagning">
+<!ENTITY merge_unsorted "Osorterat">
+<!ENTITY mergeunsorted_tooltip "Inkludera osorterade objekt vid sammanslagning">
+<!ENTITY include_types "Typer att inkludera">
+<!ENTITY merge_bookmarks "Bokmärken">
+<!ENTITY mergebookmarks_tooltip "Inkludera nya bokmärken vid sammanslagning">
+<!ENTITY merge_seperators "Avgränsare">
+<!ENTITY mergesep_tooltip "Inkludera nya avgränsare vid sammanslagning">
+<!ENTITY merge_queries "Sökningar/Frågor">
+<!ENTITY mergequeries_tooltip "Inkludera nya sökningar/frågor vid sammanslagning">
+<!ENTITY merge_livemarks "Smarta bokmärken">
+<!ENTITY mergelivemarks_tooltip "Inkludera nya smarta bokmärken vid sammanslagning">
+<!ENTITY workarounds_tab "Lösningar">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "Lägg till dina egna formateringstaggar nedan">
+<!ENTITY encryption_tab "Kryptering">
+<!ENTITY encryption "Krypteringsalgoritm">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "OBS: Använd endast dessa inställningar om du stöter på problem">
+<!ENTITY transfer_technique "Överföring">
+<!ENTITY receive_mechanism "Hämtning">
+<!ENTITY normal_receive "Normal">
+<!ENTITY normal_receive_tooltip "Normalt tillvägagångssätt för hämtning">
+<!ENTITY old_receive "Äldre">
+<!ENTITY old_receive_tooltip "Det gamla tillvägagångssättet för hämtning">
+<!ENTITY old_receive_conversion "Proxykorrigering">
+<!ENTITY receive_conversion_tooltip "Åtgärdar problem för en del proxyservrar">
+<!ENTITY send_mechanism "Sändning">
+<!ENTITY normal_send "Normal">
+<!ENTITY normal_send_tooltip "Normalt tillvägagångssätt för sändning">
+<!ENTITY old_send "Äldre">
+<!ENTITY old_send_tooltip "Det gamla tillvägagångssättet för sändning">
+<!ENTITY old_send_conversion "Proxykorrigering">
+<!ENTITY send_conversion_tooltip "Åtgärdar problem för en del proxyservrar">
+<!ENTITY skip_auth "Hoppa över autentisering">
+<!ENTITY skipauth_tooltip "Läs dokumentationen för närmare detaljer">
+<!ENTITY debug "Aktivera felsökning">
+<!ENTITY startup "Programstart">
+<!ENTITY normal "Normal">
+<!ENTITY normal_tooltip "Normal programstartsavkänning">
+<!ENTITY crude "Kompatibel">
+<!ENTITY crude_tooltip "Kompatibel programstartsavkänning">
+<!ENTITY shutdown "Avstängning">
+<!ENTITY shutdownnormal_tooltip "Normal avstängning">
+<!ENTITY shutdowncrude_tooltip "Kompatibel avstängning">
+<!ENTITY sp_passwords_title "Välj lösenord">
+<!ENTITY pw_details "Lösenordsdetaljer">
+<!ENTITY pw_which_password "Välj vilka lösenord du vill behålla">
+<!ENTITY pw_hostname "Värd">
+<!ENTITY pw_formSubmitURL "Formulär-URL">
+<!ENTITY pw_httpRealm "Sfär">
+<!ENTITY pw_usernameField "Användarnamnsfält">
+<!ENTITY pw_passwordField "Lösenordsfält">
+<!ENTITY pw_username "Användarnamn">
+<!ENTITY pw_oldPassword "Befintligt lösenord">
+<!ENTITY pw_newPassword "Nytt lösenord">
+<!ENTITY pw_old "Behåll befintligt">
+<!ENTITY pw_new "Behåll nytt">
+<!ENTITY dialog_title "Avisering">
+<!ENTITY more_info "Mer information">
+<!ENTITY wiz_reset_title "Återställ till standard">
+<!ENTITY wiz_reset "Vill du återställa allt till standardvärdena? Det kommer att ta bort alla dina befintliga inställningar.">
+<!ENTITY wiz_yes "Ja">
+<!ENTITY wiz_no "Nej">
+<!ENTITY wiz_protocol "Vilken typ av server kommer du att använda?">
+<!ENTITY wiz_host "Ange namnet på din server eller dess IP-adress (t.ex. www.dittnamn.se eller 172.16.0.1). Du kan om du vill lägga till ett portnummer också (t.ex. www.dittnamn.se:8080)">
+<!ENTITY web_server "Webbserver">
+<!ENTITY ssl_server "Webbserver (SSL)">
+<!ENTITY ftp_server "FTP-server">
+<!ENTITY file_server "Filserver">
+<!ENTITY wiz_path_title "Sökväg på servern">
+<!ENTITY wiz_path "Ange sökvägen där dina bokmärken kommer att lagras">
+<!ENTITY bm_path "Sökväg">
+<!ENTITY wiz_login "Ange dina FTP-inloggningsuppgifter, om sådana finns">
+<!ENTITY wiz_sync "Välj det format som dina bokmärken skall sparas i">
+<!ENTITY recommended "(rekommenderas)">
+<!ENTITY wiz_passwords "Du kanske även vill synkronisera dina lösenord?">
+<!ENTITY wiz_pwd_path "Ange serversökvägen där dina lösenord kommer att lagras">
+<!ENTITY wiz_encrypt "Vill du kryptera dina bokmärken?">
+<!ENTITY wiz_compress "Vill du komprimera dina bokmärken för snabbare synkronisering?">
+<!ENTITY wiz_encpwd "Ange ett lösenord för att skydda din data">

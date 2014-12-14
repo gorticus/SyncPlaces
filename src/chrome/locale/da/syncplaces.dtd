@@ -176,7 +176,7 @@
 <!ENTITY merge_queries "Søgninger/Forespørgsler">
 <!ENTITY mergequeries_tooltip "Medtag nye søgninger/forespørgsler ved fletning">
 <!ENTITY merge_livemarks "Live-mærker">
-<!ENTITY mergelivemarks_tooltip "Medtag ny live-mærker ved fletning">
+<!ENTITY mergelivemarks_tooltip "Medtag nye live-mærker ved fletning">
 <!ENTITY workarounds_tab "Nødløsninger">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Tilføj din egen designetikette nedenfor">
@@ -184,15 +184,15 @@
 <!ENTITY encryption "Krypteringsalgoritme">
 <!ENTITY TEA "TEA">
 <!ENTITY AES "AES">
-<!ENTITY workarounds_warning "NOTE: Anvend kun disse indstillinger hvis du har problemer">
+<!ENTITY workarounds_warning "BEMÆRK: Anvend kun disse indstillinger hvis du har problemer">
 <!ENTITY transfer_technique "Overfør">
 <!ENTITY receive_mechanism "Henter">
 <!ENTITY normal_receive "Normal">
 <!ENTITY normal_receive_tooltip "Normal metode til at hente">
 <!ENTITY old_receive "Gammel">
 <!ENTITY old_receive_tooltip "Gammel metode for at hente">
-<!ENTITY old_receive_conversion "Proxy rettelse">
-<!ENTITY receive_conversion_tooltip "Rettelse til nogle proxyservere">
+<!ENTITY old_receive_conversion "Proxy-rettelse">
+<!ENTITY receive_conversion_tooltip "Rettelse til nogle proxy-servere">
 <!ENTITY send_mechanism "Sender">
 <!ENTITY normal_send "Normal">
 <!ENTITY normal_send_tooltip "Normal metode til at sende">
@@ -217,8 +217,8 @@
 <!ENTITY pw_hostname "Vært">
 <!ENTITY pw_formSubmitURL "URL formular">
 <!ENTITY pw_httpRealm "Realm">
-<!ENTITY pw_usernameField "Brugernavnfelt">
-<!ENTITY pw_passwordField "Adgangskodefelt">
+<!ENTITY pw_usernameField "Brugernavn felt">
+<!ENTITY pw_passwordField "Adgangskode felt">
 <!ENTITY pw_username "Brugernavn">
 <!ENTITY pw_oldPassword "Nuværende adgangskode">
 <!ENTITY pw_newPassword "Ny adgangskode">

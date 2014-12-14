@@ -46,7 +46,7 @@ var SyncPlacesOptions = {
 	encryptUser: 'syncplaces-encryption',
 	passwordUser: 'syncplaces-password',
 	prefsFile: 'syncplaces_prefs.json',
-	version: "4.1.2",
+	version: "4.2.0",
 
 	onActionLoad: function() {
 		this.lastTransferTimes(true);
@@ -500,6 +500,13 @@ var SyncPlacesOptions = {
 		var path = document.getElementById(id);
 		var value =	this.trim(path.value);
 		if (value) {
+			var os = "WINNT";
+			try {
+				os = this.Cc["@mozilla.org/xre/app-info;1"].createInstance(this.Ci.nsIXULRuntime).OS;
+			} catch (exception) {
+				os = "Darwin";
+			}
+
 			var link = "http://www.andyhalford.com/syncplaces/server.html#paths";
 			if (document.getElementById("protocol").selectedItem.id == 'file') {
 				if (value.match(/^\\\\/)) {
@@ -515,15 +522,38 @@ var SyncPlacesOptions = {
 					}
 					value = "";
 				}
-			}
-			else {
-				if (value.indexOf("/") != 0) {
+				//Make sure that the correct form is used for Windows
+				if (os == "WINNT") {
+					if (!value.match(/^.:\\/)) {
+						if (displayAlert) {
+							this.alert2(null, 'must_start_with_a_drive', null, true, link);
+						}
+						value = "";
+					}
+				}
+				//Otherwise must start with at least a '/'
+				else if (!value.match(/^\//)) {
 					if (displayAlert) {
 						this.alert2(null, 'must_have_slash', null, true, link);
 					}
 					value = "";
 				}
 				else if (value == "/") {
+					if (displayAlert) {
+						this.alert2(null, 'more_than_slash', null, true, link);
+					}
+					value = "";
+				}
+			}
+			else {
+				//Must start with at least a '/'
+				if (value.indexOf("/") != 0) {
+					if (displayAlert) {
+						this.alert2(null, 'must_have_slash', null, true, link);
+					}
+					value = "";
+				}
+				else if (!value.match(/^\//)) {
 					if (displayAlert) {
 						this.alert2(null, 'more_than_slash', null, true, link);
 					}
