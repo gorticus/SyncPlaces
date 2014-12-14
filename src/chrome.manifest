@@ -9,5 +9,5 @@ locale   syncplaces  pl-PL  jar:chrome/syncplaces.jar!/locale/pl-PL/
 locale   syncplaces  ru-RU  jar:chrome/syncplaces.jar!/locale/ru-RU/
 locale   syncplaces  de-DE  jar:chrome/syncplaces.jar!/locale/de-DE/
 locale   syncplaces  es-ES  jar:chrome/syncplaces.jar!/locale/es-ES/
-locale   syncplaces  nl-NL  jar:chrome/syncplaces.jar!/locale/nl-NL/
+locale   syncplaces  nl     jar:chrome/syncplaces.jar!/locale/nl/
 locale   syncplaces  da-DK  jar:chrome/syncplaces.jar!/locale/da-DK/
