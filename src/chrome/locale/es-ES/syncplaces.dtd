@@ -12,6 +12,10 @@
 <!ENTITY remote "Remoto">
 <!ENTITY send_button "Enviar marcadores/contraseñas">
 <!ENTITY send_tooltip "Enviar los marcadores y contraseñas al servidor">
+<!ENTITY if_changes "If changes">
+<!ENTITY if_changes_tooltip "Send if any local changes">
+<!ENTITY immediately "Immediately">
+<!ENTITY immediately_tooltip "Immediately send all bookmarks/passwords">
 <!ENTITY receive_button "Recibir marcadores/contraseñas">
 <!ENTITY receive_tooltip "Hace una copia de seguridad y recibe los marcadores y contraseñas del servidor">
 <!ENTITY local "Local">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Importar">
 <!ENTITY not_available "Opción no disponible">
 <!ENTITY import_tooltip "Importar los marcadores de un archivo local XBEL">
+<!ENTITY import_merge_tooltip "Merge with existing bookmarks">
+<!ENTITY import_overwrite_tooltip "Overwrite existing bookmarks">
 <!ENTITY connection_tab "Conexión">
 <!ENTITY sync_tab "Sincronización">
 <!ENTITY protocol "Protocolo:">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Sincronización con archivos XBEL">
 <!ENTITY sync_passwords "Contraseñas">
 <!ENTITY syncpasswords_tooltip "Sincronizar contraseñas">
-<!ENTITY sync_icons "Actualizar favicons">
-<!ENTITY syncicons_tooltip "Actualizar los favicons al recibir/importar">
 <!ENTITY send_html "Enviar HTML">
 <!ENTITY sendhtml_tooltip "Enviar también la versión HTML">
 <!ENTITY send_xbel "Enviar XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Ruta de las contraseñas:">
 <!ENTITY passwordpath_tooltip "Ruta del archivo de contraseñas en el servidor p.ej. /marcadores/passwords">
 <!ENTITY password_password "Contraseña:">
-<!ENTITY basic "Básico">
 <!ENTITY encrypt_json "Cifrar JSON">
 <!ENTITY encryptjson_tooltip "Cifrar el archivo JSON para seguridad">
 <!ENTITY encryptpassword_tooltip "Contraseña usada para cifrar las contraseñas">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "Comprimir los archivos JSON para transferencias más rápidas">
 <!ENTITY small_xbel "Exportar/Enviar XBEL reducido">
 <!ENTITY smallxbel_tooltip "Exportar/Enviar archivos XBEL reducido (mejor para los estilos)">
-<!ENTITY send_safe "Envío seguro">
-<!ENTITY sendsafe_tooltip "Recibir y mezclar antes de enviar para evitar pérdidas de datos">
 <!ENTITY auto_sort "Ordenar antes de enviar">
 <!ENTITY autosort_tooltip "Ordenar automáticamente cuando cambien los marcadores antes de enviarlos">
-<!ENTITY cache "Sincronizar los marcadores sólo si han cambiado">
-<!ENTITY cache_tooltip "No sincronizar los marcadores si no han cambiado">
-<!ENTITY cache_pwd "Sincronizar las contraseñas sólo si han cambiado">
-<!ENTITY cachepwd_tooltip "No sincronizar las contraseñas si no han cambiado">
 <!ENTITY merge "Mezclar marcadores">
-<!ENTITY merge_tooltip "En lugar de sobreescribirlos, mezclar los marcadores recibidos">
-<!ENTITY merge_pwd "Mezclar las contraseñas recibidas">
-<!ENTITY mergepwd_tooltip "En lugar de sobreescribirlas, mezclar las contraseñas recibidas">
+<!ENTITY receive_merge_tooltip "Merge any changes on the Server">
+<!ENTITY overwrite "Overwrite">
+<!ENTITY receive_overwrite_tooltip "Overwrite bookmarks/passwords with those on Server">
 <!ENTITY profiles "Perfiles">
 <!ENTITY profile "Perfil">
 <!ENTITY add_profile "Añadir">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "Mantener el diálogo abierto">
 <!ENTITY auto_send "Enviar al cerrar">
 <!ENTITY autosend_tooltip "Enviar los marcadores automáticamente al cerrar el navegador">
-<!ENTITY auto_send_notify "Mantener el diálogo abierto">
-<!ENTITY autosendnotify_tooltip "Mantener el diálogo abierto">
 <!ENTITY auto_close "Cerrar automáticamente después de enviar/recibir">
 <!ENTITY autoclose_tooltip "Cerrar el diálogo automáticamente después de enviar/recibir manualmente">
 <!ENTITY auto_close_delay "segundos">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "Sincronizar en una fecha establecida">
 <!ENTITY timedtransfer_tooltip "En la fecha establecida, realizar la operación de recibir y enviar usando la opción de &apos;Envío seguro&apos;">
 <!ENTITY transfer_time "Fecha de sincronización">
-<!ENTITY misc_tab "General">
 <!ENTITY send_all "Sincronizar todos los sitios/marcadores">
 <!ENTITY sendall_tooltip "Sincrzoniar el árbol completo de los sitios/marcadores">
 <!ENTITY skip_name "Permitir nombres diferentes al recibir">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "Mostrar opciones en el menú herramientas">
 <!ENTITY backupfolder_button "Seleccionar la carpeta para las copias">
 <!ENTITY backupfolder_tooltip "Seleccionar la carpeta donde guardar las copias">
-<!ENTITY merge_tab "Mezcla">
-<!ENTITY merge_deletes "Mezclar los borrados">
-<!ENTITY mergedeletes_tooltip "Tratar los marcadores que han sido borrados o renombrados">
-<!ENTITY comparison "Tratamiento de duplicados">
-<!ENTITY compare_timestamps "Usar marca de tiempo">
-<!ENTITY timestamps_tooltip "Usar marcas de tiempo para decidir qué duplicados mantener">
-<!ENTITY compare_local "Usar local">
-<!ENTITY local_tooltip "Mantener el elemento actual e ignorar el recibido">
-<!ENTITY compare_remote "Usar remoto">
-<!ENTITY remote_tooltip "Usar el elemento recibido y borrar el local">
-<!ENTITY merge_all "Mezclar todo">
-<!ENTITY mergeall_tooltip "Mezclar todos los datos recibidos">
-<!ENTITY include_places "Lugares a incluir">
-<!ENTITY merge_menu "Menú marcadores">
-<!ENTITY mergemenu_tooltip "Incluir los elementos del menú marcadores al mezclar">
-<!ENTITY merge_toolbar "Barra de herramientas">
-<!ENTITY mergetoolbar_tooltip "Incluir los elementos de la barra de herramientas al mezclar">
-<!ENTITY merge_unsorted "No clasificados">
-<!ENTITY mergeunsorted_tooltip "Incluir los elementos no clasificados al mezclar">
-<!ENTITY include_types "Tipos a incluir">
-<!ENTITY merge_bookmarks "Marcadores">
-<!ENTITY mergebookmarks_tooltip "Incluir los nuevos marcadores al mezclar">
-<!ENTITY merge_seperators "Separadores">
-<!ENTITY mergesep_tooltip "Incluir los nuevos separadores al mezclar">
-<!ENTITY merge_queries "Búsquedas/Consultas">
-<!ENTITY mergequeries_tooltip "Incluir las nuevas consultas/búsquedas al mezclar">
-<!ENTITY merge_livemarks "Marcadores dinámicos">
-<!ENTITY mergelivemarks_tooltip "Incluir los nuevos marcadores dinámicos al mezclar">
 <!ENTITY workarounds_tab "Entorno de trabajo">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Añada sus propias etiquetas de estilo:">

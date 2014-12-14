@@ -12,6 +12,10 @@
 <!ENTITY remote "Удалённо">
 <!ENTITY send_button "Отправить закладки/пароли">
 <!ENTITY send_tooltip "Отправляет закладки/пароли на сервер">
+<!ENTITY if_changes "If changes">
+<!ENTITY if_changes_tooltip "Send if any local changes">
+<!ENTITY immediately "Immediately">
+<!ENTITY immediately_tooltip "Immediately send all bookmarks/passwords">
 <!ENTITY receive_button "Получить закладки/пароли">
 <!ENTITY receive_tooltip "Создаёт резервную копию, а затем получает закладки/пароли с сервера">
 <!ENTITY local "Локально">
@@ -28,6 +32,8 @@
 <!ENTITY import_button "Импорт">
 <!ENTITY not_available "Настройка пока не доступна">
 <!ENTITY import_tooltip "Импортировать закладки из локального XBEL файла">
+<!ENTITY import_merge_tooltip "Merge with existing bookmarks">
+<!ENTITY import_overwrite_tooltip "Overwrite existing bookmarks">
 <!ENTITY connection_tab "Соединение">
 <!ENTITY sync_tab "Синхронизация">
 <!ENTITY protocol "Протокол:">
@@ -57,8 +63,6 @@
 <!ENTITY syncxbel_tooltip "Синхронизация XBEL файлом">
 <!ENTITY sync_passwords "Пароли">
 <!ENTITY syncpasswords_tooltip "Синхронизирует пароли">
-<!ENTITY sync_icons "Обновлять значки сайтов">
-<!ENTITY syncicons_tooltip "Обновляет значки сайтов при получении/импортировании">
 <!ENTITY send_html "Отправить HTML">
 <!ENTITY sendhtml_tooltip "Отправляет также и HTML версию">
 <!ENTITY send_xbel "Отправить XBEL">
@@ -67,7 +71,6 @@
 <!ENTITY passwordpath "Путь паролей:">
 <!ENTITY passwordpath_tooltip "Путь к файлу паролей на сервере, например: /bookmarks/passwords">
 <!ENTITY password_password "Пароль:">
-<!ENTITY basic "Основные">
 <!ENTITY encrypt_json "Шифровать JSON">
 <!ENTITY encryptjson_tooltip "Для безопасности зашифровывает JSON файл.">
 <!ENTITY encryptpassword_tooltip "Пароль, используемый для шифрования">
@@ -75,18 +78,12 @@
 <!ENTITY gzipjson_tooltip "Сжимает JSON файл архиватором GZip для ускорения передачи">
 <!ENTITY small_xbel "Экспортировать/Отправлять небольшой XBEL">
 <!ENTITY smallxbel_tooltip "Отправляет/экспортирует маленький XBEL файл (удобнее для модификации)">
-<!ENTITY send_safe "Безопасная отправка">
-<!ENTITY sendsafe_tooltip "Принимает и объединяет закладки перед каждой отправкой, чтобы обезопасить себя от потерь">
 <!ENTITY auto_sort "Перед отправлением сортировать">
 <!ENTITY autosort_tooltip "Автоматически сортирует закладки перед их отправлением">
-<!ENTITY cache "Синхронизировать закладки, только если они были изменены">
-<!ENTITY cache_tooltip "Не синхронизирует закладки, если они не были изменены">
-<!ENTITY cache_pwd "Синхронизировать пароли, только если они были изменены">
-<!ENTITY cachepwd_tooltip "Не синхронизирует пароли, если они не были изменены">
 <!ENTITY merge "Объединять принятые закладки">
-<!ENTITY merge_tooltip "Вместо перезаписывания, объединяет принятые закладки">
-<!ENTITY merge_pwd "Объединять принятые пароли">
-<!ENTITY mergepwd_tooltip "Вместо перезаписывания, объединяет принятые пароли">
+<!ENTITY receive_merge_tooltip "Merge any changes on the Server">
+<!ENTITY overwrite "Overwrite">
+<!ENTITY receive_overwrite_tooltip "Overwrite bookmarks/passwords with those on Server">
 <!ENTITY profiles "Профили">
 <!ENTITY profile "Профиль">
 <!ENTITY add_profile "Добавить">
@@ -112,8 +109,6 @@
 <!ENTITY autoreceivenotify_tooltip "Диалоговое окно остаётся открытым после выполнения">
 <!ENTITY auto_send "Отправлять при завершении">
 <!ENTITY autosend_tooltip "Автоматически отправляет закладки при закрытии браузера">
-<!ENTITY auto_send_notify "Оставлять диалоговое окно открытым">
-<!ENTITY autosendnotify_tooltip "Диалоговое окно остаётся открытым после выполнения">
 <!ENTITY auto_close "Автоматически закрывать после отправки/приёма">
 <!ENTITY autoclose_tooltip "Автоматически закрывает диалоговое окно после ручной отправки/приёма">
 <!ENTITY auto_close_delay "секунд(а,ы)">
@@ -128,7 +123,6 @@
 <!ENTITY timed_transfer "Синхронизировать в заданное время">
 <!ENTITY timedtransfer_tooltip "В заданное время выполнять получение, а затем отправку, используя настройки «Безопасной отправки»">
 <!ENTITY transfer_time "Время синхронизации">
-<!ENTITY misc_tab "Общие">
 <!ENTITY send_all "Синхронизировать всё Собранное/Закладки">
 <!ENTITY sendall_tooltip "Синхронизирует целиком всё дерево Собранное/Закладки">
 <!ENTITY skip_name "Разрешить при приёме отличающиеся имена">
@@ -147,34 +141,6 @@
 <!ENTITY showtools_tooltip "Показывает пункт в меню «Инструменты»">
 <!ENTITY backupfolder_button "Выбрать папку для резервных копий">
 <!ENTITY backupfolder_tooltip "Выберите папку для хранения резервных копий">
-<!ENTITY merge_tab "Объединение">
-<!ENTITY merge_deletes "Объединение удалением">
-<!ENTITY mergedeletes_tooltip "Операции с закладками, которые были удалены или переименованы">
-<!ENTITY comparison "Операции с дубликатами">
-<!ENTITY compare_timestamps "Использовать время файла">
-<!ENTITY timestamps_tooltip "Чтобы решить какой из дубликатов сохранить, использует время создания/изменения файла">
-<!ENTITY compare_local "Использовать локальный">
-<!ENTITY local_tooltip "Сохраняет текущий элемент и игнорирует тот, что принят">
-<!ENTITY compare_remote "Использовать удалённый">
-<!ENTITY remote_tooltip "Использует принятый элемент, удаляя локальный">
-<!ENTITY merge_all "Объединять всё">
-<!ENTITY mergeall_tooltip "Объединяет всё, что принято">
-<!ENTITY include_places "Включать элементы">
-<!ENTITY merge_menu "Меню закладок">
-<!ENTITY mergemenu_tooltip "Объединение включает элементы меню закладок">
-<!ENTITY merge_toolbar "Панель закладок">
-<!ENTITY mergetoolbar_tooltip "Объединение включает элементы панели закладок">
-<!ENTITY merge_unsorted "Неупорядоченные">
-<!ENTITY mergeunsorted_tooltip "Объединение включает неупорядоченные элементы">
-<!ENTITY include_types "Включать типы">
-<!ENTITY merge_bookmarks "Закладки">
-<!ENTITY mergebookmarks_tooltip "Объединение включает новые закладки">
-<!ENTITY merge_seperators "Разделители">
-<!ENTITY mergesep_tooltip "Объединение включает новые разделители">
-<!ENTITY merge_queries "Поиски/Запросы">
-<!ENTITY mergequeries_tooltip "Объединение включает новые поиски/запросы">
-<!ENTITY merge_livemarks "Ленты новостей">
-<!ENTITY mergelivemarks_tooltip "Объединение включает новые закладки на ленты новостей">
 <!ENTITY workarounds_tab "Решение проблем">
 <!ENTITY xbel_tab "XBEL">
 <!ENTITY style_tags "Добавьте свои собственные теги стиля ниже:">

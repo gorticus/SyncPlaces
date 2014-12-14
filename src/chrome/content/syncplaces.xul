@@ -68,14 +68,10 @@
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-send"
-									label="&send_button;"
-									oncommand="SyncPlaces.menuSend();"
-									tooltiptext="&send_tooltip;"/>
-				<menuitem id="syncplaces-receive"
-									label="&receive_button;"
-									oncommand="SyncPlaces.menuReceive();"
-									tooltiptext="&receive_tooltip;"/>
+				<menuitem id="syncplaces-sync"
+									label="&sp;"
+									oncommand="SyncPlaces.menuSync();"
+									tooltiptext="&sp_tooltip;"/>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -90,14 +86,10 @@
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-send"
-									label="&send_button;"
-									oncommand="SyncPlaces.menuSend();"
-									tooltiptext="&send_tooltip;"/>
-				<menuitem id="syncplaces-receive"
-									label="&receive_button;"
-									oncommand="SyncPlaces.menuReceive();"
-									tooltiptext="&receive_tooltip;"/>
+				<menuitem id="syncplaces-sync"
+									label="&sp;"
+									oncommand="SyncPlaces.menuSync();"
+									tooltiptext="&sp_tooltip;"/>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -113,14 +105,10 @@
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-send"
-									label="&send_button;"
-									oncommand="SyncPlaces.menuSend();"
-									tooltiptext="&send_tooltip;"/>
-				<menuitem id="syncplaces-receive"
-									label="&receive_button;"
-									oncommand="SyncPlaces.menuReceive();"
-									tooltiptext="&receive_tooltip;"/>
+				<menuitem id="syncplaces-sync"
+									label="&sp;"
+									oncommand="SyncPlaces.menuSync();"
+									tooltiptext="&sp_tooltip;"/>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -137,14 +125,10 @@
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-send"
-									label="&send_button;"
-									oncommand="SyncPlaces.menuSend();"
-									tooltiptext="&send_tooltip;"/>
-				<menuitem id="syncplaces-receive"
-									label="&receive_button;"
-									oncommand="SyncPlaces.menuReceive();"
-									tooltiptext="&receive_tooltip;"/>
+				<menuitem id="syncplaces-sync"
+									label="&sp;"
+									oncommand="SyncPlaces.menuSync();"
+									tooltiptext="&sp_tooltip;"/>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -160,14 +144,10 @@
 									label="&options_tab;"
 									oncommand="SyncPlaces.actionsOpen();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-send"
-									label="&send_button;"
-									oncommand="SyncPlaces.menuSend();"
-									tooltiptext="&send_tooltip;"/>
-				<menuitem id="syncplaces-receive"
-									label="&receive_button;"
-									oncommand="SyncPlaces.menuReceive();"
-									tooltiptext="&receive_tooltip;"/>
+				<menuitem id="syncplaces-sync"
+									label="&sp;"
+									oncommand="SyncPlaces.menuSync();"
+									tooltiptext="&sp_tooltip;"/>
 		  </menupopup>
 		</menu>
 	</menupopup>
@@ -185,14 +165,10 @@
 									default="true"
 									oncommand="SyncPlaces.actionsOpen(); event.stopPropagation();"
 									tooltiptext="&options_tab;"/>
-				<menuitem id="syncplaces-send"
-									label="&send_button;"
-									oncommand="SyncPlaces.menuSend(); event.stopPropagation();"
-									tooltiptext="&send_tooltip;"/>
-				<menuitem id="syncplaces-receive"
-									label="&receive_button;"
-									oncommand="SyncPlaces.menuReceive(); event.stopPropagation();"
-									tooltiptext="&receive_tooltip;"/>
+				<menuitem id="syncplaces-sync"
+									label="&sp;"
+									oncommand="SyncPlaces.menuSync(); event.stopPropagation();"
+									tooltiptext="&sp_tooltip;"/>
 			</menupopup>
 		</toolbarbutton>
 	</toolbarpalette>

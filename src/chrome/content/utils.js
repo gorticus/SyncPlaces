@@ -24,6 +24,7 @@
  *   Asaf Romano <mano@mozilla.com>
  *   Sungjoon Steve Won <stevewon@gmail.com>
  *   Dietrich Ayala <dietrich@mozilla.com>
+ *   Marco Bonardo <mak77@bonardo.net>
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -63,10 +64,10 @@ var SyncPlacesUtils = {
 				if (!SyncPlacesBookmarks.sameValue(title1, title2, false)) {
 					if (!title2)
 						SyncPlacesOptions.alert2(null, 'all_places_not_expected', null, timeout,
-							"http://www.andyhalford.com/syncplaces/options.html#general");
+							"http://www.andyhalford.com/syncplaces/options.html");
 					else
 						SyncPlacesOptions.alert2(null, 'wrong_title_subfolder', title1 + " != " + title2, timeout,
-							"http://www.andyhalford.com/syncplaces/options.html#general");
+							"http://www.andyhalford.com/syncplaces/options.html");
 
 					return false;
 				}
@@ -75,7 +76,7 @@ var SyncPlacesUtils = {
 			//It's not the whole tree is it? (should never get here)
 			if (nodes[0].children[0].root) {
 				SyncPlacesOptions.alert2(null, 'all_places_not_expected', null, timeout,
-					"http://www.andyhalford.com/syncplaces/options.html#general");
+					"http://www.andyhalford.com/syncplaces/options.html");
 				return false;
 			}
 			return true;
@@ -134,7 +135,7 @@ var SyncPlacesUtils = {
 		//Check you're not receiving a subfolder, when you're expecting everything
 		else if (!nodes[0].children[0].root) {
 			SyncPlacesOptions.alert2(null, 'restoring_subfolder_by_mistake', null, timeout,
-				"http://www.andyhalford.com/syncplaces/options.html#general");
+				"http://www.andyhalford.com/syncplaces/options.html");
 			return false;
 		}
 
@@ -305,7 +306,7 @@ var SyncPlacesUtils = {
 
 						//Okay now add the kids
 						node.children.forEach(function(child) {
-							var [folders, searches] = SyncPlacesUtils.importJSONNode(child, container, child.index, merge, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldSubNodes, addsDels.missingNodes, debug, node.title, stats);
+							var [folders, searches] = SyncPlacesUtils.importJSONNode(child, container, child.index, merge, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldSubNodes, addsDels.missingNodes, debug, node.title, stats, 0);
               for (var i = 0; i < folders.length; i++) {
                 if (folders[i])
                   folderIdMap[i] = folders[i];
@@ -315,7 +316,7 @@ var SyncPlacesUtils = {
 					}
 					//If not special then just add everything (that's not already there)
 					else {
-						SyncPlacesUtils.importJSONNode(node, syncFolderID, node.index, merge, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldNodes, addsDels.missingNodes, debug, this.containerTitle, stats);
+						SyncPlacesUtils.importJSONNode(node, syncFolderID, node.index, merge, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldNodes, addsDels.missingNodes, debug, this.containerTitle, stats, 0);
 					}
 
 				}, this);
@@ -420,7 +421,7 @@ var SyncPlacesUtils = {
    *          and an array of saved search ids that need to be fixed up.
    *          eg: [[[oldFolder1, newFolder1]], [search1]]
    */
-	importJSONNode: function(node, container, index, merge, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldNodes, missingNodes, debug, containerTitle, stats) {
+	importJSONNode: function(node, container, index, merge, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldNodes, missingNodes, debug, containerTitle, stats, aGrandParentId) {
 		var folderIdMap = [];
 		var searchIds = [];
 		var id = -1;
@@ -546,7 +547,7 @@ var SyncPlacesUtils = {
 					//Do the kids
 					if (node.children) {
 						node.children.forEach(function(child, index) {
-							var [folders, searches] = this.importJSONNode(child, containerID, index, mergeChildren, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldSubNodes, missingNodes, debug, node.title, stats);
+							var [folders, searches] = this.importJSONNode(child, containerID, index, mergeChildren, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldSubNodes, missingNodes, debug, node.title, stats, container);
               for (var i = 0; i < folders.length; i++) {
                 if (folders[i]) folderIdMap[i] = folders[i];
               }
@@ -734,7 +735,10 @@ var SyncPlacesUtils = {
 		}
 
     	// set generic properties, valid for all nodes
-		if (id != -1) {
+    if (id != -1 &&
+        container != PlacesUtils.tagsFolderId &&
+        aGrandParentId != PlacesUtils.tagsFolderId) 
+		{
 			if (node.annos && node.annos.length) {
 				PlacesUtils.setAnnotationsForItem(id, node.annos);
 			}
@@ -909,14 +913,20 @@ var SyncPlacesUtils = {
       }
     }
 
-    function writeScalarNode(aStream, aNode) {
+    function writeScalarNode(aStream, aNode, aPrevWritten) {
       // serialize to json
       var jstr = PlacesUtils.toJSONString(aNode);
+			
+			// AndyH fix to prevent trailing comma
+			if (aPrevWritten) jstr = "," + jstr;
+
       // write to stream
       aStream.write(jstr, jstr.length);
     }
 
-    function writeComplexNode(aStream, aNode, aSourceNode) {
+		// AndyH contains my fixes to prevent trailing comma
+		// See note in PlacesUtils.jsm - should really upgrade to latest way of doing things
+    function writeComplexNode(aStream, aNode, aSourceNode, aPrevWritten) {
 			function asContainer(container) {
 				return container.QueryInterface(Components.interfaces.nsINavHistoryContainerResultNode);
 			}
@@ -932,6 +942,7 @@ var SyncPlacesUtils = {
         properties.push("\"" + name.replace(escJSONStringRegExp, '\\$1') + "\":" + value);
       }
       var jStr = "{" + properties.join(",") + ",\"children\":[";
+			if (aPrevWritten) jStr = "," + jStr;
       aStream.write(jStr, jStr.length);
 
       // write child nodes
@@ -941,13 +952,12 @@ var SyncPlacesUtils = {
         if (!wasOpen)
           aSourceNode.containerOpen = true;
         var cc = aSourceNode.childCount;
+				var prevWritten = false;
         for (var i = 0; i < cc; ++i) {
           var childNode = aSourceNode.getChild(i);
           if (aExcludeItems && aExcludeItems.indexOf(childNode.itemId) != -1)
             continue;
-          var written = serializeNodeToJSONStream(aSourceNode.getChild(i), i);
-          if (written && i < cc - 1)
-            aStream.write(",", 1);
+          if (serializeNodeToJSONStream(childNode, i, prevWritten)) prevWritten = true;
         }
         if (!wasOpen)
           aSourceNode.containerOpen = false;
@@ -957,7 +967,7 @@ var SyncPlacesUtils = {
       aStream.write("]}", 2);
     }
 
-    function serializeNodeToJSONStream(bNode, aIndex) {
+    function serializeNodeToJSONStream(bNode, aIndex, aPrevWritten) {
       var node = {};
 
       // set index in order received
@@ -1002,13 +1012,13 @@ var SyncPlacesUtils = {
 			}
 
       if (!node.feedURI && node.type == PlacesUtils.TYPE_X_MOZ_PLACE_CONTAINER)
-        writeComplexNode(aStream, node, bNode);
+        writeComplexNode(aStream, node, bNode, aPrevWritten);
       else
-        writeScalarNode(aStream, node);
+        writeScalarNode(aStream, node, aPrevWritten);
       return true;
     }
 
     // serialize to stream
-    serializeNodeToJSONStream(aNode, null);
+    serializeNodeToJSONStream(aNode, null, false);
   }
 };

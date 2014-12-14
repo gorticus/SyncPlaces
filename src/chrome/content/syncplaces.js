@@ -172,10 +172,13 @@ var SyncPlaces = {
 		return login;
 	},
 
-	importBookmarks: function() {
+	importBookmarks: function(merge) {
 		var bundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
 										.getService(Components.interfaces.nsIStringBundleService)
 										.createBundle("chrome://syncplaces/locale/syncplaces.properties");
+
+		SyncPlacesOptions.prefs.setBoolPref("merge", merge);
+		SyncPlacesOptions.prefs.setBoolPref("merge_pwd", merge);
 
 		var nsIFilePicker = this.Ci.nsIFilePicker;
 		var fp = this.Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
@@ -408,8 +411,15 @@ var SyncPlaces = {
 			var prefs = SyncPlaces.Cc["@mozilla.org/preferences-service;1"]
 														.getService(SyncPlaces.Ci.nsIPrefService)
 														.getBranch("extensions.syncplaces.");
-			if (!timeout && prefs.getBoolPref("timeout"))
-				setTimeout(window.close, this.clearStatusTimeout);
+			if (!timeout && prefs.getBoolPref("timeout")) {
+				var delay = prefs.getCharPref("timeoutDelay");
+				if (!delay) {
+					window.close;	//Close immediately if delay is zero;
+				}
+				else {
+					setTimeout(window.close, delay*1000);
+				}
+			}
 		}
 		var status;
 		var msg;
@@ -424,30 +434,30 @@ var SyncPlaces = {
 											.getService(Components.interfaces.nsIStringBundleService)
 											.createBundle("chrome://syncplaces/locale/syncplaces.properties");
 			if (!message && stats) {
-				var placesAdded = bundle.GetStringFromName('places_added') + stats.added;
-				var foldersAdded = bundle.GetStringFromName('folders_added') + stats.addedFolder;
-				var placesDeleted = bundle.GetStringFromName('places_deleted') + stats.deletes;
-				var foldersDeleted = bundle.GetStringFromName('folders_deleted') + stats.folderDeletes;
-				var passwordsAdded = bundle.GetStringFromName('passwords_added') + stats.pwadded;
 				//NOTE: TODO: the msg is pointless here as gets displayed on screen for too short a time
 				msg = "";
 				if (stats.added) {
+					var placesAdded = bundle.GetStringFromName('places_added') + stats.added;
 					SyncPlacesOptions.message(placesAdded);
 					msg += placesAdded + " ";
 				}
 				if (stats.addedFolder) {
+					var foldersAdded = bundle.GetStringFromName('folders_added') + stats.addedFolder;
 					SyncPlacesOptions.message(foldersAdded);
 					msg += foldersAdded + " ";
 				}
 				if (stats.deletes) {
+					var placesDeleted = bundle.GetStringFromName('places_deleted') + stats.deletes;
 					SyncPlacesOptions.message(placesDeleted);
 					msg += placesDeleted + " ";
 				}
 				if (stats.folderDeletes) {
+					var foldersDeleted = bundle.GetStringFromName('folders_deleted') + stats.folderDeletes;
 					SyncPlacesOptions.message(foldersDeleted);
 					msg += foldersDeleted + " ";
 				}
 				if (stats.pwadded) {
+					var passwordsAdded = bundle.GetStringFromName('passwords_added') + stats.pwadded;
 					SyncPlacesOptions.message(passwordsAdded);
 					msg += passwordsAdded + " ";
 				}
@@ -661,15 +671,14 @@ var SyncPlaces = {
 		return false; //TO keep the actions.xul window open
 	},
 
-	//Do send from menu
-	menuSend: function() {
+	//Do sync from menu
+	menuSync: function() {
+		SyncPlacesOptions.prefs.setBoolPref("send_safe", true);
+		SyncPlacesOptions.prefs.setBoolPref("cache", true);
+		SyncPlacesOptions.prefs.setBoolPref("cache_pwd", true);
+		SyncPlacesOptions.prefs.setBoolPref("merge", true);
+		SyncPlacesOptions.prefs.setBoolPref("merge_pwd", true);
 		SyncPlacesOptions.prefs.setBoolPref("startManualSend", true);
-		window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank', 'chrome,resizable,modal,centerscreen', null);
-	},
-
-	//Do receive from menu
-	menuReceive: function() {
-		SyncPlacesOptions.prefs.setBoolPref("startManualReceive", true);
 		window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank', 'chrome,resizable,modal,centerscreen', null);
 	},
 
@@ -711,6 +720,11 @@ var SyncPlaces = {
 					if (!document.getElementById(myId)) {
 						bar.insertItem(myId);
 						bar.collapsed = false;	//Show the addon bar if it is hidden
+						
+						//Remember these changes
+						bar.setAttribute("currentset", bar.currentSet);  
+						document.persist(bar.id, "currentset");
+						document.persist(bar.id, "collapsed");
 					}
 				}
 
@@ -751,7 +765,12 @@ var SyncPlaces = {
 				if (prefs.getCharPref("autostart_detection") == "autostart_crude") {
 					//Auto-start
 					if (prefs.getBoolPref("auto_receive") && !SyncPlaces.anySPDialogs()) {
-						prefs.setBoolPref("startAutoReceive", true);
+						prefs.setBoolPref("send_safe", true);
+						prefs.setBoolPref("cache", true);
+						prefs.setBoolPref("cache_pwd", true);
+						prefs.setBoolPref("merge", true);
+						prefs.setBoolPref("merge_pwd", true);
+						prefs.setBoolPref("startAutoSend", true);
 						window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank',
 															'chrome,resizable,centerscreen', null);
 					}

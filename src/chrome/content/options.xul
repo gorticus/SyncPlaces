@@ -40,7 +40,7 @@
 
 <dialog id="syncplacesOptions"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&sp_title; 4.3.0"
+        title="&sp_title; 5.0.0"
         buttons="accept,cancel"
         onload="SyncPlacesOptions.onDialogLoad();"
         ondialogaccept="return SyncPlacesOptions.onDialogAccept();"
@@ -75,187 +75,168 @@
 
 	<tabbox>
 		<tabs id="mainTabs">
-			<tab label="&server_tab;" id="ServerTab" />
+			<tab label="&connection_tab;" id="Connection" />
+			<tab label="&sync_tab;" id="SyncTab"/>
 			<tab label="&options_tab;" id="OptionsTab"/>
+			<tab label="&automation;" id="Automation"/>
 			<tab label="&advanced_tab;" id="AdvancedTab"/>
 		</tabs>
 		<tabpanels>
 			<tabpanel orient="vertical">
-				<tabbox>
-					<tabs id="serverTabs">
-						<tab label="&connection_tab;" id="Connection" />
-						<tab label="&sync_tab;" id="SyncTab"/>
-					</tabs>
-					<tabpanels>
-						<tabpanel orient="vertical">
-							<groupbox>
-								<grid flex="1">
-									<columns>
-										<column align="right"/>
-										<column flex="1"/>
-									</columns>
-									<rows>
-										<row align="center">
-											<label control="protocol" value="&protocol;"/>
-											<radiogroup id="protocol" orient="horizontal">
-												<radio id="http" label="&http;" oncommand="SyncPlacesOptions.toggleProtocol();"/>
-												<radio id="https" label="&https;" oncommand="SyncPlacesOptions.toggleProtocol();"/>
-												<radio id="ftp" label="&ftp;" oncommand="SyncPlacesOptions.toggleProtocol();"/>
-												<radio id="file" label="&file;" oncommand="SyncPlacesOptions.toggleProtocol();"/>
-											</radiogroup>
-										</row>
-										<row align="center">
-											<separator class="thin"/>
-										</row>
-										<row align="center">
-											<label control="host" value="&host;"/>
-											<textbox id="host" tooltiptext="&host_tooltip;" />
-										</row>
-										<row align="center">
-											<label control="userid" value="&userid;" />
-											<textbox id="userid" tooltiptext="&userid_tooltip;" />
-										</row>
-										<row align="center">
-											<label control="password" value="&password;" />
-											<textbox id="password" type="password" tooltiptext="&password_tooltip;" />
-										</row>
-									</rows>
-								</grid>
-							</groupbox>
-						</tabpanel>
-						<tabpanel orient="vertical">
-							<groupbox>
-								<hbox align="center">
-									<label control="sync_type" value="&sync_type;" />
-									<radiogroup id="sync_type" orient="horizontal">
-										<radio id="sync_json" label="&sync_json;" tooltiptext="&syncjson_tooltip;" oncommand="SyncPlacesOptions.toggleSyncType();" />
-										<radio id="sync_xbel" label="&sync_xbel;" tooltiptext="&syncxbel_tooltip;" oncommand="SyncPlacesOptions.toggleSyncType();" />
-									</radiogroup>
-									<checkbox id="sync_passwords" label="&sync_passwords;" oncommand="SyncPlacesOptions.togglePasswords(true);" tooltiptext="&syncpasswords_tooltip;" />
-								</hbox>
+				<groupbox>
+					<grid flex="1">
+						<columns>
+							<column align="right"/>
+							<column flex="1"/>
+						</columns>
+						<rows>
+							<row align="center">
+								<label control="protocol" value="&protocol;"/>
+								<radiogroup id="protocol" orient="horizontal">
+									<radio id="http" label="&http;" oncommand="SyncPlacesOptions.toggleProtocol();"/>
+									<radio id="https" label="&https;" oncommand="SyncPlacesOptions.toggleProtocol();"/>
+									<radio id="ftp" label="&ftp;" oncommand="SyncPlacesOptions.toggleProtocol();"/>
+									<radio id="file" label="&file;" oncommand="SyncPlacesOptions.toggleProtocol();"/>
+								</radiogroup>
+							</row>
+							<row align="center">
 								<separator class="thin"/>
-								<grid>
-									<columns>
-										<column />
-										<column flex="1"/>
-									</columns>
-									<rows>
-										<row align="center">
-											<label id="path_label" control="path" value="&path;"/>
-											<textbox id="path" onchange="SyncPlacesOptions.checkPath(true, 'path');" tooltiptext="&path_tooltip;" />
-										</row>
-										<row align="center">
-									<checkbox id="sendxbel" label="&send_xbel;" oncommand="SyncPlacesOptions.toggleXBELFolder();" tooltiptext="&sendxbel_tooltip;" />
-											<textbox id="xbelpath" onchange="SyncPlacesOptions.checkPath(true, 'xbelpath');" tooltiptext="&xbelpath_tooltip;"/>
-										</row>
-										<row align="center">
-									<checkbox id="sendhtml" label="&send_html;" oncommand="SyncPlacesOptions.toggleHTMLFolder();" tooltiptext="&sendhtml_tooltip;" />
-											<textbox id="htmlpath" onchange="SyncPlacesOptions.checkPath(true, 'htmlpath');" tooltiptext="&htmlpath_tooltip;"/>
-										</row>
-										<row align="center">
-											<label id="passwordpath_label" control="passwordpath" value="&passwordpath;"/>
-											<textbox id="passwordpath" onchange="SyncPlacesOptions.checkPath(true, 'passwordpath');" tooltiptext="&passwordpath_tooltip;"/>
-										</row>
-									</rows>
-								</grid>
-							</groupbox>
-						</tabpanel>
-					</tabpanels>
-				</tabbox>
+							</row>
+							<row align="center">
+								<label control="host" value="&host;"/>
+								<textbox id="host" tooltiptext="&host_tooltip;" />
+							</row>
+							<row align="center">
+								<label control="userid" value="&userid;" />
+								<textbox id="userid" tooltiptext="&userid_tooltip;" />
+							</row>
+							<row align="center">
+								<label control="password" value="&password;" />
+								<textbox id="password" type="password" tooltiptext="&password_tooltip;" />
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
 				<vbox align="center">
 					<checkbox id="run_wizard" label="&run_wizard;" tooltiptext="&runwizard_tooltip;" />
 				</vbox>
 			</tabpanel>
 			<tabpanel orient="vertical">
-				<tabbox>
-					<tabs id="serverTabs">
-						<tab label="&basic;" id="BasicOptions"/>
-						<tab label="&automation;" id="Automation"/>
-						<tab label="&misc_tab;" id="Miscellaneous"/>
-					</tabs>
-					<tabpanels>
-						<tabpanel orient="vertical">
-							<groupbox>
-								<grid>
-									<rows>
-										<row align="center">
-											<checkbox id="send_safe" label="&send_safe;" oncommand="SyncPlacesOptions.toggleSendSafe(true);" tooltiptext="&sendsafe_tooltip;" />
-											<checkbox id="auto_sort" label="&auto_sort;" oncommand="SyncPlacesOptions.checkSortPlaces(false);" tooltiptext="&autosort_tooltip;" />
-										</row>
-										<row>
-											<checkbox id="encrypt" label="&encrypt_json;" oncommand="SyncPlacesOptions.toggleEncryptPassword(true);" tooltiptext="&encryptjson_tooltip;" />
-											<checkbox id="gzip" label="&send_gzip_json;" tooltiptext="&gzipjson_tooltip;" />
-										</row>
-									</rows>
-								</grid>
-							</groupbox>
-							<groupbox>
-								<checkbox id="cache" label="&cache;" oncommand="SyncPlacesOptions.toggleCache(false);" tooltiptext="&cache_tooltip;" />
-								<checkbox id="merge" label="&merge;" oncommand="SyncPlacesOptions.toggleMergeOptions(false, false);" tooltiptext="&merge_tooltip;" />
-								<checkbox id="cache_pwd" label="&cache_pwd;" oncommand="SyncPlacesOptions.toggleCachePwd(false);" tooltiptext="&cachepwd_tooltip;" />
-								<checkbox id="merge_pwd" label="&merge_pwd;" oncommand="SyncPlacesOptions.toggleMergePwd(false);" tooltiptext="&mergepwd_tooltip;" />
-							</groupbox>
-						</tabpanel>
-						<tabpanel orient="vertical">
-							<groupbox>
-								<hbox align="center">
-									<checkbox id="autosync" label="&autosync;" oncommand="SyncPlacesOptions.toggleAutoSync(false);" tooltiptext="&autosync_tooltip;" />
-									<label id="delay_label" control="delay" value="&delay;"/>
-									<textbox id="delay" size="3" maxlength="3" type="number" min="3" max="999" tooltiptext="&syncdelay_tooltip;" />
-									<label id="delay_label2" value="&seconds;"/>
-								</hbox>
-								<hbox align="center">
-									<checkbox id="auto_receive" label="&auto_receive;" oncommand="SyncPlacesOptions.toggleReceiveNotify();" tooltiptext="&autoreceive_tooltip;" />
-									<checkbox id="auto_send" label="&auto_send;"  oncommand="SyncPlacesOptions.toggleSendNotify();" tooltiptext="&autosend_tooltip;" />
-								</hbox>
-							</groupbox>
-							<groupbox>
-								<checkbox id="regular_transfer" label="&regular_transfer;" oncommand="SyncPlacesOptions.toggleRegularTransfer(false);" tooltiptext="&regulartransfer_tooltip;" />
-								<hbox align="center">
-									<label id="transferint_label" control="transfer_interval" value="&transfer_interval;"/>
-									<textbox id="transfer_interval" size="4" maxlength="4" type="number" min="1" max="9999" tooltiptext="&transferinterval_tooltip;" onchange="SyncPlacesOptions.checkInterval();"/>
-									<menulist id="transfer_measure" oncommand="SyncPlacesOptions.checkInterval();">
-										<menupopup>
-											<menuitem label="&seconds;" value="seconds"/>
-											<menuitem label="&minutes;" value="minutes"/>
-											<menuitem label="&hours;" value="hours"/>
-										</menupopup>
-									</menulist>
-								</hbox>
-							</groupbox>
-							<groupbox>
-								<hbox align="center">
-									<checkbox id="timed_transfer" label="&timed_transfer;" oncommand="SyncPlacesOptions.toggleTimedTransfer(false);" tooltiptext="&timedtransfer_tooltip;" />
-									<timepicker id="transfer_time" hideseconds="true" increment="5"/>
-								</hbox>
-							</groupbox>
-						</tabpanel>
-						<tabpanel orient="vertical">
-							<groupbox>
-								<checkbox id="sendall" label="&send_all;" oncommand="SyncPlacesOptions.toggleSelectFolder(true);" tooltiptext="&sendall_tooltip;" />
-								<button id="selectfolder" label="&selectfolder_button;" oncommand="SyncPlacesOptions.selectBookmarkFolder();" tooltiptext="&selectfolder_tooltip;" />
-								<hbox align="center">
-									<label id="folder_label" control="selected_folder" value="&selected_folder;"/>
-									<label id="selected_folder" value=""/>
-								</hbox>
-								<checkbox id="skip_name_check" label="&skip_name;" tooltiptext="&skipname_tooltip;" />
-							</groupbox>
-							<groupbox>
-								<hbox align="center">
-									<checkbox id="bookmarks_menu" label="&show_bm;" tooltiptext="&showbm_tooltip;" />
-									<checkbox id="tools_menu" label="&show_tools;" tooltiptext="&showtools_tooltip;" />
-								</hbox>
-							</groupbox>
-								<button id="backupfolder" label="&backupfolder_button;" oncommand="SyncPlacesOptions.selectBackupFolder();" tooltiptext="&backupfolder_tooltip;" />
-						</tabpanel>
-					</tabpanels>
-				</tabbox>
+				<groupbox>
+					<hbox align="center">
+						<label control="sync_type" value="&sync_type;" />
+						<radiogroup id="sync_type" orient="horizontal">
+							<radio id="sync_json" label="&sync_json;" tooltiptext="&syncjson_tooltip;" oncommand="SyncPlacesOptions.toggleSyncType();" />
+							<radio id="sync_xbel" label="&sync_xbel;" tooltiptext="&syncxbel_tooltip;" oncommand="SyncPlacesOptions.toggleSyncType();" />
+						</radiogroup>
+						<checkbox id="sync_passwords" label="&sync_passwords;" oncommand="SyncPlacesOptions.togglePasswords(true);" tooltiptext="&syncpasswords_tooltip;" />
+					</hbox>
+					<separator class="thin"/>
+					<grid>
+						<columns>
+							<column />
+							<column flex="1"/>
+						</columns>
+						<rows>
+							<row align="center">
+								<label id="path_label" control="path" value="&path;"/>
+								<textbox id="path" onchange="SyncPlacesOptions.checkPath(true, 'path');" tooltiptext="&path_tooltip;" />
+							</row>
+							<row align="center">
+						<checkbox id="sendxbel" label="&send_xbel;" oncommand="SyncPlacesOptions.toggleXBELFolder();" tooltiptext="&sendxbel_tooltip;" />
+								<textbox id="xbelpath" onchange="SyncPlacesOptions.checkPath(true, 'xbelpath');" tooltiptext="&xbelpath_tooltip;"/>
+							</row>
+							<row align="center">
+						<checkbox id="sendhtml" label="&send_html;" oncommand="SyncPlacesOptions.toggleHTMLFolder();" tooltiptext="&sendhtml_tooltip;" />
+								<textbox id="htmlpath" onchange="SyncPlacesOptions.checkPath(true, 'htmlpath');" tooltiptext="&htmlpath_tooltip;"/>
+							</row>
+							<row align="center">
+								<label id="passwordpath_label" control="passwordpath" value="&passwordpath;"/>
+								<textbox id="passwordpath" onchange="SyncPlacesOptions.checkPath(true, 'passwordpath');" tooltiptext="&passwordpath_tooltip;"/>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+			</tabpanel>	
+			<tabpanel orient="vertical">
+				<groupbox>
+					<grid>
+						<rows>
+							<row align="center">
+								<checkbox id="auto_sort" label="&auto_sort;" oncommand="SyncPlacesOptions.checkSortPlaces(false);" tooltiptext="&autosort_tooltip;" />
+							</row>
+							<row>
+								<checkbox id="encrypt" label="&encrypt_json;" oncommand="SyncPlacesOptions.toggleEncryptPassword(true);" tooltiptext="&encryptjson_tooltip;" />
+								<checkbox id="gzip" label="&send_gzip_json;" tooltiptext="&gzipjson_tooltip;" />
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+				<groupbox>
+					<checkbox id="sendall" label="&send_all;" oncommand="SyncPlacesOptions.toggleSelectFolder(true);" tooltiptext="&sendall_tooltip;" />
+					<button id="selectfolder" label="&selectfolder_button;" oncommand="SyncPlacesOptions.selectBookmarkFolder();" tooltiptext="&selectfolder_tooltip;" />
+					<hbox align="center">
+						<label id="folder_label" control="selected_folder" value="&selected_folder;"/>
+						<label id="selected_folder" value=""/>
+					</hbox>
+					<checkbox id="skip_name_check" label="&skip_name;" tooltiptext="&skipname_tooltip;" />
+				</groupbox>
+				<groupbox>
+					<hbox align="center">
+						<checkbox id="bookmarks_menu" label="&show_bm;" tooltiptext="&showbm_tooltip;" />
+						<checkbox id="tools_menu" label="&show_tools;" tooltiptext="&showtools_tooltip;" />
+					</hbox>
+				</groupbox>
+				<button id="backupfolder" label="&backupfolder_button;" oncommand="SyncPlacesOptions.selectBackupFolder();" tooltiptext="&backupfolder_tooltip;" />
+			</tabpanel>
+			<tabpanel orient="vertical">
+				<groupbox>
+					<hbox align="center">
+						<checkbox id="autosync" label="&autosync;" oncommand="SyncPlacesOptions.toggleAutoSync(false);" tooltiptext="&autosync_tooltip;" />
+						<label id="delay_label" control="delay" value="&delay;"/>
+						<textbox id="delay" size="3" maxlength="3" type="number" min="3" max="999" tooltiptext="&syncdelay_tooltip;" />
+						<label id="delay_label2" value="&seconds;"/>
+					</hbox>
+				</groupbox>
+				<groupbox>
+					<hbox align="center">
+						<checkbox id="auto_receive" label="&auto_receive;" oncommand="SyncPlacesOptions.toggleReceiveNotify();" tooltiptext="&autoreceive_tooltip;" />
+						<checkbox id="auto_send" label="&auto_send;"  oncommand="SyncPlacesOptions.toggleSendNotify();" tooltiptext="&autosend_tooltip;" />
+					</hbox>
+				</groupbox>
+				<groupbox>
+					<checkbox id="regular_transfer" label="&regular_transfer;" oncommand="SyncPlacesOptions.toggleRegularTransfer(false);" tooltiptext="&regulartransfer_tooltip;" />
+					<hbox align="center">
+						<label id="transferint_label" control="transfer_interval" value="&transfer_interval;"/>
+						<textbox id="transfer_interval" size="4" maxlength="4" type="number" min="1" max="9999" tooltiptext="&transferinterval_tooltip;" onchange="SyncPlacesOptions.checkInterval();"/>
+						<menulist id="transfer_measure" oncommand="SyncPlacesOptions.checkInterval();">
+							<menupopup>
+								<menuitem label="&seconds;" value="seconds"/>
+								<menuitem label="&minutes;" value="minutes"/>
+								<menuitem label="&hours;" value="hours"/>
+							</menupopup>
+						</menulist>
+					</hbox>
+				</groupbox>
+				<groupbox>
+					<hbox align="center">
+						<checkbox id="timed_transfer" label="&timed_transfer;" oncommand="SyncPlacesOptions.toggleTimedTransfer(false);" tooltiptext="&timedtransfer_tooltip;" />
+						<timepicker id="transfer_time" hideseconds="true" increment="5"/>
+					</hbox>
+				</groupbox>
+				<groupbox>
+					<checkbox id="timeout" label="&auto_close;" oncommand="SyncPlacesOptions.toggleAutoClose(false);" tooltiptext="&autoclose_tooltip;" />
+					<hbox align="center">
+						<label id="ac_delay_label" control="ac_delay" value="&delay;"/>
+						<textbox id="timeoutDelay" size="2" maxlength="2" type="number" min="0" max="99" tooltiptext="&autodelay_tooltip;" />
+						<label id="ac_delay_label2" value="&seconds;"/>
+					</hbox>
+				</groupbox>
 			</tabpanel>
 			<tabpanel orient="vertical">
 				<tabbox>
 					<tabs id="mainTabs">
 						<tab label="&profiles;" id="Profiles"/>
-						<tab label="&merge_tab;" id="MergeTab"/>
 						<tab label="&xbel_tab;" id="XBEL"/>
 						<tab label="&encryption_tab;" id="EncryptionTab"/>
 						<tab label="&workarounds_tab;" id="WorkaroundsTab"/>
@@ -287,45 +268,6 @@
 									<button id="import_profile" label="&import_profile;" oncommand="SyncPlacesOptions.importProfile();" tooltiptext="&importprofile_tooltip;" flex="1" />
 								</hbox>
 						  </groupbox>
-						</tabpanel>
-						<tabpanel orient="vertical">
-							<groupbox>
-								<hbox align="center">
-									<checkbox id="merge2" label="&merge;" oncommand="SyncPlacesOptions.toggleMergeOptions(false, true);" tooltiptext="&merge_tooltip;" />
-									<checkbox id="merge_deletes" label="&merge_deletes;" tooltiptext="&mergedeletes_tooltip;" />
-								</hbox>
-								<radiogroup id="comparison" orient="horizontal">
-									<radio id="timestamps" label="&compare_timestamps;" tooltiptext="&timestamps_tooltip;" />
-									<radio id="local" label="&compare_local;" tooltiptext="&local_tooltip;" />
-									<radio id="remote" label="&compare_remote;" tooltiptext="&remote_tooltip;" />
-								</radiogroup>
-							</groupbox>
-							<groupbox>
-								<checkbox id="merge_all" label="&merge_all;" oncommand="SyncPlacesOptions.toggleMergeOptions(false, false);" tooltiptext="&mergeall_tooltip;" />
-								<separator class="thin"/>
-								<hbox>
-									<checkbox id="merge_menu" label="&merge_menu;" tooltiptext="&mergemenu_tooltip;" />
-									<checkbox id="merge_toolbar" label="&merge_toolbar;" tooltiptext="&mergetoolbar_tooltip;" />
-									<checkbox id="merge_unsorted" label="&merge_unsorted;" tooltiptext="&mergeunsorted_tooltip;" />
-								</hbox>
-								<label id="include_types" value="&include_types;"/>
-								<grid flex="1">
-									<columns>
-										<column/>
-										<column flex=""/>
-									</columns>
-									<rows>
-										<row>
-											<checkbox id="merge_bookmarks" label="&merge_bookmarks;" tooltiptext="&mergebookmarks_tooltip;" />
-											<checkbox id="merge_queries" label="&merge_queries;" tooltiptext="&mergequeries_tooltip;" />
-										</row>
-										<row>
-											<checkbox id="merge_livemarks" label="&merge_livemarks;" tooltiptext="&mergelivemarks_tooltip;" />
-											<checkbox id="merge_seperators" label="&merge_seperators;" tooltiptext="&mergesep_tooltip;" />
-										</row>
-									</rows>
-								</grid>
-							</groupbox>
 						</tabpanel>
 						<tabpanel orient="vertical">
 							<groupbox flex="1">
