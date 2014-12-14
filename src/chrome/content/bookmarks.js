@@ -99,12 +99,12 @@ var SyncPlacesBookmarks = {
 			//Recurse down the tree
 			for (var i = 0; i < container.childCount; i++) {
 				var child = container.getChild(i);
-				if (!PlacesUtils.nodeIsLivemarkContainer(child)) {
+
+				if (true /* CW !PlacesUtils.nodeIsLivemarkContainer(child)*/) {
 					if (PlacesUtils.nodeIsBookmark(child)) {
 						addTagAnno(child);
 					}
-					else if (PlacesUtils.nodeIsFolder(child) &&
-									 !PlacesUtils.nodeIsLivemarkContainer(child))
+					else if (PlacesUtils.nodeIsFolder(child) /*&& !PlacesUtils.nodeIsLivemarkContainer(child)*/)
 					{
 						//Ignore the untitled internal stuff
 						if (container.itemId == PlacesUtils.placesRootId && !child.title) {
@@ -174,7 +174,6 @@ var SyncPlacesBookmarks = {
 				syncFolderID = PlacesUtils.placesRootId;
 			}
 		}
-
 		//If sync'ing on subfolder, check everything okay
 		if (syncFolderID != PlacesUtils.placesRootId &&
 				!this.checkSyncFolder(syncFolderID, timeout)) return false;
@@ -209,9 +208,7 @@ var SyncPlacesBookmarks = {
 			var excludeItems = PlacesUtils.annotations
                          .getItemsWithAnnotation(this.SP_EXCLUDE_FROM_BACKUP_ANNO, {});
 			//Write out
-			SyncPlacesUtils.serializeNodeAsJSONToOutputStream(result, converter,
-																												false, false,
-																												excludeItems);
+			SyncPlacesUtils.serializeNodeAsJSONToOutputStream(result, converter, false, false, excludeItems);
 			result.containerOpen = false;
 
 		} finally {
@@ -222,7 +219,6 @@ var SyncPlacesBookmarks = {
 			//Remove the tag annotation (only if doing a subfolder)
 			if (syncFolderID != PlacesUtils.placesRootId) removeTagAnnotation();
 		}
-
 		return true;
 	},
 
@@ -292,6 +288,8 @@ var SyncPlacesBookmarks = {
 		for (var i = 0; i < result.childCount; i++) {
 			var child = result.getChild(i);
 			var existingID = child.itemId;
+
+			/*	CW
 			if (PlacesUtils.livemarks.isLivemark(existingID)) {
 				if ( this.sameValue(title, child.title, false) &&
 						 this.sameValue(feedURI,
@@ -302,6 +300,7 @@ var SyncPlacesBookmarks = {
 					return existingID;
 				}
 			}
+			*/
 		}
 		result.containerOpen = false;
 		return null;
@@ -323,7 +322,7 @@ var SyncPlacesBookmarks = {
 		var existingID = -1;
 		for (var i = 0; i < result.childCount; i++) {
 			var child = result.getChild(i);
-			if (PlacesUtils.nodeIsLivemarkContainer(child)) continue;
+// CW			if (PlacesUtils.nodeIsLivemarkContainer(child)) continue;
 			var folderID = child.itemId;
 			if (this.sameValue(node.title,
 												 PlacesUtils.bookmarks.getItemTitle(folderID),
@@ -359,8 +358,9 @@ var SyncPlacesBookmarks = {
 		if (existingID != -1 && this.sameValue(node.title,
 				PlacesUtils.bookmarks.getItemTitle(existingID), false) &&
 				(PlacesUtils.bookmarks.getItemType(existingID) ==
-				PlacesUtils.bookmarks.TYPE_FOLDER) &&
-				!PlacesUtils.livemarks.isLivemark(existingID))
+				PlacesUtils.bookmarks.TYPE_FOLDER) 
+// CW				&& !PlacesUtils.livemarks.isLivemark(existingID)
+				)
 		{
 			//Use the appropriate description and index
 			this.duplicateFolder(node, existingID, mergeComparison, index, debug);
@@ -654,8 +654,8 @@ var SyncPlacesBookmarks = {
 				removeOldItem(child, mergeSeperators, container.title, SyncPlacesBookmarks.SEPARATOR);
 			else if (PlacesUtils.nodeIsQuery(child))
 				removeOldQuery(child, mergeQueries, container.title);
-			else if (PlacesUtils.nodeIsLivemarkContainer(child))
-				removeOldItem(child, mergeLivemarks, container.title, SyncPlacesBookmarks.LIVEMARK);
+// CW			else if (PlacesUtils.nodeIsLivemarkContainer(child))
+//				removeOldItem(child, mergeLivemarks, container.title, SyncPlacesBookmarks.LIVEMARK);
 			else if (PlacesUtils.nodeIsBookmark(child))
 				removeOldItem(child, mergeBookmarks, container.title, SyncPlacesBookmarks.BOOKMARK);
 
@@ -748,7 +748,9 @@ var SyncPlacesBookmarks = {
 				//Open the folder
 				for (var i = 0; i < container.childCount; i++) {
 					var node = container.getChild(i);
-					if (PlacesUtils.nodeIsQuery(node) || PlacesUtils.nodeIsLivemarkContainer(node)) {
+					if (PlacesUtils.nodeIsQuery(node)
+// CW					|| PlacesUtils.nodeIsLivemarkContainer(node)
+					) {
 						//Do nothing
 					}
 					else if (PlacesUtils.nodeIsFolder(node)) {
@@ -804,7 +806,7 @@ var SyncPlacesBookmarks = {
 
 		} catch (e) {
 			Components.utils.reportError(e);
-			SyncPlacesIO.log(exception);
+			SyncPlacesIO.log("ERROR 1: "+ e);
 		}
 	},
 
@@ -854,7 +856,9 @@ var SyncPlacesBookmarks = {
 					//Open the folder
 					for (var i = 0; i < container.childCount; i++) {
 						var node = container.getChild(i);
-						if (PlacesUtils.nodeIsQuery(node) || PlacesUtils.nodeIsLivemarkContainer(node)) {
+						if (PlacesUtils.nodeIsQuery(node)
+// CW						|| PlacesUtils.nodeIsLivemarkContainer(node)
+						) {
 							//Do nothing
 						}
 						else if (PlacesUtils.nodeIsFolder(node)) {
@@ -921,7 +925,7 @@ var SyncPlacesBookmarks = {
 
 		} catch (e) {
 			Components.utils.reportError(e);
-			SyncPlacesIO.log(exception);
+			SyncPlacesIO.log("ERROR 2: "+ e);
 		}
 	}
 };

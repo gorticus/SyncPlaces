@@ -102,7 +102,7 @@ var SyncPlacesNetworking = {
 				} catch(exception) {
 					SyncPlacesNetworking.running = false;
 					Components.utils.reportError(exception);
-					SyncPlacesIO.log(exception);
+					SyncPlacesIO.log("ERROR 1: "+ exception);
 				}
 			},
 
@@ -407,14 +407,17 @@ if (this.sp_debug) SyncPlacesIO.log("Receiving type: " + this.sp_type);
 			//Option to try the old style approach when receiving ftp
 			//doesn't always attempt to connect for me though!
 			var technique = SyncPlacesOptions.prefs.getCharPref("receive_mechanism");
+if (this.sp_debug) SyncPlacesIO.log("receive_mechanism: " + technique);
 			if (technique == 'old_receive') {
 if (this.sp_debug) SyncPlacesIO.log("Using 'old_receive'");
 				if (this.sp_compress) {
 if (this.sp_debug) SyncPlacesIO.log("Using compression");
 					this.sp_old_gzip = true;
 				}
+if (this.sp_debug) SyncPlacesIO.log("loading moz streamloader");
       	this.sp_streamLoader = this.Cc["@mozilla.org/network/stream-loader;1"]
       														 .createInstance(this.Ci.nsIStreamLoader);
+if (this.sp_debug) SyncPlacesIO.log("got "+this.sp_streamLoader);
       	this.sp_streamLoader.init(this);
       	this.sp_channel.asyncOpen(this.sp_streamLoader, null);
 			}
@@ -431,6 +434,7 @@ if (this.sp_debug) SyncPlacesIO.log("Using 'old_receive_conversion'");
 				//Set up the channel as MDC tells you to
 				this.sp_channel.loadFlags |= this.Ci.nsIRequest.LOAD_BYPASS_CACHE |
 														 				 this.Ci.nsIRequest.INHIBIT_CACHING;
+if (this.sp_debug) SyncPlacesIO.log("this.sp_compress: "+this.sp_compress);
 
 				//Receiving a gzip file
 				if (this.sp_compress) {
@@ -444,7 +448,12 @@ if (this.sp_debug) SyncPlacesIO.log("Using compression");
 				  this.receive(converter);
 				}
 				else {
-				  this.receive(this);
+					try {
+						this.receive(this);
+					} catch (e) {
+if (this.sp_debug) SyncPlacesIO.log("catched exception receiving: "+e.message);
+
+					}				  
 				}
 			}
 		}
@@ -456,6 +465,7 @@ if (this.sp_debug) SyncPlacesIO.log("Using compression");
 			this.sp_channel.asyncOpen(converter, null);
 
 		} catch (e) {
+if (this.sp_debug) SyncPlacesIO.log("catched exception for this.sp_channel.asyncOpen: "+e.message);
 
 			//If using file protocol and file doesn't exist
 			//then pretend it's a 404 error

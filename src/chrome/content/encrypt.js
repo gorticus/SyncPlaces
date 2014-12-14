@@ -52,7 +52,7 @@ SyncPlacesEncryptThread.prototype = {
     } catch(exception) {
 			SyncPlacesNetworking.running = false;
       Components.utils.reportError(exception);
-			SyncPlacesIO.log(exception);
+			SyncPlacesIO.log("ERROR 5: "+ exception);
     }
   },
 
@@ -114,7 +114,7 @@ SyncPlacesDecryptThread.prototype = {
     } catch(exception) {
 			SyncPlacesNetworking.running = false;
       Components.utils.reportError(exception);
-			SyncPlacesIO.log(exception);
+			SyncPlacesIO.log("ERROR 6: "+ exception);
     }
   },
 
