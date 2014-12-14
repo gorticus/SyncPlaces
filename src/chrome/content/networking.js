@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2010
+ * Portions created by the Initial Developer are Copyright (C) 2008-2011
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -778,7 +778,13 @@ if (this.sp_debug) SyncPlacesOptions.message("Found login: " + logins[i].usernam
 		this.sp_channel.asyncOpen(this, null);
 	},
 
-	onDataAvailable: function(aRequest, aContext, aInputStream, aOffset, aCount) { },
+	//You MUST read any data received or else may fail
+	onDataAvailable: function(aRequest, aContext, aInputStream, aOffset, aCount) {
+	    var sis = this.Cc["@mozilla.org/scriptableinputstream;1"]
+	    							.createInstance(this.Ci.nsIScriptableInputStream);
+	    sis.init(stream);
+	    sis.read(length);
+	},
 
 	onStopRequest: function(aRequest, aContext, aStatusCode) {
 	  var challenges = [];

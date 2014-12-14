@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2010
+ * Portions created by the Initial Developer are Copyright (C) 2008-2011
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -169,7 +169,8 @@ var SyncPlacesPasswords = {
 			var stats = {};
 			stats.pwadded = 0;
 			this.updatePasswords(passwords, overwrite, true, stats);
-			SyncPlaces.timedStatus(null, true, false, stats);
+
+			SyncPlaces.timedStatus(null, true, false, stats);
 
 		} catch (exception) {
 			SyncPlacesOptions.alert2(exception, 'cant_update_passwords', null, false);

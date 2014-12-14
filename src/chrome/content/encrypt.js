@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2010
+ * Portions created by the Initial Developer are Copyright (C) 2008-2011
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -131,7 +131,8 @@ function SyncPlacesDecrypt(data, type) {
 	//Be careful - assumes if decrypting json then must be receiving
 	var password = SyncPlacesOptions.getPassword(SyncPlacesOptions.passwordUser,
 										false, null, (type == SyncPlaces.PWD ? null : 'receive'));
-	if (SyncPlacesOptions.prefs.getCharPref("encryption") == "AES") {		var bits = 128;
+	if (SyncPlacesOptions.prefs.getCharPref("encryption") == "AES") {
+		var bits = 128;
 		if (SyncPlacesOptions.prefs.getCharPref("bits") == 'b192') bits = 192;
 		else if (SyncPlacesOptions.prefs.getCharPref("bits") == 'b256') bits = 256;
 

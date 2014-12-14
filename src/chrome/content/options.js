@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2010
+ * Portions created by the Initial Developer are Copyright (C) 2008-2011
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -46,7 +46,7 @@ var SyncPlacesOptions = {
 	encryptUser: 'syncplaces-encryption',
 	passwordUser: 'syncplaces-password',
 	prefsFile: 'syncplaces_prefs.json',
-	version: "4.1.0",
+	version: "4.1.1",
 
 	onActionLoad: function() {
 		this.lastTransferTimes(true);

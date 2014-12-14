@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE dialog SYSTEM "chrome://syncplaces/locale/syncplaces.dtd">
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://syncplaces/skin/syncplaces.css" type="text/css"?>
+<?xml-stylesheet href="chrome://syncplaces-os/skin/syncplaces.css" type="text/css"?>
 
 <!-- ***** BEGIN LICENSE BLOCK *****
    - Version: MPL 1.1/GPL 2.0/LGPL 2.1
@@ -19,7 +19,7 @@
    - The Original Code is the SyncPlaces extension.
    -
    - The Initial Developer of the Original Code is Andy Halford.
-   - Portions created by the Initial Developer are Copyright (C) 2008-2010
+   - Portions created by the Initial Developer are Copyright (C) 2008-2011
    - the Initial Developer. All Rights Reserved.
    -
    - Contributor(s):
@@ -40,7 +40,7 @@
 
 <dialog id="syncplacesOptions"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&sp_title; 4.1.0"
+        title="&sp_title; 4.1.1"
         buttons="accept,cancel"
         onload="SyncPlacesOptions.onDialogLoad();"
         ondialogaccept="return SyncPlacesOptions.onDialogAccept();"
