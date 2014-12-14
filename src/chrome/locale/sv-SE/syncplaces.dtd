@@ -141,8 +141,6 @@
 <!ENTITY b128 "128">
 <!ENTITY b192 "192">
 <!ENTITY b256 "256">
-<!ENTITY show_status "Statusfältikon">
-<!ENTITY showstatus_tooltip "Visa SyncPlaces i statusfältet">
 <!ENTITY show_bm "Bokmärken-menyn">
 <!ENTITY showbm_tooltip "Visa SyncPlaces i Bokmärken-menyn">
 <!ENTITY show_tools "Verktyg-menyn">

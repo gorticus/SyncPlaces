@@ -9,6 +9,7 @@ skin     syncplaces-os  classic/1.0  chrome/skin/seawin/ application={92650c4d-4
 
 overlay  chrome://browser/content/browser.xul  chrome://syncplaces/content/syncplaces.xul
 overlay  chrome://navigator/content/navigator.xul  chrome://syncplaces/content/syncplaces.xul
+overlay  chrome://browser/content/customizeToolbar.xul  chrome://syncplaces/content/syncplaces.xul
 style    chrome://global/content/customizeToolbar.xul  chrome://syncplaces/skin/syncplaces.css
 
 style		chrome://syncplaces/content/folders.xul	chrome://communicator/content/places/places.css			application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}

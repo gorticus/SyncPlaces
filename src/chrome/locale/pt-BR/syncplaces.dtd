@@ -141,8 +141,6 @@
 <!ENTITY b128 "128">
 <!ENTITY b192 "192">
 <!ENTITY b256 "256">
-<!ENTITY show_status "Ícone na barra de status">
-<!ENTITY showstatus_tooltip "Mostra um ícone na barra de status">
 <!ENTITY show_bm "Menu Favoritos">
 <!ENTITY showbm_tooltip "Mostra as opções no Menu Favoritos">
 <!ENTITY show_tools "Menu Ferramentas">

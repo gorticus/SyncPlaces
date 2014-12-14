@@ -141,8 +141,6 @@
 <!ENTITY b128 "128">
 <!ENTITY b192 "192">
 <!ENTITY b256 "256">
-<!ENTITY show_status "Statusbar ikon">
-<!ENTITY showstatus_tooltip "Vis SyncPlaces på statusbar">
 <!ENTITY show_bm "Bogmærkemenu">
 <!ENTITY showbm_tooltip "Vis SyncPlaces på Bogmærkemenu">
 <!ENTITY show_tools "Værktøjsmenu">

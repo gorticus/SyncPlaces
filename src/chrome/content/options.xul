@@ -40,7 +40,7 @@
 
 <dialog id="syncplacesOptions"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&sp_title; 4.2.0"
+        title="&sp_title; 4.3.0"
         buttons="accept,cancel"
         onload="SyncPlacesOptions.onDialogLoad();"
         ondialogaccept="return SyncPlacesOptions.onDialogAccept();"
@@ -241,17 +241,10 @@
 								<checkbox id="skip_name_check" label="&skip_name;" tooltiptext="&skipname_tooltip;" />
 							</groupbox>
 							<groupbox>
-								<grid>
-									<rows>
-										<row align="center">
-											<checkbox id="bookmarks_menu" label="&show_bm;" tooltiptext="&showbm_tooltip;" />
-											<checkbox id="tools_menu" label="&show_tools;" tooltiptext="&showtools_tooltip;" />
-										</row>
-										<row align="center">
-											<checkbox id="statusbaricon" label="&show_status;" tooltiptext="&showstatus_tooltip;" />
-										</row>
-									</rows>
-								</grid>
+								<hbox align="center">
+									<checkbox id="bookmarks_menu" label="&show_bm;" tooltiptext="&showbm_tooltip;" />
+									<checkbox id="tools_menu" label="&show_tools;" tooltiptext="&showtools_tooltip;" />
+								</hbox>
 							</groupbox>
 								<button id="backupfolder" label="&backupfolder_button;" oncommand="SyncPlacesOptions.selectBackupFolder();" tooltiptext="&backupfolder_tooltip;" />
 						</tabpanel>

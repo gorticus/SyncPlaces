@@ -141,8 +141,6 @@
 <!ENTITY b128 "128">
 <!ENTITY b192 "192">
 <!ENTITY b256 "256">
-<!ENTITY show_status "Mostrar icono en la barra de estado">
-<!ENTITY showstatus_tooltip "Mostrar icono en la barra de estado">
 <!ENTITY show_bm "Menú marcadores">
 <!ENTITY showbm_tooltip "Mostrar opciones en el menú marcadores">
 <!ENTITY show_tools "Menú Herramientas">
