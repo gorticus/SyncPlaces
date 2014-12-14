@@ -4,9 +4,10 @@ overlay  chrome://browser/content/browser.xul  chrome://syncplaces/content/syncp
 style    chrome://global/content/customizeToolbar.xul  chrome://syncplaces/skin/syncplaces.css
 locale   syncplaces  en-US  jar:chrome/syncplaces.jar!/locale/en-US/
 locale   syncplaces  en-GB  jar:chrome/syncplaces.jar!/locale/en-GB/
-locale   syncplaces  fr-FR  jar:chrome/syncplaces.jar!/locale/fr-FR/
+locale   syncplaces  fr     jar:chrome/syncplaces.jar!/locale/fr/
 locale   syncplaces  pl-PL  jar:chrome/syncplaces.jar!/locale/pl-PL/
 locale   syncplaces  ru-RU  jar:chrome/syncplaces.jar!/locale/ru-RU/
 locale   syncplaces  de-DE  jar:chrome/syncplaces.jar!/locale/de-DE/
 locale   syncplaces  es-ES  jar:chrome/syncplaces.jar!/locale/es-ES/
 locale   syncplaces  nl-NL  jar:chrome/syncplaces.jar!/locale/nl-NL/
+locale   syncplaces  da-DK  jar:chrome/syncplaces.jar!/locale/da-DK/
