@@ -720,9 +720,9 @@ var SyncPlaces = {
 					if (!document.getElementById(myId)) {
 						bar.insertItem(myId);
 						bar.collapsed = false;	//Show the addon bar if it is hidden
-						
+
 						//Remember these changes
-						bar.setAttribute("currentset", bar.currentSet);  
+						bar.setAttribute("currentset", bar.currentSet);
 						document.persist(bar.id, "currentset");
 						document.persist(bar.id, "collapsed");
 					}
@@ -770,7 +770,7 @@ var SyncPlaces = {
 						prefs.setBoolPref("cache_pwd", true);
 						prefs.setBoolPref("merge", true);
 						prefs.setBoolPref("merge_pwd", true);
-						prefs.setBoolPref("startAutoSend", true);
+						prefs.setBoolPref("startAutoReceive", true);
 						window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank',
 															'chrome,resizable,centerscreen', null);
 					}
