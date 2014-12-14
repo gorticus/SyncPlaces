@@ -1,0 +1,249 @@
+<!ENTITY sp "Синхронизация закладок/паролей">
+<!ENTITY sp_tooltip "Синхронизация закладок/паролей через сервер">
+<!ENTITY sp_title "SyncPlaces">
+<!ENTITY sp_transfer_title "Синхронизация">
+<!ENTITY sp_wizard_title "SyncPlaces — Мастер настройки">
+<!ENTITY action_tab "Действия">
+<!ENTITY server_tab "Сервер">
+<!ENTITY options_tab "Настройки">
+<!ENTITY advanced_tab "Дополнительно">
+<!ENTITY status "Состояние:">
+<!ENTITY apply_button "Применить">
+<!ENTITY remote "Удалённо">
+<!ENTITY send_button "Отправить закладки/пароли">
+<!ENTITY send_tooltip "Отправляет закладки/пароли на сервер">
+<!ENTITY receive_button "Получить закладки/пароли">
+<!ENTITY receive_tooltip "Создаёт резервную копию, а затем получает закладки/пароли с сервера">
+<!ENTITY local "Локально">
+<!ENTITY backup_button "Зарезервировать">
+<!ENTITY backup_tooltip "Резервирует закладки в локальный файл">
+<!ENTITY bookmarks "Закладки">
+<!ENTITY passwords "Пароли">
+<!ENTITY both "Всё">
+<!ENTITY restore_button "Восстановить">
+<!ENTITY restore_tooltip "Восстановить закладки из локального файла">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "Экспорт">
+<!ENTITY export_tooltip "Экспортировать закладки в локальный XBEL файл">
+<!ENTITY import_button "Импорт">
+<!ENTITY not_available "Настройка пока не доступна">
+<!ENTITY import_tooltip "Импортировать закладки из локального XBEL файла">
+<!ENTITY connection_tab "Соединение">
+<!ENTITY sync_tab "Синхронизация">
+<!ENTITY protocol "Протокол:">
+<!ENTITY http "http">
+<!ENTITY https "https">
+<!ENTITY ftp "ftp">
+<!ENTITY file "file">
+<!ENTITY host "Сервер:">
+<!ENTITY host_tooltip "Имя или IP-адрес сервера, при необходимости с номером порта">
+<!ENTITY path "Путь JSON:">
+<!ENTITY path_tooltip "Путь к JSON файлу на сервере, например: /bookmarks/syncplaces.json">
+<!ENTITY htmlpath "Путь HTML:">
+<!ENTITY htmlpath_tooltip "Путь к HTML файлу на сервере, например: /bookmarks/syncplaces.html">
+<!ENTITY userid "Пользователь:">
+<!ENTITY userid_tooltip "Имя пользователя для установления подлинности">
+<!ENTITY password "Пароль:">
+<!ENTITY password_tooltip "Пароль для установления подлинности">
+<!ENTITY run_wizard "Запустить мастер в следующий раз">
+<!ENTITY runwizard_tooltip "При следующем запуске SyncPlaces снова запускает мастер настройки">
+<!ENTITY last_sent "Последняя отправка:">
+<!ENTITY last_received "Последнее получение:">
+<!ENTITY lastreceived_tooltip "Дата последнего получения изменений">
+<!ENTITY sync_type "Синхронизировать:">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "Синхронизация JSON файлом (рекомендуется)">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "Синхронизация XBEL файлом">
+<!ENTITY sync_passwords "Пароли">
+<!ENTITY syncpasswords_tooltip "Синхронизирует пароли">
+<!ENTITY sync_icons "Обновлять значки сайтов">
+<!ENTITY syncicons_tooltip "Обновляет значки сайтов при получении/импортировании">
+<!ENTITY send_html "Отправить HTML">
+<!ENTITY sendhtml_tooltip "Отправляет также и HTML версию">
+<!ENTITY send_xbel "Отправить XBEL">
+<!ENTITY sendxbel_tooltip "Отправляет также и XBEL версию">
+<!ENTITY xbelpath_tooltip "Путь к XBEL файлу на сервере, например: /bookmarks/syncplaces.xml">
+<!ENTITY passwordpath "Путь паролей:">
+<!ENTITY passwordpath_tooltip "Путь к файлу паролей на сервере, например: /bookmarks/passwords">
+<!ENTITY password_password "Пароль:">
+<!ENTITY basic "Основные">
+<!ENTITY encrypt_json "Шифровать JSON">
+<!ENTITY encryptjson_tooltip "Для безопасности зашифровывает JSON файл.">
+<!ENTITY encryptpassword_tooltip "Пароль, используемый для шифрования">
+<!ENTITY send_gzip_json "Отправлять/Принимать сжатый JSON">
+<!ENTITY gzipjson_tooltip "Сжимает JSON файл архиватором GZip для ускорения передачи">
+<!ENTITY small_xbel "Экспортировать/Отправлять небольшой XBEL">
+<!ENTITY smallxbel_tooltip "Отправляет/экспортирует маленький XBEL файл (удобнее для модификации)">
+<!ENTITY send_safe "Безопасная отправка">
+<!ENTITY sendsafe_tooltip "Принимает и объединяет закладки перед каждой отправкой, чтобы обезопасить себя от потерь">
+<!ENTITY auto_sort "Перед отправлением сортировать">
+<!ENTITY autosort_tooltip "Автоматически сортирует закладки перед их отправлением">
+<!ENTITY cache "Синхронизировать закладки, только если они были изменены">
+<!ENTITY cache_tooltip "Не синхронизирует закладки, если они не были изменены">
+<!ENTITY cache_pwd "Синхронизировать пароли, только если они были изменены">
+<!ENTITY cachepwd_tooltip "Не синхронизирует пароли, если они не были изменены">
+<!ENTITY merge "Объединять принятые закладки">
+<!ENTITY merge_tooltip "Вместо перезаписывания, объединяет принятые закладки">
+<!ENTITY merge_pwd "Объединять принятые пароли">
+<!ENTITY mergepwd_tooltip "Вместо перезаписывания, объединяет принятые пароли">
+<!ENTITY profiles "Профили">
+<!ENTITY profile "Профиль">
+<!ENTITY add_profile "Добавить">
+<!ENTITY addprofile_tooltip "Добавить новый профиль">
+<!ENTITY delete_profile "Удалить">
+<!ENTITY deleteprofile_tooltip "Удалить текущий выбранный профиль">
+<!ENTITY move_up "Выше">
+<!ENTITY moveup_tooltip "Переместить профиль вверх по списку">
+<!ENTITY move_down "Ниже">
+<!ENTITY movedown_tooltip "Переместить профиль вниз по списку">
+<!ENTITY export_profile "Экспорт">
+<!ENTITY exportprofile_tooltip "Экспортировать текущий выбранный профиль">
+<!ENTITY import_profile "Импорт">
+<!ENTITY importprofile_tooltip "Импортировать текущий выбранный профиль">
+<!ENTITY automation "Автоматизация">
+<!ENTITY autosync "Синхронизировать автоматически">
+<!ENTITY autosync_tooltip "Автоматически синхронизирует при изменении закладок">
+<!ENTITY delay "Задержка">
+<!ENTITY syncdelay_tooltip "Задержка перед автоматической синхронизацией">
+<!ENTITY auto_receive "Принимать при запуске">
+<!ENTITY autoreceive_tooltip "Автоматически принимает закладки при запуске браузера">
+<!ENTITY auto_receive_notify "Оставлять диалоговое окно открытым">
+<!ENTITY autoreceivenotify_tooltip "Диалоговое окно остаётся открытым после выполнения">
+<!ENTITY auto_send "Отправлять при завершении">
+<!ENTITY autosend_tooltip "Автоматически отправляет закладки при закрытии браузера">
+<!ENTITY auto_send_notify "Оставлять диалоговое окно открытым">
+<!ENTITY autosendnotify_tooltip "Диалоговое окно остаётся открытым после выполнения">
+<!ENTITY auto_close "Автоматически закрывать после отправки/приёма">
+<!ENTITY autoclose_tooltip "Автоматически закрывает диалоговое окно после ручной отправки/приёма">
+<!ENTITY auto_close_delay "секунд(а,ы)">
+<!ENTITY autodelay_tooltip "Сколько секунд остаётся открытым перед закрытием">
+<!ENTITY regular_transfer "Автоматически синхронизировать по таймеру">
+<!ENTITY regulartransfer_tooltip "Регулярно выполнять получение, а затем отправку, используя настройки «Безопасной отправки»">
+<!ENTITY transfer_interval "Таймер">
+<!ENTITY transferinterval_tooltip "Промежуток времени между последовательными синхронизациями">
+<!ENTITY seconds "секунд(а,ы)">
+<!ENTITY minutes "минут(а,ы)">
+<!ENTITY hours "час(а,ов)">
+<!ENTITY timed_transfer "Синхронизировать в заданное время">
+<!ENTITY timedtransfer_tooltip "В заданное время выполнять получение, а затем отправку, используя настройки «Безопасной отправки»">
+<!ENTITY transfer_time "Время синхронизации">
+<!ENTITY misc_tab "Общие">
+<!ENTITY send_all "Синхронизировать всё Собранное/Закладки">
+<!ENTITY sendall_tooltip "Синхронизирует целиком всё дерево Собранное/Закладки">
+<!ENTITY skip_name "Разрешить при приёме отличающиеся имена">
+<!ENTITY skipname_tooltip "У папок получения могут быть отличающиеся имена">
+<!ENTITY selectfolder_button "Выбрать папку для синхронизации">
+<!ENTITY selectfolder_tooltip "Выберите папку закладок для синхронизации">
+<!ENTITY selected_folder "Папка:">
+<!ENTITY sp_folder_title "Выбор папки для синхронизации">
+<!ENTITY strength "Устойчивость AES шифрования">
+<!ENTITY b128 "128-бит">
+<!ENTITY b192 "192-бит">
+<!ENTITY b256 "256-бит">
+<!ENTITY show_status "Показывать значок в строке состояния">
+<!ENTITY showstatus_tooltip "Показывает значок в строке состояния">
+<!ENTITY show_bm "Показывать пункт в меню «Закладки»">
+<!ENTITY showbm_tooltip "Показывает пункт в меню «Закладки»">
+<!ENTITY show_tools "Показывать пункт в меню «Инструменты»">
+<!ENTITY showtools_tooltip "Показывает пункт в меню «Инструменты»">
+<!ENTITY backupfolder_button "Выбрать папку для резервных копий">
+<!ENTITY backupfolder_tooltip "Выберите папку для хранения резервных копий">
+<!ENTITY merge_tab "Объединение">
+<!ENTITY merge_deletes "Объединение удалением">
+<!ENTITY mergedeletes_tooltip "Операции с закладками, которые были удалены или переименованы">
+<!ENTITY comparison "Операции с дубликатами">
+<!ENTITY compare_timestamps "Использовать время файла">
+<!ENTITY timestamps_tooltip "Чтобы решить какой из дубликатов сохранить, использует время создания/изменения файла">
+<!ENTITY compare_local "Использовать локальный">
+<!ENTITY local_tooltip "Сохраняет текущий элемент и игнорирует тот, что принят">
+<!ENTITY compare_remote "Использовать удалённый">
+<!ENTITY remote_tooltip "Использует принятый элемент, удаляя локальный">
+<!ENTITY merge_all "Объединять всё">
+<!ENTITY mergeall_tooltip "Объединяет всё, что принято">
+<!ENTITY include_places "Включать элементы">
+<!ENTITY merge_menu "Меню закладок">
+<!ENTITY mergemenu_tooltip "Объединение включает элементы меню закладок">
+<!ENTITY merge_toolbar "Панель закладок">
+<!ENTITY mergetoolbar_tooltip "Объединение включает элементы панели закладок">
+<!ENTITY merge_unsorted "Неупорядоченные">
+<!ENTITY mergeunsorted_tooltip "Объединение включает неупорядоченные элементы">
+<!ENTITY include_types "Включать типы">
+<!ENTITY merge_bookmarks "Закладки">
+<!ENTITY mergebookmarks_tooltip "Объединение включает новые закладки">
+<!ENTITY merge_seperators "Разделители">
+<!ENTITY mergesep_tooltip "Объединение включает новые разделители">
+<!ENTITY merge_queries "Поиски/Запросы">
+<!ENTITY mergequeries_tooltip "Объединение включает новые поиски/запросы">
+<!ENTITY merge_livemarks "Ленты новостей">
+<!ENTITY mergelivemarks_tooltip "Объединение включает новые закладки на ленты новостей">
+<!ENTITY workarounds_tab "Решение проблем">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "Добавьте свои собственные теги стиля ниже:">
+<!ENTITY encryption_tab "Шифрование">
+<!ENTITY encryption "Алгоритм шифрования">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "Примечание: Изменяйте эти настройки только если возникают проблемы">
+<!ENTITY transfer_technique "Методы передачи данных">
+<!ENTITY receive_mechanism "Приём">
+<!ENTITY normal_receive "Обычный">
+<!ENTITY normal_receive_tooltip "Использует обычный метод приёма">
+<!ENTITY old_receive "Прежний">
+<!ENTITY old_receive_tooltip "Использует прежний механизм приёма">
+<!ENTITY old_receive_conversion "Исправленный">
+<!ENTITY receive_conversion_tooltip "Исправление для некоторых прокси серверов">
+<!ENTITY send_mechanism "Отправка">
+<!ENTITY normal_send "Обычный">
+<!ENTITY normal_send_tooltip "Использует обычный метод отправки">
+<!ENTITY old_send "Прежний">
+<!ENTITY old_send_tooltip "Использует прежний механизм отправки">
+<!ENTITY old_send_conversion "Исправленный">
+<!ENTITY send_conversion_tooltip "Исправление для некоторых прокси-серверов">
+<!ENTITY skip_auth "Пропустить установление подлинности">
+<!ENTITY skipauth_tooltip "Подробности смотри в документации">
+<!ENTITY debug "Включить отладку">
+<!ENTITY startup "Запуск">
+<!ENTITY normal "Обычный">
+<!ENTITY normal_tooltip "Обычное обнаружение запуска">
+<!ENTITY crude "Совместимый">
+<!ENTITY crude_tooltip "Совместимое обнаружение запуска">
+<!ENTITY shutdown "Завершение">
+<!ENTITY shutdownnormal_tooltip "Обычное">
+<!ENTITY shutdowncrude_tooltip "Совместимое">
+<!ENTITY sp_passwords_title "Выберите пароль">
+<!ENTITY pw_details "Подробная информация о пароле">
+<!ENTITY pw_which_password "Выберите какой пароль вы хотите сохранить">
+<!ENTITY pw_hostname "Сервер">
+<!ENTITY pw_formSubmitURL "Адрес формы">
+<!ENTITY pw_httpRealm "Область">
+<!ENTITY pw_usernameField "Поле имени пользователя">
+<!ENTITY pw_passwordField "Поле пароля">
+<!ENTITY pw_username "Имя пользователя">
+<!ENTITY pw_oldPassword "Старый пароль">
+<!ENTITY pw_newPassword "Новый пароль">
+<!ENTITY pw_old "Сохранить старый">
+<!ENTITY pw_new "Сохранить новый">
+<!ENTITY dialog_title "Предупреждение">
+<!ENTITY more_info "Дополнительная информация">
+<!ENTITY wiz_reset_title "Восстановить исходные настройки">
+<!ENTITY wiz_reset "Вы хотите восстановить исходные настройки? Это приведёт к удалению всех текущих параметров настройки.">
+<!ENTITY wiz_yes "Да">
+<!ENTITY wiz_no "Нет">
+<!ENTITY wiz_protocol "Какой тип сервера вы собираетесь использовать?">
+<!ENTITY wiz_host "Введите имя вашего сервера или его IP-адрес (например, www.yournqme.com или 172.16.0.1). При необходимости укажите номер порта (например, www.yourname.com:8080).">
+<!ENTITY web_server "Веб-сервер">
+<!ENTITY ssl_server "Безопасный (SSL) веб-сервер">
+<!ENTITY ftp_server "FTP-сервер">
+<!ENTITY file_server "Файловый сервер">
+<!ENTITY wiz_path_title "Путь к серверу">
+<!ENTITY wiz_path "Введите путь где будут храниться ваши закладки">
+<!ENTITY bm_path "Путь:">
+<!ENTITY wiz_login "Введите ваши регистрационные данные для доступа к FTP (при необходимости)">
+<!ENTITY wiz_sync "Выберите формат в котором будут сохраняться ваши закладки">
+<!ENTITY recommended "(рекомендуется)">
+<!ENTITY wiz_passwords "Хотите ли вы синхронизировать ваши пароли?">
+<!ENTITY wiz_pwd_path "Введите путь к серверу на котором будут храниться ваши пароли">
+<!ENTITY wiz_encrypt "Хотите ли вы зашифровать ваши закладки?">
+<!ENTITY wiz_compress "Хотите ли вы сжать ваши закладки для более быстрой синхронизации?">
+<!ENTITY wiz_encpwd "Введите пароль для защиты ваших данных">

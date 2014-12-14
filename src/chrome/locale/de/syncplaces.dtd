@@ -1,0 +1,249 @@
+<!ENTITY sp "Lesezeichen synchronisieren">
+<!ENTITY sp_tooltip "Lesezeichen mit einem Server synchronisieren">
+<!ENTITY sp_title "SyncPlaces - Einstellungen">
+<!ENTITY sp_transfer_title "Lesezeichen werden synchronisiert">
+<!ENTITY sp_wizard_title "SyncPlaces - Einrichtungsassistent">
+<!ENTITY action_tab "Aktion">
+<!ENTITY server_tab "Servereinstellungen">
+<!ENTITY options_tab "Optionen">
+<!ENTITY advanced_tab "Erweiterte Einstellungen">
+<!ENTITY status "Status:">
+<!ENTITY apply_button "Übernehmen">
+<!ENTITY remote "Übertragung zu/von entferntem Server">
+<!ENTITY send_button "Lesezeichen exportieren">
+<!ENTITY send_tooltip "Lesezeichen an einen entfernten Server übertragen">
+<!ENTITY receive_button "Lesezeichen importieren">
+<!ENTITY receive_tooltip "Nach Erstellung einer Datensicherung werden Lesezeichen/Passwörter von einem entfernten Server importieren">
+<!ENTITY local "Übertragung in/aus lokale(r) Datei">
+<!ENTITY backup_button "Datensicherung erstellen">
+<!ENTITY backup_tooltip "Erstellt eine Datensicherung als JSON-Datei auf einem lokalen Datenträger">
+<!ENTITY bookmarks "Lesezeichen">
+<!ENTITY passwords "Passwörter">
+<!ENTITY both "Beide">
+<!ENTITY restore_button "Datensicherung zurückspielen">
+<!ENTITY restore_tooltip "Wiederherstellung der Lesezeichen aus einer lokal verfügbaren JSON-Datensicherung">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "Exportieren">
+<!ENTITY export_tooltip "In ein lokales XBEL-Dokument exportieren">
+<!ENTITY import_button "Importieren">
+<!ENTITY not_available "Noch nicht verfügbare Einstellung">
+<!ENTITY import_tooltip "Lesezeichen aus einem lokal verfügbaren XBEL-Dokument importieren">
+<!ENTITY connection_tab "Verbindungen">
+<!ENTITY sync_tab "Synchronisation">
+<!ENTITY protocol "Protokoll:">
+<!ENTITY http "http">
+<!ENTITY https "https">
+<!ENTITY ftp "ftp">
+<!ENTITY file "Datei">
+<!ENTITY host "Servername:[Port]:">
+<!ENTITY host_tooltip "Servername oder IP-Adresse mit optionaler Angabe einer Port-Nummer">
+<!ENTITY path "JSON-Pfad:">
+<!ENTITY path_tooltip "Pfad zur JSON-Datei auf dem Server angeben. Beispiel: /lesezeichen/syncplaces.json">
+<!ENTITY htmlpath "HTML-Pfad:">
+<!ENTITY htmlpath_tooltip "Pfad zur HTML-Datei auf dem Server angeben. Beispiel: /lesezeichen/syncplaces.html">
+<!ENTITY userid "Benutzername:">
+<!ENTITY userid_tooltip "Benutzername zur Anmeldung am Server">
+<!ENTITY password "Passwort:">
+<!ENTITY password_tooltip "Passwort zur Anmeldung am Server">
+<!ENTITY run_wizard "SyncPlaces-Einrichtungsassistent beim nächsten Mal erneut ausführen">
+<!ENTITY runwizard_tooltip "Führt den Einrichtungsassistent beim nächsten Start von SyncPlaces erneut aus">
+<!ENTITY last_sent "Zuletzt gesendet:">
+<!ENTITY last_received "Zuletzt empfangen:">
+<!ENTITY lastreceived_tooltip "Letzte Datumsänderungen wurden empfangen">
+<!ENTITY sync_type "Synchronisation:">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "Synchronisiert in eine JSON-Datei (empfohlen)">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "Synchronisiert in ein XBEL-Dokument">
+<!ENTITY sync_passwords "Passwörter">
+<!ENTITY syncpasswords_tooltip "Synchronisiert Passwörter">
+<!ENTITY sync_icons "Identitätssymbole (Favicons) aktualisieren">
+<!ENTITY syncicons_tooltip "Identitätssymbole (Favicons) werden beim Empfangen/Importieren aktualisiert">
+<!ENTITY send_html "HTML senden">
+<!ENTITY sendhtml_tooltip "Lesezeichen als HTML-Datei exportieren">
+<!ENTITY send_xbel "XBEL senden">
+<!ENTITY sendxbel_tooltip "Lesezeichen als XBEL-Dokument exportieren">
+<!ENTITY xbelpath_tooltip "Pfad zum XBEL-Dokument auf dem Server angeben. Beispiel: /lesezeichen/syncplaces.xml">
+<!ENTITY passwordpath "Passwort-Pfad">
+<!ENTITY passwordpath_tooltip "Pfad zur Passwörter-Datei auf dem Server angeben. Beispiel: /lesezeichen/passwoerter">
+<!ENTITY password_password "Passwort:">
+<!ENTITY basic "Grundeinstellung">
+<!ENTITY encrypt_json "JSON-Datei verschlüsseln">
+<!ENTITY encryptjson_tooltip "Ermöglicht das verschlüsseln der JSON-Datei mittels Passwort">
+<!ENTITY encryptpassword_tooltip "Passwort eingeben welches zur Verschlüsselung der JSON-Datei genutzt werden soll">
+<!ENTITY send_gzip_json "JSON-Datei beim Senden/Empfangen komprimieren">
+<!ENTITY gzipjson_tooltip "JSON-Datei mittels GZip komprimieren um eine schnellere Datenübertragung zu ermöglichen">
+<!ENTITY small_xbel "Exportieren/Hochladen als kompaktes XBEL-Dokument">
+<!ENTITY smallxbel_tooltip "Lesezeichen als kompaktes XBEL-Dokument hochladen/exportieren (Bestens geeignet zum Auslesen)">
+<!ENTITY send_safe "Sicheres Hochladen">
+<!ENTITY sendsafe_tooltip "Um Datenverlust entgegenzuwirken werden die Daten vor dem Hochladen zuerst heruntergeladen und zusammengeführt">
+<!ENTITY auto_sort "Lesezeichen erst sortieren, dann hochladen">
+<!ENTITY autosort_tooltip "Lesezeichen vor dem Hochladen automatisch sortieren">
+<!ENTITY cache "Lesezeichen nur nach Änderungen hochladen/herunterladen">
+<!ENTITY cache_tooltip "Lesezeichen nur nach Änderungen hoch- oder herunterladen">
+<!ENTITY cache_pwd "Passwörter nur nach Änderungen synchronisieren">
+<!ENTITY cachepwd_tooltip "Passwörter werden nicht synchronisiert sollten sie sich nicht geändert haben">
+<!ENTITY merge "Lesezeichen zusammenführen, statt zu überschreiben">
+<!ENTITY merge_tooltip "Heruntergeladene Lesezeichen zusammenführen, statt sie zu überschreiben">
+<!ENTITY merge_pwd "Empfange Passwörter zusammenführen">
+<!ENTITY mergepwd_tooltip "Passwörter zusammenführen, anstatt sie zu überschreiben">
+<!ENTITY profiles "Profile">
+<!ENTITY profile "Profil">
+<!ENTITY add_profile "Hinzufügen">
+<!ENTITY addprofile_tooltip "Ein neues Profil hinzufügen">
+<!ENTITY delete_profile "Löschen">
+<!ENTITY deleteprofile_tooltip "Das aktuell ausgewählte Profil löschen">
+<!ENTITY move_up "Nach oben verschieben">
+<!ENTITY moveup_tooltip "Profil in der Liste eine Position nach oben verschieben">
+<!ENTITY move_down "Nach unten verschieben">
+<!ENTITY movedown_tooltip "Profil in der Liste eine Position nach unten verschieben">
+<!ENTITY export_profile "Export">
+<!ENTITY exportprofile_tooltip "Das aktuell ausgewählte Profil exportieren">
+<!ENTITY import_profile "Import">
+<!ENTITY importprofile_tooltip "Profil importieren">
+<!ENTITY automation "Automatikfunktion">
+<!ENTITY autosync "Automatische Synchronisation">
+<!ENTITY autosync_tooltip "Lesezeichen werden automatisch nach Änderungen synchronisieren">
+<!ENTITY delay "Verzögerung">
+<!ENTITY syncdelay_tooltip "Automatischen Synchronisation wird um den eingestellten verzögert ausgeführt">
+<!ENTITY auto_receive "Import bei Programmstart">
+<!ENTITY autoreceive_tooltip "Lesezeichen werden automatisch beim Starten des Browser vom Server herunterladen">
+<!ENTITY auto_receive_notify "Dialogfenster geöffnet lassen">
+<!ENTITY autoreceivenotify_tooltip "Dialogfenster geöffnet lassen nach erfolgreichem Import">
+<!ENTITY auto_send "Export beim Beenden">
+<!ENTITY autosend_tooltip "Lesezeichen werden automatisch beim Beenden des Browsers auf den Server übertragen">
+<!ENTITY auto_send_notify "Dialogfenster geöffnet lassen">
+<!ENTITY autosendnotify_tooltip "Dialogfenster geöffnet lassen nach erfolgreichem Export">
+<!ENTITY auto_close "Dialogfenster automatisch nach Im- oder Export schließen">
+<!ENTITY autoclose_tooltip "Dialogfenster automatisch nach manuellem Im- oder Export schließen">
+<!ENTITY auto_close_delay "Sekunden">
+<!ENTITY autodelay_tooltip "Zeit (in Sekunden) bis zum automatischen Schließen des Dialogfensters">
+<!ENTITY regular_transfer "Synchronisation automatisch in regelmäßigen Abständen wiederholen">
+<!ENTITY regulartransfer_tooltip "Die Automatikfunktion wird die Daten zuerst herunterladen und danach wieder zurück auf den Server übertragen mittels der Option &quot;Sicheres hochladen&quot;">
+<!ENTITY transfer_interval "Intervall">
+<!ENTITY transferinterval_tooltip "Zeit zwischen jeder Synchronisation">
+<!ENTITY seconds "Sekunden">
+<!ENTITY minutes "Minuten">
+<!ENTITY hours "Stunden">
+<!ENTITY timed_transfer "Synchronisation zum festgelegten Zeitpunkt">
+<!ENTITY timedtransfer_tooltip "Zum festgelegten Zeitpunkt werden Daten empfangen und anschließend mittels der Option &quot;Sicheres Hochladen&quot; versandt">
+<!ENTITY transfer_time "Uhrzeit">
+<!ENTITY misc_tab "Allgemein">
+<!ENTITY send_all "Alle Lesezeichen synchronisieren">
+<!ENTITY sendall_tooltip "Synchronisiert den gesamten Lesezeichen-Baum">
+<!ENTITY skip_name "Unterschiedliche Namen beim Herunterladen erlauben">
+<!ENTITY skipname_tooltip "Der Empfangsordner darf einen abweichenden Namen besitzen">
+<!ENTITY selectfolder_button "Lesezeichenordner für Synchronisation auswählen">
+<!ENTITY selectfolder_tooltip "Lesezeichenordner für Synchronisation auswählen">
+<!ENTITY selected_folder "Ordner:">
+<!ENTITY sp_folder_title "Ordner für Synchronisation auswählen">
+<!ENTITY strength "AES-Verschlüsselungsstärke">
+<!ENTITY b128 "128 Bit">
+<!ENTITY b192 "192 Bit">
+<!ENTITY b256 "256 Bit">
+<!ENTITY show_status "Symbol in der Statusleiste anzeigen">
+<!ENTITY showstatus_tooltip "Zeigt ein Symbol in der Statuszeile">
+<!ENTITY show_bm "Lesezeichen-Menü">
+<!ENTITY showbm_tooltip "SyncPlaces-Einstellungen im Lesezeichen-Menü anzeigen">
+<!ENTITY show_tools "Menü &quot;Extras&quot;">
+<!ENTITY showtools_tooltip "SyncPlaces-Einstellungen im Menü &quot;Extras&quot; anzeigen">
+<!ENTITY backupfolder_button "Ordner für die Datensicherung auswählen">
+<!ENTITY backupfolder_tooltip "Einen Ordner auswählen der für die Datensicherungen genutzt werden soll">
+<!ENTITY merge_tab "Zusammenführung">
+<!ENTITY merge_deletes "Fehlende zusammenführen">
+<!ENTITY mergedeletes_tooltip "Vorgehensweise bei gelöschten oder umbenannten Lesezeichen">
+<!ENTITY comparison "Vorgehensweise bei Duplikaten">
+<!ENTITY compare_timestamps "Zeitstempel nutzen">
+<!ENTITY timestamps_tooltip "Zeitstempel nutzen um entscheiden zu können welches der Duplikate behalten werden soll">
+<!ENTITY compare_local "Lokale Datei nutzen">
+<!ENTITY local_tooltip "Die aktuell genutzte Datei behalten und die zu importierende ignorieren">
+<!ENTITY compare_remote "Entfernte Datei nutzen">
+<!ENTITY remote_tooltip "Die entfernte Datei nutzen und die lokale Datei löschen">
+<!ENTITY merge_all "Alles zusammenführen">
+<!ENTITY mergeall_tooltip "Beim Import alles zusammenführen">
+<!ENTITY include_places "Bibliothek einschließen">
+<!ENTITY merge_menu "Lesezeichen-Menü">
+<!ENTITY mergemenu_tooltip "Lesezeichen-Menü beim Zusammenführen einschließen">
+<!ENTITY merge_toolbar "Lesezeichen-Symbolleiste">
+<!ENTITY mergetoolbar_tooltip "Lesezeichen-Symbolleiste beim Zusammenführen einschließen">
+<!ENTITY merge_unsorted "Unsortierte Lesezeichen">
+<!ENTITY mergeunsorted_tooltip "Unsortierte Lesezeichen beim Zusammenführen einschließen">
+<!ENTITY include_types "Teile einschließen">
+<!ENTITY merge_bookmarks "Lesezeichen">
+<!ENTITY mergebookmarks_tooltip "Neue Lesezeichen beim Zusammenführen einschließen">
+<!ENTITY merge_seperators "Trennlinien">
+<!ENTITY mergesep_tooltip "Neue Trennlinien beim Zusammenführen einschließen">
+<!ENTITY merge_queries "Suchanfragen">
+<!ENTITY mergequeries_tooltip "Neue Suchanfragen beim Zusammenführen einschließen">
+<!ENTITY merge_livemarks "Dynamische Lesezeichen">
+<!ENTITY mergelivemarks_tooltip "Neue Dynamische Lesezeichen beim Zusammenführen einschließen">
+<!ENTITY workarounds_tab "Problemlösungen">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "Eigene Stil-Vorgaben hier einfügen">
+<!ENTITY encryption_tab "Verschlüsselung">
+<!ENTITY encryption "Verschlüsselungsalgorithmus">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "Hinweis: Diese Einstellungen sollte nur bei Problemen geändert werden!">
+<!ENTITY transfer_technique "Übertragung">
+<!ENTITY receive_mechanism "Empfang">
+<!ENTITY normal_receive "Normal">
+<!ENTITY normal_receive_tooltip "Normale Vorgehensweise beim Empfang">
+<!ENTITY old_receive "Alt">
+<!ENTITY old_receive_tooltip "Alte Vorgehensweise beim Empfang">
+<!ENTITY old_receive_conversion "Korrektur für Proxy-Server">
+<!ENTITY receive_conversion_tooltip "Behebt Probleme mit einigen Proxy-Servern">
+<!ENTITY send_mechanism "Senden">
+<!ENTITY normal_send "Normal">
+<!ENTITY normal_send_tooltip "Normale Vorgehensweise beim Senden">
+<!ENTITY old_send "Alt">
+<!ENTITY old_send_tooltip "Alte Vorgehensweise beim Senden">
+<!ENTITY old_send_conversion "Korrektur für Proxy-Server">
+<!ENTITY send_conversion_tooltip "Behebt Probleme mit einigen Proxy-Servern">
+<!ENTITY skip_auth "Authentifizierung überspringen">
+<!ENTITY skipauth_tooltip "Details entnehmen Sie bitte der Dokumentation">
+<!ENTITY debug "Fehlersuche aktivieren">
+<!ENTITY startup "Programmstart">
+<!ENTITY normal "Normal">
+<!ENTITY normal_tooltip "Normale Programmstarterkennung">
+<!ENTITY crude "Kompatibilitätsmodus">
+<!ENTITY crude_tooltip "Kompatible Programmstarterkennung">
+<!ENTITY shutdown "Programmbeendung">
+<!ENTITY shutdownnormal_tooltip "Normale Programmbeendung">
+<!ENTITY shutdowncrude_tooltip "Kompatible Programmbeendung">
+<!ENTITY sp_passwords_title "Passwort auswählen">
+<!ENTITY pw_details "Passwort-Eigenschaften">
+<!ENTITY pw_which_password "Wählen Sie jenes Passwort welches behalten werden soll">
+<!ENTITY pw_hostname "Host">
+<!ENTITY pw_formSubmitURL "URL-Format">
+<!ENTITY pw_httpRealm "Bereich">
+<!ENTITY pw_usernameField "Feld für Benutzername">
+<!ENTITY pw_passwordField "Passwortfeld">
+<!ENTITY pw_username "Benutzername">
+<!ENTITY pw_oldPassword "Bisheriges Passwort">
+<!ENTITY pw_newPassword "Neues Passwort">
+<!ENTITY pw_old "Bisheriges Passwort behalten">
+<!ENTITY pw_new "Neues Passwort behalten">
+<!ENTITY dialog_title "Hinweis">
+<!ENTITY more_info "Weitere Informationen (engl.)">
+<!ENTITY wiz_reset_title "Standardwerte wiederherstellen">
+<!ENTITY wiz_reset "Möchten Sie wirklich alles auf die Standardwerte zurücksetzen? Dabei werde alle Ihre festgelegten Einstellungen überschrieben.">
+<!ENTITY wiz_yes "Ja">
+<!ENTITY wiz_no "Nein">
+<!ENTITY wiz_protocol "Servertyp auswählen welcher genutzt werden soll:">
+<!ENTITY wiz_host "Geben Sie den Namen Ihres Servers oder seine IP-Adresse an. Verwenden Sie z. B. www.meinwebserver.com oder 172.16.0.1. Zusätzlich können Sie auch eine Portnummer angeben (Beispiel: www.meinwebserver.com:8080)">
+<!ENTITY web_server "Webserver">
+<!ENTITY ssl_server "Webserver (SSL)">
+<!ENTITY ftp_server "FTP-Server">
+<!ENTITY file_server "Dateiserver">
+<!ENTITY wiz_path_title "Pfad auf dem Server">
+<!ENTITY wiz_path "Pfad angeben, unter welchem Ihre Lesezeichen gespeichert werden sollen">
+<!ENTITY bm_path "Pfad">
+<!ENTITY wiz_login "Geben Sie hier Ihre FTP-Zugangsdaten ein:">
+<!ENTITY wiz_sync "Auswählen in welchem Format Ihre Lesezeichen gespeichert werden sollen:">
+<!ENTITY recommended "(empfohlen)">
+<!ENTITY wiz_passwords "Möchten Sie auch Ihre Passwörter synchronisieren?">
+<!ENTITY wiz_pwd_path "Serverpfad festlegen, unter welchem Ihre Passwörter gespeichert werden sollen:">
+<!ENTITY wiz_encrypt "Möchten Sie Ihre Lesezeichen verschlüsseln?">
+<!ENTITY wiz_compress "Möchten Sie Ihre Lesezeichen komprimieren, um sie schneller synchronisieren zu können?">
+<!ENTITY wiz_encpwd "Passwort festlegen um Ihre Daten zu schützen:">

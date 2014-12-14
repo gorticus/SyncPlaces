@@ -1,0 +1,249 @@
+<!ENTITY sp "Synkroniser Bogmærker/Adgangskoder">
+<!ENTITY sp_tooltip "Synkroniser Bogmærker/Adgangskoder med Server">
+<!ENTITY sp_title "SyncPlaces">
+<!ENTITY sp_transfer_title "Synkronisere">
+<!ENTITY sp_wizard_title "SyncPlaces opsætningsguide">
+<!ENTITY action_tab "Handling">
+<!ENTITY server_tab "Server">
+<!ENTITY options_tab "Indstillinger">
+<!ENTITY advanced_tab "Avanceret">
+<!ENTITY status "Status">
+<!ENTITY apply_button "Tilføj">
+<!ENTITY remote "Fjern">
+<!ENTITY send_button "Send bogmærker/adgangskoder">
+<!ENTITY send_tooltip "Send bogmærker/adgangskoder til server">
+<!ENTITY receive_button "Hent bogmærker/adgangskoder">
+<!ENTITY receive_tooltip "Opret sikkerhedskopi og hent bogmærker/adgangskoder fra server">
+<!ENTITY local "Lokal">
+<!ENTITY backup_button "Sikkerhedskopier">
+<!ENTITY backup_tooltip "Sikkerhedskopier til lokal fil">
+<!ENTITY bookmarks "Bogmærker">
+<!ENTITY passwords "Adgangskoder">
+<!ENTITY both "Begge">
+<!ENTITY restore_button "Gendan">
+<!ENTITY restore_tooltip "Gendan fra lokal fil">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "Eksporter">
+<!ENTITY export_tooltip "Eksporter bogmærker til lokal XBEL fil">
+<!ENTITY import_button "Importer">
+<!ENTITY not_available "Indstilling endnu ikke tilgængelig">
+<!ENTITY import_tooltip "Importer bogmærker fra lokal XBEL fil">
+<!ENTITY connection_tab "Forbindelse">
+<!ENTITY sync_tab "Synkronisering">
+<!ENTITY protocol "Protokol">
+<!ENTITY http "http">
+<!ENTITY https "https">
+<!ENTITY ftp "ftp">
+<!ENTITY file "fil">
+<!ENTITY host "Vært">
+<!ENTITY host_tooltip "Værtsnavn eller IP adresse">
+<!ENTITY path "JSON sti">
+<!ENTITY path_tooltip "Sti til JSON fil på server f.eks. /bookmarks/syncplaces.json">
+<!ENTITY htmlpath "HTML Sti">
+<!ENTITY htmlpath_tooltip "Sti til HTML fil på server f.eks. /bookmarks/syncplaces.html">
+<!ENTITY userid "Bruger">
+<!ENTITY userid_tooltip "Brugernavn til godkendelse">
+<!ENTITY password "Adgangskode">
+<!ENTITY password_tooltip "Adgangskode til godkendelse">
+<!ENTITY run_wizard "Kør guide næste gang">
+<!ENTITY runwizard_tooltip "Kør opsætningsguiden næste gang du starter SyncPlaces">
+<!ENTITY last_sent "Sidst sendt">
+<!ENTITY last_received "Sidst hentet">
+<!ENTITY lastreceived_tooltip "Sidste dato hvor ændringer blev hentet">
+<!ENTITY sync_type "Synkroniser">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "Synkroniser med JSON fil (anbefalet)">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "Synkroniser med XBEL fil">
+<!ENTITY sync_passwords "Adgangskoder">
+<!ENTITY syncpasswords_tooltip "Synkroniser adgangskoder">
+<!ENTITY sync_icons "Opdater favikoner">
+<!ENTITY syncicons_tooltip "Opdater favikoner når der modtages/importeres">
+<!ENTITY send_html "Send HTML">
+<!ENTITY sendhtml_tooltip "Send også HTML version">
+<!ENTITY send_xbel "Send XBEL">
+<!ENTITY sendxbel_tooltip "Send også XBEL version">
+<!ENTITY xbelpath_tooltip "Sti til XBEL fil på server f.eks. /bookmarks/syncplaces.xml">
+<!ENTITY passwordpath "Adgangskodesti">
+<!ENTITY passwordpath_tooltip "Sti til Adgangskodefil på server f.eks. /bookmarks/passwords">
+<!ENTITY password_password "Adgangskode">
+<!ENTITY basic "Basal">
+<!ENTITY encrypt_json "Krypter JSON">
+<!ENTITY encryptjson_tooltip "Krypter JSON fil af sikkerhedshensyn">
+<!ENTITY encryptpassword_tooltip "Adgangskode anvendt til kryptering">
+<!ENTITY send_gzip_json "Komprimer JSON">
+<!ENTITY gzipjson_tooltip "GZip'er JSON fil for hurtigere overførsel">
+<!ENTITY small_xbel "Eksporter/Send lille XBEL">
+<!ENTITY smallxbel_tooltip "Sender/Eksportere lille XBEL fil (for optimal design)">
+<!ENTITY send_safe "Send sikkert">
+<!ENTITY sendsafe_tooltip "Hent og flet før enhver afsendelse for at sikre mod tab">
+<!ENTITY auto_sort "Sorter før afsendelse">
+<!ENTITY autosort_tooltip "Sorter automatisk bogmærker før afsendelse">
+<!ENTITY cache "Synkroniser kun bogmærker hvis de er ændret">
+<!ENTITY cache_tooltip "Synkroniser ikke bogmærker hvis de ikke er ændret">
+<!ENTITY cache_pwd "Synkroniser kun adgangskoder hvis de er ændret">
+<!ENTITY cachepwd_tooltip "Synkroniser ikke adgangskoder hvis de ikke er ændret">
+<!ENTITY merge "Flet bogmærker">
+<!ENTITY merge_tooltip "Flet hentede bogmærker, i stedet for at overskrive">
+<!ENTITY merge_pwd "Flet hentede adgangskoder">
+<!ENTITY mergepwd_tooltip "Flet hentede adgangskoder, i stedet for at overskrive">
+<!ENTITY profiles "Profiler">
+<!ENTITY profile "Profil">
+<!ENTITY add_profile "Tilføj">
+<!ENTITY addprofile_tooltip "Tilføj ny profil">
+<!ENTITY delete_profile "Slet">
+<!ENTITY deleteprofile_tooltip "Slet den aktuel valgte profil">
+<!ENTITY move_up "Flyt op">
+<!ENTITY moveup_tooltip "Flyt profil op i listen">
+<!ENTITY move_down "Flyt ned">
+<!ENTITY movedown_tooltip "Flyt profil ned i listen">
+<!ENTITY export_profile "Eksporter">
+<!ENTITY exportprofile_tooltip "Eksporter den aktuel valgte profil">
+<!ENTITY import_profile "Importer">
+<!ENTITY importprofile_tooltip "Importer en profil">
+<!ENTITY automation "Automatik">
+<!ENTITY autosync "Synk automatisk">
+<!ENTITY autosync_tooltip "Synkroniser automatisk når bogmærker ændres">
+<!ENTITY delay "Forsinkelse">
+<!ENTITY syncdelay_tooltip "Forsinkelse før automatisk synkronisering">
+<!ENTITY auto_receive "Hent ved opstart">
+<!ENTITY autoreceive_tooltip "Hent automatisk bogmærker når browseren startes">
+<!ENTITY auto_receive_notify "Efterlad vindue åben">
+<!ENTITY autoreceivenotify_tooltip "Vindue forbliver åben ved success">
+<!ENTITY auto_send "Send ved nedlukning">
+<!ENTITY autosend_tooltip "Send automatisk bogmærker når browseren lukkes">
+<!ENTITY auto_send_notify "Efterlad vindue åben">
+<!ENTITY autosendnotify_tooltip "Vindue forbliver åben ved success">
+<!ENTITY auto_close "Luk automatisk efter send/hent">
+<!ENTITY autoclose_tooltip "Luk automatisk vindue efter manuel send/hent">
+<!ENTITY auto_close_delay "sekunder">
+<!ENTITY autodelay_tooltip "Forbliv åben i hvor mange sekunder før nedlukning">
+<!ENTITY regular_transfer "Synkroniser med fast interval">
+<!ENTITY regulartransfer_tooltip "Udfør jævnligt en hent og så en send ved at benytte 'Send sikkert' indstilling">
+<!ENTITY transfer_interval "Interval">
+<!ENTITY transferinterval_tooltip "Tid mellem hver synkronisering">
+<!ENTITY seconds "sekunder">
+<!ENTITY minutes "minutter">
+<!ENTITY hours "timer">
+<!ENTITY timed_transfer "Synkroniser på et indstillet tidspunkt">
+<!ENTITY timedtransfer_tooltip "Udfør på det indstillede tidspunkt en hent og så en send ved at benytte 'Send sikkert' indstilling">
+<!ENTITY transfer_time "Synkroniseringstid">
+<!ENTITY misc_tab "Generelt">
+<!ENTITY send_all "Synkroniser alle steder/bogmærker">
+<!ENTITY sendall_tooltip "Synkroniser hele træet af steder/bogmærke">
+<!ENTITY skip_name "Tillad andet navn når rekursiv">
+<!ENTITY skipname_tooltip "Modtagermappen kan have et andet navn">
+<!ENTITY selectfolder_button "Vælg mappe der skal synkroniseres">
+<!ENTITY selectfolder_tooltip "Vælg den bogmærkemappe der skal synkroniseres">
+<!ENTITY selected_folder "Mappe:">
+<!ENTITY sp_folder_title "Vælg mappe for synkronisering">
+<!ENTITY strength "AES krypteringsstyrke">
+<!ENTITY b128 "128">
+<!ENTITY b192 "192">
+<!ENTITY b256 "256">
+<!ENTITY show_status "Statusbar ikon">
+<!ENTITY showstatus_tooltip "Vis SyncPlaces på statusbar">
+<!ENTITY show_bm "Bogmærkemenu">
+<!ENTITY showbm_tooltip "Vis SyncPlaces på Bogmærkemenu">
+<!ENTITY show_tools "Værktøjsmenu">
+<!ENTITY showtools_tooltip "Vis SyncPlaces på værktøjsmenu">
+<!ENTITY backupfolder_button "Vælg mappe for sikkerhedskopi">
+<!ENTITY backupfolder_tooltip "Vælg den mappe der anvendes til opbevaring af sikkerhedskopier">
+<!ENTITY merge_tab "Fletning">
+<!ENTITY merge_deletes "Flet slettede">
+<!ENTITY mergedeletes_tooltip "Behandel bogmærker der er blevet slettet eller omdøbt">
+<!ENTITY comparison "Behandling af kopier">
+<!ENTITY compare_timestamps "Benyt tidsmærkning">
+<!ENTITY timestamps_tooltip "Benyt tidsmærkning til at afgøre hvilken kopi der skal beholdes">
+<!ENTITY compare_local "Benyt lokale">
+<!ENTITY local_tooltip "Behold de nuværende punkter og ignorer de hentede">
+<!ENTITY compare_remote "Benyt ekstern">
+<!ENTITY remote_tooltip "Benyt de hentede poster og slet de lokale">
+<!ENTITY merge_all "Flet alt">
+<!ENTITY mergeall_tooltip "Flet alt det der blev hentet">
+<!ENTITY include_places "Steder der medtages">
+<!ENTITY merge_menu "Bogmærkemenu">
+<!ENTITY mergemenu_tooltip "Medtag poster fra bogmærkemenu ved fletning">
+<!ENTITY merge_toolbar "Værktøjslinie">
+<!ENTITY mergetoolbar_tooltip "Medtag poster fra værktøjslinie ved fletning">
+<!ENTITY merge_unsorted "Usorterede">
+<!ENTITY mergeunsorted_tooltip "Medtag usorterede poster ved fletning">
+<!ENTITY include_types "Typer der medtages">
+<!ENTITY merge_bookmarks "Bogmærker">
+<!ENTITY mergebookmarks_tooltip "Medtag nye bogmærker ved fletning">
+<!ENTITY merge_seperators "Separatorer">
+<!ENTITY mergesep_tooltip "Medtag nye separatorer ved fletning">
+<!ENTITY merge_queries "Søgninger/Forespørgsler">
+<!ENTITY mergequeries_tooltip "Medtag nye søgninger/forespørgsler ved fletning">
+<!ENTITY merge_livemarks "Live-mærker">
+<!ENTITY mergelivemarks_tooltip "Medtag ny live-mærker ved fletning">
+<!ENTITY workarounds_tab "Nødløsninger">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "Tilføj din egen designetikette nedenfor">
+<!ENTITY encryption_tab "Kryptering">
+<!ENTITY encryption "Krypteringsalgoritme">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "NOTE: Anvend kun disse indstillinger hvis du har problemer">
+<!ENTITY transfer_technique "Overfør">
+<!ENTITY receive_mechanism "Henter">
+<!ENTITY normal_receive "Normal">
+<!ENTITY normal_receive_tooltip "Normal metode til at hente">
+<!ENTITY old_receive "Gammel">
+<!ENTITY old_receive_tooltip "Gammel metode for at hente">
+<!ENTITY old_receive_conversion "Proxy rettelse">
+<!ENTITY receive_conversion_tooltip "Rettelse til nogle proxyservere">
+<!ENTITY send_mechanism "Sender">
+<!ENTITY normal_send "Normal">
+<!ENTITY normal_send_tooltip "Normal metode til at sende">
+<!ENTITY old_send "Gammel">
+<!ENTITY old_send_tooltip "Gammel metode til at sende">
+<!ENTITY old_send_conversion "Proxy-rettelse">
+<!ENTITY send_conversion_tooltip "Rettelse til nogle proxy-servere">
+<!ENTITY skip_auth "Undlad godkendelse">
+<!ENTITY skipauth_tooltip "Se dokumentationen for detaljer">
+<!ENTITY debug "Slå fejlsøgning til">
+<!ENTITY startup "Opstart">
+<!ENTITY normal "Normal">
+<!ENTITY normal_tooltip "Normal opstartsgenkendelse">
+<!ENTITY crude "Kompatibel">
+<!ENTITY crude_tooltip "Kompatible opstartsgenkendelse">
+<!ENTITY shutdown "Luk ned">
+<!ENTITY shutdownnormal_tooltip "Normal nedlukning">
+<!ENTITY shutdowncrude_tooltip "Kompatibel nedlukning">
+<!ENTITY sp_passwords_title "Vælg adgangskode">
+<!ENTITY pw_details "Adgangskodedetaljer">
+<!ENTITY pw_which_password "Vælg hvilken adgangskode du ønsker at beholde">
+<!ENTITY pw_hostname "Vært">
+<!ENTITY pw_formSubmitURL "URL formular">
+<!ENTITY pw_httpRealm "Realm">
+<!ENTITY pw_usernameField "Brugernavnfelt">
+<!ENTITY pw_passwordField "Adgangskodefelt">
+<!ENTITY pw_username "Brugernavn">
+<!ENTITY pw_oldPassword "Nuværende adgangskode">
+<!ENTITY pw_newPassword "Ny adgangskode">
+<!ENTITY pw_old "Behold nuværende">
+<!ENTITY pw_new "Behold ny">
+<!ENTITY dialog_title "Advarsel">
+<!ENTITY more_info "Mere information">
+<!ENTITY wiz_reset_title "Nulstil til standard">
+<!ENTITY wiz_reset "Ønsker du at nulstille alt til standard? Dette vil slette alle dine eksisterende indstillinger.">
+<!ENTITY wiz_yes "Ja">
+<!ENTITY wiz_no "Nej">
+<!ENTITY wiz_protocol "Hvilken type server vil du benytte?">
+<!ENTITY wiz_host "Indtast navn eller IP adresse på din server. F.eks. www.ditnavn.dk eller 172.16.0.1. Du kan desuden tilføje et portnummer (f.eks. www.ditnavn.dk:8080)">
+<!ENTITY web_server "Web-server">
+<!ENTITY ssl_server "Web-server(SSL)">
+<!ENTITY ftp_server "FTP-server">
+<!ENTITY file_server "Filserver">
+<!ENTITY wiz_path_title "Sti til server">
+<!ENTITY wiz_path "Indtast den stien hvor dine bogmærker skal gemmes">
+<!ENTITY bm_path "Sti">
+<!ENTITY wiz_login "Indtast dine FTP login detaljer, hvis nogen">
+<!ENTITY wiz_sync "Vælg det format dine bogmærker skal gemmes med">
+<!ENTITY recommended "(anbefalet)">
+<!ENTITY wiz_passwords "Ønsker du også at synkronisere dine adgangskoder?">
+<!ENTITY wiz_pwd_path "Indtast den serversti hvor dine adgangskoder skal gemmes">
+<!ENTITY wiz_encrypt "Ønsker du at krypter dine bogmærker">
+<!ENTITY wiz_compress "Ønsker du at komprimere dine bogmærker for hurtigere synkronisering?">
+<!ENTITY wiz_encpwd "Indtast en adgangskode for at beskytte dine data">

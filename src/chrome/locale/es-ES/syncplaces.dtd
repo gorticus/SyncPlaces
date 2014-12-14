@@ -1,0 +1,249 @@
+<!ENTITY sp "Sincronizar marcadores/contraseñas">
+<!ENTITY sp_tooltip "Sincronizar los marcadores y contraseñas usando un servidor">
+<!ENTITY sp_title "SyncPlaces">
+<!ENTITY sp_transfer_title "Sincronizando">
+<!ENTITY sp_wizard_title "Asistente de instalación de SyncPlaces">
+<!ENTITY action_tab "Acciones">
+<!ENTITY server_tab "Servidor">
+<!ENTITY options_tab "Opciones">
+<!ENTITY advanced_tab "Avanzado">
+<!ENTITY status "Estado:">
+<!ENTITY apply_button "Aplicar">
+<!ENTITY remote "Remoto">
+<!ENTITY send_button "Enviar marcadores/contraseñas">
+<!ENTITY send_tooltip "Enviar los marcadores y contraseñas al servidor">
+<!ENTITY receive_button "Recibir marcadores/contraseñas">
+<!ENTITY receive_tooltip "Hace una copia de seguridad y recibe los marcadores y contraseñas del servidor">
+<!ENTITY local "Local">
+<!ENTITY backup_button "Copia de seguridad">
+<!ENTITY backup_tooltip "Hacer una copia en un archivo local">
+<!ENTITY bookmarks "Marcadores">
+<!ENTITY passwords "Contraseñas">
+<!ENTITY both "Ambos">
+<!ENTITY restore_button "Restaurar">
+<!ENTITY restore_tooltip "Restaurar de un archivo local">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "Exportar">
+<!ENTITY export_tooltip "Exportar los marcadores a un archivo local XBEL">
+<!ENTITY import_button "Importar">
+<!ENTITY not_available "Opción no disponible">
+<!ENTITY import_tooltip "Importar los marcadores de un archivo local XBEL">
+<!ENTITY connection_tab "Conexión">
+<!ENTITY sync_tab "Sincronización">
+<!ENTITY protocol "Protocolo:">
+<!ENTITY http "http">
+<!ENTITY https "https">
+<!ENTITY ftp "ftp">
+<!ENTITY file "file">
+<!ENTITY host "Host:">
+<!ENTITY host_tooltip "Nombre de host o dirección IP con número de puerto opcional">
+<!ENTITY path "Ruta JSON:">
+<!ENTITY path_tooltip "Ruta al archivo JSON en el servidor p.ej: /marcadores/syncplaces.json">
+<!ENTITY htmlpath "Ruta HTML:">
+<!ENTITY htmlpath_tooltip "Ruta al archivo HTML en el servidor p.ej: /marcadores/syncplaces.html">
+<!ENTITY userid "Usuario:">
+<!ENTITY userid_tooltip "Nombre de usuario para la autenticación">
+<!ENTITY password "Contraseñas">
+<!ENTITY password_tooltip "Contraseña para la autenticación">
+<!ENTITY run_wizard "Ejecutar el asistente la próxima vez">
+<!ENTITY runwizard_tooltip "Ejecutar el asistente de instalación la próxima vez que inicie SyncPlaces">
+<!ENTITY last_sent "Último envío:">
+<!ENTITY last_received "Última recepción:">
+<!ENTITY lastreceived_tooltip "Fecha de la recepción de los últimos cambios">
+<!ENTITY sync_type "Sincronización:">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "Sincronización con archivos JSON (recomendado)">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "Sincronización con archivos XBEL">
+<!ENTITY sync_passwords "Contraseñas">
+<!ENTITY syncpasswords_tooltip "Sincronizar contraseñas">
+<!ENTITY sync_icons "Actualizar favicons">
+<!ENTITY syncicons_tooltip "Actualizar los favicons al recibir/importar">
+<!ENTITY send_html "Enviar HTML">
+<!ENTITY sendhtml_tooltip "Enviar también la versión HTML">
+<!ENTITY send_xbel "Enviar XBEL">
+<!ENTITY sendxbel_tooltip "Enviar también la versión XBEL">
+<!ENTITY xbelpath_tooltip "Ruta al archivo XBEL en el servidor p.ej. /marcadores/syncplaces.xml">
+<!ENTITY passwordpath "Ruta de las contraseñas:">
+<!ENTITY passwordpath_tooltip "Ruta del archivo de contraseñas en el servidor p.ej. /marcadores/passwords">
+<!ENTITY password_password "Contraseña:">
+<!ENTITY basic "Básico">
+<!ENTITY encrypt_json "Cifrar JSON">
+<!ENTITY encryptjson_tooltip "Cifrar el archivo JSON para seguridad">
+<!ENTITY encryptpassword_tooltip "Contraseña usada para cifrar las contraseñas">
+<!ENTITY send_gzip_json "Enviar/Recibir JSON comprimido">
+<!ENTITY gzipjson_tooltip "Comprimir los archivos JSON para transferencias más rápidas">
+<!ENTITY small_xbel "Exportar/Enviar XBEL reducido">
+<!ENTITY smallxbel_tooltip "Exportar/Enviar archivos XBEL reducido (mejor para los estilos)">
+<!ENTITY send_safe "Envío seguro">
+<!ENTITY sendsafe_tooltip "Recibir y mezclar antes de enviar para evitar pérdidas de datos">
+<!ENTITY auto_sort "Ordenar antes de enviar">
+<!ENTITY autosort_tooltip "Ordenar automáticamente cuando cambien los marcadores antes de enviarlos">
+<!ENTITY cache "Sincronizar los marcadores sólo si han cambiado">
+<!ENTITY cache_tooltip "No sincronizar los marcadores si no han cambiado">
+<!ENTITY cache_pwd "Sincronizar las contraseñas sólo si han cambiado">
+<!ENTITY cachepwd_tooltip "No sincronizar las contraseñas si no han cambiado">
+<!ENTITY merge "Mezclar marcadores">
+<!ENTITY merge_tooltip "En lugar de sobreescribirlos, mezclar los marcadores recibidos">
+<!ENTITY merge_pwd "Mezclar las contraseñas recibidas">
+<!ENTITY mergepwd_tooltip "En lugar de sobreescribirlas, mezclar las contraseñas recibidas">
+<!ENTITY profiles "Perfiles">
+<!ENTITY profile "Perfil">
+<!ENTITY add_profile "Añadir">
+<!ENTITY addprofile_tooltip "Añadir un nuevo perfil">
+<!ENTITY delete_profile "Borrar">
+<!ENTITY deleteprofile_tooltip "Borrar el perfil seleccionado">
+<!ENTITY move_up "Subir">
+<!ENTITY moveup_tooltip "Subir el perfil en la lista">
+<!ENTITY move_down "Bajar">
+<!ENTITY movedown_tooltip "Bajar el perfil en la lista">
+<!ENTITY export_profile "Exportar">
+<!ENTITY exportprofile_tooltip "Exportar el perfi seleccionado">
+<!ENTITY import_profile "Importar">
+<!ENTITY importprofile_tooltip "Importar un perfil">
+<!ENTITY automation "Automatización">
+<!ENTITY autosync "Sincronizcar automáticamente">
+<!ENTITY autosync_tooltip "Sincronizar los marcadores automáticamente cuando cambien">
+<!ENTITY delay "Retraso">
+<!ENTITY syncdelay_tooltip "Retraso antes de la sincronización automática">
+<!ENTITY auto_receive "Recibir al iniciar">
+<!ENTITY autoreceive_tooltip "Recibir los marcadores automáticamente al iniciar el navegador">
+<!ENTITY auto_receive_notify "Mantener el diálogo abierto">
+<!ENTITY autoreceivenotify_tooltip "Mantener el diálogo abierto">
+<!ENTITY auto_send "Enviar al cerrar">
+<!ENTITY autosend_tooltip "Enviar los marcadores automáticamente al cerrar el navegador">
+<!ENTITY auto_send_notify "Mantener el diálogo abierto">
+<!ENTITY autosendnotify_tooltip "Mantener el diálogo abierto">
+<!ENTITY auto_close "Cerrar automáticamente después de enviar/recibir">
+<!ENTITY autoclose_tooltip "Cerrar el diálogo automáticamente después de enviar/recibir manualmente">
+<!ENTITY auto_close_delay "segundos">
+<!ENTITY autodelay_tooltip "Cuantos segundos mantener abierto después de cerrar">
+<!ENTITY regular_transfer "Sincronizar a intervalos regulares">
+<!ENTITY regulartransfer_tooltip "Realizar regularmente la operación de recibir y enviar usando la opción de &apos;Envío seguro&apos;">
+<!ENTITY transfer_interval "Intervalo">
+<!ENTITY transferinterval_tooltip "Tiempo entre cada sincronización">
+<!ENTITY seconds "segundos">
+<!ENTITY minutes "minutos">
+<!ENTITY hours "horas">
+<!ENTITY timed_transfer "Sincronizar en una fecha establecida">
+<!ENTITY timedtransfer_tooltip "En la fecha establecida, realizar la operación de recibir y enviar usando la opción de &apos;Envío seguro&apos;">
+<!ENTITY transfer_time "Fecha de sincronización">
+<!ENTITY misc_tab "General">
+<!ENTITY send_all "Sincronizar todos los sitios/marcadores">
+<!ENTITY sendall_tooltip "Sincrzoniar el árbol completo de los sitios/marcadores">
+<!ENTITY skip_name "Permitir nombres diferentes al recibir">
+<!ENTITY skipname_tooltip "La carpeta de recepción debe tener un nombre diferente">
+<!ENTITY selectfolder_button "Seleccionar la carpeta a sincronizar">
+<!ENTITY selectfolder_tooltip "Seleccionar la carpeta de marcadores a sincronizar">
+<!ENTITY selected_folder "Carpeta:">
+<!ENTITY sp_folder_title "Seleccionar la carpeta a sincronizar">
+<!ENTITY strength "Fortaleza del cifrado AES">
+<!ENTITY b128 "128">
+<!ENTITY b192 "192">
+<!ENTITY b256 "256">
+<!ENTITY show_status "Mostrar icono en la barra de estado">
+<!ENTITY showstatus_tooltip "Mostrar icono en la barra de estado">
+<!ENTITY show_bm "Menú marcadores">
+<!ENTITY showbm_tooltip "Mostrar opciones en el menú marcadores">
+<!ENTITY show_tools "Menú Herramientas">
+<!ENTITY showtools_tooltip "Mostrar opciones en el menú herramientas">
+<!ENTITY backupfolder_button "Seleccionar la carpeta para las copias">
+<!ENTITY backupfolder_tooltip "Seleccionar la carpeta donde guardar las copias">
+<!ENTITY merge_tab "Mezcla">
+<!ENTITY merge_deletes "Mezclar los borrados">
+<!ENTITY mergedeletes_tooltip "Tratar los marcadores que han sido borrados o renombrados">
+<!ENTITY comparison "Tratamiento de duplicados">
+<!ENTITY compare_timestamps "Usar marca de tiempo">
+<!ENTITY timestamps_tooltip "Usar marcas de tiempo para decidir qué duplicados mantener">
+<!ENTITY compare_local "Usar local">
+<!ENTITY local_tooltip "Mantener el elemento actual e ignorar el recibido">
+<!ENTITY compare_remote "Usar remoto">
+<!ENTITY remote_tooltip "Usar el elemento recibido y borrar el local">
+<!ENTITY merge_all "Mezclar todo">
+<!ENTITY mergeall_tooltip "Mezclar todos los datos recibidos">
+<!ENTITY include_places "Lugares a incluir">
+<!ENTITY merge_menu "Menú marcadores">
+<!ENTITY mergemenu_tooltip "Incluir los elementos del menú marcadores al mezclar">
+<!ENTITY merge_toolbar "Barra de herramientas">
+<!ENTITY mergetoolbar_tooltip "Incluir los elementos de la barra de herramientas al mezclar">
+<!ENTITY merge_unsorted "No clasificados">
+<!ENTITY mergeunsorted_tooltip "Incluir los elementos no clasificados al mezclar">
+<!ENTITY include_types "Tipos a incluir">
+<!ENTITY merge_bookmarks "Marcadores">
+<!ENTITY mergebookmarks_tooltip "Incluir los nuevos marcadores al mezclar">
+<!ENTITY merge_seperators "Separadores">
+<!ENTITY mergesep_tooltip "Incluir los nuevos separadores al mezclar">
+<!ENTITY merge_queries "Búsquedas/Consultas">
+<!ENTITY mergequeries_tooltip "Incluir las nuevas consultas/búsquedas al mezclar">
+<!ENTITY merge_livemarks "Marcadores dinámicos">
+<!ENTITY mergelivemarks_tooltip "Incluir los nuevos marcadores dinámicos al mezclar">
+<!ENTITY workarounds_tab "Entorno de trabajo">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "Añada sus propias etiquetas de estilo:">
+<!ENTITY encryption_tab "Cifrado">
+<!ENTITY encryption "Algoritmo de cifrado">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "Nota: Use esta opción sólo si tiene problemas">
+<!ENTITY transfer_technique "Transferir">
+<!ENTITY receive_mechanism "Recibiendo">
+<!ENTITY normal_receive "Normal">
+<!ENTITY normal_receive_tooltip "Modo normal de recepción">
+<!ENTITY old_receive "Antiguo">
+<!ENTITY old_receive_tooltip "Modo antiguo de recepción">
+<!ENTITY old_receive_conversion "Corrección de Proxy">
+<!ENTITY receive_conversion_tooltip "Corrección para algunos servidores proxy">
+<!ENTITY send_mechanism "Enviando">
+<!ENTITY normal_send "Normal">
+<!ENTITY normal_send_tooltip "Modo normal de envío">
+<!ENTITY old_send "Antiguo">
+<!ENTITY old_send_tooltip "Modo antiguo de envío">
+<!ENTITY old_send_conversion "Corección de proxy">
+<!ENTITY send_conversion_tooltip "Corección para algunos servidores proxy">
+<!ENTITY skip_auth "Saltar autenticación">
+<!ENTITY skipauth_tooltip "Vea la documentación para más detalles">
+<!ENTITY debug "Activar depuración">
+<!ENTITY startup "Inicio">
+<!ENTITY normal "Normal">
+<!ENTITY normal_tooltip "Detección de inicio normal">
+<!ENTITY crude "Compatible">
+<!ENTITY crude_tooltip "Detección de inicio compatible">
+<!ENTITY shutdown "Apagado">
+<!ENTITY shutdownnormal_tooltip "Apagado normal">
+<!ENTITY shutdowncrude_tooltip "Apagado compatible">
+<!ENTITY sp_passwords_title "Seleccionar contraseña">
+<!ENTITY pw_details "Detalles de la contraseña">
+<!ENTITY pw_which_password "Seleccione qué contraseñas quiere mantener">
+<!ENTITY pw_hostname "Host">
+<!ENTITY pw_formSubmitURL "URL del formulario">
+<!ENTITY pw_httpRealm "Realm">
+<!ENTITY pw_usernameField "Campo nombre de usuario">
+<!ENTITY pw_passwordField "Campo contraseña">
+<!ENTITY pw_username "Nombre de usuario">
+<!ENTITY pw_oldPassword "Contraseña existente">
+<!ENTITY pw_newPassword "Nueva contraseña">
+<!ENTITY pw_old "Mantener la existente">
+<!ENTITY pw_new "Mantener la nueva">
+<!ENTITY dialog_title "Aviso">
+<!ENTITY more_info "Más información">
+<!ENTITY wiz_reset_title "Volver a los valores por defecto">
+<!ENTITY wiz_reset "¿Quiere restaurar todo a los valores por defecto? Si lo hace, borrará todos sus ajustes existentes.">
+<!ENTITY wiz_yes "Sí">
+<!ENTITY wiz_no "No">
+<!ENTITY wiz_protocol "¿Qué tipo de servidor va a usar?">
+<!ENTITY wiz_host "Introduzca el nombre de su servidor o su dirección IP. Por ejemplo: www.tunombre.com o 172.16.0.1. Opcionalmente puede añadir un número de puerto (p.ej: www.tunombre.com:8080)">
+<!ENTITY web_server "Servidor web">
+<!ENTITY ssl_server "Servidor web (SSL)">
+<!ENTITY ftp_server "Servidor FTP">
+<!ENTITY file_server "Servidor de archivos">
+<!ENTITY wiz_path_title "Ruta en el servidor">
+<!ENTITY wiz_path "Introduzca la ruta donde se guardarán sus marcadores">
+<!ENTITY bm_path "Ruta">
+<!ENTITY wiz_login "Introduzca los detalles de login del FTP, si los hay">
+<!ENTITY wiz_sync "Elija el formato en el que guardar sus marcadores">
+<!ENTITY recommended "(recomendado)">
+<!ENTITY wiz_passwords "¿Quiere sincronizar también las contraseñas?">
+<!ENTITY wiz_pwd_path "Introduzca la ruta en el servidor donde guardar las contraseñas">
+<!ENTITY wiz_encrypt "¿Quiere cifrar sus marcadores?">
+<!ENTITY wiz_compress "¿Quiere comprimir sus marcadores para una sincronización más rápida?">
+<!ENTITY wiz_encpwd "Introduzca una contraseña para proteger sus datos">

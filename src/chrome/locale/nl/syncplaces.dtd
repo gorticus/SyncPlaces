@@ -1,0 +1,249 @@
+<!ENTITY sp "Synchroniseer Bladwijzers/Wachtwoorden">
+<!ENTITY sp_tooltip "Synchroniseer Bladwijzers/Wachtwoorden met een Server">
+<!ENTITY sp_title "SyncPlaces">
+<!ENTITY sp_transfer_title "Synchronisatie">
+<!ENTITY sp_wizard_title "SyncPlaces Setup Wizard">
+<!ENTITY action_tab "Acties">
+<!ENTITY server_tab "Server">
+<!ENTITY options_tab "Opties">
+<!ENTITY advanced_tab "Geavanceerd">
+<!ENTITY status "Status">
+<!ENTITY apply_button "Pas toe">
+<!ENTITY remote "Op afstand">
+<!ENTITY send_button "Stuur Bladwijzers/Wachtwoorden">
+<!ENTITY send_tooltip "Stuur Bladwijzers/Wachtwoorden naar de Server">
+<!ENTITY receive_button "Haal Bladwijzers/Wachtwoorden">
+<!ENTITY receive_tooltip "Neem back-up en haal Bladwijzers/Wachtwoorden van de Server">
+<!ENTITY local "Lokaal">
+<!ENTITY backup_button "Back-up">
+<!ENTITY backup_tooltip "Back-up naar lokaal bestand">
+<!ENTITY bookmarks "Bladwijzers">
+<!ENTITY passwords "Wachtwoorden">
+<!ENTITY both "Beiden">
+<!ENTITY restore_button "Terugzetten">
+<!ENTITY restore_tooltip "Terugzetten uit lokaal bestand">
+<!ENTITY xbel "XBEL">
+<!ENTITY export_button "Exporteren">
+<!ENTITY export_tooltip "Exporteer bladwijzers naar lokaal XBEL bestand">
+<!ENTITY import_button "Importeren">
+<!ENTITY not_available "Optie nog niet beschikbaar">
+<!ENTITY import_tooltip "Importeer bladwijzers van lokaal XBEL bestand">
+<!ENTITY connection_tab "Verbinding">
+<!ENTITY sync_tab "Synchronisatie">
+<!ENTITY protocol "Protocol">
+<!ENTITY http "http">
+<!ENTITY https "https">
+<!ENTITY ftp "ftp">
+<!ENTITY file "bestand">
+<!ENTITY host "Host:">
+<!ENTITY host_tooltip "Hostnaam of IP adres met optioneel poort nummer">
+<!ENTITY path "JSON pad:">
+<!ENTITY path_tooltip "Pad naar JSON bestand op server b.v. /bladwijzers/syncplaces.json">
+<!ENTITY htmlpath "HTML Pad:">
+<!ENTITY htmlpath_tooltip "Pad naar HTML bestand op server b.v. /bladwijzers/syncplaces.html">
+<!ENTITY userid "Gebruiker:">
+<!ENTITY userid_tooltip "Gebruikersnaam voor authentificatie">
+<!ENTITY password "Wachtwoord">
+<!ENTITY password_tooltip "Wachtwoord voor authentificatie">
+<!ENTITY run_wizard "Run de Wizard de volgende keer">
+<!ENTITY runwizard_tooltip "Run de setup Wizard de volgende keer dat je SyncPlaces start">
+<!ENTITY last_sent "Laatst verstuurd">
+<!ENTITY last_received "Laatst ontvangen">
+<!ENTITY lastreceived_tooltip "Datum laatst ontvangen aanpassingen">
+<!ENTITY sync_type "Synchroniseer:">
+<!ENTITY sync_json "JSON">
+<!ENTITY syncjson_tooltip "Synchroniseer naar een JSON bestand (aanbevolen)">
+<!ENTITY sync_xbel "XBEL">
+<!ENTITY syncxbel_tooltip "Synchroniseer naar een XBEL bestand">
+<!ENTITY sync_passwords "Wachtwoorden">
+<!ENTITY syncpasswords_tooltip "Synchroniseer wachtwoorden">
+<!ENTITY sync_icons "Actualiseer favicons">
+<!ENTITY syncicons_tooltip "Actualiseer favicons tijdens ontvangen/importeren">
+<!ENTITY send_html "Verstuur HTML">
+<!ENTITY sendhtml_tooltip "Verstuur ook een HTML versie">
+<!ENTITY send_xbel "Verstuur XBEL">
+<!ENTITY sendxbel_tooltip "Verstuur ook een XBEL versie">
+<!ENTITY xbelpath_tooltip "Pad naar XBEL bestand op de server b.v. /bladwijzers/syncplaces.xml">
+<!ENTITY passwordpath "Wachtwoordpad:">
+<!ENTITY passwordpath_tooltip "Pad naar wachtwoordbestand op de server b.v. /bladwijzers/wachtwoorden">
+<!ENTITY password_password "Wachtwoord:">
+<!ENTITY basic "Basic">
+<!ENTITY encrypt_json "Versleutel JSON">
+<!ENTITY encryptjson_tooltip "Versleutel JSON bestand voor de veiligheid">
+<!ENTITY encryptpassword_tooltip "Wachtwoord gebruikt voor versleutelen wachtwoorden">
+<!ENTITY send_gzip_json "Verstuur/Ontvang gecomprimeerd JSON">
+<!ENTITY gzipjson_tooltip "GZips JSON bestand voor sneller transport">
+<!ENTITY small_xbel "Exporteer/Verstuur kleiner XBEL">
+<!ENTITY smallxbel_tooltip "Verstuurt/Exporteert klein XBEL bestand (optimaal voor styling)">
+<!ENTITY send_safe "Verstuur veilig">
+<!ENTITY sendsafe_tooltip "Ontvang en mix als verliesbeveiliging vóór het versturen">
+<!ENTITY auto_sort "Sorteer vóór het versturen">
+<!ENTITY autosort_tooltip "Sorteer automatisch de bladwijzers vóór ze te versturen">
+<!ENTITY cache "Synchroniseer bladwijzers alleen als er wijzigingen zijn">
+<!ENTITY cache_tooltip "Synchroniseer bladwijzers niet als ze niet veranderd zijn">
+<!ENTITY cache_pwd "Synchroniseer wachtwoorden alleen als er wijzigingen zijn">
+<!ENTITY cachepwd_tooltip "Synchroniseer wachtwoorden niet als ze niet veranderd zijn">
+<!ENTITY merge "Voeg bladwijzers tussen">
+<!ENTITY merge_tooltip "Voeg ontvangen bladwijzers er tussen i.p.v. te overschrijven">
+<!ENTITY merge_pwd "Voeg ontvangen wachtwoorden tussen bestaande">
+<!ENTITY mergepwd_tooltip "Voeg ontvangen wachtwoorden er tussen i.p.v. te overschrijven">
+<!ENTITY profiles "Profielen">
+<!ENTITY profile "Profiel">
+<!ENTITY add_profile "Voeg toe">
+<!ENTITY addprofile_tooltip "Voeg een nieuw profiel toe">
+<!ENTITY delete_profile "Verwijder">
+<!ENTITY deleteprofile_tooltip "Verwijder het nu geselecteerde profiel">
+<!ENTITY move_up "Verplaats omhoog">
+<!ENTITY moveup_tooltip "Verplaats het profiel omhoog in de lijst">
+<!ENTITY move_down "Verplaats omlaag">
+<!ENTITY movedown_tooltip "Verplaats het profiel omlaag in de lijst">
+<!ENTITY export_profile "Export">
+<!ENTITY exportprofile_tooltip "Exporteer het nu geselecteerde profiel">
+<!ENTITY import_profile "Importeer">
+<!ENTITY importprofile_tooltip "Importeer een profiel">
+<!ENTITY automation "Automatiseren">
+<!ENTITY autosync "Sync automatisch">
+<!ENTITY autosync_tooltip "Synchroniseer automatisch als bladwijzers veranderen">
+<!ENTITY delay "Vertraging">
+<!ENTITY syncdelay_tooltip "Vertraging vóór automatische synchronisatie">
+<!ENTITY auto_receive "Haal op bij opstarten">
+<!ENTITY autoreceive_tooltip "Haal bladwijzers automatisch op als de browser start">
+<!ENTITY auto_receive_notify "Laat het dialoogpaneel open staan">
+<!ENTITY autoreceivenotify_tooltip "Het dialoogpaneel blijft na gereed zijn open staan">
+<!ENTITY auto_send "Verstuur bij afsluiten">
+<!ENTITY autosend_tooltip "Verstuur bladwijzers automatisch als browser wordt gesloten">
+<!ENTITY auto_send_notify "Laat het dialoogpaneel open staan">
+<!ENTITY autosendnotify_tooltip "Het dialoogpaneel blijft na gereed zijn open staan">
+<!ENTITY auto_close "Automatisch sluiten na versturen/ontvangen">
+<!ENTITY autoclose_tooltip "Sluit de dialoog automatisch na handmatig versturen/ontvangen">
+<!ENTITY auto_close_delay "seconden">
+<!ENTITY autodelay_tooltip "Aantal seconden open laten staan alvorens te sluiten">
+<!ENTITY regular_transfer "Synchroniseer met regelmatige tussentijden">
+<!ENTITY regulartransfer_tooltip "Haalt normaal gesproken eerst op en verzend daarna, gebruik makend van de &quot;Veilig versturen&quot; optie">
+<!ENTITY transfer_interval "Interval">
+<!ENTITY transferinterval_tooltip "Tijd tussen twee synchronisaties">
+<!ENTITY seconds "seconden">
+<!ENTITY minutes "minuten">
+<!ENTITY hours "uren">
+<!ENTITY timed_transfer "Synchroniseer op een ingestelde tijd">
+<!ENTITY timedtransfer_tooltip "Haalt op de ingestelde tijd eerst op en verstuurt daarna bij gebruik van de optie &quot;Veilig versturen&quot;">
+<!ENTITY transfer_time "Synchronisatietijd">
+<!ENTITY misc_tab "Algemeen">
+<!ENTITY send_all "Synchroniseer alle Plaatsen/Bladwijzers">
+<!ENTITY sendall_tooltip "Synchroniseert het geheel van de Plaatsen-/Bladwijzersboom">
+<!ENTITY skip_name "Sta bij het ophalen verschillende namen toe">
+<!ENTITY skipname_tooltip "De doelmap mag een andere naam hebben">
+<!ENTITY selectfolder_button "Selecteer een te synchroniseren map">
+<!ENTITY selectfolder_tooltip "Selecteer de te synchroniseren bladwijzermap">
+<!ENTITY selected_folder "Map:">
+<!ENTITY sp_folder_title "Selecteer de te synchroniseren map">
+<!ENTITY strength "AES versleutelingssterkte">
+<!ENTITY b128 "128">
+<!ENTITY b192 "192">
+<!ENTITY b256 "256">
+<!ENTITY show_status "Toon statusregel ikoon">
+<!ENTITY showstatus_tooltip "Toon het ikoon op de statusregel">
+<!ENTITY show_bm "Bladwijzermenu">
+<!ENTITY showbm_tooltip "Toon opties op bladwijzermenu">
+<!ENTITY show_tools "Gereedschapmenu">
+<!ENTITY showtools_tooltip "Toon opties op gereedschapmenu">
+<!ENTITY backupfolder_button "Selecteer back-up map">
+<!ENTITY backupfolder_tooltip "Selecteer de map waar de back-ups moeten komen">
+<!ENTITY merge_tab "Samenvoegen">
+<!ENTITY merge_deletes "Verwerk verwijderde">
+<!ENTITY mergedeletes_tooltip "Behandel bladwijzers die zijn verwijderd of omgenoemd">
+<!ENTITY comparison "Behandelen van duplicaten">
+<!ENTITY compare_timestamps "Gebruik tijdstempels">
+<!ENTITY timestamps_tooltip "Gebruik tijdstempels om te beslissen welke duplicaat te behouden">
+<!ENTITY compare_local "Gebruik lokaal">
+<!ENTITY local_tooltip "Behoud de huidige en vergeet de opgehaalde">
+<!ENTITY compare_remote "Gebruik opgehaalde">
+<!ENTITY remote_tooltip "Gebruik de opgehaalde en vergeet de locale">
+<!ENTITY merge_all "Voeg alles in">
+<!ENTITY mergeall_tooltip "Voeg alles in dat werd opgehaald">
+<!ENTITY include_places "Plaatsen om in te voegen">
+<!ENTITY merge_menu "Bladwijzermenu">
+<!ENTITY mergemenu_tooltip "Neem bladwijzermenu op bij samenvoegen">
+<!ENTITY merge_toolbar "Gereedschapbalk">
+<!ENTITY mergetoolbar_tooltip "Neem gereedschapitems mee bij samenvoegen">
+<!ENTITY merge_unsorted "Ongesorteerd">
+<!ENTITY mergeunsorted_tooltip "Neem ongesorteerde items mee bij het samenvoegen">
+<!ENTITY include_types "Mee te nemen typen">
+<!ENTITY merge_bookmarks "Bladwijzers">
+<!ENTITY mergebookmarks_tooltip "Neem nieuwe bladwijzers mee bij het samenvoegen">
+<!ENTITY merge_seperators "Scheidingstekens">
+<!ENTITY mergesep_tooltip "Neem nieuwe scheidingstekens mee bij het samenvoegen">
+<!ENTITY merge_queries "Zoekopdrachten/Vragen">
+<!ENTITY mergequeries_tooltip "Neem nieuwe zoekopdrachten/vragen mee bij het samenvoegen">
+<!ENTITY merge_livemarks "Livemarks">
+<!ENTITY mergelivemarks_tooltip "Neem nieuwe livemarks mee bij het samenvoegen">
+<!ENTITY workarounds_tab "Workarounds">
+<!ENTITY xbel_tab "XBEL">
+<!ENTITY style_tags "Voeg hieronder uw eigen style tags toe">
+<!ENTITY encryption_tab "Versleuteling">
+<!ENTITY encryption "Versleutelalgoritme">
+<!ENTITY TEA "TEA">
+<!ENTITY AES "AES">
+<!ENTITY workarounds_warning "NOOT: Gebruik deze opties alleen als er problemen zijn">
+<!ENTITY transfer_technique "Overdracht">
+<!ENTITY receive_mechanism "Ophalen">
+<!ENTITY normal_receive "Normaal">
+<!ENTITY normal_receive_tooltip "Normale manier van ophalen">
+<!ENTITY old_receive "Oud">
+<!ENTITY old_receive_tooltip "Oude manier van ophalen">
+<!ENTITY old_receive_conversion "Proxy oplossing">
+<!ENTITY receive_conversion_tooltip "Oplossing voor sommige proxy servers">
+<!ENTITY send_mechanism "Verzenden">
+<!ENTITY normal_send "Normaal">
+<!ENTITY normal_send_tooltip "Normale manier van verzenden">
+<!ENTITY old_send "Oud">
+<!ENTITY old_send_tooltip "Oude manier van verzenden">
+<!ENTITY old_send_conversion "Proxy oplossing">
+<!ENTITY send_conversion_tooltip "Oplossing voor sommige proxy servers">
+<!ENTITY skip_auth "Authenticatie overslaan">
+<!ENTITY skipauth_tooltip "Zie de documentatie voor details">
+<!ENTITY debug "Zet debugging aan">
+<!ENTITY startup "Opstarten">
+<!ENTITY normal "Normaal">
+<!ENTITY normal_tooltip "Normale opstartherkenning">
+<!ENTITY crude "Overeenkomstig">
+<!ENTITY crude_tooltip "Overeenkomstige opstartherkenning">
+<!ENTITY shutdown "Afsluiten">
+<!ENTITY shutdownnormal_tooltip "Normale afsluiting">
+<!ENTITY shutdowncrude_tooltip "Overeenkomstige afsluiting">
+<!ENTITY sp_passwords_title "Selecteer wachtwoord">
+<!ENTITY pw_details "Wachtwoorddetails">
+<!ENTITY pw_which_password "Selecteer welk wachtwoord je wilt behouden">
+<!ENTITY pw_hostname "Host">
+<!ENTITY pw_formSubmitURL "Van URL">
+<!ENTITY pw_httpRealm "Bereik">
+<!ENTITY pw_usernameField "Gebruikersnaamveld">
+<!ENTITY pw_passwordField "Wachtwoordveld">
+<!ENTITY pw_username "Gebruikersnaam">
+<!ENTITY pw_oldPassword "Huidige wachtwoord">
+<!ENTITY pw_newPassword "Nieuwe wachtwoord">
+<!ENTITY pw_old "Bewaar huidige">
+<!ENTITY pw_new "Bewaar nieuwe">
+<!ENTITY dialog_title "Let op">
+<!ENTITY more_info "Meer informatie">
+<!ENTITY wiz_reset_title "Zet terug naar oorspronkelijke waarden">
+<!ENTITY wiz_reset "Wil je alles terugzetten naar de oorspronkelijke waarden? Zo ja, dan gaan al je instellingen verloren.">
+<!ENTITY wiz_yes "Ja">
+<!ENTITY wiz_no "Nee">
+<!ENTITY wiz_protocol "Wat voor soort server ga je gebruiken?">
+<!ENTITY wiz_host "Voer de naam van de server of zijn IP adres in. B.v. www.jouwnaam.nl of 172.16.0.1 Je kunt eventueel een poortnummer opgeven (b.v. www.jouwnaam.nl:8080">
+<!ENTITY web_server "Webserver">
+<!ENTITY ssl_server "Webserver (SSL)">
+<!ENTITY ftp_server "FTP server">
+<!ENTITY file_server "File server">
+<!ENTITY wiz_path_title "Pad op de server">
+<!ENTITY wiz_path "Voer het pad in waar je bladwijzers worden opgeslagen">
+<!ENTITY bm_path "Pad">
+<!ENTITY wiz_login "Voer je FTP login gegevens in als je die hebt">
+<!ENTITY wiz_sync "Kies het formaat voor de opslag van je bladwijzers">
+<!ENTITY recommended "(aanbevolen)">
+<!ENTITY wiz_passwords "Wil je ook je wachtwoorden synchroniseren?">
+<!ENTITY wiz_pwd_path "Voer het pad in voor de opslag van je wachtwoorden">
+<!ENTITY wiz_encrypt "Wil je je bladwijzers versleutelen?">
+<!ENTITY wiz_compress "Wil je je bladwijzers comprimeren voor snellere synchronisatie?">
+<!ENTITY wiz_encpwd "Voer een wachtwoord in om je gegevens te beschermen">
