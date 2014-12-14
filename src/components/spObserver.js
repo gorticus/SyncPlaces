@@ -86,7 +86,7 @@ spObserver.prototype = {
 			if (prefs.getBoolPref("auto_receive") &&
 					prefs.getCharPref("autostart_detection") != "autostart_crude")
 			{
-				prefs.setBoolPref("startAutoSend", true);
+				prefs.setBoolPref("startAutoReceive", true);
 				prefs.setBoolPref("autoStarted", true);
 				prefs.setBoolPref("send_safe", true);
 				prefs.setBoolPref("cache", true);

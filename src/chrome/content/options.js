@@ -46,7 +46,7 @@ var SyncPlacesOptions = {
 	encryptUser: 'syncplaces-encryption',
 	passwordUser: 'syncplaces-password',
 	prefsFile: 'syncplaces_prefs.json',
-	version: "5.0.0",
+	version: "5.0.1",
 
 	onActionLoad: function() {
 		this.lastTransferTimes(true);
@@ -126,7 +126,7 @@ var SyncPlacesOptions = {
 			this.prefs.setBoolPref('run_wizard', false);
 			return;
 		}
-		
+
 		//If upgrading then migrate settings
 		var version = this.prefs.getCharPref("version");
 		if (version != this.version) {
@@ -218,8 +218,8 @@ var SyncPlacesOptions = {
 					}
 
 					//Some things are strictly ASCII strings
-					else if (prefList[i] == "transfer_time" || prefList[i] == "transfer_interval" || 
-									 prefList[i] == "delay" || prefList[i] == "timeoutDelay") 
+					else if (prefList[i] == "transfer_time" || prefList[i] == "transfer_interval" ||
+									 prefList[i] == "delay" || prefList[i] == "timeoutDelay")
 					{
 						item.value = this.prefs.getCharPref(prefList[i]);
 					}
@@ -348,8 +348,8 @@ var SyncPlacesOptions = {
 					}
 
 					//Some things are strictly ASCII strings
-					else if (prefList[i] == "transfer_time" || prefList[i] == "transfer_interval" || 
-									 prefList[i] == "delay" || prefList[i] == "timeoutDelay") 
+					else if (prefList[i] == "transfer_time" || prefList[i] == "transfer_interval" ||
+									 prefList[i] == "delay" || prefList[i] == "timeoutDelay")
 					{
 						this.prefs.setCharPref(prefList[i], item.value);
 					}

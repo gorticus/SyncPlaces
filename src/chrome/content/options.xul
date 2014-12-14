@@ -40,7 +40,7 @@
 
 <dialog id="syncplacesOptions"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&sp_title; 5.0.0"
+        title="&sp_title; 5.0.1"
         buttons="accept,cancel"
         onload="SyncPlacesOptions.onDialogLoad();"
         ondialogaccept="return SyncPlacesOptions.onDialogAccept();"
@@ -157,7 +157,7 @@
 						</rows>
 					</grid>
 				</groupbox>
-			</tabpanel>	
+			</tabpanel>
 			<tabpanel orient="vertical">
 				<groupbox>
 					<grid>
