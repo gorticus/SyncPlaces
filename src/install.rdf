@@ -5,7 +5,7 @@
 	<Description about="urn:mozilla:install-manifest">
     <em:id>syncplaces@andyhalford.com</em:id>
     <em:name>SyncPlaces</em:name>
-    <em:version>4.1.1</em:version>
+    <em:version>4.1.2</em:version>
 
     <em:type>2</em:type>
     <em:homepageURL>http://www.andyhalford.com/syncplaces/index.html</em:homepageURL>
@@ -25,7 +25,7 @@
     <em:translator>Proyecto Nave (es-ES)</em:translator>
     <em:translator>Ed Manheim (nl)</em:translator>
     <em:translator>Edgard Dias Magalhaes (pt-BR)</em:translator>
-    <em:translator>Christiansen (da-DK)</em:translator>
+    <em:translator>Christiansen (da)</em:translator>
     <em:translator>X.F MAO (zh-CN)</em:translator>
 
 		<!-- Firefox -->

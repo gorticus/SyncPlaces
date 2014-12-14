@@ -46,7 +46,7 @@ var SyncPlacesOptions = {
 	encryptUser: 'syncplaces-encryption',
 	passwordUser: 'syncplaces-password',
 	prefsFile: 'syncplaces_prefs.json',
-	version: "4.1.1",
+	version: "4.1.2",
 
 	onActionLoad: function() {
 		this.lastTransferTimes(true);
