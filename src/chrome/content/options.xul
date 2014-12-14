@@ -19,7 +19,7 @@
    - The Original Code is the SyncPlaces extension.
    -
    - The Initial Developer of the Original Code is Andy Halford.
-   - Portions created by the Initial Developer are Copyright (C) 2008-2011
+   - Portions created by the Initial Developer are Copyright (C) 2008-2012
    - the Initial Developer. All Rights Reserved.
    -
    - Contributor(s):
@@ -40,7 +40,7 @@
 
 <dialog id="syncplacesOptions"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        title="&sp_title; 5.0.1"
+        title="&sp_title; 5.1.0"
         buttons="accept,cancel"
         onload="SyncPlacesOptions.onDialogLoad();"
         ondialogaccept="return SyncPlacesOptions.onDialogAccept();"

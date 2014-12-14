@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2009-2011
+ * Portions created by the Initial Developer are Copyright (C) 2009-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -212,14 +212,8 @@ var SyncPlacesMerge = {
 					//Skip queries?
 					if (!mergeQueries) break;
 
-					//If guid then this can be a proper match
-					if (node.guid && (PlacesUtils.bookmarks.getItemIdForGUID(node.guid) != -1)) {
-						existingID = SyncPlacesBookmarks.existingGuid(container, node.guid, "query");
-					}
-					//None-guid scenario (one or t'other guid missing)
-					else {
-						existingID = SyncPlacesBookmarks.existingPlace(container, node);
-					}
+					//No longer have guids to determine uniqueness
+					existingID = SyncPlacesBookmarks.existingPlace(container, node);
 				}
 
 				//Deal with bookmarks
@@ -239,32 +233,20 @@ var SyncPlacesMerge = {
 			case PlacesUtils.TYPE_X_MOZ_PLACE_SEPARATOR:
 				if (!mergeSeperators) break;
 
-				//If guid received and have a local guid as well then this can be a proper match
-				if (node.guid && (PlacesUtils.bookmarks.getItemIdForGUID(node.guid) != -1)) {
-					var existingID = SyncPlacesBookmarks.existingGuid(container, node.guid, "sep");
-					if (existingID != null)
+				//No longer have guids to test for uniqueness, so rely on IDs
+				var existingID = SyncPlacesMerge.existingSeparator(container, index, node);
+				if (existingID != -1)
+					matchingIds.push(existingID);
+				else {
+					existingID = SyncPlacesMerge.existingSeparator(container, index-1, node);
+					if (existingID != -1)
 						matchingIds.push(existingID);
 					else {
-						missingNodes.push(node.id);
-					}
-				}
-
-				//None-guid scenario (one or t'other guid missing)
-				else {
-					var existingID = SyncPlacesMerge.existingSeparator(container, index, node);
-				  if (existingID != -1)
-				  	matchingIds.push(existingID);
-				  else {
-						existingID = SyncPlacesMerge.existingSeparator(container, index-1, node);
+						existingID = SyncPlacesMerge.existingSeparator(container, index+1, node);
 						if (existingID != -1)
 							matchingIds.push(existingID);
-						else {
-							existingID = SyncPlacesMerge.existingSeparator(container, index+1, node);
-							if (existingID != -1)
-								matchingIds.push(existingID);
-							else
-								missingNodes.push(node.id);
-						}
+						else
+							missingNodes.push(node.id);
 					}
 				}
 			break;

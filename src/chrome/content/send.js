@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -42,8 +42,8 @@ var SyncPlacesSend = {
 	Cc: Components.classes,
 	Ci: Components.interfaces,
 
-	//Do sync from actions.xul
-	manualSync: function() {
+	//Do sync from menu
+	menuSync: function() {
 		SyncPlacesOptions.prefs.setBoolPref("send_safe", true);
 		SyncPlacesOptions.prefs.setBoolPref("cache", true);
 		SyncPlacesOptions.prefs.setBoolPref("cache_pwd", true);
@@ -51,16 +51,26 @@ var SyncPlacesSend = {
 		SyncPlacesOptions.prefs.setBoolPref("merge_pwd", true);
 		SyncPlacesOptions.prefs.setBoolPref("startManualSend", true);
 		window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank', 'chrome,resizable,modal,centerscreen', null);
+	},
+
+	//Do sync from actions.xul
+	manualSync: function() {
+		this.menuSync();
 		SyncPlacesOptions.lastTransferTimes();
 	},
 
-	//Launch the transfer dialog to send to server
-	manualSend: function(changes) {
+	//Do send from menu
+	menuSend: function(changes) {
 		SyncPlacesOptions.prefs.setBoolPref("send_safe", false);
 		SyncPlacesOptions.prefs.setBoolPref("cache", changes);
 		SyncPlacesOptions.prefs.setBoolPref("cache_pwd", changes);
 		SyncPlacesOptions.prefs.setBoolPref("startManualSend", true);
 		window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank', 'chrome,resizable,modal,centerscreen', null);
+	},
+
+	//Do send from actions.xul
+	manualSend: function(changes) {
+		this.menuSend(changes);
 		SyncPlacesOptions.lastTransferTimes();
 	},
 

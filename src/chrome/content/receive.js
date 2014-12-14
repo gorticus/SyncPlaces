@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -41,8 +41,8 @@ var SyncPlacesReceive = {
 	Cc: Components.classes,
 	Ci: Components.interfaces,
 
-	//Launch the transfer dialog to receive from server
-	manualReceive: function(merge) {
+	//Launch the transfer dialog to receive from server from menu/button
+	menuReceive: function(merge) {
 		SyncPlacesOptions.prefs.setBoolPref("send_safe", false);
 		SyncPlacesOptions.prefs.setBoolPref("cache", merge);
 		SyncPlacesOptions.prefs.setBoolPref("cache_pwd", merge);
@@ -51,6 +51,11 @@ var SyncPlacesReceive = {
 		SyncPlacesOptions.prefs.setBoolPref("startManualReceive", true);
 		window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank',
 											'chrome,resizable,modal,centerscreen', null);
+	},
+
+	//Receive from actions.xul
+	manualReceive: function(merge) {
+		this.menuReceive(merge);
 		SyncPlacesOptions.lastTransferTimes();
 	},
 
@@ -222,7 +227,7 @@ var SyncPlacesReceive = {
 									"http://www.andyhalford.com/syncplaces/support.html#receiving");
 			return;
 		}
-		
+
 		//If can't process passwords, then stop here
 		if (SyncPlacesPasswords.processPasswords(passwords)) {
 			//Hash and cache
@@ -486,7 +491,7 @@ var SyncPlacesReceive = {
 									"http://www.andyhalford.com/syncplaces/support.html#receiving");
 			return;
 		}
-		
+
 		//Restore the bookmarks
 		if (SyncPlaces.restoreBookmarks((json ? this.jsonReceivedFile :
 																						SyncPlaces.xbelJsonFile),

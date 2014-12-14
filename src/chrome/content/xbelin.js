@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -237,11 +237,6 @@ function SyncPlacesXBELIn(filePath, timeout) {
 										}
 									}
 								}
-
-								//Set GUID for queries
-								var guid = metadata.getAttribute("guid");
-								if (guid && jsnode.uri && jsnode.uri.substr(0, 6) == "place:")
-									jsnode.guid = guid;
 							}
 
 							//BSS/PlaceSync

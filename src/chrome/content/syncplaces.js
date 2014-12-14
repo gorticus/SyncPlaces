@@ -1,4 +1,4 @@
-/* ***** BEGIN LICENSE BLOCK *****
+﻿/* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -177,6 +177,10 @@ var SyncPlaces = {
 										.getService(Components.interfaces.nsIStringBundleService)
 										.createBundle("chrome://syncplaces/locale/syncplaces.properties");
 
+		//Create the log
+		SyncPlacesIO.createLog();
+		SyncPlacesIO.log(bundle.GetStringFromName(merge ? 'import_and_merge': 'import_and_overwrite'));
+
 		SyncPlacesOptions.prefs.setBoolPref("merge", merge);
 		SyncPlacesOptions.prefs.setBoolPref("merge_pwd", merge);
 
@@ -311,7 +315,10 @@ var SyncPlaces = {
 						try {
 							SyncPlacesMerge.compare(addsDels);
 						} catch(e) {
-							if (SyncPlacesOptions.prefs.getBoolPref("debug")) Components.utils.reportError(e);
+							if (SyncPlacesOptions.prefs.getBoolPref("debug")) {
+								SyncPlacesIO.log(exception);
+								Components.utils.reportError(e);
+							}
 						}
 					}
 
@@ -319,10 +326,19 @@ var SyncPlaces = {
 					var nodes = PlacesUtils.unwrapNodes(SyncPlacesIO.readFile(filePath), PlacesUtils.TYPE_X_MOZ_PLACE_CONTAINER);
 					//Now restore/import etc from these nodes
 					var stats = {};
-					stats.added = 0;
-					stats.addedFolder = 0;
-					stats.deletes = 0;
-					stats.folderDeletes = 0;
+					stats.added = {};		//Keep a separate count for when overwriting local bookmarks and I need a count
+					stats.added.folders = 0;
+					stats.added.query = 0;
+					stats.added.places = 0;
+					stats.added.separator = 0;
+					stats.added.livemarks = 0;
+					stats.updated = {};
+					stats.updated.query = 0;
+					stats.updated.places = 0;
+					stats.updated.livemarks = 0;
+					stats.addedItems = [];		//This is a list of items added when merging
+					stats.updatedItems = [];	//This is a list of items updated when merging
+					stats.deletedItems = [];	//This is a list of items deleted when merging
 					if (!SyncPlacesUtils.restoreBookmarksFromJSONString(nodes, addsDels, allowMergeAndSubFolder, inActions, xbelImport, stats)) {
 						this.timedStatus('cant_restore_bookmarks', inActions, true);
 					}
@@ -334,8 +350,8 @@ var SyncPlaces = {
 							SyncPlacesOptions.invalidateSyncSettings();
 							SyncPlacesOptions.lastTransferTimes();
 						}
-						//Display stats
-						this.timedStatus(null, inActions, false, stats);
+						//Log the stats
+						this.logStats(stats);
 					}
 				}
 				else {
@@ -353,6 +369,96 @@ var SyncPlaces = {
 		this.openSidebarOrganiser()
 		if (inActions) window.setCursor("auto");
 		return result;
+	},
+
+	//Log the added/updated/deleted stats
+	logStats: function(stats, operation) {
+		var bundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
+										.getService(Components.interfaces.nsIStringBundleService)
+										.createBundle("chrome://syncplaces/locale/syncplaces.properties");
+		var LF = "\n";
+		var TAB = "\t";
+		var SEP = ": ";
+		var data = "";
+		if (stats.added) {
+			var added = "";
+			if (stats.added.folders) {
+				added += TAB + bundle.GetStringFromName('folders_added') + SEP + stats.added.folders + LF;
+			}
+			if (stats.added.query) {
+				added += TAB + bundle.GetStringFromName('queries_added') + SEP + stats.added.query + LF;
+			}
+			if (stats.added.places) {
+				added += TAB + bundle.GetStringFromName('bookmarks_added') + SEP + stats.added.places + LF;
+			}
+			if (stats.added.separator) {
+				added += TAB + bundle.GetStringFromName('separators_added') + SEP + stats.added.separator + LF;
+			}
+			if (stats.added.livemarks) {
+				added += TAB + bundle.GetStringFromName('livemarks_added') + SEP + stats.added.livemarks + LF;
+			}
+			if (stats.addedItems.length) {
+				added += TAB + bundle.GetStringFromName('total_added') + SEP + stats.addedItems.length + LF;
+				for (var i = 0; i < stats.addedItems.length; i++) {
+					var item = stats.addedItems[i];
+					var output = bundle.GetStringFromName('added') + " " + item.type;
+					if (item.title) output = output + "; " + bundle.GetStringFromName('title') + " '" + item.title + "'";
+					if (item.parent) output = output + "; " + bundle.GetStringFromName('parent') + " '" + item.parent + "'";
+					if (item.index) output = output + "; " + bundle.GetStringFromName('index') + " '" + (item.index+1);
+					added += TAB + TAB + output + LF;
+				}
+			}
+			if (added) data += LF + added;
+
+			var updated = "";
+			if (stats.updated.query) {
+				updated += TAB + bundle.GetStringFromName('queries_updated') + SEP + stats.updated.query + LF;
+			}
+			if (stats.updated.places) {
+				updated += TAB + bundle.GetStringFromName('bookmarks_updated') + SEP + stats.updated.places + LF;
+			}
+			if (stats.updated.livemarks) {
+				updated += TAB + bundle.GetStringFromName('livemarks_updated') + SEP + stats.updated.livemarks + LF;
+			}
+			if (stats.updatedItems.length) {
+				updated += TAB + bundle.GetStringFromName('total_updated') + SEP + stats.updatedItems.length + LF;
+				for (var i = 0; i < stats.updatedItems.length; i++) {
+					var item = stats.updatedItems[i];
+					var output = bundle.GetStringFromName('updated') + " " + item.type;
+					if (item.title) output = output + "; " + bundle.GetStringFromName('title') + " '" + item.title + "'";
+					if (item.parent) output = output + "; " + bundle.GetStringFromName('parent') + " '" + item.parent + "'";
+					if (item.index) output = output + "; " + bundle.GetStringFromName('index') + " '" + (item.index+1);
+					updated += TAB + TAB + output + LF;
+				}
+			}
+			if (updated) data += LF + updated;
+
+			var deleted = "";
+			if (stats.deletedItems.length) {
+				deleted += TAB + bundle.GetStringFromName('total_deleted') + SEP + stats.deletedItems.length + LF;
+				for (var i = 0; i < stats.deletedItems.length; i++) {
+					var item = stats.deletedItems[i];
+					var output = bundle.GetStringFromName('deleted') + " " + item.type;
+					if (item.title) output = output + "; " + bundle.GetStringFromName('title') + " '" + item.title + "'";
+					if (item.parent) output = output + "; " + bundle.GetStringFromName('parent') + " '" + item.parent + "'";
+					if (item.timestamps) output = output + "; " + bundle.GetStringFromName('timestamps');
+					deleted += TAB + TAB + output + LF;
+				}
+			}
+			if (deleted) data += LF + deleted;
+		}
+
+		var pwds = "";
+		if (stats.pwadded) {
+			pwds += TAB + bundle.GetStringFromName('passwords_added') + SEP + stats.pwadded + LF;
+		}
+		if (stats.pwupdated) {
+			pwds += TAB + bundle.GetStringFromName('passwords_updated') + SEP + stats.pwupdated + LF;
+		}
+		if (pwds) data += LF + pwds;
+
+		//Book 'em Danno
+		if (data) SyncPlacesIO.log(data);
 	},
 
 	//Closes the sidebar and bookmarks organiser windows
@@ -430,45 +536,18 @@ var SyncPlaces = {
 				document.getElementById("sp_meter").value = 0;
 			}
 
-			var bundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
-											.getService(Components.interfaces.nsIStringBundleService)
-											.createBundle("chrome://syncplaces/locale/syncplaces.properties");
-			if (!message && stats) {
-				//NOTE: TODO: the msg is pointless here as gets displayed on screen for too short a time
-				msg = "";
-				if (stats.added) {
-					var placesAdded = bundle.GetStringFromName('places_added') + stats.added;
-					SyncPlacesOptions.message(placesAdded);
-					msg += placesAdded + " ";
-				}
-				if (stats.addedFolder) {
-					var foldersAdded = bundle.GetStringFromName('folders_added') + stats.addedFolder;
-					SyncPlacesOptions.message(foldersAdded);
-					msg += foldersAdded + " ";
-				}
-				if (stats.deletes) {
-					var placesDeleted = bundle.GetStringFromName('places_deleted') + stats.deletes;
-					SyncPlacesOptions.message(placesDeleted);
-					msg += placesDeleted + " ";
-				}
-				if (stats.folderDeletes) {
-					var foldersDeleted = bundle.GetStringFromName('folders_deleted') + stats.folderDeletes;
-					SyncPlacesOptions.message(foldersDeleted);
-					msg += foldersDeleted + " ";
-				}
-				if (stats.pwadded) {
-					var passwordsAdded = bundle.GetStringFromName('passwords_added') + stats.pwadded;
-					SyncPlacesOptions.message(passwordsAdded);
-					msg += passwordsAdded + " ";
-				}
-			}
-
 			//Get the message
-			else
+			if (message) {
+				var bundle = Components.classes["@mozilla.org/intl/stringbundle;1"]
+												.getService(Components.interfaces.nsIStringBundleService)
+												.createBundle("chrome://syncplaces/locale/syncplaces.properties");
 				msg = bundle.GetStringFromName(message);
-
+			}
 		} catch (e) {
 		}
+
+		//Log the message
+		if (msg) SyncPlacesIO.log(msg);
 
 		//If no status then must be windowless
 		if (!status) {
@@ -477,8 +556,6 @@ var SyncPlaces = {
 				var dialog = window.openDialog('chrome://syncplaces/content/error.xul', '_blank',
 													'chrome,resizable,modal,centerscreen', params);
 			}
-			//Send message to console (will not work with 3.0 at present, 3.5+ is fine)
-			if (msg) SyncPlacesOptions.message(msg);
 		}
 		//Display the message on screen
 		else {
@@ -497,6 +574,7 @@ var SyncPlaces = {
 											.getService(Components.interfaces.nsIStringBundleService)
 											.createBundle("chrome://syncplaces/locale/syncplaces.properties");
 			status.value = bundle.GetStringFromName(window.arguments[0].inn.status);
+			SyncPlacesIO.log(status.value);
 		}
 	},
 
@@ -669,17 +747,6 @@ var SyncPlaces = {
 		window.openDialog('chrome://syncplaces/content/options.xul', '_blank', 'chrome,modal,centerscreen', params);
 		SyncPlacesOptions.lastTransferTimes(); //Update the last_* status just in case
 		return false; //TO keep the actions.xul window open
-	},
-
-	//Do sync from menu
-	menuSync: function() {
-		SyncPlacesOptions.prefs.setBoolPref("send_safe", true);
-		SyncPlacesOptions.prefs.setBoolPref("cache", true);
-		SyncPlacesOptions.prefs.setBoolPref("cache_pwd", true);
-		SyncPlacesOptions.prefs.setBoolPref("merge", true);
-		SyncPlacesOptions.prefs.setBoolPref("merge_pwd", true);
-		SyncPlacesOptions.prefs.setBoolPref("startManualSend", true);
-		window.openDialog('chrome://syncplaces/content/transfer.xul', '_blank', 'chrome,resizable,modal,centerscreen', null);
 	},
 
 	//Are there any syncplaces windows showing?

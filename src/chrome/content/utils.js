@@ -1,4 +1,4 @@
-/* ***** BEGIN LICENSE BLOCK *****
+﻿/* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1/GPL 2.0/LGPL 2.1
  *
  * The contents of this file are subject to the Mozilla Public License Version
@@ -341,7 +341,9 @@ var SyncPlacesUtils = {
 					var root = PlacesUtils.history.executeQuery(query, options).root;
 					var itemsToDelete = [];
 					var foldersToDelete = [];
-					SyncPlacesBookmarks.deleteOldBookmarks(root, receivedIds, itemsToDelete, addsDels.matchingIds, foldersToDelete, lastSend, useTimestamps, mergeMenu, mergeBookmarks, mergeToolbar, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, debug, stats);
+					SyncPlacesBookmarks.deleteOldBookmarks(root, receivedIds, itemsToDelete, addsDels.matchingIds, foldersToDelete, lastSend,
+																								 useTimestamps, mergeMenu, mergeBookmarks, mergeToolbar, mergeSeperators, mergeQueries,
+																								 mergeLivemarks, mergeUnsorted, debug, stats);
 
 					//Do the deletions outside of the query
 					itemsToDelete.forEach(function(id) {
@@ -421,10 +423,14 @@ var SyncPlacesUtils = {
    *          and an array of saved search ids that need to be fixed up.
    *          eg: [[[oldFolder1, newFolder1]], [search1]]
    */
-	importJSONNode: function(node, container, index, merge, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldNodes, missingNodes, debug, containerTitle, stats, aGrandParentId) {
+	importJSONNode: function(node, container, index, merge, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks,
+													 mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldNodes, missingNodes, debug,
+													 containerTitle, stats, aGrandParentId)
+	{
 		var folderIdMap = [];
 		var searchIds = [];
 		var id = -1;
+		var update = false;	//set to true if updating an existing item
 		if (!index) index = 0;
 		switch (node.type) {
 			case PlacesUtils.TYPE_X_MOZ_PLACE_CONTAINER:
@@ -473,9 +479,12 @@ var SyncPlacesUtils = {
 							if (existingID != null) {
 								var modifiedDate = node.lastModified;
 								if (!modifiedDate) modifiedDate = node.dateAdded;
-								if (!SyncPlacesBookmarks.dealWithDuplicates(existingID, mergeComparison, modifiedDate, index, false)) {
+								if (!SyncPlacesBookmarks.dealWithDuplicates(existingID, mergeComparison, modifiedDate, index, false, debug)) {
 									receivedIds.push(existingID);
 									break;
+								}
+								else {
+									update = true;
 								}
 							}
 							//If doesn't exist has it been deleted locally, more recently than last send or not in list of oldNodes
@@ -487,10 +496,16 @@ var SyncPlacesUtils = {
 								else if (SyncPlacesMerge.deletedLivemark(oldNodes, missingNodes, node.title, feedURI))
 									break;
 							}
+							if (update) 
+								SyncPlacesBookmarks.updStats(stats, SyncPlacesBookmarks.LIVEMARK, node.title, containerTitle, index);
+							else 
+								SyncPlacesBookmarks.addStats(stats, SyncPlacesBookmarks.LIVEMARK, node.title, containerTitle, index);
+						}
+						else {
+							if (update) stats.updated.livemarks++;
+							else stats.added.livemarks++;
 						}
 						id = PlacesUtils.livemarks.createLivemarkFolderOnly(container, node.title, siteURI, feedURI, index);
-						if (debug && mergeDeletes) SyncPlacesOptions.message("Added livemark: " + node.title + " : " + feedURI.spec + " to " + containerTitle + " at index " + index);
-						stats.added++;
 						receivedIds.push(id);
 					}
 				}
@@ -511,7 +526,7 @@ var SyncPlacesUtils = {
 					//If merging (or syncing subfolder) and duplicate folder then merge into the existing folder
 					var containerID = -1;	//I want "id==-1" if there's an existing folder, so use another variable
 					if (merge || syncFolderID != PlacesUtils.placesRootId) {
-						containerID = SyncPlacesBookmarks.existingFolder(container, node, index, mergeComparison);
+						containerID = SyncPlacesBookmarks.existingFolder(container, node, index, mergeComparison, debug);
 					}
 
 					//If doesn't exist then create it
@@ -530,8 +545,8 @@ var SyncPlacesUtils = {
 						}
 
 						containerID = PlacesUtils.bookmarks.createFolder(container, node.title, index);
-						if (debug && mergeDeletes) SyncPlacesOptions.message("Added folder+contents: " + node.title + " to " + containerTitle + " at index " + index);
-						stats.addedFolder++;
+						if (merge) SyncPlacesBookmarks.addStats(stats, SyncPlacesBookmarks.FOLDER, node.title, containerTitle, index);
+						else stats.added.folders++;
 						id = containerID;
 
 						//Because you've created this folder, its children don't need to be 'merged' at all
@@ -547,7 +562,10 @@ var SyncPlacesUtils = {
 					//Do the kids
 					if (node.children) {
 						node.children.forEach(function(child, index) {
-							var [folders, searches] = this.importJSONNode(child, containerID, index, mergeChildren, mergeComparison, mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted, mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldSubNodes, missingNodes, debug, node.title, stats, container);
+							var [folders, searches] = this.importJSONNode(child, containerID, index, mergeChildren, mergeComparison,
+																														mergeBookmarks, mergeSeperators, mergeQueries, mergeLivemarks, mergeUnsorted,
+																														mergeDeletes, syncFolderID, lastSend, receivedIds, useTimestamps, oldSubNodes,
+																														missingNodes, debug, node.title, stats, container);
               for (var i = 0; i < folders.length; i++) {
                 if (folders[i]) folderIdMap[i] = folders[i];
               }
@@ -575,41 +593,27 @@ var SyncPlacesUtils = {
 							});
 						}
 
-						//If guid received and have a local guid as well then this can be a proper match
-						if (node.guid && (PlacesUtils.bookmarks.getItemIdForGUID(node.guid) != -1)) {
-							var existingID = SyncPlacesBookmarks.existingGuid(container, node.guid, "query");
-							if (existingID != null) {
-								if (!SyncPlacesBookmarks.dealWithDuplicates(existingID, mergeComparison, modifiedDate, index, true)) {
-									receivedIds.push(existingID);
-									break;
-								}
+						//None-guid scenario - guids are now deprecated
+						var existingID = SyncPlacesBookmarks.existingPlace(container, node);
+						if (existingID != null) {
+							if (!SyncPlacesBookmarks.dealWithDuplicates(existingID, mergeComparison, modifiedDate, index, true, debug)) {
+								receivedIds.push(existingID);
+								break;
 							}
-							//Dont need to do deletedLocally check because to get here it must have existed in a different folder
+							else {
+							  update = true;
+							}
 						}
-						//None-guid scenario (local or remote guid missing)
-						else {
-							var existingID = SyncPlacesBookmarks.existingPlace(container, node);
-							if (existingID != null) {
-								if (!SyncPlacesBookmarks.dealWithDuplicates(existingID, mergeComparison, modifiedDate, index, true)) {
-									try {
-										if (node.guid)
-											PlacesUtils.bookmarks.setItemGUID(existingID, node.guid);
-									} catch(e) {} //Catch potential duplicate guid issue
-									receivedIds.push(existingID);
-									break;
-								}
-							}
-							else if (mergeDeletes) {
-								if (useTimestamps) {
-									//Stop deletions of new queries with no "date added" by fixing the last send date
-									var lastSendDate = (modifiedDate != 0) ? lastSend : -1;
+						else if (mergeDeletes) {
+							if (useTimestamps) {
+								//Stop deletions of new queries with no "date added" by fixing the last send date
+								var lastSendDate = (modifiedDate != 0) ? lastSend : -1;
 
-									//If doesn't exist - has it been deleted locally, more recently than last send?
-									if (modifiedDate < lastSendDate) break;
-								}
-								else if (SyncPlacesMerge.deletedPlace(oldNodes, missingNodes, node)) {
-									break;
-								}
+								//If doesn't exist - has it been deleted locally, more recently than last send?
+								if (modifiedDate < lastSendDate) break;
+							}
+							else if (SyncPlacesMerge.deletedPlace(oldNodes, missingNodes, node)) {
+								break;
 							}
 						}
 					}
@@ -621,9 +625,12 @@ var SyncPlacesUtils = {
 
 						var existingID = SyncPlacesBookmarks.existingPlace(container, node);
 						if (existingID != null) {
-							if (!SyncPlacesBookmarks.dealWithDuplicates(existingID, mergeComparison, modifiedDate, index, false)) {
+							if (!SyncPlacesBookmarks.dealWithDuplicates(existingID, mergeComparison, modifiedDate, index, false, debug)) {
 								receivedIds.push(existingID);
 								break;
+							}
+							else {
+							  update = true;
 							}
 						}
 						//If doesn't already exist then don't create it if it has been deleted locally
@@ -640,8 +647,24 @@ var SyncPlacesUtils = {
 
 				//Add the bookmark
 				id = PlacesUtils.bookmarks.insertBookmark(container, SyncPlacesIO.makeURI(node.uri), index, node.title);
-				if (debug && mergeDeletes) SyncPlacesOptions.message("Added bookmark/query: " + node.title + " : " + node.uri + " to " + containerTitle + " at index " + index);
-				stats.added++;
+				if (merge) {
+					if (update)
+						SyncPlacesBookmarks.updStats(stats, query ? SyncPlacesBookmarks.QUERY : SyncPlacesBookmarks.BOOKMARK,
+							 													 node.title, containerTitle, index);
+					else 
+						SyncPlacesBookmarks.addStats(stats, query ? SyncPlacesBookmarks.QUERY : SyncPlacesBookmarks.BOOKMARK,
+							 													 node.title, containerTitle, index);
+				}
+				else {
+					if (query) {
+						if (update) stats.updated.query++;
+						else stats.added.query++;
+					}
+					else {
+						if (update) stats.updated.places++;
+						else stats.added.places++;
+					}
+				}
 				receivedIds.push(id);
 
 				if (node.keyword) PlacesUtils.bookmarks.setKeywordForBookmark(id, node.keyword);
@@ -655,10 +678,6 @@ var SyncPlacesUtils = {
 				if (node.charset) PlacesUtils.history.setCharsetForURI(SyncPlacesIO.makeURI(node.uri), node.charset);
 
 				if (query) {
-					try {
-						if (node.guid && (node.guid != PlacesUtils.bookmarks.getItemGUID(id)))
-							PlacesUtils.bookmarks.setItemGUID(id, node.guid);
-					} catch(e) {} //Catch potential duplicate guid issue
 					searchIds.push(id);
 				}
 				else if (node.favicon &&
@@ -680,53 +699,25 @@ var SyncPlacesUtils = {
 					var existingSep2 = false;
 					var existingSep3 = false;
 
-					//If guid received and have a local guid as well then this can be a proper match
-					if (node.guid && (PlacesUtils.bookmarks.getItemIdForGUID(node.guid) != -1)) {
-						var existingID = SyncPlacesBookmarks.existingGuid(container, node.guid, "sep");
-						if (existingID != null) {
-							receivedIds.push(existingID);
-
-							//If exists then check it's index = remote's and set it otherwise
-							if (index != PlacesUtils.bookmarks.getItemIndex(existingID)) {
-								try {
-									PlacesUtils.bookmarks.setItemIndex(existingID, index);
-								} catch(e) {
-									SyncPlacesOptions.message("WARNING: Failed to set index for " + existingID + " to " + index);
-								}
-							}
-							break;
-						}
-						//Dont need to do deletedLocally check because if get here it must have existed in a different folder
-
-						//Check you're not going to add it next to an existing one
-						existingSep1 = SyncPlacesBookmarks.existingSeparator(container, index, node, false, lastSend, receivedIds);
-					  existingSep2 = SyncPlacesBookmarks.existingSeparator(container, index-1, node, false, lastSend, receivedIds);
-					  existingSep3 = SyncPlacesBookmarks.existingSeparator(container, index+1, node, false, lastSend, receivedIds);
-					}
-
-					//Note that I MUST run checks on both index and index-1 otherwise mergeDeletes may accidentally delete an existing sep (if no GUID)
-					//Hence the weird logic here - it still has flaws though (if no GUID)
-					else  {
-						existingSep1 = SyncPlacesBookmarks.existingSeparator(container, index, node, mergeDeletes, lastSend, receivedIds,
-																																 useTimestamps, oldNodes, missingNodes);
-					  existingSep2 = SyncPlacesBookmarks.existingSeparator(container, index-1, node, mergeDeletes, lastSend, receivedIds,
-					  																										 useTimestamps, oldNodes, missingNodes);
-					  existingSep3 = SyncPlacesBookmarks.existingSeparator(container, index+1, node, mergeDeletes, lastSend, receivedIds,
-					  																										 useTimestamps, oldNodes, missingNodes);
-					}
+					//Note that I MUST run checks on both index and index-1 otherwise mergeDeletes may accidentally delete an existing sep because no longer have GUIDs
+					//Hence the weird logic here - it still has flaws though because no GUID
+					existingSep1 = SyncPlacesBookmarks.existingSeparator(container, index, node, mergeDeletes, lastSend, receivedIds,
+																																useTimestamps, oldNodes, missingNodes);
+					existingSep2 = SyncPlacesBookmarks.existingSeparator(container, index-1, node, mergeDeletes, lastSend, receivedIds,
+																																useTimestamps, oldNodes, missingNodes);
+					existingSep3 = SyncPlacesBookmarks.existingSeparator(container, index+1, node, mergeDeletes, lastSend, receivedIds,
+																																useTimestamps, oldNodes, missingNodes);
 
 					//If conflict then abort
 				  if (existingSep1 || existingSep2 || existingSep3) break;
+					SyncPlacesBookmarks.addStats(stats, SyncPlacesBookmarks.SEPARATOR, null, containerTitle, index);
+				}
+				else {
+					stats.added.separator++;
 				}
 
 				//Add the sep
 				id = PlacesUtils.bookmarks.insertSeparator(container, index);
-				if (debug && mergeDeletes) SyncPlacesOptions.message("Added separator to " + containerTitle + " at index " + index);
-				stats.added++;
-				try {
-					if (node.guid && (node.guid != PlacesUtils.bookmarks.getItemGUID(id)))
-						PlacesUtils.bookmarks.setItemGUID(id, node.guid);
-				} catch(e) {} //Catch duplicate guid (should never happen here)
 				receivedIds.push(id);
 				break;
 
@@ -737,7 +728,7 @@ var SyncPlacesUtils = {
     	// set generic properties, valid for all nodes
     if (id != -1 &&
         container != PlacesUtils.tagsFolderId &&
-        aGrandParentId != PlacesUtils.tagsFolderId) 
+        aGrandParentId != PlacesUtils.tagsFolderId)
 		{
 			if (node.annos && node.annos.length) {
 				PlacesUtils.setAnnotationsForItem(id, node.annos);
@@ -786,7 +777,7 @@ var SyncPlacesUtils = {
 					try {
 						PlacesUtils.annotations.getItemAnnotation(aJSNode.id, SyncPlacesBookmarks.SP_DATE_ADDED_ANNO);
 					} catch (e) {
-						PlacesUtils.annotations.setItemAnnotation(aJSNode.id, SyncPlacesBookmarks.SP_DATE_ADDED_ANNO, new Date().getTime() * 1000, 0, PlacesUtils.annotations.EXPIRE_NEVER)
+						PlacesUtils.annotations.setItemAnnotation(aJSNode.id, SyncPlacesBookmarks.SP_DATE_ADDED_ANNO, new Date().getTime() * 1000, 0, PlacesUtils.annotations.EXPIRE_NEVER);
 					}
 				}
         var lastModified = aPlacesNode.lastModified;
@@ -862,8 +853,6 @@ var SyncPlacesUtils = {
 
     function addSeparatorProperties(aPlacesNode, aJSNode) {
       aJSNode.type = PlacesUtils.TYPE_X_MOZ_PLACE_SEPARATOR;
-	    if (aJSNode.id && aJSNode.id != -1)
-	    	aJSNode.guid = PlacesUtils.bookmarks.getItemGUID(aJSNode.id);
 
       //Tidy up corrupt entries
       if (!aJSNode.dateAdded || aJSNode.dateAdded <= 0)
@@ -884,11 +873,6 @@ var SyncPlacesUtils = {
 					// folder shortcut
 					if (aIsUICommand)
 						aJSNode.concreteId = concreteId;
-
-					//NOTE: The very act of requesting a GUID creates it as an annotation
-					//So this will duplicate data in the JSON file
-					if (PlacesUtils.nodeIsQuery(aPlacesNode))
-						aJSNode.guid = PlacesUtils.bookmarks.getItemGUID(aJSNode.id);
 				}
 				else { // Bookmark folder or a shortcut we should convert to folder.
 					aJSNode.type = PlacesUtils.TYPE_X_MOZ_PLACE_CONTAINER;
@@ -916,7 +900,7 @@ var SyncPlacesUtils = {
     function writeScalarNode(aStream, aNode, aPrevWritten) {
       // serialize to json
       var jstr = PlacesUtils.toJSONString(aNode);
-			
+
 			// AndyH fix to prevent trailing comma
 			if (aPrevWritten) jstr = "," + jstr;
 

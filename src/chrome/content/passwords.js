@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -146,8 +146,9 @@ var SyncPlacesPasswords = {
 			SyncPlaces.timedStatus('updating_passwords', true, false);
 			var stats = {};
 			stats.pwadded = 0;
+			stats.pwupdated = 0;
 			this.updatePasswords(passwords, true, false, stats);
-			SyncPlaces.timedStatus(null, true, false, stats);
+			SyncPlaces.logStats(stats);
 
 			//Now apply any changed syncplaces passwords
 			SyncPlacesOptions.displayPasswords();
@@ -168,9 +169,9 @@ var SyncPlacesPasswords = {
 		try {
 			var stats = {};
 			stats.pwadded = 0;
+			stats.pwupdated = 0;
 			this.updatePasswords(passwords, overwrite, true, stats);
-
-			SyncPlaces.timedStatus(null, true, false, stats);
+			SyncPlaces.logStats(stats);
 
 		} catch (exception) {
 			SyncPlacesOptions.alert2(exception, 'cant_update_passwords', null, false);
@@ -245,6 +246,7 @@ var SyncPlacesPasswords = {
 
 			//If not overwriting then merge them
 			var noMatch = true;
+			var updated = false;
 			if (!overwrite) {
 				//Does it already exist?
 				var logins = loginManager.findLogins({}, child.hostname,
@@ -279,6 +281,7 @@ var SyncPlacesPasswords = {
 							if (params.out && params.out.keepNew) {
 								loginManager.removeLogin(logins[j]);
 								noMatch = true;	//So the remote one gets added
+								updated = true;
 							}
 						}
 						break;
@@ -288,11 +291,12 @@ var SyncPlacesPasswords = {
 
 			//Add it if no match
 			if (noMatch) {
-				if (stats) stats.pwadded++;
 				var loginInfo = new nsLoginInfo(child.hostname, child.formSubmitURL, child.httpRealm,
 																				child.username, child.password, child.usernameField, child.passwordField);
 				try {
 					loginManager.addLogin(loginInfo);
+					if (updated) stats.pwupdated++;
+					else stats.pwadded++;
 
 				} catch (exception) {
 					//Try the bogus formSubmitURL fix
@@ -303,6 +307,8 @@ var SyncPlacesPasswords = {
 //alert("BOGUS: " + child.hostname + ":" + child.formSubmitURL + ":" + child.httpRealm + ":" + child.username + ":" + child.password + ":" + child.usernameField + ":" + child.passwordField);
 						loginManager.addLogin(fakeLoginInfo);
 						loginManager.modifyLogin(fakeLoginInfo, loginInfo);
+						if (updated) stats.pwupdated++;
+						else stats.pwadded++;
 
 					} catch (exception) {
 						//If this doesn't work then the entry really is bogus - so drop it

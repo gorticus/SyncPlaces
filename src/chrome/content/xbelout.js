@@ -14,7 +14,7 @@
  * The Original Code is the SyncPlaces extension.
  *
  * The Initial Developer of the Original Code is Andy Halford.
- * Portions created by the Initial Developer are Copyright (C) 2008-2011
+ * Portions created by the Initial Developer are Copyright (C) 2008-2012
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -235,9 +235,6 @@ function SyncPlacesXBELOut(backupFilePath, checkSubFolder, timeout) {
 				}
 			}
 
-			//Creating a guid will also add an anno, so do it here before dealing with annos
-			if (uri	&& uri.match(/^place:/)) PlacesUtils.bookmarks.getItemGUID(id);
-
 			//Annos
 			var livemarkURI = null;
 			var sidebarAnno = false;
@@ -299,11 +296,6 @@ function SyncPlacesXBELOut(backupFilePath, checkSubFolder, timeout) {
 				//For backwards compatibility
 				if (livemarkURI) metadata.setAttribute("FeedURL" ,livemarkURI);
 				if (sidebarAnno) metadata.setAttribute("WebPanel" , "true");
-
-				//Add GUID for queries
-				if (uri.match(/^place:/)) {
-		    	metadata.setAttribute("guid", PlacesUtils.bookmarks.getItemGUID(id));
-				}
 			}
 
 			var info = xbeloutDoc.createElement("info");
