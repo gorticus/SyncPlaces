@@ -2,12 +2,15 @@ content  syncplaces  jar:chrome/syncplaces.jar!/content/
 skin     syncplaces  classic/1.0  jar:chrome/syncplaces.jar!/skin/
 overlay  chrome://browser/content/browser.xul  chrome://syncplaces/content/syncplaces.xul
 style    chrome://global/content/customizeToolbar.xul  chrome://syncplaces/skin/syncplaces.css
+component {2fe1793a-7519-11dd-b203-f06a56d89593} components/spObserver.js
+contract @andyhalford.com/spObserver;1 {2fe1793a-7519-11dd-b203-f06a56d89593}
+category profile-after-change spObserver @andyhalford.com/spObserver;1
 locale   syncplaces  en-US  jar:chrome/syncplaces.jar!/locale/en-US/
 locale   syncplaces  en-GB  jar:chrome/syncplaces.jar!/locale/en-GB/
 locale   syncplaces  fr     jar:chrome/syncplaces.jar!/locale/fr/
 locale   syncplaces  pl-PL  jar:chrome/syncplaces.jar!/locale/pl-PL/
 locale   syncplaces  ru-RU  jar:chrome/syncplaces.jar!/locale/ru-RU/
-locale   syncplaces  de-DE  jar:chrome/syncplaces.jar!/locale/de-DE/
+locale   syncplaces  de     jar:chrome/syncplaces.jar!/locale/de/
 locale   syncplaces  es-ES  jar:chrome/syncplaces.jar!/locale/es-ES/
 locale   syncplaces  nl     jar:chrome/syncplaces.jar!/locale/nl/
 locale   syncplaces  da-DK  jar:chrome/syncplaces.jar!/locale/da-DK/
