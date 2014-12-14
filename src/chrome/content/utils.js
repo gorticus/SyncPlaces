@@ -848,7 +848,7 @@ var SyncPlacesUtils = {
 
       // last character-set
       var uri = PlacesUtils._uri(aPlacesNode.uri);
-      var lastCharset = PlacesUtils.history.getCharsetForURI(uri);
+      var lastCharset = PlacesUtils.getCharsetForURI(uri);
       if (lastCharset)
         aJSNode.charset = lastCharset;
     }
