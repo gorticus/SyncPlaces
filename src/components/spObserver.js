@@ -33,7 +33,10 @@
  *
  * ***** END LICENSE BLOCK ***** */
 
+Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+
 function spObserver() {
+	this.wrappedJSObject = this;
 	this.register();
 }
 
@@ -41,10 +44,9 @@ spObserver.prototype = {
 	Ci: Components.interfaces,
 	Cc: Components.classes,
 	Cr: Components.results,
-
-  get wrappedJSObject() {
-    return this;
-  },
+	classID: Components.ID("{2fe1793a-7519-11dd-b203-f06a56d89593}"),
+	classDescription: "SyncPlaces automated startup/shutdown component",
+	contractID: "@andyhalford.com/spObserver;1",
 
   observe: function(subject, topic, data) {
 		var prefs = this.Cc["@mozilla.org/preferences-service;1"]
@@ -52,12 +54,24 @@ spObserver.prototype = {
 										 .getBranch("extensions.syncplaces.");
 
 		//General event for application startup.
+		//Firefox 3-3.6 version
   	if (topic == "app-startup") {
 			var observer = this.Cc["@mozilla.org/observer-service;1"]
 												 .getService(this.Ci.nsIObserverService);
 			observer.addObserver(this, "final-ui-startup", false);
 	    observer.addObserver(this, "quit-application-requested", false);
 	    observer.removeObserver(this, "app-startup");
+    }
+    //Firefox4 version
+  	else if (topic == "profile-after-change") {
+			var observer = this.Cc["@mozilla.org/observer-service;1"]
+												 .getService(this.Ci.nsIObserverService);
+			observer.addObserver(this, "final-ui-startup", false);
+	    observer.addObserver(this, "quit-application-requested", false);
+	    try {
+	    	observer.removeObserver(this, "profile-after-change");
+			} catch (exception) {
+			}
     }
 
     //Triggered just before the first window for the application is displayed
@@ -117,21 +131,30 @@ spObserver.prototype = {
 									'_blank', 'chrome,resizable,centerscreen', null);
 	},
 
+	//For pre Firefox4
 	register: function() {
     var observer = this.Cc["@mozilla.org/observer-service;1"]
     									 .getService(this.Ci.nsIObserverService);
     observer.addObserver(this, "app-startup", false);
   },
 
-  QueryInterface: function(iid) {
-		if (iid.equals(this.Ci.nsIObserver) || iid.equals(this.Ci.nsISupports))
-			return this;
+  QueryInterface: XPCOMUtils.generateQI([Components.interfaces.nsIObserver, Components.interfaces.nsISupports])
 
-		Components.returnCode = this.Cr.NS_ERROR_NO_INTERFACE;
-		return null;
-	},
 };
 
+var components = [spObserver];
+
+/*
+ * XPCOMUtils.generateNSGetFactory was introduced in Mozilla 2 (Firefox 4).
+ * XPCOMUtils.generateNSGetModule is for Mozilla 1.9.2 (Firefox 3.6), but doesn't seem to work
+ */
+if (XPCOMUtils.generateNSGetFactory)
+    var NSGetFactory = XPCOMUtils.generateNSGetFactory([spObserver]);
+//else
+//    var NSGetModule = XPCOMUtils.generateNSGetModule([spObserver]);
+
+
+//The rest of the file is for Firefox 3
 var spModule = {
 	Ci: Components.interfaces,
 	Cc: Components.classes,
