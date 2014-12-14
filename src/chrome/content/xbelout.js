@@ -105,7 +105,7 @@ function SyncPlacesXBELOut(backupFilePath, checkSubFolder, timeout) {
 			//What type of item?
 			var child = container.getChild(i);
 
-			if (PlacesUtils.nodeIsQuery(child) || PlacesUtils.nodeIsBookmark(child) || PlacesUtils.nodeIsLivemarkContainer(child)) {
+			if (PlacesUtils.nodeIsQuery(child) || PlacesUtils.nodeIsBookmark(child) /* CW || PlacesUtils.nodeIsLivemarkContainer(child)*/) {
 				addBookmark(child, folderTag, smallXbel, syncFolderID);
 			}
 			else if (PlacesUtils.nodeIsSeparator(child)) {

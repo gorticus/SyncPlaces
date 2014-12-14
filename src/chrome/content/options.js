@@ -635,7 +635,9 @@ var SyncPlacesOptions = {
 		//If there's an exception log it and display it
 		if (exception) {
 			Components.utils.reportError(exception);
-			SyncPlacesIO.log(exception);
+			SyncPlacesIO.log("ERROR 9: "+ exception);
+			SyncPlacesIO.log("ERROR 9 key: "+ key);
+			SyncPlacesIO.log("ERROR 9 extraText: "+ extraText);
 			if (key) SyncPlaces.timedStatus(key, timeout, true);
 		}
 

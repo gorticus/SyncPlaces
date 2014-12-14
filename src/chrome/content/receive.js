@@ -473,6 +473,8 @@ var SyncPlacesReceive = {
 																		this.xbelReceivedFile)),	data);
 
 		} catch (exception) {
+SyncPlacesIO.log("ERROR completeTheRestore: "+ exception);
+
 			SyncPlacesOptions.alert2(exception, 'cant_save_bookmarks', null, false);
 			return;
 		}
@@ -486,6 +488,8 @@ var SyncPlacesReceive = {
 
 		//Check they have been received correctly
 		var hash = SyncPlaces.computeHash(data);
+SyncPlacesIO.log("this.bmsHash: "+ this.bmsHash);
+SyncPlacesIO.log("SyncPlaces.computeHash: "+ hash);
 		if (this.bmsHash && this.bmsHash != hash) {
 			SyncPlacesOptions.alert2(null, 'invalid_bookmarks', null, false,
 									"http://www.andyhalford.com/syncplaces/support.html#receiving");
