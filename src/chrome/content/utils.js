@@ -677,7 +677,11 @@ var SyncPlacesUtils = {
 						PlacesUtils.tagging.tagURI(SyncPlacesIO.makeURI(node.uri), tags);
 				}
 
-				if (node.charset) PlacesUtils.history.setCharsetForURI(SyncPlacesIO.makeURI(node.uri), node.charset);
+				if (node.charset) {
+					if (typeof PlacesUtils.history.setCharsetForURI !== 'undefined')
+						PlacesUtils.history.setCharsetForURI(SyncPlacesIO.makeURI(node.uri), node.charset);
+					else PlacesUtils.setCharsetForURI(SyncPlacesIO.makeURI(node.uri), node.charset);
+				}
 
 				if (query) {
 					searchIds.push(id);
@@ -848,7 +852,11 @@ var SyncPlacesUtils = {
 
       // last character-set
       var uri = PlacesUtils._uri(aPlacesNode.uri);
-      var lastCharset = PlacesUtils.getCharsetForURI(uri);
+      var lastCharset;
+      if (typeof PlacesUtils.history.getCharsetForURI !== 'undefined')
+      	lastCharset = PlacesUtils.history.getCharsetForURI(uri);
+	  else lastCharset = PlacesUtils.getCharsetForURI(uri);
+
       if (lastCharset)
         aJSNode.charset = lastCharset;
     }
