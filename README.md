@@ -1,4 +1,4 @@
-# SyncPlaces Firefox extension
+# SyncPlaces Firefox extension (for Firefox <v34)
 
 SyncPlaces is the most excellent [Firefox](http://getfirefox.com)
 extension that provides for bookmark and password synchronization to a
